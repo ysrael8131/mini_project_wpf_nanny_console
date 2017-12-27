@@ -107,11 +107,8 @@ namespace BL
         public void deleteChild(int id)
         {
             List<Contract> temp = (dal.getListContracts().Where(item => item.childID == id)).ToList();
-
-            for (int i = 0; i < temp.Count; i++)
-            {
-                dal.deleteContract(temp[i].num_contract);
-            }
+            if (temp.Count != 0)
+                dal.deleteContract(temp[0].num_contract);                                            
             dal.deleteChild(id);
 
 
