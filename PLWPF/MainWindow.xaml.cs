@@ -57,5 +57,7 @@ namespace PLWPF
             Window add_mother = new add_mother();
             add_mother.Show();
         }
+
+        
     }
 }

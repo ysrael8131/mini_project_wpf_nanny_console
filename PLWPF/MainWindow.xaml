@@ -32,12 +32,13 @@
                     </LinearGradientBrush>
                 </Label.Foreground>
             </Label>
-            <Button x:Name="new_mother_button" Content="new mother" Grid.Row="0" 
+            <Button x:Name="new_mother_button" Content="New mother" Grid.Row="0"
+                    FontFamily="Snap ITC" FontSize="10"
                     Visibility="Collapsed" MouseEnter="mother_log_in_MouseEnter" MouseLeave="mother_log_in_MouseLeave"
-                    Click="new_mother_button_Click"  />
-            <Button x:Name="update_mother_button" Content="Mother exists" Grid.Row="1" 
+                    Click="new_mother_button_Click" />
+            <Button x:Name="update_mother_button" Content="Mother exists" Grid.Row="1" FontFamily="Snap ITC" FontSize="10"
                     Visibility="Collapsed" MouseEnter="mother_log_in_MouseEnter"
-                    MouseLeave="mother_log_in_MouseLeave"  />
+                    MouseLeave="mother_log_in_MouseLeave" Click="mother_exsit_click"  />
 
             <Label x:Name="nanny_log_in" Grid.Row="2" Content="nanny log in"  FontSize="20"  VerticalContentAlignment="Center" 
                    MouseEnter="nanny_log_in_MouseEnter" Margin="10" Grid.RowSpan="2"  FontFamily="Snap ITC"   >
@@ -49,9 +50,11 @@
                 </Label.Foreground>
             </Label>
 
-            <Button x:Name="new_nanny_button" Content="new nanny" Grid.Row="2" 
+            <Button x:Name="new_nanny_button" Content="new nanny" Grid.Row="2" FontFamily="Snap ITC"
                       Visibility="Collapsed" MouseEnter="nanny_log_in_MouseEnter" MouseLeave="nanny_log_in_MouseLeave" />
-            <Button x:Name="update_nanny_button" Content="Nanny exists" Grid.Row="3" 
+
+
+            <Button x:Name="update_nanny_button" Content="Nanny exists" Grid.Row="3" FontFamily="Snap ITC"
                     Visibility="Collapsed" MouseEnter="nanny_log_in_MouseEnter" MouseLeave="nanny_log_in_MouseLeave" />
 
 
