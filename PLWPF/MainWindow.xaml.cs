@@ -23,6 +23,8 @@ namespace PLWPF
         public MainWindow()
         {
             InitializeComponent();
+            string[] a = new string[] { "add child", "remove mother", "update mother" };
+            list_box_mother.ItemsSource = a;
         }
 
 
@@ -40,14 +42,14 @@ namespace PLWPF
 
         private void nanny_log_in_MouseEnter(object sender, MouseEventArgs e)
         {
-           // nanny_log_in.Visibility = Visibility.Hidden;
+            // nanny_log_in.Visibility = Visibility.Hidden;
             new_nanny_button.Visibility = Visibility.Visible;
             update_nanny_button.Visibility = Visibility.Visible;
         }
 
         private void nanny_log_in_MouseLeave(object sender, MouseEventArgs e)
         {
-          //  nanny_log_in.Visibility = Visibility.Visible;
+            //  nanny_log_in.Visibility = Visibility.Visible;
             new_nanny_button.Visibility = Visibility.Collapsed;
             update_nanny_button.Visibility = Visibility.Collapsed;
         }
@@ -56,6 +58,35 @@ namespace PLWPF
         {
             Window add_mother = new add_mother();
             add_mother.Show();
+        }
+
+        private void update_mother_button_Click(object sender, RoutedEventArgs e)
+        {
+            list_box_mother.Visibility = Visibility.Visible;
+        }
+
+        private void mother_exist_MouseLeave(object sender, MouseEventArgs e)
+        {
+            list_box_mother.Visibility = Visibility.Collapsed;
+        }
+
+        private void mother_exist_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+        }
+
+        private void list_box_mother_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            switch (list_box_mother.SelectedItem.ToString())
+            {
+                case "add child":
+                    Window add_child = new add_child();
+                    add_child.Show();
+                    break;
+                        
+                default:
+                    break;
+            }
+
         }
     }
 }

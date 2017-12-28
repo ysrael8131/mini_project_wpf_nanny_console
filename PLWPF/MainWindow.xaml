@@ -7,6 +7,13 @@
         mc:Ignorable="d"
          Title="Window1" Height="300" Width="400">
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black" Offset="0"/>
+                <GradientStop Color="#FFC48E13" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
@@ -32,12 +39,12 @@
                     </LinearGradientBrush>
                 </Label.Foreground>
             </Label>
-            <Button x:Name="new_mother_button" Content="new mother" Grid.Row="0" 
+            <Button x:Name="new_mother_button" Content="new mother" Grid.Row="0"  FontFamily="Snap ITC"
                     Visibility="Collapsed" MouseEnter="mother_log_in_MouseEnter" MouseLeave="mother_log_in_MouseLeave"
                     Click="new_mother_button_Click"  />
-            <Button x:Name="update_mother_button" Content="Mother exists" Grid.Row="1" 
+            <Button x:Name="update_mother_button" Content="Mother exists" Grid.Row="1"  FontFamily="Snap ITC" Click="update_mother_button_Click"
                     Visibility="Collapsed" MouseEnter="mother_log_in_MouseEnter"
-                    MouseLeave="mother_log_in_MouseLeave"  />
+                    MouseLeave="mother_log_in_MouseLeave" />
 
             <Label x:Name="nanny_log_in" Grid.Row="2" Content="nanny log in"  FontSize="20"  VerticalContentAlignment="Center" 
                    MouseEnter="nanny_log_in_MouseEnter" Margin="10" Grid.RowSpan="2"  FontFamily="Snap ITC"   >
@@ -48,14 +55,17 @@
                     </LinearGradientBrush>
                 </Label.Foreground>
             </Label>
+            <ListBox x:Name="list_box_mother" Grid.Row="2"  Visibility="Collapsed" MouseLeave="mother_exist_MouseLeave" MouseDoubleClick="list_box_mother_MouseDoubleClick"
+                     SelectionChanged="mother_exist_SelectionChanged"  Grid.RowSpan="2" >
+               
+            </ListBox>
 
-            <Button x:Name="new_nanny_button" Content="new nanny" Grid.Row="2" 
+                <Button x:Name="new_nanny_button" Content="new nanny" Grid.Row="2"  FontFamily="Snap ITC"
                       Visibility="Collapsed" MouseEnter="nanny_log_in_MouseEnter" MouseLeave="nanny_log_in_MouseLeave" />
-            <Button x:Name="update_nanny_button" Content="Nanny exists" Grid.Row="3" 
+                <Button x:Name="update_nanny_button" Content="Nanny exists" Grid.Row="3"  FontFamily="Snap ITC"
                     Visibility="Collapsed" MouseEnter="nanny_log_in_MouseEnter" MouseLeave="nanny_log_in_MouseLeave" />
-
-
         </Grid>
+
         <Image x:Name="image_mom" Source="mom.png" Stretch="Uniform"
             Margin="0.4,90,-0.4,0.4" Grid.RowSpan="3" Grid.Column="1"   />
     </Grid>
