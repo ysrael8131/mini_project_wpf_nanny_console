@@ -11,10 +11,7 @@
     d:DataContext="{d:DesignInstance BE:Mother}"
    
         Title="add_mother" Height="349.333" Width="682.767" Loaded="Window_Loaded" >
-    <Window.Resources>
-        <CollectionViewSource x:Key="motherViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Mother}, CreateList=True}"/>
-        <CollectionViewSource x:Key="motherarrViewSource" Source="{Binding arr, Source={StaticResource motherViewSource}}"/>
-    </Window.Resources>
+   
     <Grid  >
         <Grid.RowDefinitions>
             <RowDefinition Height="9*"/>
@@ -27,76 +24,6 @@
 
 
 
-       
-        <Grid ShowGridLines="False"  Grid.Column="1" Margin="0.333,34,0.333,0.333">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-            </Grid.ColumnDefinitions>
-            <Label VerticalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="6" Margin="3" HorizontalAlignment="Center" Content="Choose the days and the hours you need a nanny:" />
-
-            <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Left" Content="Sunday:"/>
-            <CheckBox x:Name="sundayCheckBox" VerticalAlignment="Center" Grid.Row="1" Margin="3" IsChecked="{Binding IsSpecialNeeds, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
-            <Label VerticalAlignment="Center" Grid.Row="1" Grid.Column="2" Margin="3" HorizontalAlignment="Right" Content="Start:"/>
-            <dg:TimePicker x:Name="start1" VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Center" Grid.Column="3" IsEnabled="{Binding ElementName=sundayCheckBox, Path=IsChecked}" />
-            <Label VerticalAlignment="Center" Grid.Row="1" Grid.Column="4" Margin="3" HorizontalAlignment="Right" Content="End:"/>
-            <dg:TimePicker x:Name="end1" VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Center" Grid.Column="5" IsEnabled="{Binding ElementName=sundayCheckBox, Path=IsChecked}"/>
-
-            <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Left" Content="Monday:"/>
-            <Label VerticalAlignment="Center" Grid.Row="2" Grid.Column="2" Margin="3" HorizontalAlignment="Right" Content="Start:"/>
-            <Label VerticalAlignment="Center" Grid.Row="2" Grid.Column="4" Margin="3" HorizontalAlignment="Right" Content="End:"/>
-            <CheckBox x:Name="mondayCheckBox" VerticalAlignment="Center" Grid.Row="2" Margin="3" IsChecked="{Binding IsSpecialNeeds, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
-            <dg:TimePicker x:Name="startMondayTime" VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Left" Grid.Column="3" IsEnabled="{Binding ElementName=mondayCheckBox, Path=IsChecked}" />
-            <dg:TimePicker x:Name="endMondayTime" VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Left" Grid.Column="5" IsEnabled="{Binding ElementName=mondayCheckBox, Path=IsChecked}"/>
-
-            
-            <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Content="Tuesday:"/>
-            <Label VerticalAlignment="Center" Grid.Row="3" Grid.Column="2" Margin="3" HorizontalAlignment="Right" Content="Start:"/>
-            <Label VerticalAlignment="Center" Grid.Row="3" Grid.Column="4" Margin="3" HorizontalAlignment="Right" Content="End:"/>
-            <CheckBox x:Name="tuesdayCheckBox" VerticalAlignment="Center" Grid.Row="3" Margin="3" IsChecked="{Binding IsSpecialNeeds, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
-            <dg:TimePicker x:Name="startTuesdayTime" VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="3" IsEnabled="{Binding ElementName=tuesdayCheckBox, Path=IsChecked}"/>
-            <dg:TimePicker x:Name="endTuesdayTime" VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="5" IsEnabled="{Binding ElementName=tuesdayCheckBox, Path=IsChecked}"/>
-
-            <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Left" Content="Wednesday:"/>
-            <Label VerticalAlignment="Center" Grid.Row="4" Grid.Column="2" Margin="3" HorizontalAlignment="Right" Content="Start:"/>
-            <Label VerticalAlignment="Center" Grid.Row="4" Grid.Column="4" Margin="3" HorizontalAlignment="Right" Content="End:"/>
-            <CheckBox x:Name="wednesdayCheckBox" VerticalAlignment="Center" Grid.Row="4" Margin="3" IsChecked="{Binding IsSpecialNeeds, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
-            <dg:TimePicker x:Name="startWednesdayTime" VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Left" Grid.Column="3" IsEnabled="{Binding ElementName=wednesdayCheckBox, Path=IsChecked}" />
-            <dg:TimePicker x:Name="endWednesdayTime" VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Left" Grid.Column="5" IsEnabled="{Binding ElementName=wednesdayCheckBox, Path=IsChecked}"/>
-
-            <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Content="Thursday:"/>
-            <Label VerticalAlignment="Center" Grid.Row="5" Grid.Column="2" Margin="3" HorizontalAlignment="Right" Content="Start:"/>
-            <Label VerticalAlignment="Center" Grid.Row="5" Grid.Column="4" Margin="3" HorizontalAlignment="Right" Content="End:"/>
-            <CheckBox x:Name="thursdayCheckBox" VerticalAlignment="Center" Grid.Row="5" Margin="3" IsChecked="{Binding IsSpecialNeeds, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
-            <dg:TimePicker x:Name="startThursdayTime" VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="3" IsEnabled="{Binding ElementName=thursdayCheckBox, Path=IsChecked}" />
-            <dg:TimePicker x:Name="endThursdayTime" VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="5" IsEnabled="{Binding ElementName=thursdayCheckBox, Path=IsChecked}"/>
-
-            
-            <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Content="Friday:"/>
-            <Label VerticalAlignment="Center" Grid.Row="6" Grid.Column="2" Margin="3" HorizontalAlignment="Right" Content="Start:"/>
-            <Label VerticalAlignment="Center" Grid.Row="6" Grid.Column="4" Margin="3" HorizontalAlignment="Right" Content="End:"/>
-            <CheckBox x:Name="fridayCheckBox" VerticalAlignment="Center" Grid.Row="6" Margin="3" IsChecked="{Binding IsSpecialNeeds, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
-            <dg:TimePicker x:Name="startFridayTime" VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="3" IsEnabled="{Binding ElementName=fridayCheckBox, Path=IsChecked}" />
-            <dg:TimePicker x:Name="endFridayTime" VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="5" IsEnabled="{Binding ElementName=fridayCheckBox, Path=IsChecked}"/>
-
-
-        </Grid>
-        
-        
-        
         <Button Content="Add mother" Click="Button_Click_2" Margin="10" Grid.Row="1"/>
         <dg:TimePicker x:Name="timetemp" Margin="10" Grid.Row="2" Grid.Column="1" DataContext="{Binding arr[0].start}"/>
         <Grid x:Name="grid1">

@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -72,12 +73,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddNanny.xaml.cs">
+      <DependentUpon>AddNanny.xaml</DependentUpon>
+    </Compile>
     <Compile Include="nisyon.xaml.cs">
       <DependentUpon>nisyon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="temp.xaml.cs">
+      <DependentUpon>temp.xaml</DependentUpon>
     </Compile>
     <Compile Include="Time.xaml.cs">
       <DependentUpon>Time.xaml</DependentUpon>
     </Compile>
+    <Page Include="AddNanny.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="add_child.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -105,6 +116,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="nisyon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="temp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -144,15 +159,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="משפחה-שמח-ציור-היתולי-להחזיק-אמא-וקטור-קליפ-ארט_csp28621656.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="]%3bl.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="mom.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">

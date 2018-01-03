@@ -60,13 +60,12 @@
 
             </ListBox>
 
-            <Button x:Name="new_nanny_button" Content="new nanny" Grid.Row="2"  FontFamily="Snap ITC"
+            <Button x:Name="new_nanny_button" Content="new nanny" Grid.Row="2" Click="new_nanny_button_Click" FontFamily="Snap ITC"
                       Visibility="Collapsed" MouseEnter="nanny_log_in_MouseEnter" MouseLeave="nanny_log_in_MouseLeave" />
             <Button x:Name="update_nanny_button" Content="Nanny exists" Grid.Row="3"  FontFamily="Snap ITC"
                     Visibility="Collapsed" MouseEnter="nanny_log_in_MouseEnter" MouseLeave="nanny_log_in_MouseLeave" />
         </Grid>
 
-        <Image x:Name="image_mom" Source="mom.png" Stretch="Uniform"
-            Margin="0.4,90,-0.4,0.4" Grid.RowSpan="3" Grid.Column="1"   />
+       
     </Grid>
 </Window>

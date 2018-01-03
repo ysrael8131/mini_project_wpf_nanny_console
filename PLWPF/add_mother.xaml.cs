@@ -73,15 +73,11 @@ namespace PLWPF
 
             try
             {
-                List<TimePicker> time = new List<TimePicker>() { start1, startMondayTime, startTuesdayTime, startWednesdayTime, startThursdayTime, startFridayTime };
+                //List<TimePicker> time = new List<TimePicker>() { start1, startMondayTime, startTuesdayTime, startWednesdayTime, startThursdayTime, startFridayTime };
                 
                 for (int i = 0; i < 6; i++)
                 {
-                    if ()
-                    {
-                        mother.arr[i].start = time[i].Value.Value.TimeOfDay;
-                        mother.arr[i].end = time[i].Value.Value.TimeOfDay;
-                    }
+                   
                 }
 
                 bl.addMother(mother);
