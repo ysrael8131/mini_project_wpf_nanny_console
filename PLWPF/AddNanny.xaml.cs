@@ -11,33 +11,30 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using BE;
+
 namespace PLWPF
 {
     /// <summary>
-    /// Interaction logic for add_child.xaml
+    /// Interaction logic for AddNanny.xaml
     /// </summary>
-    public partial class add_child : Window
+    public partial class AddNanny : Window
     {
-        BL.IBL bl;
-        public add_child()
+        public AddNanny()
         {
             InitializeComponent();
-            bl = BL.FactoryBl.getBl();
-            
-                //motherIDComBox.ItemsSource = bl.getListMothers().ToArray()[0].id.ToString();
-            
-
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
+            System.Windows.Data.CollectionViewSource nannyViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("nannyViewSource")));
+            // Load data by setting the CollectionViewSource.Source property:
+            // nannyViewSource.Source = [generic data source]
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void add_nanny_button_Click(object sender, RoutedEventArgs e)
         {
-            new add_mother().Show();
+
         }
     }
 }

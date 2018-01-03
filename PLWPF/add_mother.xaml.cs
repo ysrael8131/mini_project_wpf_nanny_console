@@ -32,6 +32,7 @@ namespace PLWPF
             bl = FactoryBl.getBl();
             mother = new Mother();
             DataContext = mother;
+         
             // arrListView.DataContext = mother.arr;
 
 
@@ -73,18 +74,21 @@ namespace PLWPF
 
             try
             {
-                List<TimePicker> time = new List<TimePicker>() { start1, startMondayTime, startTuesdayTime, startWednesdayTime, startThursdayTime, startFridayTime };
-                
+                List<TimePicker> timeStart = new List<TimePicker>() { start1, startMondayTime, startTuesdayTime, startWednesdayTime, startThursdayTime, startFridayTime };
+                List<TimePicker> timeEnd = new List<TimePicker>() { end1, endMondayTime, endTuesdayTime, endWednesdayTime, endThursdayTime, endFridayTime };
+                List<CheckBox> check = new List<CheckBox>() { sundayCheckBox, mondayCheckBox, tuesdayCheckBox, wednesdayCheckBox, thursdayCheckBox, fridayCheckBox };
                 for (int i = 0; i < 6; i++)
                 {
-                    if ()
+                    if(check[i].IsChecked==true)
                     {
-                        mother.arr[i].start = time[i].Value.Value.TimeOfDay;
-                        mother.arr[i].end = time[i].Value.Value.TimeOfDay;
+                        mother.arr[i].start = timeStart[i].Value.Value.TimeOfDay;
+                        mother.arr[i].end = timeEnd[i].Value.Value.TimeOfDay;
                     }
                 }
 
                 bl.addMother(mother);
+                System.Windows.MessageBox.Show(mother.FirstName + " " + mother.LastName + " Successfully added");
+                this.Close();
                 new add_child().Show();
 
             }

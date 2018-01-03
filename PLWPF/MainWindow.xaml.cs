@@ -95,5 +95,10 @@ namespace PLWPF
             }
 
         }
+
+        private void newNany(object sender, RoutedEventArgs e)
+        {
+            new AddNanny().Show();
+        }
     }
 }

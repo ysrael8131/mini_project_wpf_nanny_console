@@ -61,7 +61,7 @@
             </ListBox>
 
             <Button x:Name="new_nanny_button" Content="new nanny" Grid.Row="2"  FontFamily="Snap ITC"
-                      Visibility="Collapsed" MouseEnter="nanny_log_in_MouseEnter" MouseLeave="nanny_log_in_MouseLeave" />
+                      Visibility="Collapsed" MouseEnter="nanny_log_in_MouseEnter" MouseLeave="nanny_log_in_MouseLeave" Click="newNany" />
             <Button x:Name="update_nanny_button" Content="Nanny exists" Grid.Row="3"  FontFamily="Snap ITC"
                     Visibility="Collapsed" MouseEnter="nanny_log_in_MouseEnter" MouseLeave="nanny_log_in_MouseLeave" />
         </Grid>

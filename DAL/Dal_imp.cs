@@ -113,7 +113,7 @@ namespace DAL
         /// <returns></returns>
         public IEnumerable<Mother> getListMothers()
         {
-            if (!DataSource.mothers.Any())
+            if (DataSource.mothers.Any())
                 throw new Exception("No mothers exist in the database");
             return DataSource.mothers;
         }

@@ -72,12 +72,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddNanny.xaml.cs">
+      <DependentUpon>AddNanny.xaml</DependentUpon>
+    </Compile>
     <Compile Include="nisyon.xaml.cs">
       <DependentUpon>nisyon.xaml</DependentUpon>
     </Compile>
     <Compile Include="Time.xaml.cs">
       <DependentUpon>Time.xaml</DependentUpon>
     </Compile>
+    <Page Include="AddNanny.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="add_child.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
