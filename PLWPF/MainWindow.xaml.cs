@@ -12,7 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using BE;
+using BL;
 namespace PLWPF
 {
     /// <summary>
@@ -20,10 +21,12 @@ namespace PLWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         public MainWindow()
         {
             InitializeComponent();
-            string[] a = new string[] { "add child", "remove mother", "update mother" };
+            
+            string[] a = new string[] { "Add child", "Remove mother", "Update mother" };
             list_box_mother.ItemsSource = a;
         }
 
@@ -70,19 +73,23 @@ namespace PLWPF
             list_box_mother.Visibility = Visibility.Collapsed;
         }
 
-        private void mother_exist_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-        }
-
+        
         private void list_box_mother_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+
             switch (list_box_mother.SelectedItem.ToString())
             {
-                case "add child":
-                    Window add_child = new add_child();
-                    add_child.Show();
+                case "Add child":
+                    new add_child().Show();
                     break;
-                        
+                case "Remove mother":
+                    break;
+
+
+                case "Update mother":
+                    break;
+
+
                 default:
                     break;
             }
