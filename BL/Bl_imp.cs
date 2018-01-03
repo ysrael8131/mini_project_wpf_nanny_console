@@ -13,11 +13,7 @@ namespace BL
     {
 
         DAL.IDAL dal = DAL.FactoryDal.getDal();
-        public void init()
-        {
-            Mother a = new Mother(123, "sara", "coen", 0525225222, "הוועד הלאומי 24,ירושלים", null, false);
-            addMother(a);
-        }
+        
 
 
         public void addChild(Child a)
@@ -337,9 +333,8 @@ namespace BL
         {
             for (int i = 0; i < nan.work.Length; i++)
             {
-                if (nan.work[i].start.Minutes - mom.list[i].start.Minutes > 15 &&
-                    mom.list[i].end.Minutes - nan.work[i].end.Minutes > 15 &&
-                    mom.list[i].dayCrity != nan.work[i].day_work)
+                if (nan.work[i].start.Minutes - mom.arr[i].start.Minutes > 15 &&
+                    mom.arr[i].end.Minutes - nan.work[i].end.Minutes > 15 )
                     return false;
             }
             return true;
@@ -348,9 +343,9 @@ namespace BL
         {
             for (int i = 0; i < nan.work.Length; i++)
             {
-                if (nan.work[i].day_work != mom.list[i].day_work &&
-                    mom.list[i].start < nan.work[i].start &&
-                    nan.work[i].end < mom.list[i].end)
+                if (nan.work[i].day_work != mom.arr[i].day_work &&
+                    mom.arr[i].start < nan.work[i].start &&
+                    nan.work[i].end < mom.arr[i].end)
                     return false;
             }
             return true;

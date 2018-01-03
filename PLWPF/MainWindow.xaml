@@ -9,8 +9,8 @@
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="Black" Offset="0"/>
-                <GradientStop Color="#FFC48E13" Offset="1"/>
+                <GradientStop Color="White" Offset="1"/>
+                <GradientStop Color="#FFF7CA99" Offset="0.976"/>
             </LinearGradientBrush>
         </Grid.Background>
 
@@ -56,13 +56,13 @@
                 </Label.Foreground>
             </Label>
             <ListBox x:Name="list_box_mother" Grid.Row="2"  Visibility="Collapsed" MouseLeave="mother_exist_MouseLeave" MouseDoubleClick="list_box_mother_MouseDoubleClick"
-                     SelectionChanged="mother_exist_SelectionChanged"  Grid.RowSpan="2" >
-               
+                      Grid.RowSpan="2" Width="120" HorizontalAlignment="Left">
+
             </ListBox>
 
-                <Button x:Name="new_nanny_button" Content="new nanny" Grid.Row="2"  FontFamily="Snap ITC"
+            <Button x:Name="new_nanny_button" Content="new nanny" Grid.Row="2"  FontFamily="Snap ITC"
                       Visibility="Collapsed" MouseEnter="nanny_log_in_MouseEnter" MouseLeave="nanny_log_in_MouseLeave" />
-                <Button x:Name="update_nanny_button" Content="Nanny exists" Grid.Row="3"  FontFamily="Snap ITC"
+            <Button x:Name="update_nanny_button" Content="Nanny exists" Grid.Row="3"  FontFamily="Snap ITC"
                     Visibility="Collapsed" MouseEnter="nanny_log_in_MouseEnter" MouseLeave="nanny_log_in_MouseLeave" />
         </Grid>
 

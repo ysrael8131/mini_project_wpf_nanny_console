@@ -8,9 +8,15 @@ namespace BE
 {
     public class Work_information
     {
-        public TimeSpan start;
-        public TimeSpan end;
-        public bool day_work;
-        public bool dayCrity;
-    }
+        public TimeSpan start { set; get; }
+        public TimeSpan end { set; get; }
+        public bool day_work { set; get; }
+        public DayOfWeek day { set; get; }
+        public Work_information()
+        {
+            start = new TimeSpan();
+            end = new TimeSpan();
+        }
+    } 
+    
 }
