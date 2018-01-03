@@ -37,59 +37,6 @@
             <Label Content="Search Addres:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
             <TextBox x:Name="searchAddresTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" Text="{Binding SearchAddres, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
         </Grid>
-        <Grid x:Name="grid2" HorizontalAlignment="Right" VerticalAlignment="Top" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Label Content="day" Grid.Row="0" Grid.Column="0" />
-            <Label Content="work" Grid.Row="0" Grid.Column="1" />
-            <Label Content="critycal" Grid.Row="0" Grid.Column="2" />
-            <Label Content="start" Grid.Row="0" Grid.Column="3" />
-            <Label Content="end" Grid.Row="0" Grid.Column="4" />
-            <Label Content="Sunday" Grid.Row="1" Grid.Column="0" />
-            <CheckBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center"/>
-            <CheckBox Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center"/>
-            <TextBox Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" Width="50"/>
-            <TextBox Grid.Row="1" Grid.Column="4" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" Width="50"/>
-            <Label Content="Monday" Grid.Row="2" Grid.Column="0" />
-            <CheckBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center"/>
-            <CheckBox Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center"/>
-            <TextBox Grid.Row="2" Grid.Column="3" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" Width="30"/>
-            <TextBox Grid.Row="2" Grid.Column="4" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" Width="50"/>
-            <Label Content="Tuseday" Grid.Row="3" Grid.Column="0" />
-            <CheckBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center"/>
-            <CheckBox Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center"/>
-            <TextBox Grid.Row="3" Grid.Column="3" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" Width="30"/>
-            <TextBox Grid.Row="3" Grid.Column="4" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" Width="50"/>
-            <Label Content="Wendnesday" Grid.Row="4" Grid.Column="0" />
-            <CheckBox Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center"/>
-            <CheckBox Grid.Row="4" Grid.Column="2" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center"/>
-            <TextBox Grid.Row="4" Grid.Column="3" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" Width="30"/>
-            <TextBox Grid.Row="4" Grid.Column="4" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" Width="50"/>
-            <Label Content="Thurstay" Grid.Row="5" Grid.Column="0" />
-            <CheckBox Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center"/>
-            <CheckBox Grid.Row="5" Grid.Column="2" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center"/>
-            <TextBox Grid.Row="5" Grid.Column="3" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" Width="30"/>
-            <TextBox Grid.Row="5" Grid.Column="4" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" Width="50"/>
-            <Label Content="Friday" Grid.Row="6" Grid.Column="0" />
-            <CheckBox Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center"/>
-            <CheckBox Grid.Row="6" Grid.Column="2" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center"/>
-            <TextBox Grid.Row="6" Grid.Column="3" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" Width="30"/>
-            <TextBox Grid.Row="6" Grid.Column="4" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center" Width="50"/>
-        </Grid>
 
     </DockPanel>
 
