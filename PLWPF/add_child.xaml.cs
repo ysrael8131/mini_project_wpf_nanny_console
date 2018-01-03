@@ -24,10 +24,9 @@ namespace PLWPF
         {
             InitializeComponent();
             bl = BL.FactoryBl.getBl();
-            foreach (var item in bl.getListMothers())
-            {
-                motherIDComBox.SelectedItem = item.id;
-            }
+            
+                //motherIDComBox.ItemsSource = bl.getListMothers().ToArray()[0].id.ToString();
+            
 
         }
 

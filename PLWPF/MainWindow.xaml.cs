@@ -25,8 +25,7 @@ namespace PLWPF
         public MainWindow()
         {
             InitializeComponent();
-            //Window temp = new temp();
-            //temp.Show();
+            
             string[] a = new string[] { "Add child", "Remove mother", "Update mother" };
             list_box_mother.ItemsSource = a;
         }
@@ -97,10 +96,9 @@ namespace PLWPF
 
         }
 
-        private void new_nanny_button_Click(object sender, RoutedEventArgs e)
+        private void newNany(object sender, RoutedEventArgs e)
         {
-            Window add_nanny = new AddNanny();
-            add_nanny.Show();
+            new AddNanny().Show();
         }
     }
 }

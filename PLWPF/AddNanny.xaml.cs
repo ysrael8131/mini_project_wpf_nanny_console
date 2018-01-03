@@ -19,12 +19,9 @@ namespace PLWPF
     /// </summary>
     public partial class AddNanny : Window
     {
-        BE.Nanny nanny;
         public AddNanny()
         {
             InitializeComponent();
-            nanny = new BE.Nanny();
-            workListView.DataContext = nanny.work;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -33,6 +30,11 @@ namespace PLWPF
             System.Windows.Data.CollectionViewSource nannyViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("nannyViewSource")));
             // Load data by setting the CollectionViewSource.Source property:
             // nannyViewSource.Source = [generic data source]
+        }
+
+        private void add_nanny_button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
