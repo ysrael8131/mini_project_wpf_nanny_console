@@ -25,7 +25,6 @@ namespace PLWPF
         public MainWindow()
         {
             InitializeComponent();
-            new temp().Show();
             string[] a = new string[] { "Add child", "Remove mother", "Update mother" };
             list_box_mother.ItemsSource = a;
         }

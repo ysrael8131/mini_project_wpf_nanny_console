@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BL;
 using Xceed.Wpf.Toolkit;
-using System.Threading.Tasks;
+
 using System.Threading;
 
 namespace PLWPF
@@ -109,7 +109,7 @@ namespace PLWPF
                 third_grid_mother.Visibility = Visibility.Visible;
            //     Thread.Sleep(10000);
                 this.Close();
-                new add_child().Show();
+               // new add_child().Show();
 
             }
             catch (Exception a)
