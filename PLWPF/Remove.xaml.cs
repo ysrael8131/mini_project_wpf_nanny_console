@@ -11,34 +11,33 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using BE;
+
 namespace PLWPF
 {
     /// <summary>
-    /// Interaction logic for add_child.xaml
+    /// Interaction logic for Remove.xaml
     /// </summary>
-    public partial class add_child : Window
+    public partial class Remove : Window
     {
         BL.IBL bl;
-        public add_child(Mother a=null)
+        public Remove(int choice)
         {
             InitializeComponent();
             bl = BL.FactoryBl.getBl();
-            motherIDTextBox.Text = a.id.ToString();
-            
-                //motherIDComBox.ItemsSource = bl.getListMothers().ToArray()[0].id.ToString();
-            
 
         }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+       
+        private void Remove_Click(object sender, RoutedEventArgs e)
         {
 
-        }
+            //switch (choice)
+            //{
+            //    case 1:
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            new add_mother().Show();
+            //        bl.deleteMother(int.Parse(remove_textbox.Text));
+            //    default:
+            //        break;
+            //}
         }
     }
 }

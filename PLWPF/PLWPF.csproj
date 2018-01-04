@@ -78,6 +78,9 @@
     <Compile Include="nisyon.xaml.cs">
       <DependentUpon>nisyon.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Remove.xaml.cs">
+      <DependentUpon>Remove.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Time.xaml.cs">
       <DependentUpon>Time.xaml</DependentUpon>
     </Compile>
@@ -112,6 +115,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="nisyon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Remove.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

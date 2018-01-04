@@ -88,8 +88,9 @@ namespace PLWPF
 
                 bl.addMother(mother);
                 System.Windows.MessageBox.Show(mother.FirstName + " " + mother.LastName + " Successfully added");
-                this.Close();
-                new add_child().Show();
+               
+               
+                new add_child(mother).Show();
 
             }
             catch (Exception a)

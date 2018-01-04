@@ -55,7 +55,7 @@
 
 
             <Label Content="Mother ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
-            <ComboBox x:Name="motherIDComBox" Grid.Column="1" Height="24" Margin="3.333,4,2.667,4" Grid.Row="1" Text="{Binding MotherID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
+            <TextBox x:Name="motherIDTextBox" Grid.Column="1" Height="24" Margin="3.333,4,2.667,4" Grid.Row="1" Text="{Binding MotherID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
 
 
 
