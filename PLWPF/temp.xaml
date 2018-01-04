@@ -7,8 +7,22 @@
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.temp"
         mc:Ignorable="d"
         Title="temp" Height="300" Width="300">
-    <Grid >
-        <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"/>
+    <Window.Resources>
+
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Window.Resources>
+    <Grid   >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="71*"/>
+            <RowDefinition Height="200*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="משה רבינו"  Foreground="gray"
+                       Visibility="{Binding ElementName=txtUserEntry, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+        <TextBox Name="txtUserEntry" Background="Transparent" BorderBrush="Indigo"  />
+
+
+
     </Grid>
 
 </Window>
