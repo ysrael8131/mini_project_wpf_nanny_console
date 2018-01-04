@@ -105,6 +105,7 @@ namespace PLWPF
 
                 bl.addMother(mother);
 
+
                 second_grid_mother.Visibility = Visibility.Collapsed;
                 third_grid_mother.Visibility = Visibility.Visible;
            //     Thread.Sleep(10000);
