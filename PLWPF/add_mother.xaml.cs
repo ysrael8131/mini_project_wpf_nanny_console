@@ -1,5 +1,4 @@
-﻿
-using BE;
+﻿using BE;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BL;
 using Xceed.Wpf.Toolkit;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace PLWPF
 {
@@ -32,7 +33,7 @@ namespace PLWPF
             bl = FactoryBl.getBl();
             mother = new Mother();
             DataContext = mother;
-         
+
             // arrListView.DataContext = mother.arr;
 
 
@@ -69,8 +70,24 @@ namespace PLWPF
 
 
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+
+
+        private void Button_Click_Next(object sender, RoutedEventArgs e)
         {
+            first_grid_mother.Visibility = Visibility.Collapsed;
+            second_grid_mother.Visibility = Visibility.Visible;
+        }
+
+
+        private void Button_back_Click(object sender, RoutedEventArgs e)
+        {
+            first_grid_mother.Visibility = Visibility.Visible;
+            second_grid_mother.Visibility = Visibility.Collapsed;
+        }
+
+        private void Button_create_Click(object sender, RoutedEventArgs e)
+        {
+
 
             try
             {
@@ -79,7 +96,7 @@ namespace PLWPF
                 List<CheckBox> check = new List<CheckBox>() { sundayCheckBox, mondayCheckBox, tuesdayCheckBox, wednesdayCheckBox, thursdayCheckBox, fridayCheckBox };
                 for (int i = 0; i < 6; i++)
                 {
-                    if(check[i].IsChecked==true)
+                    if (check[i].IsChecked == true)
                     {
                         mother.arr[i].start = timeStart[i].Value.Value.TimeOfDay;
                         mother.arr[i].end = timeEnd[i].Value.Value.TimeOfDay;
@@ -87,10 +104,12 @@ namespace PLWPF
                 }
 
                 bl.addMother(mother);
-                System.Windows.MessageBox.Show(mother.FirstName + " " + mother.LastName + " Successfully added");
-               
-               
-                new add_child(mother).Show();
+
+                second_grid_mother.Visibility = Visibility.Collapsed;
+                third_grid_mother.Visibility = Visibility.Visible;
+           //     Thread.Sleep(10000);
+                this.Close();
+                new add_child().Show();
 
             }
             catch (Exception a)
@@ -100,10 +119,7 @@ namespace PLWPF
             }
 
         }
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
 
-        }
     }
 
 

@@ -252,7 +252,7 @@ namespace DAL
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Mother getMother(int id)
+        public Mother getMother(int? id)
         {
             return DataSource.mothers.Find(item => item.id == id);
         }

@@ -8,6 +8,8 @@ namespace BE
 {
     public class Nanny
     {
+        public DayOfWeek[] cc = new DayOfWeek[6];
+
         public Nanny(int i = 0, string first = "", string last = "", string birth = "1/1/2010",
           int phone = 0, string add = "", bool elev = false,
           int flo = 0, int exp = 0, int max = 0, int agemin = 0,
@@ -31,6 +33,19 @@ namespace BE
             salaryPerMonth = samonth;
             vacation_kind = vaca;
             recommendation = rec;
+            cc[0] = DayOfWeek.Sunday;
+            cc[1] = DayOfWeek.Monday;
+            cc[2] = DayOfWeek.Thursday;
+            cc[3] = DayOfWeek.Wednesday;
+            cc[4] = DayOfWeek.Tuesday;
+            cc[5] = DayOfWeek.Friday;
+
+            for (int j = 0; j < 6; j++)
+            {
+                work[j] = new Work_information();
+                work[j].day = cc[j];
+
+            }
         }
         public int id { set; get; }
         public string FirstName { set; get; }
@@ -49,8 +64,8 @@ namespace BE
         public double salaryPerMonth { set; get; }
         public bool vacation_kind { set; get; }
         public string recommendation { set; get; }
+        public Work_information[] work { set; get; }= new Work_information[6];
 
-        public Work_information[] work = new Work_information[6];
 
 
         public override string ToString()

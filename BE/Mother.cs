@@ -24,7 +24,7 @@ namespace BE
                 arr[j] = new Work_information();  
             }
         }
-        public int id { set; get; }
+        public int? id { set; get; }
         public string FirstName { set; get; }
         public string LastName { set; get; }
         public string PhoneNumber { set; get; }
