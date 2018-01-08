@@ -100,7 +100,7 @@ namespace BL
         /// remove child by id child
         /// </summary>
         /// <param name="id"></param>
-        public void deleteChild(int id)
+        public void deleteChild(int? id)
         {
             List<Contract> temp = (dal.getListContracts().Where(item => item.childID == id)).ToList();
             if (temp.Count != 0)
@@ -231,7 +231,7 @@ namespace BL
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public bool helpFunc1(int id)
+        public bool helpFunc1(int? id)
         {
 
             foreach (var item in dal.getListContracts())

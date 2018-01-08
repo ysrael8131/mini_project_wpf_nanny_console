@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BL;
 using Xceed.Wpf.Toolkit;
-using System.Threading.Tasks;
+
 using System.Threading;
 
 namespace PLWPF
@@ -104,13 +104,11 @@ namespace PLWPF
                 }
 
                 bl.addMother(mother);
-
-
                 second_grid_mother.Visibility = Visibility.Collapsed;
                 third_grid_mother.Visibility = Visibility.Visible;
-           //     Thread.Sleep(10000);
-                this.Close();
-                new add_child().Show();
+                //Thread.Sleep(3000);
+               // this.Close();
+                new add_child(mother).Show();
 
             }
             catch (Exception a)

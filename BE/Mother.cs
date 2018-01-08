@@ -8,7 +8,7 @@ namespace BE
 {
     public class Mother
     {
-        public DayOfWeek[] cc = new DayOfWeek[6];
+        
         public Mother(int i = 0, string first = "", string last = "", string phone = "", string add = "", string seaadd = "", bool elev = false)
         {
             //id = i;
@@ -18,16 +18,10 @@ namespace BE
             //Addres = add;
             //SearchAddres = seaadd;
             //elevators = elev;
-            cc[0] = DayOfWeek.Sunday;
-            cc[1] = DayOfWeek.Monday;
-            cc[2] = DayOfWeek.Thursday;
-            cc[3] = DayOfWeek.Wednesday;
-            cc[4] = DayOfWeek.Tuesday;
-            cc[5] = DayOfWeek.Friday;
+           
             for (int j = 0; j < 6; j++)
             {
-                arr[j] = new Work_information();
-                arr[j].day = cc[j];
+                arr[j] = new Work_information();  
             }
         }
         public int? id { set; get; }

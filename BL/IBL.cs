@@ -17,7 +17,7 @@ namespace BL
         void updateMother(Mother a);
 
         void addChild(Child a);
-        void deleteChild(int id);
+        void deleteChild(int? id);
         void updateChild(Child a);
 
         void addContract(Contract a);

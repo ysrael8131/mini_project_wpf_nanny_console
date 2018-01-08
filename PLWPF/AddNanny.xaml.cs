@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BE;
+using Xceed.Wpf.Toolkit;
 namespace PLWPF
 {
     /// <summary>
@@ -20,19 +21,23 @@ namespace PLWPF
     public partial class AddNanny : Window
     {
         Nanny nanny;
+        BL.IBL bl;
         public AddNanny()
         {
             InitializeComponent();
+            bl = BL.FactoryBl.getBl();
             nanny = new Nanny();
-            DataContext = nanny;
+            
+            this.DataContext = nanny;
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-            System.Windows.Data.CollectionViewSource nannyViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("nannyViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // nannyViewSource.Source = [generic data source]
+            //System.Windows.Data.CollectionViewSource nannyViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("nannyViewSource")));
+            //// Load data by setting the CollectionViewSource.Source property:
+            //// nannyViewSource.Source = [generic data source]
         }
 
         private void Button_Click_Next(object sender, RoutedEventArgs e)

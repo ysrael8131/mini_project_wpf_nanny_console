@@ -24,6 +24,9 @@ namespace PLWPF
             InitializeComponent();
         }
 
-        
+        private void b1_Click(object sender, RoutedEventArgs e)
+        {
+            new add_mother().Show();
+        }
     }
 }

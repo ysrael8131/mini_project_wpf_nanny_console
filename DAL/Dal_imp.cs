@@ -11,6 +11,7 @@ namespace DAL
     {
         DataSource ds;
         public Dal_imp()
+
         {
             ds = new DataSource();
         }
@@ -66,7 +67,7 @@ namespace DAL
         /// func to remove child from in list
         /// </summary>
         /// <param name="id"></param>
-        public void deleteChild(int id)
+        public void deleteChild(int? id)
         {
             Child temp = getChild(id);
             if (temp == null)
@@ -241,7 +242,7 @@ namespace DAL
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Child getChild(int id)
+        public Child getChild(int? id)
         {
             return DataSource.childs.Find(item => item.id == id);
         }

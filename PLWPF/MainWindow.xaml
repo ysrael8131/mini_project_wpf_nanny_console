@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
          Title="Window1" Height="300" Width="400">
-    <Grid>
+    <!--<Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="White" Offset="1"/>
@@ -66,7 +66,20 @@
                     Visibility="Collapsed" MouseEnter="nanny_log_in_MouseEnter" MouseLeave="nanny_log_in_MouseLeave" />
         </Grid>
 
-        <Image x:Name="image_mom" Source="mom.png" Stretch="Uniform"
+        <Image x:Name="image_mom"  Stretch="Uniform"
             Margin="0.4,90,-0.4,0.4" Grid.RowSpan="3" Grid.Column="1"   />
+    </Grid>-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button Content="addmother" Click="Button_Click" Margin="0,0,0.333,-0.333" Grid.Row="1" />
+        <Button Content="addchild" Margin="0,0,0.333,-0.333" Grid.Row="0" Click="Button_Click_1"/>
+        <Button Content="Remove"  Grid.Row="2" Click="Button_Click_remove" />
     </Grid>
+
+
+
 </Window>

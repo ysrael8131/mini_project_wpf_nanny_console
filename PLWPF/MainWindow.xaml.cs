@@ -21,83 +21,99 @@ namespace PLWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+
         public MainWindow()
         {
             InitializeComponent();
-            string[] a = new string[] { "Add child", "Remove mother", "Update mother" };
-            list_box_mother.ItemsSource = a;
+            //string[] a = new string[] { "Add child", "Remove mother", "Update mother" };
+            //list_box_mother.ItemsSource = a;
         }
 
-
-        private void mother_log_in_MouseEnter(object sender, MouseEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            new_mother_button.Visibility = Visibility.Visible;
-            update_mother_button.Visibility = Visibility.Visible;
+            new add_mother().Show();
         }
 
-        private void mother_log_in_MouseLeave(object sender, MouseEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            new_mother_button.Visibility = Visibility.Collapsed;
-            update_mother_button.Visibility = Visibility.Collapsed;
+            new add_child().Show();
         }
 
-        private void nanny_log_in_MouseEnter(object sender, MouseEventArgs e)
+        private void Button_Click_remove(object sender, RoutedEventArgs e)
         {
-            // nanny_log_in.Visibility = Visibility.Hidden;
-            new_nanny_button.Visibility = Visibility.Visible;
-            update_nanny_button.Visibility = Visibility.Visible;
+            new Remove(1).Show();
         }
 
-        private void nanny_log_in_MouseLeave(object sender, MouseEventArgs e)
-        {
-            //  nanny_log_in.Visibility = Visibility.Visible;
-            new_nanny_button.Visibility = Visibility.Collapsed;
-            update_nanny_button.Visibility = Visibility.Collapsed;
-        }
 
-        private void new_mother_button_Click(object sender, RoutedEventArgs e)
-        {
-            Window add_mother = new add_mother();
-            add_mother.Show();
-        }
+        //    private void mother_log_in_MouseEnter(object sender, MouseEventArgs e)
+        //    {
+        //        new_mother_button.Visibility = Visibility.Visible;
+        //        update_mother_button.Visibility = Visibility.Visible;
+        //    }
 
-        private void update_mother_button_Click(object sender, RoutedEventArgs e)
-        {
-            list_box_mother.Visibility = Visibility.Visible;
-        }
+        //    private void mother_log_in_MouseLeave(object sender, MouseEventArgs e)
+        //    {
+        //        new_mother_button.Visibility = Visibility.Collapsed;
+        //        update_mother_button.Visibility = Visibility.Collapsed;
+        //    }
 
-        private void mother_exist_MouseLeave(object sender, MouseEventArgs e)
-        {
-            list_box_mother.Visibility = Visibility.Collapsed;
-        }
+        //    private void nanny_log_in_MouseEnter(object sender, MouseEventArgs e)
+        //    {
+        //        // nanny_log_in.Visibility = Visibility.Hidden;
+        //        new_nanny_button.Visibility = Visibility.Visible;
+        //        update_nanny_button.Visibility = Visibility.Visible;
+        //    }
 
-        
-        private void list_box_mother_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
+        //    private void nanny_log_in_MouseLeave(object sender, MouseEventArgs e)
+        //    {
+        //        //  nanny_log_in.Visibility = Visibility.Visible;
+        //        new_nanny_button.Visibility = Visibility.Collapsed;
+        //        update_nanny_button.Visibility = Visibility.Collapsed;
+        //    }
 
-            switch (list_box_mother.SelectedItem.ToString())
-            {
-                case "Add child":
-                    new add_child().Show();
-                    break;
-                case "Remove mother":
-                    break;
+        //    private void new_mother_button_Click(object sender, RoutedEventArgs e)
+        //    {
+        //        Window add_mother = new add_mother();
+        //        add_mother.Show();
+        //    }
+
+        //    private void update_mother_button_Click(object sender, RoutedEventArgs e)
+        //    {
+        //        list_box_mother.Visibility = Visibility.Visible;
+        //    }
+
+        //    private void mother_exist_MouseLeave(object sender, MouseEventArgs e)
+        //    {
+        //        list_box_mother.Visibility = Visibility.Collapsed;
+        //    }
 
 
-                case "Update mother":
-                    break;
+        //    private void list_box_mother_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        //    {
+
+        //        switch (list_box_mother.SelectedItem.ToString())
+        //        {
+        //            case "Add child":
+        //                new add_child().Show();
+        //                break;
+        //            case "Remove mother":
+        //                break;
 
 
-                default:
-                    break;
-            }
+        //            case "Update mother":
+        //                break;
 
-        }
 
-        private void newNany(object sender, RoutedEventArgs e)
-        {
-            new AddNanny().Show();
-        }
+        //            default:
+        //                break;
+        //        }
+
+        //    }
+
+        //    private void newNany(object sender, RoutedEventArgs e)
+        //    {
+        //        new AddNanny().Show();
+        //    }
+        //}
     }
 }
