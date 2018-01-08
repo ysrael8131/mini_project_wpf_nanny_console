@@ -14,53 +14,12 @@
     <Window.Resources>
         <CollectionViewSource x:Key="motherViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Mother}, CreateList=True}"/>
         <CollectionViewSource x:Key="motherarrViewSource" Source="{Binding arr, Source={StaticResource motherViewSource}}"/>
-        <SolidColorBrush x:Key="brushWatermarkBackground" Color="White" />
-        <SolidColorBrush x:Key="brushWatermarkForeground" Color="LightSteelBlue" />
-        <SolidColorBrush x:Key="brushWatermarkBorder" Color="Indigo" />
-        <SolidColorBrush x:Key="BackgroundGrid" Color="Beige"/>
-        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
-
-
-        <Style x:Key="textblock_style" TargetType="TextBlock">
-            <Setter Property="Margin" Value="10"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="TextAlignment" Value="Left"/>
-            <Setter Property="FontSize" Value="15"/>
-            <Setter Property="Foreground" Value="{StaticResource brushWatermarkForeground}"/>
-            <Setter Property="Background" Value="{StaticResource brushWatermarkBackground}"/>
-            <Setter Property="Height" Value="25"/>
-        </Style>
-
-        <Style x:Key="textbox_style" TargetType="TextBox">
-            <Setter Property="Margin" Value="10"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="TextAlignment" Value="Left"/>
-            <Setter Property="Background" Value="{StaticResource brushWatermarkBackground}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource ResourceKey=brushWatermarkBorder}"/>
-            <Setter Property="Height" Value="25"/>
-
-            <Style.Triggers>
-                <Trigger Property="Text" Value="">
-                    <Setter Property="Background" Value="Transparent"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <Style x:Key="triger_to_textbox" TargetType="TextBox" >
-            <Style.Triggers>
-                <Trigger Property="Text" Value="">
-                    <Setter Property="Background" Value="Transparent"/>
-                </Trigger>
-            </Style.Triggers>
-
-
-
-        </Style>
+       
     </Window.Resources>
     <Grid Background="AliceBlue">
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2.2*"/>
+            <ColumnDefinition Width="2.6*"/>
             <ColumnDefinition Width="1.5*"/>
         </Grid.ColumnDefinitions>
 
@@ -78,52 +37,52 @@
 
 
             </Grid.RowDefinitions>
-            <TextBlock Margin="10,10,9,9.2"  Text="Personal Information" TextAlignment="Center" FontSize="20" />
+            <TextBlock Margin="10,10,9,9.2" VerticalAlignment="Center" Text="Personal Information" TextAlignment="Center" FontSize="20" />
+
             <TextBlock  Style="{StaticResource textblock_style}"  Text=" ID" Grid.Row="1" 
-                Visibility="{Binding ElementName=idTextBox,Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                Visibility="{Binding ElementName=idTextBox,
+                Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
             <TextBox x:Name="idTextBox" Grid.Row="1" Style="{StaticResource textbox_style}" 
                    Text="{Binding id, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
-            <TextBlock Margin="10"  Text=" First name" TextAlignment="Left" VerticalAlignment="Center"
-                       FontSize="15" Grid.Row="2" Foreground="{StaticResource brushWatermarkForeground}" 
-                       Background="{StaticResource brushWatermarkBackground}" Height="25"
+            
+            
+            <TextBlock  Style="{StaticResource textblock_style}" Text=" First name" Grid.Row="2" 
                        Visibility="{Binding ElementName=firstNameTextBox,  
                 Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
-            <TextBox x:Name="firstNameTextBox" Margin="10"  VerticalContentAlignment="Center"
-                     BorderBrush="{StaticResource brushWatermarkBorder}" 
-                      Grid.Row="2" Background="Transparent" 
+            <TextBox Style="{StaticResource textbox_style}" x:Name="firstNameTextBox" Grid.Row="2"  
                      Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true,   
-                ValidatesOnExceptions=true}" Height="25" />
-            <TextBlock Margin="10"  Text=" Last name" TextAlignment="Left" VerticalAlignment="Center"
-                       FontSize="15" Grid.Row="3" Foreground="{StaticResource brushWatermarkForeground}" 
-                       Background="{StaticResource brushWatermarkBackground}" Height="25"
+                ValidatesOnExceptions=true}"/>
+            
+            
+            <TextBlock  Style="{StaticResource textblock_style}" Text=" Last name" Grid.Row="3"
                        Visibility="{Binding ElementName=lastNameTextBox,  
                 Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
-            <TextBox x:Name="lastNameTextBox"  Margin="10"  VerticalContentAlignment="Center"
-                     BorderBrush="{StaticResource brushWatermarkBorder}" 
-                      Grid.Row="3" Background="Transparent" 
-                     Text="{Binding LastName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
-                    Height="25"/>
-            <TextBlock Margin="10"  Text=" Addres" TextAlignment="Left" VerticalAlignment="Center"
-                       FontSize="15" Grid.Row="4" Foreground="{StaticResource brushWatermarkForeground}" 
-                       Background="{StaticResource brushWatermarkBackground}" Height="25"
+            <TextBox Style="{StaticResource textbox_style}"  x:Name="lastNameTextBox" Grid.Row="3" 
+                     Text="{Binding LastName, Mode=TwoWay, NotifyOnValidationError=true, 
+                ValidatesOnExceptions=true}" />
+
+        
+
+
+
+
+            <TextBlock  Style="{StaticResource textblock_style}" Text=" Addres" Grid.Row="4" 
                        Visibility="{Binding ElementName=addresTextBox,  
                 Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
-            <TextBox x:Name="addresTextBox" Margin="10"  VerticalContentAlignment="Center"
-                     BorderBrush="{StaticResource brushWatermarkBorder}" 
-                      Grid.Row="4" Background="Transparent" 
+            <TextBox Style="{StaticResource textbox_style}" x:Name="addresTextBox" Grid.Row="4" 
                     Text="{Binding Addres, Mode=TwoWay, NotifyOnValidationError=true, 
                 ValidatesOnExceptions=true}" Height="25" />
-            <TextBlock Margin="10"  Text=" Phone number"
-                       TextAlignment="Left" VerticalAlignment="Center"
-                       FontSize="15" Grid.Row="5"
-                       Foreground="{StaticResource brushWatermarkForeground}" 
-                       Background="{StaticResource brushWatermarkBackground}" Height="25"
-                       Visibility="{Binding ElementName=phoneNumberTextBox,  
+            
+            
+            
+            <TextBlock  Style="{StaticResource textblock_style}" Text=" Phone number" Grid.Row="5"
+           Visibility="{Binding ElementName=phoneNumberTextBox,  
                 Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
-            <TextBox x:Name="phoneNumberTextBox" Margin="10"  VerticalContentAlignment="Center"
-                     BorderBrush="{StaticResource brushWatermarkBorder}" 
-                      Grid.Row="5" Background="Transparent" 
-                    Text="{Binding PhoneNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Height="25" />
+            <TextBox Style="{StaticResource textbox_style}" x:Name="phoneNumberTextBox" Grid.Row="5"  
+                    Text="{Binding PhoneNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+            
+            
+            
             <Label Content="Elevators:"   HorizontalAlignment="Left" Margin="10" Grid.Row="6" VerticalAlignment="Center"/>
             <CheckBox x:Name="elevatorsCheckBox"   HorizontalAlignment="Center" IsChecked="{Binding elevators, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
             <Button Content="Next" Grid.Row="7" Margin="20"   BorderBrush="{StaticResource brushWatermarkBorder}" Click="Button_Click_Next" >
@@ -156,7 +115,7 @@
 
 
 
-        <Grid x:Name="second_grid_mother" ShowGridLines="False" Visibility="Collapsed"
+        <Grid x:Name="second_grid_mother" ShowGridLines="False" Visibility="Visible"
               Background="{StaticResource BackgroundGrid}" Margin="15">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
@@ -179,12 +138,12 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Margin="10,10,9,9.2"  Text="details for a nanny search" Grid.ColumnSpan="6" TextAlignment="Center" FontSize="20" />
+            <TextBlock Margin="10" Text="details for a nanny search" Grid.ColumnSpan="6" TextAlignment="Center" FontSize="20" />
 
             <Label VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="6" Margin="3" HorizontalAlignment="Center" Content="Choose the days and the hours you need a nanny:" />
 
             <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Left" Content="Sunday:"/>
-            <CheckBox x:Name="sundayCheckBox" VerticalAlignment="Center" Grid.Row="2" Margin="0,8.667,4.667,8.667" IsChecked="{Binding arr[0].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Right" Grid.Column="1" Content=""/>
+            <CheckBox x:Name="sundayCheckBox" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2" IsChecked="{Binding arr[0].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="1" />
             <Label VerticalAlignment="Center" Grid.Row="2" Grid.Column="2" Margin="3" HorizontalAlignment="Right" Content="Start:"/>
             <dg:TimePicker x:Name="start1" VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Center" Grid.Column="3" IsEnabled="{Binding ElementName=sundayCheckBox, Path=IsChecked}" />
             <Label VerticalAlignment="Center" Grid.Row="2" Grid.Column="4" Margin="3" HorizontalAlignment="Right" Content="End:"/>
@@ -193,28 +152,28 @@
             <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Content="Monday:"/>
             <Label VerticalAlignment="Center" Grid.Row="3" Grid.Column="2" Margin="3" HorizontalAlignment="Right" Content="Start:"/>
             <Label VerticalAlignment="Center" Grid.Row="3" Grid.Column="4" Margin="3" HorizontalAlignment="Right" Content="End:"/>
-            <CheckBox x:Name="mondayCheckBox" VerticalAlignment="Center" Grid.Row="3" Margin="3" IsChecked="{Binding arr[1].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
+            <CheckBox x:Name="mondayCheckBox" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="3" IsChecked="{Binding arr[1].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="1"/>
             <dg:TimePicker x:Name="startMondayTime" VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="3" IsEnabled="{Binding ElementName=mondayCheckBox, Path=IsChecked}" />
             <dg:TimePicker x:Name="endMondayTime" VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="5" IsEnabled="{Binding ElementName=mondayCheckBox, Path=IsChecked}"/>
 
             <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Left" Content="Tuesday:"/>
             <Label VerticalAlignment="Center" Grid.Row="4" Grid.Column="2" Margin="3" HorizontalAlignment="Right" Content="Start:"/>
             <Label VerticalAlignment="Center" Grid.Row="4" Grid.Column="4" Margin="3" HorizontalAlignment="Right" Content="End:"/>
-            <CheckBox x:Name="tuesdayCheckBox" VerticalAlignment="Center" Grid.Row="4" Margin="3" IsChecked="{Binding arr[2].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
+            <CheckBox x:Name="tuesdayCheckBox" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="4" IsChecked="{Binding arr[2].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="1" />
             <dg:TimePicker x:Name="startTuesdayTime" VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Left" Grid.Column="3" IsEnabled="{Binding ElementName=tuesdayCheckBox, Path=IsChecked}"/>
             <dg:TimePicker x:Name="endTuesdayTime" VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Left" Grid.Column="5" IsEnabled="{Binding ElementName=tuesdayCheckBox, Path=IsChecked}"/>
 
             <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Content="Wednesday:"/>
             <Label VerticalAlignment="Center" Grid.Row="5" Grid.Column="2" Margin="3" HorizontalAlignment="Right" Content="Start:"/>
             <Label VerticalAlignment="Center" Grid.Row="5" Grid.Column="4" Margin="3" HorizontalAlignment="Right" Content="End:"/>
-            <CheckBox x:Name="wednesdayCheckBox" VerticalAlignment="Center" Grid.Row="5" Margin="3" IsChecked="{Binding arr[3].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
+            <CheckBox x:Name="wednesdayCheckBox" VerticalAlignment="Center" Grid.Row="5" IsChecked="{Binding arr[3].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Grid.Column="1"/>
             <dg:TimePicker x:Name="startWednesdayTime" VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="3" IsEnabled="{Binding ElementName=wednesdayCheckBox, Path=IsChecked}" />
             <dg:TimePicker x:Name="endWednesdayTime" VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="5" IsEnabled="{Binding ElementName=wednesdayCheckBox, Path=IsChecked}"/>
 
             <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Content="Thursday:"/>
             <Label VerticalAlignment="Center" Grid.Row="6" Grid.Column="2" Margin="3" HorizontalAlignment="Right" Content="Start:"/>
             <Label VerticalAlignment="Center" Grid.Row="6" Grid.Column="4" Margin="3" HorizontalAlignment="Right" Content="End:"/>
-            <CheckBox x:Name="thursdayCheckBox" VerticalAlignment="Center" Grid.Row="6" Margin="3" IsChecked="{Binding arr[4].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
+            <CheckBox x:Name="thursdayCheckBox" VerticalAlignment="Center" Grid.Row="6" IsChecked="{Binding arr[4].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Grid.Column="1"/>
             <dg:TimePicker x:Name="startThursdayTime" VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="3" IsEnabled="{Binding ElementName=thursdayCheckBox, Path=IsChecked}" />
             <dg:TimePicker x:Name="endThursdayTime" VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="5" IsEnabled="{Binding ElementName=thursdayCheckBox, Path=IsChecked}"/>
 
@@ -222,21 +181,15 @@
             <Label VerticalAlignment="Center" Grid.Row="7" Margin="3" HorizontalAlignment="Left" Content="Friday:"/>
             <Label VerticalAlignment="Center" Grid.Row="7" Grid.Column="2" Margin="3" HorizontalAlignment="Right" Content="Start:"/>
             <Label VerticalAlignment="Center" Grid.Row="7" Grid.Column="4" Margin="3" HorizontalAlignment="Right" Content="End:"/>
-            <CheckBox x:Name="fridayCheckBox" VerticalAlignment="Center" Grid.Row="7" Margin="3" IsChecked="{Binding arr[5].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
+            <CheckBox x:Name="fridayCheckBox" VerticalAlignment="Center" Grid.Row="7" IsChecked="{Binding arr[5].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Grid.Column="1" />
             <dg:TimePicker x:Name="startFridayTime" VerticalAlignment="Center" Grid.Row="7" Margin="3" HorizontalAlignment="Left" Grid.Column="3" IsEnabled="{Binding ElementName=fridayCheckBox, Path=IsChecked}" />
             <dg:TimePicker x:Name="endFridayTime" VerticalAlignment="Center" Grid.Row="7" Margin="3" HorizontalAlignment="Left" Grid.Column="5" IsEnabled="{Binding ElementName=fridayCheckBox, Path=IsChecked}"/>
 
-            <TextBlock Margin="10"  Text=" search addres"
-                       TextAlignment="Left" VerticalAlignment="Center"
-                       FontSize="15" Grid.Row="9" Grid.ColumnSpan="6"
-                       Foreground="{StaticResource brushWatermarkForeground}" 
-                       Background="{StaticResource brushWatermarkBackground}" Height="25"
+            <TextBlock  Style="{StaticResource textblock_style}" Text=" search addres" Grid.Row="9" Grid.ColumnSpan="6"
                        Visibility="{Binding ElementName=searchAddresTextBox,  
                 Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
-            <TextBox x:Name="searchAddresTextBox" Margin="10"  VerticalContentAlignment="Center"
-                     BorderBrush="{StaticResource brushWatermarkBorder}" 
-                      Grid.Row="9" Grid.ColumnSpan="6" Background="Transparent" 
-                    Text="{Binding SearchAddres, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Height="25" />
+            <TextBox Style="{StaticResource textbox_style}" x:Name="searchAddresTextBox" Grid.Row="9" Grid.ColumnSpan="6"
+                    Text="{Binding SearchAddres, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
             <Button Grid.ColumnSpan="3" Content="Back" Grid.Column="0"  VerticalAlignment="Center" Width="100" Grid.Row="10" Click="Button_back_Click"/>
             <Button Grid.ColumnSpan="3" Content="Create" Grid.Column="3" VerticalAlignment="Center" Width="100" Grid.Row="10" Click="Button_create_Click"/>
         </Grid>

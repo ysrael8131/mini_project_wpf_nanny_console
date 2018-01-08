@@ -16,23 +16,22 @@ namespace BE
           int agemax = 0, bool per = false, double salhour = 0,
           double samonth = 0, bool vaca = false, string rec = null)
         {
-            id = i;
-            FirstName = first;
-            LastName = last;
-            birthDay = DateTime.Parse(birth);
-            PhoneNumber = phone;
-            addres = add;
-            elevators = elev;
-            floor = flo;
-            years_of_experience = exp;
-            maxChilds = max;
-            age_child_min = agemin;
-            age_child_max = agemax;
-            per_hour_able = per;
-            salaryPerHour = salhour;
-            salaryPerMonth = samonth;
-            vacation_kind = vaca;
-            recommendation = rec;
+            //FirstName = first;
+            //LastName = last;
+            //birthDay = DateTime.Parse(birth);
+            //PhoneNumber = phone;
+            //addres = add;
+            //elevators = elev;
+            //floor = flo;
+            //years_of_experience = exp;
+            //maxChilds = max;
+            //age_child_min = agemin;
+            //age_child_max = agemax;
+            //per_hour_able = per;
+            //salaryPerHour = salhour;
+            //salaryPerMonth = samonth;
+            //vacation_kind = vaca;
+            //recommendation = rec;
             cc[0] = DayOfWeek.Sunday;
             cc[1] = DayOfWeek.Monday;
             cc[2] = DayOfWeek.Thursday;
@@ -47,14 +46,14 @@ namespace BE
 
             }
         }
-        public int id { set; get; }
+        public int? id { set; get; }
         public string FirstName { set; get; }
         public string LastName { set; get; }
         public DateTime birthDay { set; get; }
-        public int PhoneNumber { set; get; }
+        public string PhoneNumber { set; get; }
         public string addres { set; get; }
         public bool elevators { set; get; }
-        public int floor { set; get; }
+        public int? floor { set; get; }
         public int years_of_experience { set; get; }
         public int maxChilds { set; get; }
         public int age_child_min { set; get; }

@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using BE;
 namespace PLWPF
 {
     /// <summary>
@@ -19,9 +19,12 @@ namespace PLWPF
     /// </summary>
     public partial class AddNanny : Window
     {
+        Nanny nanny;
         public AddNanny()
         {
             InitializeComponent();
+            nanny = new Nanny();
+            DataContext = nanny;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -32,9 +35,10 @@ namespace PLWPF
             // nannyViewSource.Source = [generic data source]
         }
 
-        private void add_nanny_button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_Next(object sender, RoutedEventArgs e)
         {
-
+            first_grid_nanny.Visibility = Visibility.Collapsed;
+            second_grid_nanny.Visibility = Visibility.Visible;
         }
     }
 }

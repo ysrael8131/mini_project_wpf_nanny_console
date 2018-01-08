@@ -4,6 +4,46 @@
              xmlns:local="clr-namespace:PLWPF"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <SolidColorBrush x:Key="brushWatermarkBackground" Color="White" />
+        <SolidColorBrush x:Key="brushWatermarkForeground" Color="LightSteelBlue" />
+        <SolidColorBrush x:Key="brushWatermarkBorder" Color="Indigo" />
+        <SolidColorBrush x:Key="BackgroundGrid" Color="Beige"/>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+
+
+        <Style x:Key="textblock_style" TargetType="TextBlock">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="TextAlignment" Value="Left"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Foreground" Value="{StaticResource brushWatermarkForeground}"/>
+            <Setter Property="Background" Value="{StaticResource brushWatermarkBackground}"/>
+            <Setter Property="Height" Value="25"/>
+        </Style>
+
+        <Style x:Key="textbox_style" TargetType="TextBox">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="TextAlignment" Value="Left"/>
+            <Setter Property="Background" Value="{StaticResource brushWatermarkBackground}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource ResourceKey=brushWatermarkBorder}"/>
+            <Setter Property="Height" Value="25"/>
+            <Style.Triggers>
+                <Trigger Property="Text" Value="">
+                    <Setter Property="Background" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="triger_to_textbox" TargetType="TextBox" >
+            <Style.Triggers>
+                <Trigger Property="Text" Value="">
+                    <Setter Property="Background" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
+
+
+
+        </Style>
     </Application.Resources>
 </Application>

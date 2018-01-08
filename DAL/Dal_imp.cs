@@ -231,7 +231,7 @@ namespace DAL
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Nanny getNanny(int id)
+        public Nanny getNanny(int? id)
         {
             return DataSource.nannys.Find(item => item.id == id);
         }
