@@ -10,14 +10,14 @@ namespace BE
     {
         public Child(int i = 0, int momI = 0, string first = "", string date = "1/1/2017", bool special = false)
         {
-            id = i;
-            MotherID = momI;
-            FirstName = first;
-            specialNeeds = specialNeeds;
-            birthDay = DateTime.Parse(date);
+            //id = i;
+            //MotherID = momI;
+            //FirstName = first;
+            //specialNeeds = specialNeeds;
+            //birthDay = DateTime.Parse(date);
         }
-        public int id { set; get; }
-        public int MotherID { set; get; }
+        public int? id { set; get; }
+        public int? MotherID { set; get; }
         public string FirstName { set; get; }
         public DateTime birthDay { set; get; }
         public bool specialNeeds { set; get; }

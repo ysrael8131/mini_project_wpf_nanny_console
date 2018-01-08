@@ -23,7 +23,7 @@ namespace BE
         }
         public int num_contract { set; get; }
         public int NannyID { set; get; }
-        public int MotherID { set; get; }
+        public int? MotherID { set; get; }
         public int childID { set; get; }
         public bool knowlageMeet { set; get; }
         public bool contractSigne { set; get; }

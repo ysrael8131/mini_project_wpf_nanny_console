@@ -52,9 +52,6 @@
                     <Setter Property="Background" Value="Transparent"/>
                 </Trigger>
             </Style.Triggers>
-
-
-
         </Style>
     </Window.Resources>
     <Grid Background="AliceBlue">
@@ -238,7 +235,31 @@
                       Grid.Row="9" Grid.ColumnSpan="6" Background="Transparent" 
                     Text="{Binding SearchAddres, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Height="25" />
             <Button Grid.ColumnSpan="3" Content="Back" Grid.Column="0"  VerticalAlignment="Center" Width="100" Grid.Row="10" Click="Button_back_Click"/>
-            <Button Grid.ColumnSpan="3" Content="Create" Grid.Column="3" VerticalAlignment="Center" Width="100" Grid.Row="10" Click="Button_create_Click"/>
+            <Button Grid.ColumnSpan="3" Content="Create" Grid.Column="3" VerticalAlignment="Center" Width="100" Grid.Row="10" Click="Button_create_Click">
+
+
+                
+                    <!--<Style.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="sundayCheckBox" Value="True"/>
+                                <Condition Property="start1" Value=""/>
+                            </MultiTrigger.Conditions>
+                                    <MultiTrigger.Setters>
+                                        <Setter Property="Button.IsEnabled" Value="False"/>
+                                    </MultiTrigger.Setters>
+                    
+                    </MultiTrigger>
+                    </Style.Triggers>-->
+                
+
+
+            </Button>
+
+
+
+
+
         </Grid>
         <TextBlock Grid.Column="1" HorizontalAlignment="Center"  Margin="10" TextWrapping="Wrap" Text="create a new mother"  FontSize="72" VerticalAlignment="Top" FontFamily="Tango BT" FontWeight="Bold"  TextAlignment="Center"/>
 

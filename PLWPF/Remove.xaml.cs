@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BL;
+
 
 namespace PLWPF
 {
@@ -19,25 +21,46 @@ namespace PLWPF
     /// </summary>
     public partial class Remove : Window
     {
+        private int choice;
         BL.IBL bl;
-        public Remove(int choice)
+        public Remove(int numChoice)
         {
             InitializeComponent();
-            bl = BL.FactoryBl.getBl();
-
+            if (numChoice == 4)
+            {
+                TextId.Visibility = Visibility.Collapsed;
+                TextContract.Visibility = Visibility.Visible;
+            }
+            bl = FactoryBl.getBl();
+            choice = numChoice;
         }
-       
-        private void Remove_Click(object sender, RoutedEventArgs e)
+
+        private void Button_Click_Remove(object sender, RoutedEventArgs e)
         {
-
-            //switch (choice)
-            //{
-            //    case 1:
-
-            //        bl.deleteMother(int.Parse(remove_textbox.Text));
-            //    default:
-            //        break;
-            //}
+            int id = int.Parse(RemoveElement.Text);
+            switch (choice)
+            {
+                //delete Mother
+                case 1:
+                    bl.deleteMother(id);
+                    break;
+                //delete Nanny
+                case 2:
+                    bl.deleteNanny(id);
+                    break;
+                //delete Child
+                case 3:
+                    bl.deleteChild(id);
+                    break;
+                //delete Contract
+                case 4:
+                    bl.deleteContract(id);
+                    break;
+                default:
+                    break;
+            }
         }
+
+       
     }
 }

@@ -27,6 +27,7 @@ namespace PLWPF
             InitializeComponent();
             bl = BL.FactoryBl.getBl();
             nanny = new Nanny();
+            
             this.DataContext = nanny;
 
         }

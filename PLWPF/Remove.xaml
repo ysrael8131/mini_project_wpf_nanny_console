@@ -5,17 +5,58 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="Remove" Height="300" Width="300">
-    
-    <Grid>
-        
-        <Grid.RowDefinitions>
-            <RowDefinition Height="42*"/>
-            <RowDefinition Height="147*"/>
-            <RowDefinition Height="82*"/>
-        </Grid.RowDefinitions>
-        <TextBox x:Name="remove_textbox" Height="23" Margin="37,50,0,0" Grid.Row="1"   Width="222"/>
-        <Button Content="Remove"  Grid.Row="2"  Width="75" Click="Remove_Click"/>
+        Title="Remove" Height="300" Width="400">
+    <Window.Resources>
+        <SolidColorBrush x:Key="brushWatermarkBackground" Color="White" />
+        <SolidColorBrush x:Key="brushWatermarkForeground" Color="LightSteelBlue" />
+        <SolidColorBrush x:Key="brushWatermarkBorder" Color="Indigo" />
+        <SolidColorBrush x:Key="BackgroundGrid" Color="Beige"/>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
 
+        <Style x:Key="textbox_style" TargetType="TextBox">
+            <Style.Triggers>
+                <Trigger Property="Text" Value="">
+                    <Setter Property="Background" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="triger_to_textbox" TargetType="TextBox" >
+            <Style.Triggers>
+                <Trigger Property="Text" Value="">
+                    <Setter Property="Background" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+
+    </Window.Resources>
+    <Grid Background="Beige">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="TextId" Text="Enter number ID" HorizontalAlignment="Center" Margin="10" />
+        <TextBlock x:Name="TextContract" Text="Enter number Contract" HorizontalAlignment="Center" Margin="10" Visibility="Collapsed" />
+        <TextBox x:Name="RemoveElement"  Grid.Row="1"  Background="White"
+                 BorderBrush="Indigo" Style="{StaticResource  textbox_style}" VerticalAlignment="Center" TextAlignment="Left" />
+        <Button Content="Remove" Background="AliceBlue"  Grid.Row="2"  
+                Click="Button_Click_Remove" >
+            
+
+
+            <Button.Style >
+                <Style>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=RemoveElement, Path=Text}" Value="">
+                            <Setter Property="Button.IsEnabled" Value="False"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <TextBlock  Grid.Row="1"  Text="ID" HorizontalAlignment="Left" Margin="20" Foreground="LightSteelBlue" 
+                    Visibility="{Binding ElementName=RemoveElement,Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
     </Grid>
 </Window>

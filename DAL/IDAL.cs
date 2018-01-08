@@ -18,7 +18,7 @@ namespace DAL
         void updateMother(Mother a);
 
         void addChild(Child a);
-        void deleteChild(int id);
+        void deleteChild(int? id);
         void updateChild(Child a);
 
         void addContract(Contract a);
@@ -31,7 +31,7 @@ namespace DAL
         IEnumerable<Child> getListChilds(Mother a);
         IEnumerable<Child> getListChild2();
 
-        Child getChild(int id);
+        Child getChild(int? id);
         Mother getMother(int? id);
         Contract getContract(int num_contract);
         Nanny getNanny(int id);

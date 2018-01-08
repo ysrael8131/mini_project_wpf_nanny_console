@@ -8,6 +8,6 @@
         xmlns:dg="http://schemas.xceed.com/wpf/xaml/toolkit"
         Title="nisyon" Height="300" Width="300">
     <Grid>
-        <dg:WindowControl/>
+        <Button x:Name="b1" Click="b1_Click"/>
     </Grid>
 </Window>
