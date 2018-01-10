@@ -14,16 +14,16 @@
     <Window.Resources>
         <CollectionViewSource x:Key="motherViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Mother}, CreateList=True}"/>
         <CollectionViewSource x:Key="motherarrViewSource" Source="{Binding arr, Source={StaticResource motherViewSource}}"/>
-       
+
     </Window.Resources>
-    <Grid Background="AliceBlue">
+    <Grid Background="AliceBlue" Margin="10,10,0.333,-0.333">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2.6*"/>
             <ColumnDefinition Width="1.5*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid x:Name="first_grid_mother" Visibility="Visible" 
+        <Grid x:Name="first_grid_mother" Visibility="Collapsed" 
               Background="{StaticResource BackgroundGrid}" Grid.Column="0" Margin="15" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
@@ -44,16 +44,16 @@
                 Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
             <TextBox x:Name="idTextBox" Grid.Row="1" Style="{StaticResource textbox_style}" 
                    Text="{Binding id, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
-            
-            
+
+
             <TextBlock  Style="{StaticResource textblock_style}" Text=" First name" Grid.Row="2" 
                        Visibility="{Binding ElementName=firstNameTextBox,  
                 Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
             <TextBox Style="{StaticResource textbox_style}" x:Name="firstNameTextBox" Grid.Row="2"  
                      Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true,   
                 ValidatesOnExceptions=true}"/>
-            
-            
+
+
             <TextBlock  Style="{StaticResource textblock_style}" Text=" Last name" Grid.Row="3"
                        Visibility="{Binding ElementName=lastNameTextBox,  
                 Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
@@ -61,7 +61,7 @@
                      Text="{Binding LastName, Mode=TwoWay, NotifyOnValidationError=true, 
                 ValidatesOnExceptions=true}" />
 
-        
+
 
 
 
@@ -72,17 +72,17 @@
             <TextBox Style="{StaticResource textbox_style}" x:Name="addresTextBox" Grid.Row="4" 
                     Text="{Binding Addres, Mode=TwoWay, NotifyOnValidationError=true, 
                 ValidatesOnExceptions=true}" Height="25" />
-            
-            
-            
+
+
+
             <TextBlock  Style="{StaticResource textblock_style}" Text=" Phone number" Grid.Row="5"
            Visibility="{Binding ElementName=phoneNumberTextBox,  
                 Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
             <TextBox Style="{StaticResource textbox_style}" x:Name="phoneNumberTextBox" Grid.Row="5"  
                     Text="{Binding PhoneNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
-            
-            
-            
+
+
+
             <Label Content="Elevators:"   HorizontalAlignment="Left" Margin="10" Grid.Row="6" VerticalAlignment="Center"/>
             <CheckBox x:Name="elevatorsCheckBox"   HorizontalAlignment="Center" IsChecked="{Binding elevators, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
             <Button Content="Next" Grid.Row="7" Margin="20"   BorderBrush="{StaticResource brushWatermarkBorder}" Click="Button_Click_Next" >
@@ -145,7 +145,10 @@
             <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Left" Content="Sunday:"/>
             <CheckBox x:Name="sundayCheckBox" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2" IsChecked="{Binding arr[0].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="1" />
             <Label VerticalAlignment="Center" Grid.Row="2" Grid.Column="2" Margin="3" HorizontalAlignment="Right" Content="Start:"/>
-            <dg:TimePicker x:Name="start1" VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Center" Grid.Column="3" IsEnabled="{Binding ElementName=sundayCheckBox, Path=IsChecked}" />
+            <dg:TimePicker x:Name="start1" VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Center" Grid.Column="3" IsEnabled="{Binding ElementName=sundayCheckBox, Path=IsChecked}" SizeChanged="SizeStart1" />
+                           
+                           
+                           
             <Label VerticalAlignment="Center" Grid.Row="2" Grid.Column="4" Margin="3" HorizontalAlignment="Right" Content="End:"/>
             <dg:TimePicker x:Name="end1" VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Center" Grid.Column="5" IsEnabled="{Binding ElementName=sundayCheckBox, Path=IsChecked}"/>
 
@@ -168,7 +171,7 @@
             <Label VerticalAlignment="Center" Grid.Row="5" Grid.Column="4" Margin="3" HorizontalAlignment="Right" Content="End:"/>
             <CheckBox x:Name="wednesdayCheckBox" VerticalAlignment="Center" Grid.Row="5" IsChecked="{Binding arr[3].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Grid.Column="1"/>
             <dg:TimePicker x:Name="startWednesdayTime" VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="3" IsEnabled="{Binding ElementName=wednesdayCheckBox, Path=IsChecked}" />
-            <dg:TimePicker x:Name="endWednesdayTime" VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="5" IsEnabled="{Binding ElementName=wednesdayCheckBox, Path=IsChecked}"/>
+            <dg:TimePicker x:Name="endWednesdayTime" VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="5" IsEnabled="{Binding ElementName=wednesdayCheckBox, Path=IsChecked}" />
 
             <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Content="Thursday:"/>
             <Label VerticalAlignment="Center" Grid.Row="6" Grid.Column="2" Margin="3" HorizontalAlignment="Right" Content="Start:"/>
@@ -192,8 +195,14 @@
                     Text="{Binding SearchAddres, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
             <Button Grid.ColumnSpan="3" Content="Back" Grid.Column="0"  VerticalAlignment="Center" Width="100" Grid.Row="10" Click="Button_back_Click"/>
             <Button Grid.ColumnSpan="3" Content="Create" Grid.Column="3" VerticalAlignment="Center" Width="100" Grid.Row="10" Click="Button_create_Click"/>
+            
+            
+            <TextBlock x:Name="errorMessegHours" HorizontalAlignment="Left" Margin="5,9.667,0,0" Grid.Row="8" Grid.RowSpan="2" TextWrapping="Wrap" Text="Miss delies hours" VerticalAlignment="Top" Foreground="Red" Visibility="Collapsed" />
+            <TextBlock x:Name="errorMessegTime" HorizontalAlignment="Left" Margin="5,9.667,0,0" Grid.Row="8" Grid.RowSpan="2" TextWrapping="Wrap" Text="End can not eraly from start" VerticalAlignment="Top" Foreground="Red" Visibility="Collapsed" />
+
+
         </Grid>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Center"  Margin="10" TextWrapping="Wrap" Text="create a new mother"  FontSize="72" VerticalAlignment="Top" FontFamily="Tango BT" FontWeight="Bold"  TextAlignment="Center"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Center"  Margin="10" TextWrapping="Wrap" Text="create a new mother"  FontSize="72" VerticalAlignment="Top" FontFamily="Tango BT" FontWeight="Bold"  TextAlignment="Center" Visibility="Visible"/>
 
 
         <Grid x:Name="third_grid_mother" Grid.Column="0"  Visibility="Collapsed"  Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="100" Background="{StaticResource BackgroundGrid}">
@@ -203,6 +212,8 @@
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" TextWrapping="Wrap" FontSize="25" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Height="100" ><Run Text="the mother wad added"/><LineBreak/><Run Text=" to the program successfully"/><LineBreak/><Run Text="You are taken to the Add Child window"/></TextBlock>
             <Image Source="v.png" Grid.Column="1"/>
+
+            <!--RenderTransformOrigin="0.385,0.564"-->
         </Grid>
     </Grid>
 

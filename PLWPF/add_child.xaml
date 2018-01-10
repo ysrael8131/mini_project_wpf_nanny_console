@@ -22,6 +22,7 @@
             <Setter Property="Visibility" Value="Collapsed"/>
             <Setter Property="Grid.RowSpan" Value="2"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
+            
         </Style>
 
 
@@ -43,6 +44,7 @@
             <Setter Property="Background" Value="{StaticResource brushWatermarkBackground}"/>
             <Setter Property="BorderBrush" Value="{StaticResource ResourceKey=brushWatermarkBorder}"/>
             <Setter Property="Height" Value="25"/>
+            <!--<Setter TextBoxBase.TextChanged="textChange" Value="9" Property="TextBlock.Width"/>-->
 
 
             <Style.Triggers>
@@ -93,21 +95,25 @@
         <TextBlock x:Name="errorMesseg2" Text="Number ID should be 9 digits" Grid.Row="1" Style="{StaticResource textblock_style_error}"/>
         <TextBlock x:Name="errorMesseg3" Text="Number ID can not be negative" Grid.Row="1" Style="{StaticResource textblock_style_error}"/>
 
-        <!--<TextBlock x:Name="errorMesseg1" Text=" This field is for numbers only" Grid.Row="2" Style="{StaticResource textblock_style_error}"/>
-        <TextBlock x:Name="errorMesseg2" Text="Number ID should be 9 digits" Grid.Row="2" Style="{StaticResource textblock_style_error}"/>
-        <TextBlock x:Name="errorMesseg3" Text="Number ID can not be negative" Grid.Row="2" Style="{StaticResource textblock_style_error}"/>-->
+        
 
 
-        <TextBlock    Text="MotherID" Grid.Row="2" Style="{StaticResource textblock_style}"
+        <TextBlock    Text="Mother ID" Grid.Row="2" Style="{StaticResource textblock_style}"
          Visibility="{Binding ElementName=idTextBoxMother,Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
         <TextBox x:Name="idTextBoxMother" Grid.Row="2" Style="{StaticResource textbox_style}" 
-         Text="{Binding MotherID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10" TextChanged="textChange"/>
+         Text="{Binding MotherID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10" TextChanged="textChange1"   />
+
+        <TextBlock x:Name="errorMesseg4" Text=" This field is for numbers only" Grid.Row="2" Style="{StaticResource textblock_style_error}" />
+        <TextBlock x:Name="errorMesseg5" Text="Number ID should be 9 digits" Grid.Row="2" Style="{StaticResource textblock_style_error}"/>
+        <TextBlock x:Name="errorMesseg6" Text="Number ID can not be negative" Grid.Row="2" Style="{StaticResource textblock_style_error}"/>
 
         <TextBlock    Text="First Name" Grid.Row="4" Style="{StaticResource textblock_style}"
  Visibility="{Binding ElementName=firstNameTextBox,Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
         <TextBox x:Name="firstNameTextBox" Grid.Row="4" Style="{StaticResource textbox_style}" 
- Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10"/>
+ Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10" TextChanged="textChnge2" />
 
+        <TextBlock x:Name="errorMesseg7" Text="This field can contain letters only" Grid.Row="4" Style="{StaticResource textblock_style_error}" />
+        
         <TextBlock    Text="Birth day" Grid.Row="3" Style="{StaticResource textblock_style}"
  Visibility="{Binding ElementName=birthDayDatePicker,Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
         <DatePicker x:Name="birthDayDatePicker"  Grid.Row="3" Background="Transparent"

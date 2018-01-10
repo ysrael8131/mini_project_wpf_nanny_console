@@ -21,7 +21,8 @@ namespace PLWPF
     {
         BL.IBL bl;
         Child child;
-
+       
+        
         public add_child(Mother a = null)
         {
 
@@ -46,22 +47,24 @@ namespace PLWPF
 
         }
 
-
-
+        
+        
 
         private void textChange(object sender, TextChangedEventArgs e)
         {
-            //TextBlock text = sender as TextBlock;
+            //TextBox text = sender as TextBox;
 
             errorMesseg1.Visibility = Visibility.Collapsed;
             errorMesseg2.Visibility = Visibility.Collapsed;
             errorMesseg3.Visibility = Visibility.Collapsed;
+            
 
             long x;
             if (!long.TryParse(idTextBox.Text, out x) && idTextBox.Text != "")
             {
                 
                 errorMesseg1.Visibility = Visibility.Visible;
+                   
                 return;
             }
             if (idTextBox.Text != "" && long.Parse(idTextBox.Text) < 0 )
@@ -81,6 +84,10 @@ namespace PLWPF
                 errorMesseg2.Visibility = Visibility.Visible;
                 return;
             }
+            if(idTextBoxMother.Text.Count()!=9)
+            {
+                errorMesseg5.Visibility = Visibility.Visible;
+            }
             try
             {
                 bl.addChild(child);
@@ -93,6 +100,39 @@ namespace PLWPF
             }
 
 
+        }
+
+        private void textChange1(object sender, TextChangedEventArgs e)
+        {
+            errorMesseg4.Visibility = Visibility.Collapsed;
+            errorMesseg5.Visibility = Visibility.Collapsed;
+            errorMesseg6.Visibility = Visibility.Collapsed;
+
+
+            long x;
+            if (!long.TryParse(idTextBoxMother.Text, out x) && idTextBoxMother.Text != "")
+            {
+
+                errorMesseg4.Visibility = Visibility.Visible;
+
+                return;
+            }
+            if (idTextBoxMother.Text != "" && long.Parse(idTextBoxMother.Text) < 0)
+            {
+                errorMesseg6.Visibility = Visibility.Visible;
+            }
+
+
+        }
+
+        private void textChnge2(object sender, TextChangedEventArgs e)
+        {
+            errorMesseg7.Visibility = Visibility.Collapsed;
+            long x;
+            if(long.TryParse(firstNameTextBox.Text,out x))
+            {
+                errorMesseg7.Visibility = Visibility.Visible;
+            }
         }
     }
 }
