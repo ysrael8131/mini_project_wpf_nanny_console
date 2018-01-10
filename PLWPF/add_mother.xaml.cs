@@ -34,6 +34,7 @@ namespace PLWPF
             mother = new Mother();
             DataContext = mother;
 
+
             // arrListView.DataContext = mother.arr;
 
 
@@ -96,10 +97,20 @@ namespace PLWPF
                 List<CheckBox> check = new List<CheckBox>() { sundayCheckBox, mondayCheckBox, tuesdayCheckBox, wednesdayCheckBox, thursdayCheckBox, fridayCheckBox };
                 for (int i = 0; i < 6; i++)
                 {
+                    if (check[i].IsChecked == true && (timeStart[i].Value == null || timeEnd[i].Value == null))
+                    {
+                        errorMessegHours.Visibility = Visibility.Visible;
+                        return;
+                    }
+                    if(check[i].IsChecked == true && timeStart[i].Value.Value.TimeOfDay> timeEnd[i].Value.Value.TimeOfDay)
+                    {
+                        errorMessegTime.Visibility = Visibility.Visible;
+                        return;
+                    }
                     if (check[i].IsChecked == true)
                     {
                         mother.arr[i].start = timeStart[i].Value.Value.TimeOfDay;
-                        mother.arr[i].end = timeEnd[i].Value.Value.TimeOfDay;
+                        mother.arr[i].end = timeStart[i].Value.Value.TimeOfDay;
                     }
                 }
 
@@ -107,7 +118,7 @@ namespace PLWPF
                 second_grid_mother.Visibility = Visibility.Collapsed;
                 third_grid_mother.Visibility = Visibility.Visible;
                 //Thread.Sleep(3000);
-               // this.Close();
+                // this.Close();
                 new add_child(mother).Show();
 
             }
@@ -119,7 +130,16 @@ namespace PLWPF
 
         }
 
-    }
+        private void SizeStart1(object sender, SizeChangedEventArgs e)
+        {
+            errorMessegHours.Visibility = Visibility.Collapsed;
+        }
+
+        
+        
+        
+                                                               
+    }   
 
 
 }
