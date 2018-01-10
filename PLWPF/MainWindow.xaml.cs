@@ -44,6 +44,12 @@ namespace PLWPF
             new Remove(1).Show();
         }
 
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Window w = new AddNanny();
+                w.Show();
+        }
+
 
         //    private void mother_log_in_MouseEnter(object sender, MouseEventArgs e)
         //    {

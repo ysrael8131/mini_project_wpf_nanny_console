@@ -23,7 +23,7 @@
             <ColumnDefinition Width="1.5*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid x:Name="first_grid_mother" Visibility="Collapsed" 
+        <Grid x:Name="first_grid_mother" Visibility="Visible" 
               Background="{StaticResource BackgroundGrid}" Grid.Column="0" Margin="15" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
