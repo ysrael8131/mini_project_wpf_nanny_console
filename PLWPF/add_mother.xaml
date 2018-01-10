@@ -195,10 +195,10 @@
                     Text="{Binding SearchAddres, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
             <Button Grid.ColumnSpan="3" Content="Back" Grid.Column="0"  VerticalAlignment="Center" Width="100" Grid.Row="10" Click="Button_back_Click"/>
             <Button Grid.ColumnSpan="3" Content="Create" Grid.Column="3" VerticalAlignment="Center" Width="100" Grid.Row="10" Click="Button_create_Click"/>
-            
-            
-            <TextBlock x:Name="errorMessegHours" HorizontalAlignment="Left" Margin="5,9.667,0,0" Grid.Row="8" Grid.RowSpan="2" TextWrapping="Wrap" Text="Miss delies hours" VerticalAlignment="Top" Foreground="Red" Visibility="Collapsed" />
-            <TextBlock x:Name="errorMessegTime" HorizontalAlignment="Left" Margin="5,9.667,0,0" Grid.Row="8" Grid.RowSpan="2" TextWrapping="Wrap" Text="End can not eraly from start" VerticalAlignment="Top" Foreground="Red" Visibility="Collapsed" />
+
+
+            <TextBlock x:Name="errorMessegHours" HorizontalAlignment="Left" Margin="5,9.667,0,0" Grid.Row="8" Grid.RowSpan="2" TextWrapping="Wrap" Text="No start/end time has been set" VerticalAlignment="Top" Foreground="Red" Visibility="Collapsed" Grid.ColumnSpan="8"/>
+            <TextBlock x:Name="errorMessegTime" HorizontalAlignment="Left" Margin="5,9.667,0,0" Grid.Row="8" Grid.RowSpan="2" TextWrapping="Wrap" Text="End time can not be earlier than start time" VerticalAlignment="Top" Foreground="Red" Visibility="Collapsed" Grid.ColumnSpan="8"/>
 
 
         </Grid>
