@@ -18,7 +18,7 @@
         </Grid.ColumnDefinitions>
 
 
-        <Grid Visibility="Collapsed"  x:Name="first_grid_nanny" Margin="15" Background="{StaticResource BackgroundGrid}">
+        <Grid Visibility="Visible"  x:Name="first_grid_nanny" Margin="15" Background="{StaticResource BackgroundGrid}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
@@ -120,43 +120,9 @@
 
 
 
-        <Grid  Visibility="Collapsed" 
-              Background="{StaticResource BackgroundGrid}" Margin="15">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <TextBox x:Name="age_child_maxTextBox" Width="120" VerticalAlignment="Center" Text="{Binding age_child_max, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-            <TextBox x:Name="age_child_minTextBox" Width="120" VerticalAlignment="Center" Text="{Binding age_child_min, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-            <TextBox x:Name="maxChildsTextBox" Width="120" VerticalAlignment="Center" Text="{Binding maxChilds, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="9" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-            <CheckBox x:Name="per_hour_ableCheckBox" VerticalAlignment="Center" Grid.Row="10" Margin="3" IsChecked="{Binding per_hour_able, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
-            <TextBox x:Name="recommendationTextBox" Width="120" VerticalAlignment="Center" Text="{Binding recommendation, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="12" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-            <TextBox x:Name="salaryPerHourTextBox" Width="120" VerticalAlignment="Center" Text="{Binding salaryPerHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="13" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-            <TextBox x:Name="salaryPerMonthTextBox" Width="120" VerticalAlignment="Center" Text="{Binding salaryPerMonth, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="14" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-            <CheckBox x:Name="vacation_kindCheckBox" VerticalAlignment="Center" Grid.Row="15" Margin="3" IsChecked="{Binding vacation_kind, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
-            <TextBox x:Name="years_of_experienceTextBox" Width="120" VerticalAlignment="Center" Text="{Binding years_of_experience, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="16" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-        </Grid>
+       
 
-        <Grid x:Name="second_grid_nanny"  Margin="15" Grid.Column="0" Background="{StaticResource BackgroundGrid}">
+        <Grid x:Name="second_grid_nanny"  Margin="15" Grid.Column="0" Visibility="Collapsed" Background="{StaticResource BackgroundGrid}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
