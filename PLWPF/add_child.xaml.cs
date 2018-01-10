@@ -31,7 +31,7 @@ namespace PLWPF
             child = new Child();
             if (a != null)
             {
-                idTextBoxMother.Text = a.id.ToString();
+                child.MotherID = a.id;
                 idTextBoxMother.IsEnabled = false;
             }
             this.DataContext = child;

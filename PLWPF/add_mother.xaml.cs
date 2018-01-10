@@ -33,10 +33,11 @@ namespace PLWPF
             bl = FactoryBl.getBl();
             mother = new Mother();
             DataContext = mother;
-
+            
             // arrListView.DataContext = mother.arr;
 
-
+            Window window = new nisyon();
+            window.Show();
 
             string[] str = new string[] { "050", "052", "053", "054", "055", "058" };
             //  comboBoxPhone.ItemsSource = str;
