@@ -19,14 +19,22 @@ namespace PLWPF
     /// </summary>
     public partial class nisyon : Window
     {
+        BE.Mother mother;
         public nisyon()
         {
             InitializeComponent();
+            mother = new BE.Mother();
+            idTextBox.Text = "35435";
+            DataContext = mother;
+          
         }
 
-        private void b1_Click(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            new add_mother().Show();
+
+            System.Windows.Data.CollectionViewSource motherViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("motherViewSource")));
+            // Load data by setting the CollectionViewSource.Source property:
+            // motherViewSource.Source = [generic data source]
         }
     }
 }

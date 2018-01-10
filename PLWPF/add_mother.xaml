@@ -23,7 +23,7 @@
             <ColumnDefinition Width="1.5*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid x:Name="first_grid_mother" Visibility="Collapsed" 
+        <Grid x:Name="first_grid_mother" Visibility="Visible" 
               Background="{StaticResource BackgroundGrid}" Grid.Column="0" Margin="15" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
@@ -115,7 +115,7 @@
 
 
 
-        <Grid x:Name="second_grid_mother" ShowGridLines="False" Visibility="Visible"
+        <Grid x:Name="second_grid_mother" ShowGridLines="False" Visibility="Collapsed"
               Background="{StaticResource BackgroundGrid}" Margin="15">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
