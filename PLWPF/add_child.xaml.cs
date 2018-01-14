@@ -51,8 +51,8 @@ namespace PLWPF
         
 
         private void textChange(object sender, TextChangedEventArgs e)
-            {
-            //TextBox text = sender as TextBox;
+        {
+            
 
             errorMesseg1.Visibility = Visibility.Collapsed;
             errorMesseg2.Visibility = Visibility.Collapsed;
@@ -84,10 +84,13 @@ namespace PLWPF
                 errorMesseg2.Visibility = Visibility.Visible;
                 return;
             }
-            if(idTextBoxMother.Text.Count()!=9)
+
+            if (idTextBoxMother.Text.Count() != 9)
             {
                 errorMesseg5.Visibility = Visibility.Visible;
             }
+
+
             try
             {
                 bl.addChild(child);
