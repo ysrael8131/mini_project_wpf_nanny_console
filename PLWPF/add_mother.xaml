@@ -16,7 +16,7 @@
         <CollectionViewSource x:Key="motherarrViewSource" Source="{Binding arr, Source={StaticResource motherViewSource}}"/>
 
     </Window.Resources>
-    <Grid Background="AliceBlue" Margin="10,10,0.333,-0.333">
+    <Grid Background="AliceBlue">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2.6*"/>

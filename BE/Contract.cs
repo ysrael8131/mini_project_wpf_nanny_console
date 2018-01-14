@@ -27,7 +27,7 @@ namespace BE
         public int childID { set; get; }
         public bool knowlageMeet { set; get; }
         public bool contractSigne { set; get; }
-        public double salaryPerHour { set; get; }
+       // public double salaryPerHour { set; get; }
         public double salaryPerMonth { set; get; }
         public contracPer ContracPer { set; get; }
         public DateTime start { set; get; }
@@ -40,7 +40,7 @@ namespace BE
                 "nanny id: " + NannyID + '\n' +
                 "mother id: " + MotherID + '\n' +
                 "Child id: " + childID + '\n' +
-                (ContracPer == 0 ? "salary per month: " + salaryPerMonth : "salary per hour: " + salaryPerHour);
+                 "salary: " + salaryPerMonth;
         }
     }
 }

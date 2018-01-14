@@ -28,5 +28,12 @@ namespace BL
         IEnumerable<Nanny> getListNannys();
         IEnumerable<Contract> getListContracts();
         IEnumerable<Child> getListChilds(Mother a);
+        IEnumerable<Child> getListChild2();
+
+
+        Child getChild(int? id);
+        Mother getMother(int? id);
+        Contract getContract(int num_contract);
+        Nanny getNanny(int? id);
     }
 }

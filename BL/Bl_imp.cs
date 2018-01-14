@@ -70,7 +70,7 @@ namespace BL
                         }
                     }
 
-                    a.salaryPerHour = (temp2.salaryPerHour * (time.Hours + (time.Minutes / 60)) * 4) * ((1 - sumChildsPerMother) * 0.02);
+                    a.salaryPerMonth = (temp2.salaryPerHour * (time.Hours + (time.Minutes / 60)) * 4) * ((1 - sumChildsPerMother) * 0.02);
                     break;
             }
             a.MotherID = temp1.MotherID;
@@ -149,6 +149,24 @@ namespace BL
             dal.deleteNanny(id);
         }
 
+        public Child getChild(int? id)
+        {
+            return dal.getChild(id);
+        }
+
+        public Mother getMother(int? id)
+        {
+            return dal.getMother(id);
+        }
+        public Contract getContract(int num_contract)
+        {
+            return dal.getContract(num_contract);
+        }
+        public Nanny getNanny(int? id)
+        {
+            return dal.getNanny(id);
+        }
+
         public IEnumerable<Child> getListChilds(Mother a)
         {
             return dal.getListChilds(a);
@@ -168,6 +186,12 @@ namespace BL
         {
             return dal.getListNannys();
         }
+
+        public IEnumerable<Child> getListChild2()
+        {
+            return dal.getListChild2();
+        }
+
 
         public void updateChild(Child a)
         {
@@ -417,17 +441,8 @@ namespace BL
             {
                 if (item.MotherID == motherID)
                 {
-                    switch (item.ContracPer)
-                    {
-                        case contracPer.perMonth:
-                            temp += item.salaryPerMonth;
-                            break;
-                        case contracPer.perHour:
-                            temp += item.salaryPerHour;
-                            break;
-                    }
+                    temp += item.salaryPerMonth;
                 }
-
             }
             return temp;
         }

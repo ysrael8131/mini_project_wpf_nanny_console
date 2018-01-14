@@ -51,7 +51,7 @@ namespace PLWPF
         
 
         private void textChange(object sender, TextChangedEventArgs e)
-        {
+            {
             //TextBox text = sender as TextBox;
 
             errorMesseg1.Visibility = Visibility.Collapsed;

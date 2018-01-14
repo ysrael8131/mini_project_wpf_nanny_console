@@ -114,8 +114,8 @@ namespace DAL
         /// <returns></returns>
         public IEnumerable<Mother> getListMothers()
         {
-            if (DataSource.mothers.Any())
-                throw new Exception("No mothers exist in the database");
+            //if (DataSource.mothers.Any())
+            //    throw new Exception("No mothers exist in the database");
             return DataSource.mothers;
         }
         /// <summary>
@@ -171,8 +171,8 @@ namespace DAL
         /// <returns></returns>
         public IEnumerable<Nanny> getListNannys()
         {
-            if (!DataSource.nannys.Any())
-                throw new Exception("No nannys exist in the database");
+            //if (!DataSource.nannys.Any())
+            //    throw new Exception("No nannys exist in the database");
             return DataSource.nannys;
 
         }

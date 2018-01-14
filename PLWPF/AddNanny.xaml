@@ -18,7 +18,7 @@
         </Grid.ColumnDefinitions>
 
 
-        <Grid Visibility="Visible"  x:Name="first_grid_nanny" Margin="15" Background="{StaticResource BackgroundGrid}">
+        <Grid Visibility="Collapsed"  x:Name="first_grid_nanny" Margin="15" Background="{StaticResource BackgroundGrid}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
@@ -120,9 +120,9 @@
 
 
 
-       
 
-        <Grid x:Name="second_grid_nanny"  Margin="15" Grid.Column="0" Visibility="Collapsed" Background="{StaticResource BackgroundGrid}">
+
+        <Grid x:Name="second_grid_nanny"  Margin="15" Grid.Column="0" Visibility="Visible" Background="{StaticResource BackgroundGrid}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
@@ -140,7 +140,7 @@
             <TextBlock Margin="134,18,134,17.4" Text="more details" Grid.ColumnSpan="2" TextAlignment="Center" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
             <Grid x:Name="hours_grid" Visibility="Visible"  Grid.Row="1" 
-              Margin="15,14.6,15,15.4" Background="{StaticResource BackgroundGrid}" DataContext="{StaticResource nannyViewSource}" Grid.ColumnSpan="2"  >
+              Margin="15" Background="{StaticResource BackgroundGrid}" DataContext="{StaticResource nannyViewSource}" Grid.ColumnSpan="2"  >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.000001*"/>
                     <RowDefinition Height="0.7*"/>
@@ -249,14 +249,16 @@
             <CheckBox x:Name="per_hour_ableCheckBox1" Content="" HorizontalAlignment="Left" IsChecked="{Binding per_hour_able, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3,27,0,26.8" Grid.Row="4" VerticalAlignment="Center"/>
             <TextBox x:Name="salaryPerHourTextBox1"  HorizontalAlignment="Center" Height="23" Grid.Row="4" Text="{Binding salaryPerHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" />
             <TextBox x:Name="salaryPerMonthTextBox1" HorizontalAlignment="Right" Height="23"  Grid.Row="4" Text="{Binding salaryPerMonth, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" Grid.Column="1"/>
-            <Label Content="recommendation:"         HorizontalAlignment="Left"  Grid.Row="5" VerticalAlignment="Center"/>
-            <TextBox x:Name="recommendationTextBox1" HorizontalAlignment="Center" Height="23" Margin="129,23.2,129,22.6" Grid.Row="5" Text="{Binding recommendation, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" Grid.ColumnSpan="2"/>
-            <Label Content="vacation acording tamat:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,21.4,0,21.4" Grid.Row="6" VerticalAlignment="Center"/>
-            <CheckBox x:Name="vacation_kindCheckBox1" Content="" HorizontalAlignment="Center" IsChecked="{Binding vacation_kind, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="179,27.4,180,27.4" Grid.Row="6" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+            <Label Content="vacation acording tamat:" Grid.Column="0" HorizontalAlignment="Left"  Grid.Row="5" VerticalAlignment="Center"/>
+            <CheckBox x:Name="vacation_kindCheckBox1" Content="" HorizontalAlignment="Center" IsChecked="{Binding vacation_kind, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+
+            <Label Content="recommendation:"         HorizontalAlignment="Left"  Grid.Row="6" VerticalAlignment="Center"/>
+            <TextBox x:Name="recommendationTextBox1" HorizontalAlignment="Center" Height="23" Grid.Row="6" Text="{Binding recommendation, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" Grid.ColumnSpan="2"/>
 
 
-            <Button  x:Name="add_nanny_button" Visibility="Visible"  Content="add nanny" HorizontalAlignment="Left"   Grid.Row="7" Margin="5,4.6,0,5.2" Width="150" />
-            <Button  x:Name="back_button" Visibility="Visible"  Content="back"  HorizontalAlignment="Right"  Grid.Row="7" Margin="0,4.6,5,5.2" Grid.Column="1" Width="150" Click="back_button_Click"/>
+
+            <Button x:Name="add_nanny_button" Visibility="Visible"  Content="add nanny" HorizontalAlignment="Left"   Grid.Row="7" Margin="15" Width="150" Click="add_nanny_button_Click"   />
+            <Button  x:Name="back_button" Visibility="Visible"  Content="back"  HorizontalAlignment="Right"  Grid.Row="7" Margin="15" Grid.Column="1" Width="150" Click="back_button_Click"/>
 
         </Grid>
 

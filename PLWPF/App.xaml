@@ -42,7 +42,13 @@
                 </Trigger>
             </Style.Triggers>
 
-
+        </Style>
+        <Style x:Key="textblock_style_error" TargetType="TextBlock">
+            <Setter Property="Margin" Value="10,53,0,18"/>
+            <Setter Property="Foreground" Value="Red"/>
+            <Setter Property="Visibility" Value="Collapsed"/>
+            <Setter Property="Grid.RowSpan" Value="2"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
 
         </Style>
     </Application.Resources>

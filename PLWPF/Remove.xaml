@@ -7,56 +7,42 @@
         mc:Ignorable="d"
         Title="Remove" Height="300" Width="400">
     <Window.Resources>
-        <SolidColorBrush x:Key="brushWatermarkBackground" Color="White" />
-        <SolidColorBrush x:Key="brushWatermarkForeground" Color="LightSteelBlue" />
-        <SolidColorBrush x:Key="brushWatermarkBorder" Color="Indigo" />
-        <SolidColorBrush x:Key="BackgroundGrid" Color="Beige"/>
-        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+       
 
-        <Style x:Key="textbox_style" TargetType="TextBox">
-            <Style.Triggers>
-                <Trigger Property="Text" Value="">
-                    <Setter Property="Background" Value="Transparent"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <Style x:Key="triger_to_textbox" TargetType="TextBox" >
-            <Style.Triggers>
-                <Trigger Property="Text" Value="">
-                    <Setter Property="Background" Value="Transparent"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
 
 
     </Window.Resources>
-    <Grid Background="Beige">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <TextBlock x:Name="TextId" Text="Enter number ID" HorizontalAlignment="Center" Margin="10" />
-        <TextBlock x:Name="TextContract" Text="Enter number Contract" HorizontalAlignment="Center" Margin="10" Visibility="Collapsed" />
-        <TextBox x:Name="RemoveElement"  Grid.Row="1"  Background="White"
-                 BorderBrush="Indigo" Style="{StaticResource  textbox_style}" VerticalAlignment="Center" TextAlignment="Left" />
-        <Button Content="Remove" Background="AliceBlue"  Grid.Row="2"  
-                Click="Button_Click_Remove" >
-            
+
+    <Grid Background="AliceBlue">
 
 
-            <Button.Style >
-                <Style>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding ElementName=RemoveElement, Path=Text}" Value="">
-                            <Setter Property="Button.IsEnabled" Value="False"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
-        </Button>
-        <TextBlock  Grid.Row="1"  Text="ID" HorizontalAlignment="Left" Margin="20" Foreground="LightSteelBlue" 
+        <Grid Margin="15" Background="{StaticResource BackgroundGrid}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="TextId" Text="Enter number ID to remove" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" />
+            <TextBlock x:Name="TextContract" Text="Enter number Contract to remove" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Visibility="Collapsed" />
+            <TextBlock  Grid.Row="1" Style="{StaticResource textblock_style}" Text=" ID"  
                     Visibility="{Binding ElementName=RemoveElement,Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            <TextBox x:Name="RemoveElement"  Grid.Row="1" 
+                 BorderBrush="Indigo" Style="{StaticResource  textbox_style}" VerticalAlignment="Center" TextAlignment="Left" />
+            <Button Content="Remove" Background="AliceBlue"  Grid.Row="2"  
+                Click="Button_Click_Remove" Margin="20">
+                <Button.Style >
+                    <Style>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=RemoveElement, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="False"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+        </Grid>
     </Grid>
+
 </Window>

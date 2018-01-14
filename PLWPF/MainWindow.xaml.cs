@@ -50,6 +50,12 @@ namespace PLWPF
                 w.Show();
         }
 
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            Window w = new update();
+            w.Show();
+        }
+
 
         //    private void mother_log_in_MouseEnter(object sender, MouseEventArgs e)
         //    {

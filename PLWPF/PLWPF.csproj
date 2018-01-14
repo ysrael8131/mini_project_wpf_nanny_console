@@ -76,6 +76,9 @@
     <Compile Include="AddNanny.xaml.cs">
       <DependentUpon>AddNanny.xaml</DependentUpon>
     </Compile>
+    <Compile Include="add_contruct.xaml.cs">
+      <DependentUpon>add_contruct.xaml</DependentUpon>
+    </Compile>
     <Compile Include="nisyon.xaml.cs">
       <DependentUpon>nisyon.xaml</DependentUpon>
     </Compile>
@@ -85,11 +88,18 @@
     <Compile Include="Time.xaml.cs">
       <DependentUpon>Time.xaml</DependentUpon>
     </Compile>
+    <Compile Include="update.xaml.cs">
+      <DependentUpon>update.xaml</DependentUpon>
+    </Compile>
     <Page Include="AddNanny.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="add_child.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="add_contruct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -127,6 +137,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="update.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -152,6 +166,7 @@
     <None Include="Properties\DataSources\BE.Mother.datasource" />
     <None Include="Properties\DataSources\BE.Nanny.datasource" />
     <None Include="Properties\DataSources\BE.Work_information.datasource" />
+    <None Include="Properties\DataSources\BL.IBL.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

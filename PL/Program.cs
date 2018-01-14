@@ -17,7 +17,7 @@ namespace PL
             BL.IBL bl = BL.FactoryBl.getBl();
 
             Bl_imp aaa = new BL.Bl_imp();
-            Console.WriteLine(bl.CalculateDistance("אוהב ישראל 3,ביתר עילית,ישראל", "קדושת לוי 115,ביתר עילית,ישראל"));
+         //   Console.WriteLine(bl.CalculateDistance("אוהב ישראל 3,ביתר עילית,ישראל", "קדושת לוי 115,ביתר עילית,ישראל"));
             Console.WriteLine();
             try
             {

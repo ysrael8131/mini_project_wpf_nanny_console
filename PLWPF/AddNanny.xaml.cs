@@ -51,5 +51,10 @@ namespace PLWPF
             first_grid_nanny.Visibility = Visibility.Visible;
             second_grid_nanny.Visibility = Visibility.Collapsed;
         }
+
+        private void add_nanny_button_Click(object sender, RoutedEventArgs e)
+        {
+            bl.addNanny(nanny);
+        }
     }
 }

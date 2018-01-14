@@ -16,14 +16,7 @@
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
 
 
-        <Style x:Key="textblock_style_error" TargetType="TextBlock">
-            <Setter Property="Margin" Value="10,53,0,18"/>
-            <Setter Property="Foreground" Value="Red"/>
-            <Setter Property="Visibility" Value="Collapsed"/>
-            <Setter Property="Grid.RowSpan" Value="2"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            
-        </Style>
+      
 
 
 
@@ -70,92 +63,91 @@
 
 
 
-    <Grid Background="{StaticResource BackgroundGrid}">
+    <Grid Background="AliceBlue"  >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="391*"/>
             <ColumnDefinition Width="202*"/>
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <TextBlock Margin="10,10,9,9.2"  Text="Personal Information" TextAlignment="Center" FontSize="20" />
+        <Grid x:Name="child_grid" Background="{StaticResource BackgroundGrid}" Margin="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Margin="10,10,9,9.2"  Text="Personal Information" TextAlignment="Center" FontSize="20" />
 
-        <TextBlock    Text=" ID" Grid.Row="1" Style="{StaticResource textblock_style}"
+            <TextBlock    Text=" ID" Grid.Row="1" Style="{StaticResource textblock_style}"
          Visibility="{Binding ElementName=idTextBox,Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-        <TextBox x:Name="idTextBox" Grid.Row="1" Margin="10" Style="{StaticResource textbox_style}" 
+            <TextBox x:Name="idTextBox" Grid.Row="1" Margin="10" Style="{StaticResource textbox_style}" 
          Text="{Binding id, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" TextChanged="textChange" />
-        <TextBlock x:Name="errorMesseg1" Text=" This field is for numbers only" Grid.Row="1" Style="{StaticResource textblock_style_error}" />
-        <TextBlock x:Name="errorMesseg2" Text="Number ID should be 9 digits" Grid.Row="1" Style="{StaticResource textblock_style_error}"/>
-        <TextBlock x:Name="errorMesseg3" Text="Number ID can not be negative" Grid.Row="1" Style="{StaticResource textblock_style_error}"/>
-
-        
+            <TextBlock x:Name="errorMesseg1" Text=" This field is for numbers only" Grid.Row="1" Style="{StaticResource textblock_style_error}" />
+            <TextBlock x:Name="errorMesseg2" Text="Number ID should be 9 digits" Grid.Row="1" Style="{StaticResource textblock_style_error}"/>
+            <TextBlock x:Name="errorMesseg3" Text="Number ID can not be negative" Grid.Row="1" Style="{StaticResource textblock_style_error}"/>
 
 
-        <TextBlock    Text="Mother ID" Grid.Row="2" Style="{StaticResource textblock_style}"
+            <TextBlock    Text="Mother ID" Grid.Row="2" Style="{StaticResource textblock_style}"
          Visibility="{Binding ElementName=idTextBoxMother,Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-        <TextBox x:Name="idTextBoxMother" Grid.Row="2" Style="{StaticResource textbox_style}" 
+            <TextBox x:Name="idTextBoxMother" Grid.Row="2" Style="{StaticResource textbox_style}" 
          Text="{Binding MotherID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10" TextChanged="textChange1"   />
 
-        <TextBlock x:Name="errorMesseg4" Text=" This field is for numbers only" Grid.Row="2" Style="{StaticResource textblock_style_error}" />
-        <TextBlock x:Name="errorMesseg5" Text="Number ID should be 9 digits" Grid.Row="2" Style="{StaticResource textblock_style_error}"/>
-        <TextBlock x:Name="errorMesseg6" Text="Number ID can not be negative" Grid.Row="2" Style="{StaticResource textblock_style_error}"/>
+            <TextBlock x:Name="errorMesseg4" Text=" This field is for numbers only" Grid.Row="2" Style="{StaticResource textblock_style_error}" />
+            <TextBlock x:Name="errorMesseg5" Text="Number ID should be 9 digits" Grid.Row="2" Style="{StaticResource textblock_style_error}"/>
+            <TextBlock x:Name="errorMesseg6" Text="Number ID can not be negative" Grid.Row="2" Style="{StaticResource textblock_style_error}"/>
 
-        <TextBlock    Text="First Name" Grid.Row="4" Style="{StaticResource textblock_style}"
+            <TextBlock    Text="First Name" Grid.Row="4" Style="{StaticResource textblock_style}"
  Visibility="{Binding ElementName=firstNameTextBox,Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-        <TextBox x:Name="firstNameTextBox" Grid.Row="4" Style="{StaticResource textbox_style}" 
+            <TextBox x:Name="firstNameTextBox" Grid.Row="4" Style="{StaticResource textbox_style}" 
  Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10" TextChanged="textChnge2" />
 
-        <TextBlock x:Name="errorMesseg7" Text="This field can contain letters only" Grid.Row="4" Style="{StaticResource textblock_style_error}" />
-        
-        <TextBlock    Text="Birth day" Grid.Row="3" Style="{StaticResource textblock_style}"
+            <TextBlock x:Name="errorMesseg7" Text="This field can contain letters only" Grid.Row="4" Style="{StaticResource textblock_style_error}" />
+
+            <TextBlock    Text="Birth day" Grid.Row="3" Style="{StaticResource textblock_style}"
  Visibility="{Binding ElementName=birthDayDatePicker,Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-        <DatePicker x:Name="birthDayDatePicker"  Grid.Row="3" Background="Transparent"
+            <DatePicker x:Name="birthDayDatePicker"  Grid.Row="3" Background="Transparent"
                     SelectedDate="{Binding birthDay, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
                     VerticalAlignment="Center" DisplayDateStart="01.01.2012" BorderBrush="{StaticResource brushWatermarkBorder}" Margin="15"  />
 
-        <Label Content="Special Needs:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
-        <CheckBox x:Name="specialNeedsCheckBox" Content="" Grid.Column="0" IsChecked="{Binding specialNeeds, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+            <Label Content="Special Needs:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
+            <CheckBox x:Name="specialNeedsCheckBox" Content="" Grid.Column="0" IsChecked="{Binding specialNeeds, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
                  HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center"/>
 
 
-        <TextBlock    Text="details Special Needs:" Grid.Row="6" Style="{StaticResource textblock_style}"
+            <TextBlock    Text="details Special Needs:" Grid.Row="6" Style="{StaticResource textblock_style}"
          Visibility="{Binding ElementName=detailsSpecialNeedsTextBox,Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-        <TextBox x:Name="detailsSpecialNeedsTextBox" Grid.Row="6" Style="{StaticResource textbox_style}" 
+            <TextBox x:Name="detailsSpecialNeedsTextBox" Grid.Row="6" Style="{StaticResource textbox_style}" 
          Text="{Binding detailsSpecialNeeds, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
                  IsEnabled="{Binding ElementName=specialNeedsCheckBox,Path=IsChecked}" Margin="10" />
-        <Button Content="Creat"  Grid.Row="7" Margin="20"   BorderBrush="{StaticResource brushWatermarkBorder}" Click="Button_Click_Add_Child">
-            <Button.Style>
-            <Style>
-                <Style.Triggers>
-                    <DataTrigger Binding="{Binding ElementName=idTextBox,Path=Text}" Value="">
-                        <Setter Property="Button.IsEnabled" Value="False"/>
-                    </DataTrigger>
+            <Button Content="Creat"  Grid.Row="7" Margin="20"   BorderBrush="{StaticResource brushWatermarkBorder}" Click="Button_Click_Add_Child">
+                <Button.Style>
+                    <Style>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=idTextBox,Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="False"/>
+                            </DataTrigger>
 
-                        <DataTrigger Binding="{Binding ElementName=firstNameTextBox,Path=Text}" Value="">
-                            <Setter Property="Button.IsEnabled" Value="False"/>
-                        </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=firstNameTextBox,Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="False"/>
+                            </DataTrigger>
 
-                        <DataTrigger Binding="{Binding ElementName=birthDayDatePicker,Path=Text}" Value="">
-                            <Setter Property="Button.IsEnabled" Value="False"/>
-                        </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=birthDayDatePicker,Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="False"/>
+                            </DataTrigger>
 
-                        <DataTrigger Binding="{Binding ElementName=idTextBoxMother,Path=Text}" Value="">
-                            <Setter Property="Button.IsEnabled" Value="False"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-            </Style>
-            </Button.Style>
+                            <DataTrigger Binding="{Binding ElementName=idTextBoxMother,Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="False"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
 
-        </Button>
+            </Button>
 
-        <!--<Grid.RowDefinitions>
+            <!--<Grid.RowDefinitions>
             <RowDefinition Height="6*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -206,6 +198,10 @@
             <Label Content="special Needs:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
             <CheckBox x:Name="specialNeedsCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding specialNeeds, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
         </Grid>-->
+        </Grid>
+        
+        
+       
 
 
     </Grid>
