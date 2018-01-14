@@ -15,6 +15,15 @@
         <CollectionViewSource x:Key="motherViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Mother}, CreateList=True}"/>
         <CollectionViewSource x:Key="motherarrViewSource" Source="{Binding arr, Source={StaticResource motherViewSource}}"/>
 
+        <Style x:Key="textblock_style_error" TargetType="TextBlock">
+            <Setter Property="Margin" Value="10,53,0,18"/>
+            <Setter Property="Foreground" Value="Red"/>
+            <Setter Property="Visibility" Value="Collapsed"/>
+            <Setter Property="Grid.RowSpan" Value="2"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+
+        </Style>
+
     </Window.Resources>
     <Grid Background="AliceBlue" Margin="10,10,0.333,-0.333">
 
@@ -43,7 +52,12 @@
                 Visibility="{Binding ElementName=idTextBox,
                 Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
             <TextBox x:Name="idTextBox" Grid.Row="1" Style="{StaticResource textbox_style}" 
-                   Text="{Binding id, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                   Text="{Binding id, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" TextChanged="textChanged1" />
+            <TextBlock x:Name="errorMesseg1" Text=" This field is for numbers only" Grid.Row="1" Style="{StaticResource textblock_style_error}" />
+            <TextBlock x:Name="errorMesseg2" Text="Number ID should be 9 digits" Grid.Row="1" Style="{StaticResource textblock_style_error}"/>
+            <TextBlock x:Name="errorMesseg3" Text="Number ID can not be negative" Grid.Row="1" Style="{StaticResource textblock_style_error}"/>
+
+
 
 
             <TextBlock  Style="{StaticResource textblock_style}" Text=" First name" Grid.Row="2" 

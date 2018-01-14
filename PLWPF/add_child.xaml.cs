@@ -91,6 +91,7 @@ namespace PLWPF
             try
             {
                 bl.addChild(child);
+                this.Close();
                 
             }
             catch (Exception ex)
@@ -125,14 +126,6 @@ namespace PLWPF
 
         }
 
-        private void textChnge2(object sender, TextChangedEventArgs e)
-        {
-            errorMesseg7.Visibility = Visibility.Collapsed;
-            long x;
-            if(long.TryParse(firstNameTextBox.Text,out x))
-            {
-                errorMesseg7.Visibility = Visibility.Visible;
-            }
-        }
-    }
+      
+    }                                                                      
 }
