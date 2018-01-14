@@ -101,12 +101,12 @@
 
             <TextBlock    Text="First Name" Grid.Row="4" Style="{StaticResource textblock_style}"
  Visibility="{Binding ElementName=firstNameTextBox,Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-            <TextBox x:Name="firstNameTextBox" Grid.Row="4" Style="{StaticResource textbox_style}" 
- Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10" TextChanged="textChnge2" />
+        <TextBox x:Name="firstNameTextBox" Grid.Row="4" Style="{StaticResource textbox_style}" 
+ Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10"  />
 
-            <TextBlock x:Name="errorMesseg7" Text="This field can contain letters only" Grid.Row="4" Style="{StaticResource textblock_style_error}" />
-
-            <TextBlock    Text="Birth day" Grid.Row="3" Style="{StaticResource textblock_style}"
+        
+        
+        <TextBlock    Text="Birth day" Grid.Row="3" Style="{StaticResource textblock_style}"
  Visibility="{Binding ElementName=birthDayDatePicker,Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
             <DatePicker x:Name="birthDayDatePicker"  Grid.Row="3" Background="Transparent"
                     SelectedDate="{Binding birthDay, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 

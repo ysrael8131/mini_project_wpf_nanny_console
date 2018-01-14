@@ -33,17 +33,6 @@ namespace PLWPF
             bl = FactoryBl.getBl();
             mother = new Mother();
             DataContext = mother;
-
-
-            // arrListView.DataContext = mother.arr;
-
-
-
-            string[] str = new string[] { "050", "052", "053", "054", "055", "058" };
-            //  comboBoxPhone.ItemsSource = str;
-
-
-
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -135,10 +124,28 @@ namespace PLWPF
             errorMessegHours.Visibility = Visibility.Collapsed;
         }
 
-        
-        
-        
-                                                               
+        private void textChanged1(object sender, TextChangedEventArgs e)
+        {
+            errorMesseg1.Visibility = Visibility.Collapsed;
+            errorMesseg2.Visibility = Visibility.Collapsed;
+            errorMesseg3.Visibility = Visibility.Collapsed;
+
+
+            long x;
+            if (!long.TryParse(idTextBox.Text, out x) && idTextBox.Text != "")
+            {
+
+                errorMesseg1.Visibility = Visibility.Visible;
+
+                return;
+            }
+            if (idTextBox.Text != "" && long.Parse(idTextBox.Text) < 0)
+            {
+                errorMesseg3.Visibility = Visibility.Visible;
+            }
+
+
+        }
     }   
 
 
