@@ -110,7 +110,7 @@ namespace PLWPF
                     if (check[i].IsChecked == true)
                     {
                         mother.arr[i].start = timeStart[i].Value.Value.TimeOfDay;
-                        mother.arr[i].end = timeStart[i].Value.Value.TimeOfDay;
+                        mother.arr[i].end = timeEnd[i].Value.Value.TimeOfDay;
                     }
                 }
 
