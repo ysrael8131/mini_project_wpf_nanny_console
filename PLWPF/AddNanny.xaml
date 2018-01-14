@@ -27,7 +27,7 @@
         </Grid.ColumnDefinitions>
 
 
-        <Grid Visibility="Visible"  x:Name="first_grid_nanny" Margin="15" Background="{StaticResource BackgroundGrid}">
+        <Grid Visibility="Collapsed"  x:Name="first_grid_nanny" Margin="15" Background="{StaticResource BackgroundGrid}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
@@ -135,7 +135,7 @@
 
        
 
-        <Grid x:Name="second_grid_nanny"  Margin="15" Grid.Column="0" Visibility="Collapsed" Background="{StaticResource BackgroundGrid}">
+        <Grid x:Name="second_grid_nanny"  Margin="15" Grid.Column="0" Visibility="Visible" Background="{StaticResource BackgroundGrid}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
@@ -315,8 +315,8 @@
                             </MultiDataTrigger>
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding ElementName=per_hour_ableCheckBox1, Path=IsChecked}" Value="True" />
-                                    <Condition Binding="{Binding ElementName=salaryPerHourTextBox1, Path=Text}" Value="" />
+                                    <Condition Binding="{Binding ElementName=per_hour_ableCheckBox1, Path=IsChecked}" Value="False" />
+                                    <Condition Binding="{Binding ElementName=salaryPerMonthTextBox1, Path=Text}" Value="" />
                                 </MultiDataTrigger.Conditions>
                                 <Setter Property="Button.IsEnabled" Value="False" />
                             </MultiDataTrigger>
