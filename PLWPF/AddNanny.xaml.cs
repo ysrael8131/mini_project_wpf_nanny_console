@@ -136,5 +136,19 @@ namespace PLWPF
             }
 
         }
+
+
+        private void years_MouseEnter(object sender, MouseEventArgs e)
+        {
+            ComboBox com = sender as ComboBox;
+            com.ToolTip = "choose years";
+        }
+
+        private void month_MouseEnter(object sender, MouseEventArgs e)
+        {
+            ComboBox com = sender as ComboBox;
+            com.ToolTip = "choose months";
+
+        }
     }
 }

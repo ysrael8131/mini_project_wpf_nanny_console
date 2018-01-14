@@ -85,10 +85,10 @@
                     <ColumnDefinition Width="1.5*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock  Style="{StaticResource textblock_style}" Text=" Floor" Grid.Column="0"
-           Visibility="{Binding ElementName=floorTextBox,  
-                Path=Text, Converter={StaticResource BooleanToVisibilityConverter}}"
+                    Visibility="{Binding ElementName=floorTextBox,  
+                Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"
                         HorizontalAlignment="Left" Width="50" />
-                <TextBox Style="{StaticResource textbox_style}" x:Name="floorTextBox" Width="50"  VerticalAlignment="Center" 
+                <TextBox x:Name="floorTextBox" Width="50"  VerticalAlignment="Center"  Style="{StaticResource textbox_style}"
                      Text="{Binding floor, Mode=TwoWay, NotifyOnValidationError=true, 
                 ValidatesOnExceptions=true}" Grid.Column="0" Margin="10" HorizontalAlignment="Left"  />
 
@@ -222,72 +222,107 @@
 
             </Grid>
             <Label Content="Age of the child" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="2"  VerticalAlignment="Top" />
-            <Label Content="from" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="2"  VerticalAlignment="Center" />
+            <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" >
+                <Label Content="from" HorizontalAlignment="Center" Grid.Column="0" Margin="10,10,1,1" Grid.Row="2"  VerticalAlignment="Center" />
+                <ComboBox x:Name="from_years" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Margin="10,10,2,2" Foreground="Blue" FontFamily="Cooper Black" MouseEnter="years_MouseEnter"  />
+                <ComboBox x:Name="from_month" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Margin="10,10,2,2" Foreground="Blue" FontFamily="Cooper Black" MouseEnter="month_MouseEnter" />
+                <ComboBox x:Name="age_child_minComboBox" Visibility="Collapsed" HorizontalAlignment="Right" Height="Auto" ItemsSource="{Binding}" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Width="50" Margin="20" Foreground="Blue" FontFamily="Cooper Black" >
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel/>
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+                <Label Content="to" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2"  VerticalAlignment="Center" Margin="70,10,2,2"/>
+                <ComboBox x:Name="to_years" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Margin="10,10,2,2" Foreground="Blue" FontFamily="Cooper Black" MouseEnter="years_MouseEnter"  />
+                <ComboBox x:Name="to_month" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Margin="10,10,2,2" Foreground="Blue" FontFamily="Cooper Black" MouseEnter="month_MouseEnter" />
 
-            <ComboBox x:Name="age_child_minComboBox"  HorizontalAlignment="Right" Height="Auto" ItemsSource="{Binding}" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Width="50" Margin="20" Foreground="Blue" FontFamily="Cooper Black" >
+                <ComboBox x:Name="age_child_maxComboBox" Visibility="Collapsed"  HorizontalAlignment="Center" Height="Auto" ItemsSource="{Binding}" Grid.Row="2" VerticalAlignment="Center" Width="50" Grid.Column="1">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel/>
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+            </StackPanel>
 
+            <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal">
+                <Label Content="max Childs:" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="3" Margin="10" VerticalAlignment="Center"/>
+                <ComboBox x:Name="maxChildsComboBox" DisplayMemberPath="maxChilds" Grid.Column="0" HorizontalAlignment="Right" Height="Auto" ItemsSource="{Binding}" Grid.Row="3" VerticalAlignment="Center" Width="50" >
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel/>
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
 
-                <ComboBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VirtualizingStackPanel/>
-                    </ItemsPanelTemplate>
-                </ComboBox.ItemsPanel>
-
-
-            </ComboBox>
-            <Label Content="to" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2"  VerticalAlignment="Center" Margin="10"/>
-
-            <ComboBox x:Name="age_child_maxComboBox"   HorizontalAlignment="Center" Height="Auto" ItemsSource="{Binding}" Grid.Row="2" VerticalAlignment="Center" Width="50" Grid.Column="1">
-                <ComboBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VirtualizingStackPanel/>
-                    </ItemsPanelTemplate>
-                </ComboBox.ItemsPanel>
-            </ComboBox>
-
-            <Label Content="max Childs:" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center"/>
-            <ComboBox x:Name="maxChildsComboBox" DisplayMemberPath="maxChilds" Grid.Column="0" HorizontalAlignment="Right" Height="Auto" ItemsSource="{Binding}" Grid.Row="3" VerticalAlignment="Center" Width="50" >
-                <ComboBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VirtualizingStackPanel/>
-                    </ItemsPanelTemplate>
-                </ComboBox.ItemsPanel>
-            </ComboBox>
-
-            <Label Content="years of experience:" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center"/>
-            <ComboBox x:Name="years_of_experienceComboBox" Grid.Column="1" DisplayMemberPath="years_of_experience" HorizontalAlignment="Right" Height="Auto" ItemsSource="{Binding}"  Grid.Row="3" VerticalAlignment="Center" Width="50">
-                <ComboBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VirtualizingStackPanel/>
-                    </ItemsPanelTemplate>
-                </ComboBox.ItemsPanel>
-            </ComboBox>
+                <Label Content="years of experience:" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="3" Margin="30,0,0,0" VerticalAlignment="Center"/>
+                <ComboBox x:Name="years_of_experienceComboBox" Grid.Column="1" Margin="10" DisplayMemberPath="years_of_experience" HorizontalAlignment="Right" Height="Auto" ItemsSource="{Binding}"  Grid.Row="3" VerticalAlignment="Center" Width="50">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel/>
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+            </StackPanel>
+           
             <Label Content="salary per hour?" Grid.Row="4"/>
-            <CheckBox x:Name="per_hour_ableCheckBox1" Content="" HorizontalAlignment="Left" IsChecked="{Binding per_hour_able, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3,27,0,26.8" Grid.Row="4" VerticalAlignment="Center"/>
-            <TextBox x:Name="salaryPerHourTextBox1"  HorizontalAlignment="Center" Height="23" Grid.Row="4" Text="{Binding salaryPerHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" 
-                  IsEnabled="{Binding ElementName=per_hour_ableCheckBox1,Path=IsChecked}" 
-                     
-                     />
-            <TextBox x:Name="salaryPerMonthTextBox1" HorizontalAlignment="Right" Height="23"  Grid.Row="4" Text="{Binding salaryPerMonth, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" Grid.Column="1">
-                <TextBox.Style>
-                    <Style>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding ElementName=per_hour_ableCheckBox1,Path=IsChecked}" Value="False">
-                                <Setter Property="TextBox.IsEnabled" Value="True"/>
-                                </DataTrigger>
-                            <DataTrigger Binding="{Binding ElementName=per_hour_ableCheckBox1,Path=IsChecked}" Value="True">
-                                <Setter Property="TextBox.IsEnabled" Value="False"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </TextBox.Style>
-            </TextBox>
+            <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal">
+                <CheckBox x:Name="per_hour_ableCheckBox1" Content="" HorizontalAlignment="Left" IsChecked="{Binding per_hour_able, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,10,2,2" Grid.Row="4" VerticalAlignment="Center"/>
 
-            <Label Content="recommendation:"         HorizontalAlignment="Left"  Grid.Row="5" VerticalAlignment="Center"/>
-            <TextBox x:Name="recommendationTextBox1" HorizontalAlignment="Center" Height="23" Margin="129,23.2,129,22.6" Grid.Row="5" Text="{Binding recommendation, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" Grid.ColumnSpan="2"/>
-            <Label Content="vacation acording tamat:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,21.4,0,21.4" Grid.Row="6" VerticalAlignment="Center"/>
-            <CheckBox x:Name="vacation_kindCheckBox1" Content="" HorizontalAlignment="Center" IsChecked="{Binding vacation_kind, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="179,27.4,180,27.4" Grid.Row="6" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
 
+
+
+              
+
+                <Grid>
+
+                    <TextBlock  Style="{StaticResource textblock_style}" Margin="10,10,2,2"  Text=" salary per hour" 
+                       Visibility="{Binding ElementName=salaryPerHourTextBox1,  
+                Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                    <TextBox Style="{StaticResource textbox_style}" x:Name="salaryPerHourTextBox1" Margin="10,10,2,2" Width="120" Text="{Binding salaryPerHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"  
+                  IsEnabled="{Binding ElementName=per_hour_ableCheckBox1,Path=IsChecked}" />
+                </Grid>
+                <Grid>
+                    <TextBlock  Style="{StaticResource textblock_style}" Margin="70,10,2,2"  Text=" salary per month" 
+                       Visibility="{Binding ElementName=salaryPerMonthTextBox1,  
+                Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                    <TextBox x:Name="salaryPerMonthTextBox1"  HorizontalAlignment="Right" Margin="70,10,2,2" Grid.Row="4" Text="{Binding salaryPerMonth, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" FontSize="15" Foreground="{StaticResource brushWatermarkForeground}" Background="Transparent" Height="25" VerticalAlignment="Center" Width="120" >
+                        <TextBox.Style>
+                            <Style>
+                                <Style.Triggers>
+                                    <Trigger Property="TextBox.Text" Value="">
+                                        <Setter Property="TextBox.Background" Value="Transparent"/>
+                                    </Trigger>
+                                    <DataTrigger Binding="{Binding ElementName=per_hour_ableCheckBox1,Path=IsChecked}" Value="False">
+                                        <Setter Property="TextBox.IsEnabled" Value="True"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=per_hour_ableCheckBox1,Path=IsChecked}" Value="True">
+                                        <Setter Property="TextBox.IsEnabled" Value="False"/>
+                                    </DataTrigger>
+                                   
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+
+                </Grid>
+              
+            </StackPanel>
+
+
+            <StackPanel Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal">
+
+                <Label Content="recommendation:"  HorizontalAlignment="Left"  Grid.Row="5" VerticalAlignment="Center"/>
+                <TextBox x:Name="recommendationTextBox1" HorizontalAlignment="Center" TextWrapping="Wrap" Height="45" Grid.Row="5" Text="{Binding recommendation, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="230" />
+
+            </StackPanel>
+            <StackPanel Grid.Row="6" Grid.ColumnSpan="2" Orientation="Horizontal">
+                <Label Content="vacation acording tamat:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,21.4,0,21.4" Grid.Row="6" VerticalAlignment="Center"/>
+                <CheckBox x:Name="vacation_kindCheckBox1" Content="" HorizontalAlignment="Center" IsChecked="{Binding vacation_kind, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="20" Grid.Row="6" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+
+            </StackPanel>
+            
 
             <Button  x:Name="add_nanny_button" Visibility="Visible"  Content="add nanny" HorizontalAlignment="Left"   Grid.Row="7" Margin="5,4.6,0,5.2" Width="150" Click="add_nanny_button_Click" >
 

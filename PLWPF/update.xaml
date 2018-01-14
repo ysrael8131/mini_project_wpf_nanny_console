@@ -40,7 +40,7 @@
 
             <!--IsEnabled="{Binding ElementName=select_mother_conbobox, Path=IsInitialized}"-->
         </WrapPanel>
-        <Grid x:Name="first_grid_mother" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Visibility="Collapsed" 
+        <Grid x:Name="first_grid_mother" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Visibility="{Binding ElementName= select_mother_conbobox, Path=SelectionBoxItem}" 
               Background="{StaticResource BackgroundGrid}"  Margin="15" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
@@ -105,7 +105,7 @@
 
             <Label Content="Elevators:"   HorizontalAlignment="Left" Margin="10" Grid.Row="6" VerticalAlignment="Center"/>
             <CheckBox x:Name="elevatorsCheckBox"   HorizontalAlignment="Center" IsChecked="{Binding elevators, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
-            <Button Content="update" Grid.Row="7" Margin="20" Grid.ColumnSpan="2"  BorderBrush="{StaticResource brushWatermarkBorder}" >
+            <Button Content="update" Grid.Row="7" Margin="20"   BorderBrush="{StaticResource brushWatermarkBorder}" >
                 <Button.Style >
                     <Style>
                         <Style.Triggers>
@@ -129,7 +129,7 @@
                     </Style>
                 </Button.Style>
             </Button>
-
+            <Button x:Name="delete_mother_button" Grid.Column="1" Grid.Row="7" Content="Delete" Margin="20" Click="delete_mother_button_Click" />
             <Grid x:Name="second_grid_mother" Grid.RowSpan="7" Grid.Column="1" ShowGridLines="False" Visibility="Visible"
               Background="{StaticResource BackgroundGrid}" Margin="15">
                 <Grid.RowDefinitions>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,16 +15,25 @@ using System.Windows.Shapes;
 
 namespace PLWPF
 {
+
+
+   
     /// <summary>
     /// Interaction logic for update.xaml
     /// </summary>
     public partial class update : Window
     {
+
+     //   private  ObservableCollection<BE.Mother> ff = new ObservableCollection<BE.Mother>();
         BL.IBL bl;
         public update()
         {
+
+           
             bl = BL.FactoryBl.getBl();
+
             InitializeComponent();
+
             BE.Mother mother = new BE.Mother();
             BE.Child child = new BE.Child();
             BE.Nanny nanny = new BE.Nanny();
@@ -59,7 +69,7 @@ namespace PLWPF
 
                     var mothers = from item in bl.getListMothers()
                                   select item.id;
-                  //  select_mother_conbobox.ItemsSource = null;
+
                     select_mother_conbobox.ItemsSource = mothers;
                     break;
                 case "Child":
@@ -69,7 +79,6 @@ namespace PLWPF
 
                     mothers = from item in bl.getListMothers()
                               select item.id;
-                   // select_mother_conbobox.ItemsSource = null;
                     select_mother_conbobox.ItemsSource = mothers;
 
 
@@ -104,8 +113,14 @@ namespace PLWPF
                 switch (select_item_combobox.SelectedItem.ToString())
                 {
                     case "Mother":
-                        first_grid_mother.DataContext = bl.getMother(int.Parse(select_mother_conbobox.SelectedItem.ToString()));
-                        first_grid_mother.Visibility = Visibility.Visible;
+                        if (select_mother_conbobox.SelectedItem != null)
+                        {
+                            first_grid_mother.DataContext = bl.getMother(int.Parse(select_mother_conbobox.SelectedItem.ToString()));
+                            first_grid_mother.Visibility = Visibility.Visible;
+                        }
+                            
+
+                        
 
                         break;
                     case "Child":
@@ -142,7 +157,14 @@ namespace PLWPF
 
 
 
+        private void delete_mother_button_Click(object sender, RoutedEventArgs e)
+        {
+            bl.deleteMother(int.Parse(select_mother_conbobox.SelectedItem.ToString()));
+            select_mother_conbobox.SelectedItem = null;
+            first_grid_mother.Visibility = Visibility.Collapsed;
+            select_mother_conbobox.ItemsSource = null;
 
+        }
 
 
 
@@ -233,5 +255,6 @@ namespace PLWPF
          //   second_grid_nanny.Visibility = Visibility.Collapsed;
         }
 
+       
     }
 }
