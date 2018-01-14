@@ -81,6 +81,12 @@ namespace PLWPF
 
             try
             {
+
+
+                if (idTextBox.Text.Count() != 9)
+                {
+                    errorMesseg2.Visibility = Visibility.Visible;
+                }
                 List<TimePicker> timeStart = new List<TimePicker>() { start1, startMondayTime, startTuesdayTime, startWednesdayTime, startThursdayTime, startFridayTime };
                 List<TimePicker> timeEnd = new List<TimePicker>() { end1, endMondayTime, endTuesdayTime, endWednesdayTime, endThursdayTime, endFridayTime };
                 List<CheckBox> check = new List<CheckBox>() { sundayCheckBox, mondayCheckBox, tuesdayCheckBox, wednesdayCheckBox, thursdayCheckBox, fridayCheckBox };

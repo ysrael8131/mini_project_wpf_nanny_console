@@ -22,6 +22,7 @@ namespace PLWPF
     {
         Nanny nanny;
         BL.IBL bl;
+        string[] str = new string[] { "1", "2", "3", "4", "5 and more" };
         public AddNanny()
         {
             InitializeComponent();
@@ -33,6 +34,8 @@ namespace PLWPF
                 age_child_minComboBox.Items.Add(i);
                 age_child_maxComboBox.Items.Add(i);
             }
+            
+            
              
 
             this.DataContext = nanny;
@@ -102,7 +105,7 @@ namespace PLWPF
                 bl.addNanny(nanny);
                 second_grid_nanny.Visibility = Visibility.Collapsed;
                 
-                //Thread.Sleep(3000);
+                 
                 // this.Close();
                
 
