@@ -105,7 +105,7 @@
 
             <Label Content="Elevators:"   HorizontalAlignment="Left" Margin="10" Grid.Row="6" VerticalAlignment="Center"/>
             <CheckBox x:Name="elevatorsCheckBox"   HorizontalAlignment="Center" IsChecked="{Binding elevators, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
-            <Button Content="update" Grid.Row="7" Margin="20"   BorderBrush="{StaticResource brushWatermarkBorder}" >
+            <Button x:Name="update_mother_button" Content="update" Grid.Row="7" Margin="20"   BorderBrush="{StaticResource brushWatermarkBorder}" Click="update_mother_button_Click" >
                 <Button.Style >
                     <Style>
                         <Style.Triggers>

@@ -26,17 +26,29 @@ namespace PLWPF
 
      //   private  ObservableCollection<BE.Mother> ff = new ObservableCollection<BE.Mother>();
         BL.IBL bl;
+
+        BE.Mother mother;
+        BE.Child child  ;
+        BE.Nanny nanny  ;
+
+
+
+        List<TimePicker> timeStart;
+        List<TimePicker> timeEnd ;
+        List<CheckBox> check ;
+
+
+
         public update()
         {
-
            
+
             bl = BL.FactoryBl.getBl();
 
             InitializeComponent();
-
-            BE.Mother mother = new BE.Mother();
-            BE.Child child = new BE.Child();
-            BE.Nanny nanny = new BE.Nanny();
+            timeStart = new List<TimePicker> { start1, startMondayTime, startTuesdayTime, startWednesdayTime, startThursdayTime, startFridayTime };
+            timeEnd = new List<TimePicker> { end1, endMondayTime, endTuesdayTime, endWednesdayTime, endThursdayTime, endFridayTime };
+            check = new List<CheckBox> { sundayCheckBox, mondayCheckBox, tuesdayCheckBox, wednesdayCheckBox, thursdayCheckBox, fridayCheckBox };
             List<string> lst = new List<string>
             {
                 "Mother",
@@ -47,19 +59,6 @@ namespace PLWPF
             var mothers = from item in bl.getListMothers()
                           select item.id;
             select_mother_conbobox.ItemsSource = mothers;
-
-          
-          
-          
-
-
-          
-          
-
-
-
-
-                                                                                                                                                                    
 
         }
 
@@ -84,9 +83,6 @@ namespace PLWPF
                                   select item.id;
 
                     select_mother_conbobox.ItemsSource = mothers;
-
-                  
-
                     break;
                 case "Child":
                     mother_stackpanel.Visibility = Visibility.Visible;
@@ -131,29 +127,30 @@ namespace PLWPF
                     case "Mother":
                         if (select_mother_conbobox.SelectedItem != null)
                         {
-                            first_grid_mother.DataContext = bl.getMother(int.Parse(select_mother_conbobox.SelectedItem.ToString()));
+                           // first_grid_mother.DataContext = bl.getMother(int.Parse(select_mother_conbobox.SelectedItem.ToString()));
+                            mother= bl.getMother(int.Parse(select_mother_conbobox.SelectedItem.ToString()));
+                            first_grid_mother.DataContext = mother;
 
-                            List<TimePicker> timeStart = new List<TimePicker>() { start1, startMondayTime, startTuesdayTime, startWednesdayTime, startThursdayTime, startFridayTime };
-                            List<TimePicker> timeEnd = new List<TimePicker>() { end1, endMondayTime, endTuesdayTime, endWednesdayTime, endThursdayTime, endFridayTime };
-                            List<CheckBox> check = new List<CheckBox>() { sundayCheckBox, mondayCheckBox, tuesdayCheckBox, wednesdayCheckBox, thursdayCheckBox, fridayCheckBox };
+                            //List<TimePicker> timeStart = new List<TimePicker> { start1, startMondayTime, startTuesdayTime, startWednesdayTime, startThursdayTime, startFridayTime };
+                            //List<TimePicker> timeEnd = new List<TimePicker> { end1, endMondayTime, endTuesdayTime, endWednesdayTime, endThursdayTime, endFridayTime };
+                            //List<CheckBox> check = new List<CheckBox> { sundayCheckBox, mondayCheckBox, tuesdayCheckBox, wednesdayCheckBox, thursdayCheckBox, fridayCheckBox };
                             for (int i = 0; i < 6; i++)
                             {
 
                                 if (check[i].IsChecked == true)
                                 {
-                                    
-                                    timeStart[i].Value= bl.getMother(int.Parse(select_mother_conbobox.SelectedItem.ToString())).arr[i].start; ;
-                                     //timeStart[i].Value= mother.arr[i].end ;
+                                    timeStart[i].Value = DateTime.Parse(mother.arr[i].start.ToString());
+                                    timeEnd[i].Value= DateTime.Parse(mother.arr[i].end.ToString());
+                                    //bl.getMother(int.Parse(select_mother_conbobox.SelectedItem.ToString())).arr[i].start= timeStart[i].Value.Value.TimeOfDay;
+                                    //timeStart[i].Value.Value.TimeOfDay = bl.getMother(int.Parse(select_mother_conbobox.SelectedItem.ToString())).arr[i].start; ;
+                                    //timeStart[i].Value= mother.arr[i].end ;
                                 }
 
-                                
+                                //mother.arr[i].start
                             }
                             first_grid_mother.Visibility = Visibility.Visible;
                         }
-                            
-
-                        
-
+                           
                         break;
                     case "Child":
                         var childs = from item in bl.getListChilds(bl.getMother(int.Parse(select_mother_conbobox.SelectedItem.ToString())))
@@ -197,6 +194,45 @@ namespace PLWPF
             select_mother_conbobox.ItemsSource = null;
 
         }
+
+        private void update_mother_button_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                if(check[i].IsChecked == true)
+                {
+                    mother.arr[i].start = timeStart[i].Value.Value.TimeOfDay;
+                    mother.arr[i].end = timeEnd[i].Value.Value.TimeOfDay;
+                }
+                idTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+                firstNameTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+                lastNameTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+                addresTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+                phoneNumberTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+                searchAddresTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+
+                elevatorsCheckBox.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+                for (int j = 0; j < 6; j++)
+                {
+                    check[j].GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+                }
+                bl.updateMother(mother);
+
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -286,6 +322,8 @@ namespace PLWPF
             first_grid_nanny.Visibility = Visibility.Visible;
          //   second_grid_nanny.Visibility = Visibility.Collapsed;
         }
+
+
 
        
     }
