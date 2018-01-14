@@ -224,7 +224,7 @@
             <Label Content="Age of the child" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="2"  VerticalAlignment="Top" />
             <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" >
                 <Label Content="from" HorizontalAlignment="Center" Grid.Column="0" Margin="10,10,1,1" Grid.Row="2"  VerticalAlignment="Center" />
-                <ComboBox x:Name="from_years" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Margin="10,10,2,2" Foreground="Blue" FontFamily="Cooper Black" MouseEnter="years_MouseEnter"  />
+                <ComboBox x:Name="from_years" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Margin="10,10,2,2" Foreground="Blue" FontFamily="Cooper Black" MouseEnter="Years_MouseEnter"  />
                 <ComboBox x:Name="from_month" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Margin="10,10,2,2" Foreground="Blue" FontFamily="Cooper Black" MouseEnter="month_MouseEnter" />
                 <ComboBox x:Name="age_child_minComboBox" Visibility="Collapsed" HorizontalAlignment="Right" Height="Auto" ItemsSource="{Binding}" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Width="50" Margin="20" Foreground="Blue" FontFamily="Cooper Black" >
                     <ComboBox.ItemsPanel>
@@ -234,7 +234,7 @@
                     </ComboBox.ItemsPanel>
                 </ComboBox>
                 <Label Content="to" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2"  VerticalAlignment="Center" Margin="70,10,2,2"/>
-                <ComboBox x:Name="to_years" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Margin="10,10,2,2" Foreground="Blue" FontFamily="Cooper Black" MouseEnter="years_MouseEnter"  />
+                <ComboBox x:Name="to_years" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Margin="10,10,2,2" Foreground="Blue" FontFamily="Cooper Black" MouseEnter="Years_MouseEnter"  />
                 <ComboBox x:Name="to_month" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Margin="10,10,2,2" Foreground="Blue" FontFamily="Cooper Black" MouseEnter="month_MouseEnter" />
 
                 <ComboBox x:Name="age_child_maxComboBox" Visibility="Collapsed"  HorizontalAlignment="Center" Height="Auto" ItemsSource="{Binding}" Grid.Row="2" VerticalAlignment="Center" Width="50" Grid.Column="1">
