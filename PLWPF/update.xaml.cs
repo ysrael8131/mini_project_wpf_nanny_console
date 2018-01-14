@@ -12,7 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using Xceed.Wpf.Toolkit;
 namespace PLWPF
 {
 
@@ -48,6 +48,19 @@ namespace PLWPF
                           select item.id;
             select_mother_conbobox.ItemsSource = mothers;
 
+          
+          
+          
+
+
+          
+          
+
+
+
+
+                                                                                                                                                                    
+
         }
 
         private void select_item_combobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -71,6 +84,9 @@ namespace PLWPF
                                   select item.id;
 
                     select_mother_conbobox.ItemsSource = mothers;
+
+                  
+
                     break;
                 case "Child":
                     mother_stackpanel.Visibility = Visibility.Visible;
@@ -116,6 +132,22 @@ namespace PLWPF
                         if (select_mother_conbobox.SelectedItem != null)
                         {
                             first_grid_mother.DataContext = bl.getMother(int.Parse(select_mother_conbobox.SelectedItem.ToString()));
+
+                            List<TimePicker> timeStart = new List<TimePicker>() { start1, startMondayTime, startTuesdayTime, startWednesdayTime, startThursdayTime, startFridayTime };
+                            List<TimePicker> timeEnd = new List<TimePicker>() { end1, endMondayTime, endTuesdayTime, endWednesdayTime, endThursdayTime, endFridayTime };
+                            List<CheckBox> check = new List<CheckBox>() { sundayCheckBox, mondayCheckBox, tuesdayCheckBox, wednesdayCheckBox, thursdayCheckBox, fridayCheckBox };
+                            for (int i = 0; i < 6; i++)
+                            {
+
+                                if (check[i].IsChecked == true)
+                                {
+                                    
+                                    timeStart[i].Value= bl.getMother(int.Parse(select_mother_conbobox.SelectedItem.ToString())).arr[i].start; ;
+                                     //timeStart[i].Value= mother.arr[i].end ;
+                                }
+
+                                
+                            }
                             first_grid_mother.Visibility = Visibility.Visible;
                         }
                             
