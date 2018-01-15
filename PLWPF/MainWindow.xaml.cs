@@ -25,15 +25,17 @@ namespace PLWPF
         public MainWindow()
         {
             InitializeComponent();
+            //string[] a = new string[] { "Add child", "Remove mother", "Update mother" };
+            //list_box_mother.ItemsSource = a;
             bl = BL.FactoryBl.getBl();
-            Mother a1= new Mother();
+            Mother a1 = new Mother();
             a1.id = 123456789;
             a1.FirstName = "sara";
             a1.LastName = "cohen";
             a1.PhoneNumber = "0504145678";
             a1.arr[1].day_work = true;
-            a1.arr[1].start= TimeSpan.Parse("8:30");
-            a1.arr[1].end= TimeSpan.Parse("10:30");
+            a1.arr[1].start = TimeSpan.Parse("8:30");
+            a1.arr[1].end = TimeSpan.Parse("10:30");
 
             Mother a2 = new Mother();
 
@@ -55,11 +57,11 @@ namespace PLWPF
             Child a3 = new Child();
             a3.id = 999999999;
             a3.MotherID = 111111111;
-            a3.birthDay=DateTime.Parse("12.01.2000");
+            a3.birthDay = DateTime.Parse("12.01.2000");
             a3.FirstName = "simen";
 
             Child a4 = new Child();
-            
+
             a4.id = 888888888;
             a4.MotherID = 111111111;
             a4.birthDay = DateTime.Parse("14.02.2011");
@@ -83,7 +85,7 @@ namespace PLWPF
             bl.addChild(a6);
 
             Nanny a7 = new Nanny();
-            a7.FirstName="chya";
+            a7.FirstName = "chya";
             a7.LastName = "cakz";
             a7.id = 123123123;
             a7.maxChilds = 3;
@@ -115,12 +117,7 @@ namespace PLWPF
 
             bl.addNanny(a7);
             bl.addNanny(a8);
-
-
-
-
         }
-
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -145,7 +142,8 @@ namespace PLWPF
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-         
+            Window w = new update();
+            w.Show();
         }
 
 
