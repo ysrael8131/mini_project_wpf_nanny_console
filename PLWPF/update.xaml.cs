@@ -17,35 +17,37 @@ namespace PLWPF
 {
 
 
-   
+
     /// <summary>
     /// Interaction logic for update.xaml
     /// </summary>
     public partial class update : Window
     {
 
-     //   private  ObservableCollection<BE.Mother> ff = new ObservableCollection<BE.Mother>();
+        //   private  ObservableCollection<BE.Mother> ff = new ObservableCollection<BE.Mother>();
         BL.IBL bl;
 
         BE.Mother mother;
-        BE.Child child  ;
-        BE.Nanny nanny  ;
-
+        BE.Child child;
+        BE.Nanny nanny;
 
 
         List<TimePicker> timeStart;
-        List<TimePicker> timeEnd ;
-        List<CheckBox> check ;
+        List<TimePicker> timeEnd;
+        List<CheckBox> check;
 
-
+        List<TimePicker> timeStart_n;
+        List<TimePicker> timeEnd_n;
+        List<CheckBox> check_n;
 
         public update()
         {
-           
-
             bl = BL.FactoryBl.getBl();
-
             InitializeComponent();
+            timeStart_n = new List<TimePicker> { start1_n, startMondayTime_n, startTuesdayTime_n, startWednesdayTime_n, startThursdayTime_n, startFridayTime_n };
+            timeEnd_n = new List<TimePicker> { end1_n, endMondayTime_n, endTuesdayTime_n, endWednesdayTime_n, endThursdayTime_n, endFridayTime_n };
+            check_n = new List<CheckBox> { sundayCheckBox_n, mondayCheckBox_n, tuesdayCheckBox_n, wednesdayCheckBox_n, thursdayCheckBox_n, fridayCheckBox_n };
+
             timeStart = new List<TimePicker> { start1, startMondayTime, startTuesdayTime, startWednesdayTime, startThursdayTime, startFridayTime };
             timeEnd = new List<TimePicker> { end1, endMondayTime, endTuesdayTime, endWednesdayTime, endThursdayTime, endFridayTime };
             check = new List<CheckBox> { sundayCheckBox, mondayCheckBox, tuesdayCheckBox, wednesdayCheckBox, thursdayCheckBox, fridayCheckBox };
@@ -56,62 +58,40 @@ namespace PLWPF
                 "Nanny"
             };
             select_item_combobox.ItemsSource = lst;
-            var mothers = from item in bl.getListMothers()
-                          select item.id;
-            select_mother_conbobox.ItemsSource = mothers;
+            //var mothers = from item in bl.getListMothers()
+            //              select item.id;
+            //select_mother_conbobox.ItemsSource = mothers;
+
 
         }
+
 
         private void select_item_combobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             select_mother_conbobox.ItemsSource = null;
             select_child_conbobox.ItemsSource = null;
             select_nanny_conbobox.ItemsSource = null;
-
             switch (select_item_combobox.SelectedItem.ToString())
             {
                 case "Mother":
+                    vizibilityes();
                     mother_stackpanel.Visibility = Visibility.Visible;
-                    child_stackpanel.Visibility = Visibility.Collapsed;
-                    nanny_stackpanel.Visibility = Visibility.Collapsed;
-
-                    first_grid_mother.Visibility = Visibility.Collapsed;
-                    child_grid.Visibility = Visibility.Collapsed;
-                    first_grid_nanny.Visibility = Visibility.Collapsed;
-
                     var mothers = from item in bl.getListMothers()
                                   select item.id;
-
                     select_mother_conbobox.ItemsSource = mothers;
                     break;
                 case "Child":
+                    vizibilityes();
                     mother_stackpanel.Visibility = Visibility.Visible;
                     child_stackpanel.Visibility = Visibility.Visible;
-                    nanny_stackpanel.Visibility = Visibility.Collapsed;
-
                     mothers = from item in bl.getListMothers()
                               select item.id;
                     select_mother_conbobox.ItemsSource = mothers;
-
-
-                    child_grid.Visibility = Visibility.Collapsed;
-                    first_grid_mother.Visibility = Visibility.Collapsed;
-                    first_grid_nanny.Visibility = Visibility.Collapsed;
-
                     break;
                 case "Nanny":
+                    vizibilityes();
                     nanny_stackpanel.Visibility = Visibility.Visible;
-                    child_stackpanel.Visibility = Visibility.Collapsed;
-                    mother_stackpanel.Visibility = Visibility.Collapsed;
-
-                    first_grid_mother.Visibility = Visibility.Collapsed;
-                    child_grid.Visibility = Visibility.Collapsed;
-                    first_grid_nanny.Visibility = Visibility.Collapsed;
-
-                    var nannys = from item in bl.getListNannys()
-                                 select item.id;
-                   // select_nanny_conbobox.ItemsSource = null;
-                    select_nanny_conbobox.ItemsSource = nannys;
+                    select_nanny_conbobox.ItemsSource = bl.getListNannys();
                     break;
                 default:
                     break;
@@ -120,6 +100,11 @@ namespace PLWPF
 
         private void select_mother_conbobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            mother = null;
+            cleartimepicker(timeStart);
+            cleartimepicker(timeEnd);
+
+
             if (select_mother_conbobox.ItemsSource != null)
             {
                 switch (select_item_combobox.SelectedItem.ToString())
@@ -127,30 +112,26 @@ namespace PLWPF
                     case "Mother":
                         if (select_mother_conbobox.SelectedItem != null)
                         {
-                           // first_grid_mother.DataContext = bl.getMother(int.Parse(select_mother_conbobox.SelectedItem.ToString()));
-                            mother= bl.getMother(int.Parse(select_mother_conbobox.SelectedItem.ToString()));
-                            first_grid_mother.DataContext = mother;
+                            mother = bl.getMother(int.Parse(select_mother_conbobox.SelectedItem.ToString()));
+                            mother_grid.DataContext = mother;
 
-                            //List<TimePicker> timeStart = new List<TimePicker> { start1, startMondayTime, startTuesdayTime, startWednesdayTime, startThursdayTime, startFridayTime };
-                            //List<TimePicker> timeEnd = new List<TimePicker> { end1, endMondayTime, endTuesdayTime, endWednesdayTime, endThursdayTime, endFridayTime };
-                            //List<CheckBox> check = new List<CheckBox> { sundayCheckBox, mondayCheckBox, tuesdayCheckBox, wednesdayCheckBox, thursdayCheckBox, fridayCheckBox };
+                           
                             for (int i = 0; i < 6; i++)
                             {
 
                                 if (check[i].IsChecked == true)
                                 {
                                     timeStart[i].Value = DateTime.Parse(mother.arr[i].start.ToString());
-                                    timeEnd[i].Value= DateTime.Parse(mother.arr[i].end.ToString());
-                                    //bl.getMother(int.Parse(select_mother_conbobox.SelectedItem.ToString())).arr[i].start= timeStart[i].Value.Value.TimeOfDay;
-                                    //timeStart[i].Value.Value.TimeOfDay = bl.getMother(int.Parse(select_mother_conbobox.SelectedItem.ToString())).arr[i].start; ;
-                                    //timeStart[i].Value= mother.arr[i].end ;
+                                    timeEnd[i].Value = DateTime.Parse(mother.arr[i].end.ToString());
                                 }
 
-                                //mother.arr[i].start
                             }
-                            first_grid_mother.Visibility = Visibility.Visible;
+
+                            vizibilityes();
+                            mother_stackpanel.Visibility = Visibility.Visible;
+                            options_buttons.Visibility = Visibility.Visible;
                         }
-                           
+
                         break;
                     case "Child":
                         var childs = from item in bl.getListChilds(bl.getMother(int.Parse(select_mother_conbobox.SelectedItem.ToString())))
@@ -164,73 +145,181 @@ namespace PLWPF
             }
         }
 
-        private void select_child_conbobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (select_mother_conbobox.ItemsSource!=null)
-            {
-                child_grid.DataContext = bl.getChild(int.Parse(select_child_conbobox.SelectedItem.ToString()));
-
-            }
-            child_grid.Visibility = Visibility.Visible;
-            first_grid_mother.Visibility = Visibility.Collapsed;
-        }
-
-
-
         private void select_nanny_conbobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            first_grid_nanny.Visibility = Visibility.Visible;
-            first_grid_mother.Visibility = Visibility.Collapsed;
-            child_grid.Visibility = Visibility.Collapsed;
+            nanny = null;
+            cleartimepicker(timeStart_n);
+            cleartimepicker(timeEnd_n);
+            if (select_nanny_conbobox.ItemsSource != null)
+            {
+                nanny = select_nanny_conbobox.SelectedItem as BE.Nanny;
+                nanny_grid.DataContext = nanny;
+
+                for (int i = 0; i < 6; i++)
+                {
+
+                    if (check_n[i].IsChecked == true)
+                    {
+                        timeStart_n[i].Value = DateTime.Parse(nanny.work[i].start.ToString());
+                        timeEnd_n[i].Value = DateTime.Parse(nanny.work[i].end.ToString());
+
+                    }
+                }
+                vizibilityes();
+                nanny_stackpanel.Visibility = Visibility.Visible;
+                options_buttons.Visibility = Visibility.Visible;
+            }
         }
-
-
-
-        private void delete_mother_button_Click(object sender, RoutedEventArgs e)
+        private void cleartimepicker(List<TimePicker> lst)
         {
-            bl.deleteMother(int.Parse(select_mother_conbobox.SelectedItem.ToString()));
-            select_mother_conbobox.SelectedItem = null;
-            first_grid_mother.Visibility = Visibility.Collapsed;
-            select_mother_conbobox.ItemsSource = null;
+            foreach (var item in lst)
+            {
+                item.Value = null;
+            }
+        }
+        private void select_child_conbobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            child = null;
+            vizibilityes();
+            mother_stackpanel.Visibility = Visibility.Visible;
+            child_stackpanel.Visibility = Visibility.Visible;
+            if (select_child_conbobox.ItemsSource != null)
+            {
+                child = bl.getChild(int.Parse(select_child_conbobox.SelectedItem.ToString()));
+                child_grid.DataContext = child;
+
+                options_buttons.Visibility = Visibility.Visible;
+
+
+            }
 
         }
 
+
+
+
+
+        private void press_to_update_Click(object sender, RoutedEventArgs e)
+        {
+            switch (select_item_combobox.SelectedItem.ToString())
+            {
+                case "Mother":
+
+                    mother_grid.Visibility = Visibility.Visible;
+                    first_grid_mother.Visibility = Visibility.Visible;
+                    break;
+                case "Child":
+                    child_grid.Visibility = Visibility.Visible;
+                    mother_grid.Visibility = Visibility.Collapsed;
+                    break;
+                case "Nanny":
+                    nanny_grid.Visibility = Visibility.Visible;
+                    first_grid_nanny.Visibility = Visibility.Visible;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void press_to_delete_Click(object sender, RoutedEventArgs e)
+        {
+            switch (select_item_combobox.SelectedItem.ToString())
+            {
+                case "Mother":
+                    bl.deleteMother(int.Parse(select_mother_conbobox.SelectedItem.ToString()));
+                    System.Windows.MessageBox.Show(mother.id.ToString(), "This mother has been deleted");
+                    this.Close();
+                    break;
+                case "Child":
+                    bl.deleteChild(int.Parse(select_child_conbobox.SelectedItem.ToString()));
+                    System.Windows.MessageBox.Show(child.id.ToString(), "This child has been deleted");
+                    this.Close();
+                    break;
+                case "Nanny":
+
+                    break;
+                default:
+                    break;
+            }
+        }
+
+
+
+        private void vizibilityes()
+        {
+            mother_stackpanel.Visibility = Visibility.Collapsed;
+            child_stackpanel.Visibility = Visibility.Collapsed;
+            nanny_stackpanel.Visibility = Visibility.Collapsed;
+            options_buttons.Visibility = Visibility.Collapsed;
+
+
+            mother_grid.Visibility = Visibility.Collapsed;
+            first_grid_mother.Visibility = Visibility.Collapsed;
+            second_grid_mother.Visibility = Visibility.Collapsed;
+            child_grid.Visibility = Visibility.Collapsed;
+            first_grid_nanny.Visibility = Visibility.Collapsed;
+        }
         private void update_mother_button_Click(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < 6; i++)
             {
-                if(check[i].IsChecked == true)
+                if (check[i].IsChecked == true)
                 {
                     mother.arr[i].start = timeStart[i].Value.Value.TimeOfDay;
                     mother.arr[i].end = timeEnd[i].Value.Value.TimeOfDay;
                 }
-                idTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-                firstNameTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-                lastNameTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-                addresTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-                phoneNumberTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-                searchAddresTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-
-                elevatorsCheckBox.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-                for (int j = 0; j < 6; j++)
-                {
-                    check[j].GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-                }
-                bl.updateMother(mother);
-
             }
+            idTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            firstNameTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            lastNameTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            addresTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            phoneNumberTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            searchAddresTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+
+            elevatorsCheckBox.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+            for (int j = 0; j < 6; j++)
+            {
+                check[j].GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+            }
+            bl.updateMother(mother);
+            System.Windows.MessageBox.Show(mother.id.ToString(), "This mother has been updated");
+            this.Close();
+        }
+
+        private void next_mother_Click(object sender, RoutedEventArgs e)
+        {
+            first_grid_mother.Visibility = Visibility.Collapsed;
+            second_grid_mother.Visibility = Visibility.Visible;
+        }
+
+        private void update_child_button_Click(object sender, RoutedEventArgs e)
+        {
+            idTextBox_c.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            idTextBoxMother.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            birthDayDatePicker.GetBindingExpression(DatePicker.SelectedDateProperty).UpdateSource();
+            firstNameTextBox_c.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            specialNeedsCheckBox.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+            detailsSpecialNeedsTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            bl.updateChild(child);
+            System.Windows.MessageBox.Show(child.id.ToString(), "This child has been updated");
+            this.Close();
+        }
+
+        private void next_nanny_Click(object sender, RoutedEventArgs e)
+        {
+            first_grid_nanny.Visibility = Visibility.Collapsed;
+            second_grid_nanny.Visibility = Visibility.Visible;
         }
 
 
 
 
 
-
-
-
-
-
-
+        /// <summary>
+        /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
 
 
@@ -248,7 +337,6 @@ namespace PLWPF
 
         private void textChange(object sender, TextChangedEventArgs e)
         {
-            //TextBox text = sender as TextBox;
 
             errorMesseg1.Visibility = Visibility.Collapsed;
             errorMesseg2.Visibility = Visibility.Collapsed;
@@ -307,24 +395,109 @@ namespace PLWPF
             }
         }
 
-     
+
 
 
 
         private void Button_Click_Next(object sender, RoutedEventArgs e)
         {
             first_grid_nanny.Visibility = Visibility.Collapsed;
-           // second_grid_nanny.Visibility = Visibility.Visible;
+            // second_grid_nanny.Visibility = Visibility.Visible;
         }
 
         private void back_button_Click(object sender, RoutedEventArgs e)
         {
             first_grid_nanny.Visibility = Visibility.Visible;
-         //   second_grid_nanny.Visibility = Visibility.Collapsed;
+            //   second_grid_nanny.Visibility = Visibility.Collapsed;
         }
 
 
 
-       
+        private void add_nanny_button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+
+
+
+
+                List<TimePicker> timeStart = new List<TimePicker>() { start1, startMondayTime, startTuesdayTime, startWednesdayTime, startThursdayTime, startFridayTime };
+                List<TimePicker> timeEnd = new List<TimePicker>() { end1, endMondayTime, endTuesdayTime, endWednesdayTime, endThursdayTime, endFridayTime };
+                List<CheckBox> check = new List<CheckBox>() { sundayCheckBox, mondayCheckBox, tuesdayCheckBox, wednesdayCheckBox, thursdayCheckBox, fridayCheckBox };
+                for (int i = 0; i < 6; i++)
+                {
+                    //if (check[i].IsChecked == true && (timeStart[i].Value == null || timeEnd[i].Value == null))
+                    //{
+                    //errorMessegHours.Visibility = Visibility.Visible;
+                    //return;
+                    //}
+                    //if (check[i].IsChecked == true && timeStart[i].Value.Value.TimeOfDay > timeEnd[i].Value.Value.TimeOfDay)
+                    //{
+                    //errorMessegTime.Visibility = Visibility.Visible;
+                    //return;
+                    //}
+                    if (check[i].IsChecked == true)
+                    {
+                        nanny.work[i].start = timeStart[i].Value.Value.TimeOfDay;
+                        nanny.work[i].end = timeStart[i].Value.Value.TimeOfDay;
+                    }
+                }
+
+                bl.addNanny(nanny);
+                second_grid_nanny.Visibility = Visibility.Collapsed;
+
+
+                // this.Close();
+
+
+            }
+            catch (Exception a)
+            {
+
+                System.Windows.MessageBox.Show(a.Message);
+            }
+
+        }
+
+        private void textChanged(object sender, TextChangedEventArgs e)
+        {
+            errorMesseg1.Visibility = Visibility.Collapsed;
+            errorMesseg2.Visibility = Visibility.Collapsed;
+            errorMesseg3.Visibility = Visibility.Collapsed;
+
+
+            long x;
+            if (!long.TryParse(idTextBox.Text, out x) && idTextBox.Text != "")
+            {
+
+                errorMesseg1.Visibility = Visibility.Visible;
+
+                return;
+            }
+            if (idTextBox.Text != "" && long.Parse(idTextBox.Text) < 0)
+            {
+                errorMesseg3.Visibility = Visibility.Visible;
+            }
+
+        }
+
+
+        private void Years_MouseEnter(object sender, MouseEventArgs e)
+        {
+            ComboBox com = sender as ComboBox;
+            com.ToolTip = "choosze years";
+        }
+
+        private void month_MouseEnter(object sender, MouseEventArgs e)
+        {
+            ComboBox com = sender as ComboBox;
+            com.ToolTip = "choose months";
+
+        }
+
+
     }
 }
+
+

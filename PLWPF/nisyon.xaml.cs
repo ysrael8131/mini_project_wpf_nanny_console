@@ -23,9 +23,7 @@ namespace PLWPF
         public nisyon()
         {
             InitializeComponent();
-            mother = new BE.Mother();
-            idTextBox.Text = "35435";
-            DataContext = mother;
+           
           
         }
 
