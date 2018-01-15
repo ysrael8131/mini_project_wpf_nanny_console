@@ -22,18 +22,28 @@ namespace PLWPF
     {
         Nanny nanny;
         BL.IBL bl;
-        string[] str = new string[] { "1", "2", "3", "4", "5 and more" };
+        string[] str;
         public AddNanny()
         {
             InitializeComponent();
             bl = BL.FactoryBl.getBl();
             nanny = new Nanny();
-            
-            for (int i = 1; i < 49; i++)
+            str= new  string[] { "1", "2", "3", "4", "5+ " };
+
+            for (int i = 0; i < 12; i++)
             {
-                age_child_minComboBox.Items.Add(i);
-                age_child_maxComboBox.Items.Add(i);
+                if(i<4)
+                {
+                    from_years.Items.Add(i);
+                    to_years.Items.Add(i);
+                }
+                if (i < 11 && i > 0)
+                    maxChildsComboBox.Items.Add(i);
+
+                from_month.Items.Add(i);
+                to_month.Items.Add(i);
             }
+            years_of_experienceComboBox.ItemsSource = str;
             
             
              
@@ -95,10 +105,11 @@ namespace PLWPF
                     if (check[i].IsChecked == true)
                     {
                         nanny.work[i].start = timeStart[i].Value.Value.TimeOfDay;
-                        nanny.work[i].end = timeStart[i].Value.Value.TimeOfDay;
+                        nanny.work[i].end = timeEnd[i].Value.Value.TimeOfDay;
                     }
                 }
-
+                nanny.age_child_min = int.Parse(from_years.SelectedItem.ToString()) * 12 + int.Parse(from_month.SelectedItem.ToString());
+                nanny.age_child_max= int.Parse(to_years.SelectedItem.ToString()) * 12 + int.Parse(to_month.SelectedItem.ToString());
                 bl.addNanny(nanny);
                 second_grid_nanny.Visibility = Visibility.Collapsed;
                 
@@ -141,7 +152,7 @@ namespace PLWPF
         private void Years_MouseEnter(object sender, MouseEventArgs e)
         {
             ComboBox com = sender as ComboBox;
-            com.ToolTip = "choosze years";
+            com.ToolTip = "choose years";
         }
 
         private void month_MouseEnter(object sender, MouseEventArgs e)
@@ -149,6 +160,20 @@ namespace PLWPF
             ComboBox com = sender as ComboBox;
             com.ToolTip = "choose months";
 
+        }
+
+        private void selectError(object sender, SelectionChangedEventArgs e)
+        {
+             errorMesseg4.Visibility = Visibility.Collapsed;
+            if(int.Parse(to_years.SelectedItem.ToString())< int.Parse(from_years.SelectedItem.ToString())
+                || (int.Parse(to_years.SelectedItem.ToString()) == int.Parse(from_years.SelectedItem.ToString())&&
+                int.Parse(to_month.SelectedItem.ToString()) < int.Parse(from_month.SelectedItem.ToString())))
+            {
+                errorMesseg4.Visibility = Visibility.Visible;
+            }
+
+           
+                    
         }
     }
 }

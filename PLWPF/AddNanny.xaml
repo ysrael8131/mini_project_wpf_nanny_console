@@ -19,6 +19,26 @@
             <Setter Property="HorizontalAlignment" Value="Left"/>
 
         </Style>
+        <Style x:Key="commoBoxStyle" TargetType="ComboBox">
+            <Setter Property="Foreground"  Value="Indigo"/>
+            <Setter Property="FontFamily"  Value="Cooper Black"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="BorderThickness" Value="0.1"/>
+            <Setter Property="BorderBrush" Value="Indigo"/>
+
+        </Style>
+        <Style x:Key="labelStyle" TargetType="Label">
+            <Setter Property="FontFamily" Value="Impact"/>
+            <Setter Property="Foreground" Value="Olive"/>
+            
+
+
+        </Style>
+        <Style x:Key="checkBoxStyle" TargetType="CheckBox">
+            
+            <Setter Property="BorderBrush" Value="Indigo"/>
+
+        </Style>
     </Window.Resources>
     <Grid Background="AliceBlue">
         <Grid.ColumnDefinitions>
@@ -150,7 +170,7 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <TextBlock Margin="134,18,134,17.4" Text="more details" Grid.ColumnSpan="2" TextAlignment="Center" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <TextBlock Margin="134,18,134,17.4" Text="more details" Grid.ColumnSpan="2" TextAlignment="Center" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Impact" Foreground="SaddleBrown"/>
 
             <Grid x:Name="hours_grid" Visibility="Visible"  Grid.Row="1" 
               Margin="15,14.6,15,15.4" Background="{StaticResource BackgroundGrid}" DataContext="{StaticResource nannyViewSource}" Grid.ColumnSpan="2"  >
@@ -174,19 +194,19 @@
                     <ColumnDefinition Width="1.2*"/>
                 </Grid.ColumnDefinitions>
 
-                <Label VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="6" Margin="59,4,59,3.333" HorizontalAlignment="Center" Content="Choose the days and the hours you need a nanny:" />
+                <Label VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="6" Margin="59,4,59,3.333" HorizontalAlignment="Center" Content="Choose the days and the hours you need a nanny:" Style="{StaticResource labelStyle}" FontSize="14" />
 
-                <Label VerticalAlignment="Center" Grid.Row="2"  HorizontalAlignment="Left" Content="Sunday:"/>
-                <CheckBox x:Name="sundayCheckBox" VerticalAlignment="Center" Grid.Row="2"  IsChecked="{Binding work[0].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Grid.Column="1" />
+                <Label VerticalAlignment="Center" Grid.Row="2"  HorizontalAlignment="Left" Content="Sunday:" />
+                <CheckBox x:Name="sundayCheckBox" VerticalAlignment="Center" Grid.Row="2"  IsChecked="{Binding work[0].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Grid.Column="1" Style="{StaticResource checkBoxStyle}" />
                 <Label VerticalAlignment="Center" Grid.Row="2" Grid.Column="2"  HorizontalAlignment="Right" Content="Start:"/>
-                <dg:TimePicker x:Name="start1" VerticalAlignment="Center" Grid.Row="2" HorizontalAlignment="Center" Grid.Column="3" IsEnabled="{Binding ElementName=sundayCheckBox, Path=IsChecked}" />
+                <dg:TimePicker x:Name="start1" VerticalAlignment="Center" Grid.Row="2" HorizontalAlignment="Center" Grid.Column="3" IsEnabled="{Binding ElementName=sundayCheckBox, Path=IsChecked}" FontFamily="Cooper Black" Foreground="Indigo"  BorderBrush="Indigo"/>
                 <Label VerticalAlignment="Center" Grid.Row="2" Grid.Column="4" HorizontalAlignment="Right" Content="End:"/>
                 <dg:TimePicker x:Name="end1" VerticalAlignment="Center" Grid.Row="2" HorizontalAlignment="Center" Grid.Column="5" IsEnabled="{Binding ElementName=sundayCheckBox, Path=IsChecked}"/>
 
                 <Label VerticalAlignment="Center" Grid.Row="3" HorizontalAlignment="Left" Content="Monday:"/>
                 <Label VerticalAlignment="Center" Grid.Row="3" Grid.Column="2"  HorizontalAlignment="Right" Content="Start:"/>
                 <Label VerticalAlignment="Center" Grid.Row="3" Grid.Column="4" HorizontalAlignment="Right" Content="End:"/>
-                <CheckBox x:Name="mondayCheckBox" VerticalAlignment="Center" Grid.Row="3" IsChecked="{Binding arr[1].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Grid.Column="1" />
+                <CheckBox x:Name="mondayCheckBox" VerticalAlignment="Center" Grid.Row="3" IsChecked="{Binding work[1].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Grid.Column="1" />
                 <dg:TimePicker x:Name="startMondayTime" VerticalAlignment="Center" Grid.Row="3"  HorizontalAlignment="Center" Grid.Column="3" IsEnabled="{Binding ElementName=mondayCheckBox, Path=IsChecked}" />
                 <dg:TimePicker x:Name="endMondayTime" VerticalAlignment="Center" Grid.Row="3" HorizontalAlignment="Center" Grid.Column="5" IsEnabled="{Binding ElementName=mondayCheckBox, Path=IsChecked}"/>
 
@@ -194,38 +214,38 @@
                 <Label VerticalAlignment="Center" Grid.Row="4" HorizontalAlignment="Left" Content="Tuesday:"/>
                 <Label VerticalAlignment="Center" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Right" Content="Start:"/>
                 <Label VerticalAlignment="Center" Grid.Row="4" Grid.Column="4" HorizontalAlignment="Right" Content="End:"/>
-                <CheckBox x:Name="tuesdayCheckBox" VerticalAlignment="Center" Grid.Row="4" IsChecked="{Binding arr[2].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Grid.Column="1"/>
+                <CheckBox x:Name="tuesdayCheckBox" VerticalAlignment="Center" Grid.Row="4" IsChecked="{Binding work[2].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Grid.Column="1"/>
                 <dg:TimePicker x:Name="startTuesdayTime" VerticalAlignment="Center" Grid.Row="4" HorizontalAlignment="Center" Grid.Column="3" IsEnabled="{Binding ElementName=tuesdayCheckBox, Path=IsChecked}"/>
                 <dg:TimePicker x:Name="endTuesdayTime" VerticalAlignment="Center" Grid.Row="4" HorizontalAlignment="Center" Grid.Column="5" IsEnabled="{Binding ElementName=tuesdayCheckBox, Path=IsChecked}"/>
 
                 <Label VerticalAlignment="Center" Grid.Row="5" HorizontalAlignment="Left" Content="Wednesday:"/>
                 <Label VerticalAlignment="Center" Grid.Row="5" Grid.Column="2" HorizontalAlignment="Right" Content="Start:"/>
                 <Label VerticalAlignment="Center" Grid.Row="5" Grid.Column="4" HorizontalAlignment="Right" Content="End:"/>
-                <CheckBox x:Name="wednesdayCheckBox" VerticalAlignment="Center" Grid.Row="5" IsChecked="{Binding arr[3].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Grid.Column="1" />
+                <CheckBox x:Name="wednesdayCheckBox" VerticalAlignment="Center" Grid.Row="5" IsChecked="{Binding work[3].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Grid.Column="1" />
                 <dg:TimePicker x:Name="startWednesdayTime" VerticalAlignment="Center" Grid.Row="5" HorizontalAlignment="Center" Grid.Column="3" IsEnabled="{Binding ElementName=wednesdayCheckBox, Path=IsChecked}" />
                 <dg:TimePicker x:Name="endWednesdayTime" VerticalAlignment="Center" Grid.Row="5"  HorizontalAlignment="Center" Grid.Column="5" IsEnabled="{Binding ElementName=wednesdayCheckBox, Path=IsChecked}"/>
 
                 <Label VerticalAlignment="Center" Grid.Row="6" HorizontalAlignment="Left" Content="Thursday:"/>
                 <Label VerticalAlignment="Center" Grid.Row="6" Grid.Column="2" HorizontalAlignment="Right" Content="Start:"/>
                 <Label VerticalAlignment="Center" Grid.Row="6" Grid.Column="4" HorizontalAlignment="Right" Content="End:"/>
-                <CheckBox x:Name="thursdayCheckBox" VerticalAlignment="Center" Grid.Row="6" IsChecked="{Binding arr[4].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Grid.Column="1" />
+                <CheckBox x:Name="thursdayCheckBox" VerticalAlignment="Center" Grid.Row="6" IsChecked="{Binding work[4].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Grid.Column="1" />
                 <dg:TimePicker x:Name="startThursdayTime" VerticalAlignment="Center" Grid.Row="6" HorizontalAlignment="Center" Grid.Column="3" IsEnabled="{Binding ElementName=thursdayCheckBox, Path=IsChecked}" />
                 <dg:TimePicker x:Name="endThursdayTime" VerticalAlignment="Center" Grid.Row="6" HorizontalAlignment="Center" Grid.Column="5" IsEnabled="{Binding ElementName=thursdayCheckBox, Path=IsChecked}"/>
 
                 <Label VerticalAlignment="Center" Grid.Row="7" HorizontalAlignment="Left" Content="Friday:"/>
                 <Label VerticalAlignment="Center" Grid.Row="7" Grid.Column="2" HorizontalAlignment="Right" Content="Start:"/>
                 <Label VerticalAlignment="Center" Grid.Row="7" Grid.Column="4" HorizontalAlignment="Right" Content="End:"/>
-                <CheckBox x:Name="fridayCheckBox" VerticalAlignment="Center" Grid.Row="7" IsChecked="{Binding arr[5].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Grid.Column="1" />
+                <CheckBox x:Name="fridayCheckBox" VerticalAlignment="Center" Grid.Row="7" IsChecked="{Binding work[5].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Grid.Column="1" />
                 <dg:TimePicker x:Name="startFridayTime" VerticalAlignment="Center" Grid.Row="7" HorizontalAlignment="Center" Grid.Column="3" IsEnabled="{Binding ElementName=fridayCheckBox, Path=IsChecked}" />
                 <dg:TimePicker x:Name="endFridayTime" VerticalAlignment="Center" Grid.Row="7"  HorizontalAlignment="Center" Grid.Column="5" IsEnabled="{Binding ElementName=fridayCheckBox, Path=IsChecked}"/>
 
 
             </Grid>
-            <Label Content="Age of the child" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="2"  VerticalAlignment="Top" />
+            <Label Content="Age of the childs" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="2"  VerticalAlignment="Top"  Style="{StaticResource labelStyle}" FontSize="14"/>
             <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" >
-                <Label Content="from" HorizontalAlignment="Center" Grid.Column="0" Margin="10,10,1,1" Grid.Row="2"  VerticalAlignment="Center" />
-                <ComboBox x:Name="from_years" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Margin="10,10,2,2" Foreground="Blue" FontFamily="Cooper Black" MouseEnter="Years_MouseEnter"  />
-                <ComboBox x:Name="from_month" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Margin="10,10,2,2" Foreground="Blue" FontFamily="Cooper Black" MouseEnter="month_MouseEnter" />
+                <Label Content="from" HorizontalAlignment="Center" Grid.Column="0" Margin="10,10,1,1" Grid.Row="2"  VerticalAlignment="Center" Style="{StaticResource labelStyle}" />
+                <ComboBox x:Name="from_years" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Margin="10,10,2,2" Style="{StaticResource commoBoxStyle }" MouseEnter="Years_MouseEnter"  />
+                <ComboBox x:Name="from_month" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Margin="10,10,2,2" Style="{StaticResource commoBoxStyle}" MouseEnter="month_MouseEnter" />
                 <ComboBox x:Name="age_child_minComboBox" Visibility="Collapsed" HorizontalAlignment="Right" Height="Auto" ItemsSource="{Binding}" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Width="50" Margin="20" Foreground="Blue" FontFamily="Cooper Black" >
                     <ComboBox.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -233,9 +253,9 @@
                         </ItemsPanelTemplate>
                     </ComboBox.ItemsPanel>
                 </ComboBox>
-                <Label Content="to" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2"  VerticalAlignment="Center" Margin="70,10,2,2"/>
-                <ComboBox x:Name="to_years" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Margin="10,10,2,2" Foreground="Blue" FontFamily="Cooper Black" MouseEnter="Years_MouseEnter"  />
-                <ComboBox x:Name="to_month" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Margin="10,10,2,2" Foreground="Blue" FontFamily="Cooper Black" MouseEnter="month_MouseEnter" />
+                <Label Content="to" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2"  VerticalAlignment="Center" Margin="70,10,2,2" Style="{StaticResource labelStyle}"/>
+                <ComboBox x:Name="to_years" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Margin="10,10,2,2"  MouseEnter="Years_MouseEnter"  Style="{StaticResource commoBoxStyle}" />
+                <ComboBox x:Name="to_month" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Margin="10,10,2,2" Foreground="Indigo" FontFamily="Cooper Black" MouseEnter="month_MouseEnter" Style="{StaticResource commoBoxStyle}" SelectionChanged="selectError"/>
 
                 <ComboBox x:Name="age_child_maxComboBox" Visibility="Collapsed"  HorizontalAlignment="Center" Height="Auto" ItemsSource="{Binding}" Grid.Row="2" VerticalAlignment="Center" Width="50" Grid.Column="1">
                     <ComboBox.ItemsPanel>
@@ -245,10 +265,11 @@
                     </ComboBox.ItemsPanel>
                 </ComboBox>
             </StackPanel>
+            <TextBlock x:Name="errorMesseg4" Grid.Row="2" Text="Max smaller than min" VerticalAlignment="Bottom"  Foreground="Red" Visibility="Collapsed"/>
 
             <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal">
-                <Label Content="max Childs:" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="3" Margin="10" VerticalAlignment="Center"/>
-                <ComboBox x:Name="maxChildsComboBox" DisplayMemberPath="maxChilds" Grid.Column="0" HorizontalAlignment="Right" Height="Auto" ItemsSource="{Binding}" Grid.Row="3" VerticalAlignment="Center" Width="50" >
+                <Label Content="max Childs:" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="3" Margin="10" VerticalAlignment="Center" Style="{StaticResource labelStyle}" />
+                <ComboBox x:Name="maxChildsComboBox"  Grid.Column="0" HorizontalAlignment="Right" Height="Auto" ItemsSource="{Binding}" Grid.Row="3" VerticalAlignment="Center" Width="50" Style="{StaticResource commoBoxStyle}" >
                     <ComboBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <VirtualizingStackPanel/>
@@ -256,8 +277,8 @@
                     </ComboBox.ItemsPanel>
                 </ComboBox>
 
-                <Label Content="years of experience:" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="3" Margin="30,0,0,0" VerticalAlignment="Center"/>
-                <ComboBox x:Name="years_of_experienceComboBox" Grid.Column="1" Margin="10" DisplayMemberPath="years_of_experience" HorizontalAlignment="Right" Height="Auto" ItemsSource="{Binding}"  Grid.Row="3" VerticalAlignment="Center" Width="50">
+                <Label Content="years of experience:" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="3" Margin="30,0,0,0" VerticalAlignment="Center" Style="{StaticResource labelStyle}"/>
+                <ComboBox x:Name="years_of_experienceComboBox" Grid.Column="1" Margin="10"  HorizontalAlignment="Right" Height="Auto" ItemsSource="{Binding}"  Grid.Row="3" VerticalAlignment="Center" Width="50" Style="{StaticResource commoBoxStyle}">
                     <ComboBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <VirtualizingStackPanel/>
@@ -268,7 +289,7 @@
            
             <Label Content="salary per hour?" Grid.Row="4"/>
             <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal">
-                <CheckBox x:Name="per_hour_ableCheckBox1" Content="" HorizontalAlignment="Left" IsChecked="{Binding per_hour_able, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,10,2,2" Grid.Row="4" VerticalAlignment="Center"/>
+                <CheckBox x:Name="per_hour_ableCheckBox1" Content="" HorizontalAlignment="Left" IsChecked="{Binding per_hour_able, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,10,2,2" Grid.Row="4" VerticalAlignment="Center" Foreground="Indigo" />
 
 
 
@@ -324,20 +345,23 @@
             </StackPanel>
             
 
-            <Button  x:Name="add_nanny_button" Visibility="Visible"  Content="add nanny" HorizontalAlignment="Left"   Grid.Row="7" Margin="5,4.6,0,5.2" Width="150" Click="add_nanny_button_Click" >
+            <Button  x:Name="add_nanny_button" Visibility="Visible"  Content="add nanny" HorizontalAlignment="Left"   Grid.Row="7" Margin="5,4.6,0,5.2" Width="150" Click="add_nanny_button_Click" FontFamily="Impact" >
 
                 <Button.Style >
                     <Style>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding ElementName=age_child_minComboBox, Path=Text}" Value="">
+                            <DataTrigger Binding="{Binding ElementName=from_years, Path=Text}" Value="">
                                 <Setter Property="Button.IsEnabled" Value="False"/>
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding ElementName=age_child_maxComboBox, Path=Text  }" Value="">
+                            <DataTrigger Binding="{Binding ElementName=from_month, Path=Text  }" Value="">
                                 <Setter Property="Button.IsEnabled" Value="False"/>
                             </DataTrigger>
-                            <!--<DataTrigger Binding="{Binding ElementName=maxChildsComboBox, Path=Text  }" Value="">
+                            <DataTrigger Binding="{Binding ElementName=to_years, Path=Text  }" Value="">
                                 <Setter Property="Button.IsEnabled" Value="False"/>
-                            </DataTrigger>-->
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=to_month, Path=Text  }" Value="">
+                                <Setter Property="Button.IsEnabled" Value="False"/>
+                            </DataTrigger>
 
 
 
@@ -416,7 +440,7 @@
 
 
 
-                <Button  x:Name="back_button" Visibility="Visible"  Content="back"  HorizontalAlignment="Right"  Grid.Row="7" Margin="0,4.6,5,5.2" Grid.Column="1" Width="150" Click="back_button_Click"/>
+                <Button  x:Name="back_button" Visibility="Visible"  Content="back"  HorizontalAlignment="Right"  Grid.Row="7" Margin="0,4.6,5,5.2" Grid.Column="1" Width="150" Click="back_button_Click" FontFamily="Impact" Foreground="SaddleBrown"/>
 
         </Grid>
 
