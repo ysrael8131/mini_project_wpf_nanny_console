@@ -59,8 +59,8 @@ namespace BE
         public int age_child_min { set; get; }
         public int age_child_max { set; get; }
         public bool per_hour_able { set; get; }
-        public double salaryPerHour { set; get; }
-        public double salaryPerMonth { set; get; }
+        public double? salaryPerHour { set; get; }
+        public double? salaryPerMonth { set; get; }
         public bool vacation_kind { set; get; }
         public string recommendation { set; get; }
         public Work_information[] work { set; get; }= new Work_information[6];

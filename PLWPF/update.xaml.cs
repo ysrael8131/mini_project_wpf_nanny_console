@@ -13,35 +13,37 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Xceed.Wpf.Toolkit;
+
+
+
+
 namespace PLWPF
 {
 
-
-   
     /// <summary>
     /// Interaction logic for update.xaml
     /// </summary>
-    public partial class update : Window
+    public partial class update :Window
     {
 
-     //   private  ObservableCollection<BE.Mother> ff = new ObservableCollection<BE.Mother>();
+        //   private  ObservableCollection<BE.Mother> ff = new ObservableCollection<BE.Mother>();
         BL.IBL bl;
 
         BE.Mother mother;
-        BE.Child child  ;
-        BE.Nanny nanny  ;
+        BE.Child child;
+        BE.Nanny nanny;
 
 
 
         List<TimePicker> timeStart;
-        List<TimePicker> timeEnd ;
-        List<CheckBox> check ;
+        List<TimePicker> timeEnd;
+        List<CheckBox> check;
 
 
 
         public update()
         {
-           
+
 
             bl = BL.FactoryBl.getBl();
 
@@ -110,7 +112,7 @@ namespace PLWPF
 
                     var nannys = from item in bl.getListNannys()
                                  select item.id;
-                   // select_nanny_conbobox.ItemsSource = null;
+                    // select_nanny_conbobox.ItemsSource = null;
                     select_nanny_conbobox.ItemsSource = nannys;
                     break;
                 default:
@@ -127,8 +129,9 @@ namespace PLWPF
                     case "Mother":
                         if (select_mother_conbobox.SelectedItem != null)
                         {
-                           // first_grid_mother.DataContext = bl.getMother(int.Parse(select_mother_conbobox.SelectedItem.ToString()));
-                            mother= bl.getMother(int.Parse(select_mother_conbobox.SelectedItem.ToString()));
+                            // first_grid_mother.DataContext = bl.getMother(int.Parse(select_mother_conbobox.SelectedItem.ToString()));
+                            mother = new BE.Mother();
+                            mother = bl.getMother(int.Parse(select_mother_conbobox.SelectedItem.ToString()));
                             first_grid_mother.DataContext = mother;
 
                             //List<TimePicker> timeStart = new List<TimePicker> { start1, startMondayTime, startTuesdayTime, startWednesdayTime, startThursdayTime, startFridayTime };
@@ -140,7 +143,7 @@ namespace PLWPF
                                 if (check[i].IsChecked == true)
                                 {
                                     timeStart[i].Value = DateTime.Parse(mother.arr[i].start.ToString());
-                                    timeEnd[i].Value= DateTime.Parse(mother.arr[i].end.ToString());
+                                    timeEnd[i].Value = DateTime.Parse(mother.arr[i].end.ToString());
                                     //bl.getMother(int.Parse(select_mother_conbobox.SelectedItem.ToString())).arr[i].start= timeStart[i].Value.Value.TimeOfDay;
                                     //timeStart[i].Value.Value.TimeOfDay = bl.getMother(int.Parse(select_mother_conbobox.SelectedItem.ToString())).arr[i].start; ;
                                     //timeStart[i].Value= mother.arr[i].end ;
@@ -150,7 +153,7 @@ namespace PLWPF
                             }
                             first_grid_mother.Visibility = Visibility.Visible;
                         }
-                           
+
                         break;
                     case "Child":
                         var childs = from item in bl.getListChilds(bl.getMother(int.Parse(select_mother_conbobox.SelectedItem.ToString())))
@@ -166,7 +169,7 @@ namespace PLWPF
 
         private void select_child_conbobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (select_mother_conbobox.ItemsSource!=null)
+            if (select_mother_conbobox.ItemsSource != null)
             {
                 child_grid.DataContext = bl.getChild(int.Parse(select_child_conbobox.SelectedItem.ToString()));
 
@@ -199,7 +202,7 @@ namespace PLWPF
         {
             for (int i = 0; i < 6; i++)
             {
-                if(check[i].IsChecked == true)
+                if (check[i].IsChecked == true)
                 {
                     mother.arr[i].start = timeStart[i].Value.Value.TimeOfDay;
                     mother.arr[i].end = timeEnd[i].Value.Value.TimeOfDay;
@@ -217,6 +220,7 @@ namespace PLWPF
                     check[j].GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
                 }
                 bl.updateMother(mother);
+               
 
             }
         }
@@ -307,24 +311,24 @@ namespace PLWPF
             }
         }
 
-     
+
 
 
 
         private void Button_Click_Next(object sender, RoutedEventArgs e)
         {
             first_grid_nanny.Visibility = Visibility.Collapsed;
-           // second_grid_nanny.Visibility = Visibility.Visible;
+            // second_grid_nanny.Visibility = Visibility.Visible;
         }
 
         private void back_button_Click(object sender, RoutedEventArgs e)
         {
             first_grid_nanny.Visibility = Visibility.Visible;
-         //   second_grid_nanny.Visibility = Visibility.Collapsed;
+            //   second_grid_nanny.Visibility = Visibility.Collapsed;
         }
 
 
 
-       
+
     }
 }

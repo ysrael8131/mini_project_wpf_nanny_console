@@ -28,7 +28,7 @@ namespace BE
         public bool knowlageMeet { set; get; }
         public bool contractSigne { set; get; }
        // public double salaryPerHour { set; get; }
-        public double salaryPerMonth { set; get; }
+        public double? salaryPerMonth { set; get; }
         public contracPer ContracPer { set; get; }
         public DateTime start { set; get; }
         public DateTime end { set; get; }

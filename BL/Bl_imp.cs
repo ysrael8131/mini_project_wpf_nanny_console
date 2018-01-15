@@ -434,9 +434,9 @@ namespace BL
         /// </summary>
         /// <param name="motherID"></param>
         /// <returns></returns>
-        public double totalPay(int motherID)
+        public double? totalPay(int motherID)
         {
-            double temp = 0;
+            double? temp = 0;
             foreach (var item in dal.getListContracts())
             {
                 if (item.MotherID == motherID)
