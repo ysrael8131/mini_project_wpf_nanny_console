@@ -11,11 +11,7 @@ namespace BL
 {
     public class Bl_imp : IBL
     {
-
         DAL.IDAL dal = DAL.FactoryDal.getDal();
-
-
-
         public void addChild(Child a)
         {
             dal.addChild(a);
@@ -307,6 +303,30 @@ namespace BL
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        //public IEnumerable<Nanny> rangeNanny(int? id)
+        //{
+        //    Mother temp = dal.getMother(id);
+        //    IEnumerable<Nanny> nanny = dal.getListNannys();
+        //    if (temp.SearchAddres != null)
+        //    {
+        //        var distance1 = from item in nanny
+        //                        let distanceNanny = (CalculateDistance(item.addres, temp.SearchAddres)) / 1000
+        //                        orderby distanceNanny
+        //                        where distanceNanny <= temp.RangeOfKm
+        //                        select item;
+        //        return distance1;
+        //    }
+        //    var distance2 = from item in nanny
+        //                    let distanceNanny = (CalculateDistance(item.addres, temp.Addres)) / 1000
+        //                    orderby distanceNanny
+        //                    where distanceNanny <= temp.RangeOfKm
+        //                    select item;
+
+        //    return distance2;
+
+
+        //}
+
         public IEnumerable<Nanny> rangeNanny(int? id)
         {
             Mother temp = dal.getMother(id);
@@ -314,23 +334,27 @@ namespace BL
             if (temp.SearchAddres != null)
             {
                 var distance1 = from item in nanny
-                                let distanceNanny = (CalculateDistance(item.addres, temp.SearchAddres)) / 1000
-                                orderby distanceNanny
-                                where distanceNanny <= temp.RangeOfKm
-                                select item;
+                    let distanceNanny = (CalculateDistance(item.addres, temp.SearchAddres)) / 1000
+                    orderby distanceNanny
+                    where distanceNanny <= temp.RangeOfKm
+                    select item;
                 return distance1;
             }
             var distance2 = from item in nanny
-                            let distanceNanny = (CalculateDistance(item.addres, temp.Addres)) / 1000
-                            orderby distanceNanny
-                            where distanceNanny <= temp.RangeOfKm
-                            select item;
+                let distanceNanny = helpfuncrange(item.addres, temp.Addres, item)
+                orderby distanceNanny
+                where distanceNanny <= temp.RangeOfKm
+                select item;
 
             return distance2;
 
 
         }
-
+        public int helpfuncrange(string sur, string dst, Nanny nanny)
+        {
+            nanny.distance= (CalculateDistance(sur, dst)) / 1000;
+            return (int)nanny.distance;
+        }
 
         Func<Contract, bool> func = (item => item.contractSigne == true);
 

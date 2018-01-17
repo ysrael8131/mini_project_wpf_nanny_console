@@ -210,6 +210,7 @@ namespace PLWPF
                     break;
                 case "Nanny":
                     nanny_grid.Visibility = Visibility.Visible;
+                    nanny_scroll.Visibility = Visibility.Visible;
                     first_grid_nanny.Visibility = Visibility.Visible;
 
                     str = new string[] { "1", "2", "3", "4", "5+ " };
@@ -277,7 +278,7 @@ namespace PLWPF
             child_stackpanel.Visibility = Visibility.Collapsed;
             nanny_stackpanel.Visibility = Visibility.Collapsed;
             options_buttons.Visibility = Visibility.Collapsed;
-
+            nanny_scroll.Visibility = Visibility.Collapsed;
 
             mother_grid.Visibility = Visibility.Collapsed;
             first_grid_mother.Visibility = Visibility.Collapsed;

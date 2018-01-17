@@ -49,7 +49,7 @@ namespace PLWPF
             a2.arr[2].day_work = true;
             a2.arr[2].start = TimeSpan.Parse("6:30");
             a2.arr[2].end = TimeSpan.Parse("11:30");
-            a2.Addres = "הוועד הלאומי 21 ירושלים";
+            a2.Addres = "יחזקאל 28 ירושלים ישראל";
             a2.arr[3].day_work = true;
             a2.arr[3].start = TimeSpan.Parse("3:30");
             a2.arr[3].end = TimeSpan.Parse("12:30");
@@ -97,10 +97,9 @@ namespace PLWPF
             a7.work[3].day_work = true;
             a7.work[3].start = TimeSpan.Parse("6:30");
             a7.work[3].end = TimeSpan.Parse("8:30");
-            a7.addres = "קוממיות 10 קריית גת";
+            a7.addres = "קוממיות 10 קריית גת ישראל";
             a7.age_child_min = 10;
             a7.age_child_max = 15;
-            a7.addres = "a";
             a7.birthDay = DateTime.Parse("15.03.1999");
 
             Nanny a8 = new Nanny();
@@ -118,15 +117,33 @@ namespace PLWPF
                 a8.work[i].end = TimeSpan.Parse("8:30");
             }
 
-            a8.addres = "אוהב ישראל 3 ביתר עילית";
+            a8.addres = "אוהב ישראל 3 ביתר עילית ישראל";
             a8.age_child_min = 12;
-            a8.addres = "s";
             a8.age_child_max = 15;
             a8.birthDay = DateTime.Parse("15.03.1999");
 
+            Nanny a9 = new Nanny();
+            a9.FirstName = "chya";
+            a9.LastName = "cakz";
+            a9.id = 125837412;
+            a9.maxChilds = 5;
+            a9.per_hour_able = false;
+            a9.salaryPerMonth = 4000;
+            for (int i = 0; i < 6; i++)
+            {
 
+                a9.work[i].day_work = true;
+                a9.work[i].start = TimeSpan.Parse("6:30");
+                a9.work[i].end = TimeSpan.Parse("8:30");
+            }
+
+            a9.addres = "אילת ישראל";
+            a9.age_child_min = 12;
+            a9.age_child_max = 15;
+            a9.birthDay = DateTime.Parse("15.03.1999");
             bl.addNanny(a7);
             bl.addNanny(a8);
+            bl.addNanny(a9);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

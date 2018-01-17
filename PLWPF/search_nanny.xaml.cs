@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BE;
 using BL;
-
+using  System.Threading;
 namespace PLWPF
 {
     /// <summary>
@@ -61,9 +62,26 @@ namespace PLWPF
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {
-          
-            nannyDataGrid.ItemsSource = bll.rangeNanny((select_mother_combobox.SelectedItem as Mother).id);
+         {
+             try
+             {
+                 List<Nanny> findNannies = new List<Nanny>();
+                 Mother mother = select_mother_combobox.SelectedItem as Mother;
+                 // findNannies= bll.rangeNanny(mother.id).ToList();
+                 new Thread(() =>
+                 {
+                     findNannies = bll.rangeNanny(mother.id).ToList();
+                     if (findNannies == null)
+                         throw new Exception("ma nishma");
+                     Dispatcher.Invoke(new Action(() => { nannyDataGrid.ItemsSource = findNannies; }));
+                 }).Start();
+            }
+             catch (Exception exception)
+             {
+                 System.Windows.MessageBox.Show(exception.Message);
+             }
+           
+
         }
     }
 }
