@@ -246,24 +246,12 @@
                 <Label Content="from" HorizontalAlignment="Center" Grid.Column="0" Margin="10,10,1,1" Grid.Row="2"  VerticalAlignment="Center" Style="{StaticResource labelStyle}" />
                 <ComboBox x:Name="from_years" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Margin="10,10,2,2" Style="{StaticResource commoBoxStyle }" MouseEnter="Years_MouseEnter"  />
                 <ComboBox x:Name="from_month" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Margin="10,10,2,2" Style="{StaticResource commoBoxStyle}" MouseEnter="month_MouseEnter" />
-                <ComboBox x:Name="age_child_minComboBox" Visibility="Collapsed" HorizontalAlignment="Right" Height="Auto" ItemsSource="{Binding}" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Width="50" Margin="20" Foreground="Blue" FontFamily="Cooper Black" >
-                    <ComboBox.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <VirtualizingStackPanel/>
-                        </ItemsPanelTemplate>
-                    </ComboBox.ItemsPanel>
-                </ComboBox>
+               
                 <Label Content="to" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2"  VerticalAlignment="Center" Margin="70,10,2,2" Style="{StaticResource labelStyle}"/>
                 <ComboBox x:Name="to_years" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Margin="10,10,2,2"  MouseEnter="Years_MouseEnter"  Style="{StaticResource commoBoxStyle}" />
                 <ComboBox x:Name="to_month" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Margin="10,10,2,2" Foreground="Indigo" FontFamily="Cooper Black" MouseEnter="month_MouseEnter" Style="{StaticResource commoBoxStyle}" SelectionChanged="selectError"/>
 
-                <ComboBox x:Name="age_child_maxComboBox" Visibility="Collapsed"  HorizontalAlignment="Center" Height="Auto" ItemsSource="{Binding}" Grid.Row="2" VerticalAlignment="Center" Width="50" Grid.Column="1">
-                    <ComboBox.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <VirtualizingStackPanel/>
-                        </ItemsPanelTemplate>
-                    </ComboBox.ItemsPanel>
-                </ComboBox>
+               
             </StackPanel>
             <TextBlock x:Name="errorMesseg4" Grid.Row="2" Text="Max smaller than min" VerticalAlignment="Bottom"  Foreground="Red" Visibility="Collapsed"/>
 

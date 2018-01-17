@@ -85,6 +85,9 @@
     <Compile Include="Remove.xaml.cs">
       <DependentUpon>Remove.xaml</DependentUpon>
     </Compile>
+    <Compile Include="search_nanny.xaml.cs">
+      <DependentUpon>search_nanny.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Time.xaml.cs">
       <DependentUpon>Time.xaml</DependentUpon>
     </Compile>
@@ -130,6 +133,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Remove.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="search_nanny.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

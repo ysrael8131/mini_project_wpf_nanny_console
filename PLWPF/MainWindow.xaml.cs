@@ -49,7 +49,7 @@ namespace PLWPF
             a2.arr[2].day_work = true;
             a2.arr[2].start = TimeSpan.Parse("6:30");
             a2.arr[2].end = TimeSpan.Parse("11:30");
-
+            a2.Addres = "הוועד הלאומי 21 ירושלים";
             a2.arr[3].day_work = true;
             a2.arr[3].start = TimeSpan.Parse("3:30");
             a2.arr[3].end = TimeSpan.Parse("12:30");
@@ -97,7 +97,7 @@ namespace PLWPF
             a7.work[3].day_work = true;
             a7.work[3].start = TimeSpan.Parse("6:30");
             a7.work[3].end = TimeSpan.Parse("8:30");
-            a7.addres = "asf";
+            a7.addres = "קוממיות 10 קריית גת";
             a7.age_child_min = 10;
             a7.age_child_max = 15;
             a7.addres = "a";
@@ -110,19 +110,23 @@ namespace PLWPF
             a8.maxChilds = 5;
             a8.per_hour_able = false;
             a8.salaryPerMonth = 4000;
-            a8.work[2].day_work = true;
-            a8.work[2].start = TimeSpan.Parse("6:30");
-            a8.work[2].end = TimeSpan.Parse("8:30");
-            a8.addres = "אוהב";
+            for (int i = 0; i < 6; i++)
+            {
+
+                a8.work[i].day_work = true;
+                a8.work[i].start = TimeSpan.Parse("6:30");
+                a8.work[i].end = TimeSpan.Parse("8:30");
+            }
+
+            a8.addres = "אוהב ישראל 3 ביתר עילית";
             a8.age_child_min = 12;
-            
+            a8.addres = "s";
             a8.age_child_max = 15;
             a8.birthDay = DateTime.Parse("15.03.1999");
 
 
             bl.addNanny(a7);
             bl.addNanny(a8);
-            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -149,6 +153,12 @@ namespace PLWPF
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             Window w = new update();
+            w.Show();
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            Window w =new search_nanny();
             w.Show();
         }
 

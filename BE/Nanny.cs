@@ -63,6 +63,7 @@ namespace BE
         public double? salaryPerMonth { set; get; }
         public bool vacation_kind { set; get; }
         public string recommendation { set; get; }
+        public double distance { set; get; }
         public Work_information[] work { set; get; }= new Work_information[6];
 
 

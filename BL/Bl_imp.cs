@@ -138,7 +138,7 @@ namespace BL
         /// remove nanny by id nanny
         /// </summary>
         /// <param name="id"></param>
-        public void deleteNanny(int id)
+        public void deleteNanny(int? id)
         {
             List<Contract> temp = (dal.getListContracts().Where(item => item.NannyID == id)).ToList();
             for (int i = 0; i < temp.Count; i++)
@@ -307,7 +307,7 @@ namespace BL
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public IEnumerable<Nanny> rangeNanny(int id)
+        public IEnumerable<Nanny> rangeNanny(int? id)
         {
             Mother temp = dal.getMother(id);
             IEnumerable<Nanny> nanny = dal.getListNannys();

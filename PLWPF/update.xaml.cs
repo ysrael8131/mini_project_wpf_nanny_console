@@ -26,7 +26,7 @@ namespace PLWPF
 
         //   private  ObservableCollection<BE.Mother> ff = new ObservableCollection<BE.Mother>();
         BL.IBL bl;
-
+        string[] str;
         BE.Mother mother;
         BE.Child child;
         BE.Nanny nanny;
@@ -75,14 +75,14 @@ namespace PLWPF
             switch (select_item_combobox.SelectedItem.ToString())
             {
                 case "Mother":
-                    vizibilityes();
+                    Vizibilityes();
                     mother_stackpanel.Visibility = Visibility.Visible;
                     var mothers = from item in bl.getListMothers()
                                   select item.id;
                     select_mother_conbobox.ItemsSource = mothers;
                     break;
                 case "Child":
-                    vizibilityes();
+                    Vizibilityes();
                     mother_stackpanel.Visibility = Visibility.Visible;
                     child_stackpanel.Visibility = Visibility.Visible;
                     mothers = from item in bl.getListMothers()
@@ -90,7 +90,7 @@ namespace PLWPF
                     select_mother_conbobox.ItemsSource = mothers;
                     break;
                 case "Nanny":
-                    vizibilityes();
+                    Vizibilityes();
                     nanny_stackpanel.Visibility = Visibility.Visible;
                     select_nanny_conbobox.ItemsSource = bl.getListNannys();
                     break;
@@ -116,7 +116,7 @@ namespace PLWPF
                             mother = bl.getMother(int.Parse(select_mother_conbobox.SelectedItem.ToString()));
                             mother_grid.DataContext = mother;
 
-                           
+
                             for (int i = 0; i < 6; i++)
                             {
 
@@ -128,7 +128,7 @@ namespace PLWPF
 
                             }
 
-                            vizibilityes();
+                            Vizibilityes();
                             mother_stackpanel.Visibility = Visibility.Visible;
                             options_buttons.Visibility = Visibility.Visible;
                         }
@@ -163,10 +163,9 @@ namespace PLWPF
                     {
                         timeStart_n[i].Value = DateTime.Parse(nanny.work[i].start.ToString());
                         timeEnd_n[i].Value = DateTime.Parse(nanny.work[i].end.ToString());
-
                     }
                 }
-                vizibilityes();
+                Vizibilityes();
                 nanny_stackpanel.Visibility = Visibility.Visible;
                 options_buttons.Visibility = Visibility.Visible;
             }
@@ -181,7 +180,7 @@ namespace PLWPF
         private void select_child_conbobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             child = null;
-            vizibilityes();
+            Vizibilityes();
             mother_stackpanel.Visibility = Visibility.Visible;
             child_stackpanel.Visibility = Visibility.Visible;
             if (select_child_conbobox.ItemsSource != null)
@@ -195,10 +194,6 @@ namespace PLWPF
             }
 
         }
-
-
-
-
 
         private void press_to_update_Click(object sender, RoutedEventArgs e)
         {
@@ -216,6 +211,24 @@ namespace PLWPF
                 case "Nanny":
                     nanny_grid.Visibility = Visibility.Visible;
                     first_grid_nanny.Visibility = Visibility.Visible;
+
+                    str = new string[] { "1", "2", "3", "4", "5+ " };
+                    years_of_experienceComboBox.ItemsSource = str;
+
+                    for (int i = 0; i < 12; i++)
+                    {
+                        if (i < 4)
+                        {
+                            from_years.Items.Add(i);
+                            to_years.Items.Add(i);
+                        }
+                        if (i < 11 && i > 0)
+                            maxChildsComboBox.Items.Add(i);
+
+                        from_month.Items.Add(i);
+                        to_month.Items.Add(i);
+                    }
+
                     break;
                 default:
                     break;
@@ -224,29 +237,41 @@ namespace PLWPF
 
         private void press_to_delete_Click(object sender, RoutedEventArgs e)
         {
-            switch (select_item_combobox.SelectedItem.ToString())
+            try
             {
-                case "Mother":
-                    bl.deleteMother(int.Parse(select_mother_conbobox.SelectedItem.ToString()));
-                    System.Windows.MessageBox.Show("ID: "+mother.id.ToString(), "This mother has been deleted", MessageBoxButton.OK, MessageBoxImage.Information);
-                    this.Close();
-                    break;
-                case "Child":
-                    bl.deleteChild(int.Parse(select_child_conbobox.SelectedItem.ToString()));
-                    System.Windows.MessageBox.Show("ID: "+child.id.ToString(), "This child has been deleted", MessageBoxButton.OK, MessageBoxImage.Information);
-                    this.Close();
-                    break;
-                case "Nanny":
-
-                    break;
-                default:
-                    break;
+                switch (select_item_combobox.SelectedItem.ToString())
+                {
+                    case "Mother":
+                        bl.deleteMother(int.Parse(select_mother_conbobox.SelectedItem.ToString()));
+                        System.Windows.MessageBox.Show(mother.id.ToString(), "This mother has been deleted");
+                        this.Close();
+                        break;
+                    case "Child":
+                        bl.deleteChild(int.Parse(select_child_conbobox.SelectedItem.ToString()));
+                        System.Windows.MessageBox.Show(child.id.ToString(), "This child has been deleted");
+                        this.Close();
+                        break;
+                    case "Nanny":
+                        bl.deleteNanny(nanny.id);
+                        System.Windows.MessageBox.Show(nanny.id.ToString(), "This nanny has been deleted");
+                        this.Close();
+                        break;
+                    default:
+                        break;
+                }
             }
+            catch (Exception exception)
+            {
+
+                System.Windows.MessageBox.Show(exception.Message);
+                this.Close();
+            }
+            
         }
 
 
-
-        private void vizibilityes()
+       
+        private void Vizibilityes()
         {
             mother_stackpanel.Visibility = Visibility.Collapsed;
             child_stackpanel.Visibility = Visibility.Collapsed;
@@ -287,7 +312,6 @@ namespace PLWPF
             addresTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             phoneNumberTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             searchAddresTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-
             elevatorsCheckBox.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
             for (int j = 0; j < 6; j++)
             {
@@ -317,11 +341,44 @@ namespace PLWPF
             this.Close();
         }
 
+
+
         private void next_nanny_Click(object sender, RoutedEventArgs e)
         {
             first_grid_nanny.Visibility = Visibility.Collapsed;
             second_grid_nanny.Visibility = Visibility.Visible;
         }
+
+        private void back_button_nanny_Click(object sender, RoutedEventArgs e)
+        {
+            first_grid_nanny.Visibility = Visibility.Visible;
+            second_grid_nanny.Visibility = Visibility.Collapsed;
+        }
+
+        private void update_nanny_button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Years_MouseEnter(object sender, MouseEventArgs e)
+        {
+            ComboBox com = sender as ComboBox;
+            com.ToolTip = "choosze years";
+        }
+
+        private void month_MouseEnter(object sender, MouseEventArgs e)
+        {
+            ComboBox com = sender as ComboBox;
+            com.ToolTip = "choose months";
+
+        }
+
+
+
+
+
+
+
 
 
 
@@ -411,17 +468,6 @@ namespace PLWPF
 
 
 
-        private void Button_Click_Next(object sender, RoutedEventArgs e)
-        {
-            first_grid_nanny.Visibility = Visibility.Collapsed;
-            // second_grid_nanny.Visibility = Visibility.Visible;
-        }
-
-        private void back_button_Click(object sender, RoutedEventArgs e)
-        {
-            first_grid_nanny.Visibility = Visibility.Visible;
-            //   second_grid_nanny.Visibility = Visibility.Collapsed;
-        }
 
 
 
@@ -491,20 +537,6 @@ namespace PLWPF
             {
                 errorMesseg3.Visibility = Visibility.Visible;
             }
-
-        }
-
-
-        private void Years_MouseEnter(object sender, MouseEventArgs e)
-        {
-            ComboBox com = sender as ComboBox;
-            com.ToolTip = "choosze years";
-        }
-
-        private void month_MouseEnter(object sender, MouseEventArgs e)
-        {
-            ComboBox com = sender as ComboBox;
-            com.ToolTip = "choose months";
 
         }
 
