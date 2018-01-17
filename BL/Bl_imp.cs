@@ -13,7 +13,7 @@ namespace BL
     {
 
         DAL.IDAL dal = DAL.FactoryDal.getDal();
-        
+
 
 
         public void addChild(Child a)
@@ -104,7 +104,7 @@ namespace BL
         {
             List<Contract> temp = (dal.getListContracts().Where(item => item.childID == id)).ToList();
             if (temp.Count != 0)
-                dal.deleteContract(temp[0].num_contract);                                            
+                dal.deleteContract(temp[0].num_contract);
             dal.deleteChild(id);
 
 
@@ -220,21 +220,27 @@ namespace BL
         /// <returns></returns>
         public IEnumerable<Nanny> requiredMother(Mother a)
         {
-            IEnumerable<Child> child = dal.getListChilds(a);
+            //IEnumerable<Child> child = dal.getListChilds(a);
             IEnumerable<Nanny> nannys = dal.getListNannys();
-            Func<Nanny, Mother, bool> func1 = myFunc1;
-            Func<Nanny, Mother, bool> func2 = myFunc2;
+            List<Nanny> temp1 = new List<Nanny>();
+            //Func<Nanny, Mother, bool> func1 = myFunc1;
+            //Func<Nanny, Mother, bool> func2 = myFunc2;
             var nan = from i in nannys
-                      where func1(i, a)
+                      where myFunc1(i, a)
                       select i;
             if (nan != null)
             {
                 return nan;
             }
             nan = from i in nannys
-                  where func2(i, a)
+                  where myFunc2(i, a)
                   select i;
-            return nan;
+            for (int i = 0; i < 5 && nan.ToArray()[i] != null; i++)
+            {
+                temp1[i] = nan.ToArray()[i];
+
+            }
+            return temp1;
         }
         /// <summary>
         /// Returns all the children without a nanny
@@ -283,7 +289,7 @@ namespace BL
         /// <param name="source"></param>
         /// <param name="dest"></param>
         /// <returns></returns>
-        public static int CalculateDistance(string source, string dest)
+        public int CalculateDistance(string source, string dest)
         {
             var drivingDirectionRequest = new DirectionsRequest
             {
@@ -357,8 +363,8 @@ namespace BL
         {
             for (int i = 0; i < nan.work.Length; i++)
             {
-                if (nan.work[i].start.Minutes - mom.arr[i].start.Minutes > 15 &&
-                    mom.arr[i].end.Minutes - nan.work[i].end.Minutes > 15 )
+                if (nan.work[i].day_work != mom.arr[i].day_work && nan.work[i].start.Minutes - mom.arr[i].start.Minutes > 15 &&
+                    mom.arr[i].end.Minutes - nan.work[i].end.Minutes > 15)
                     return false;
             }
             return true;
@@ -381,20 +387,30 @@ namespace BL
         /// </summary>
         /// <param name="b"></param>
         /// <returns></returns>
-        public IEnumerable<IGrouping<int, Nanny>> groupingNanny(bool b = false)
+        public IEnumerable<IGrouping<int, Nanny>> groupingNanny(bool sort, bool minOrMax = false)
         {
             IEnumerable<Nanny> nanny = dal.getListNannys();
-            Func<Nanny, bool, int> func = myFunc;
+            //Func<Nanny, bool, int> func = ;
             var nannys = from item in nanny
-                         let a = func(item, b)
+                         let a = myFunc(item, minOrMax)
                          group item by a;
+            if (sort)
+            {
+                nannys = from item in nanny
+                         orderby item.FirstName
+                         group item by myFunc(item, minOrMax);
+                return nannys;
+            }
+
             return nannys;
+
         }
-        static int myFunc(Nanny nan, bool b)
+        static int myFunc(Nanny nan, bool minOrMax)
         {
-            if (b)
-                return nan.age_child_max;
-            return nan.age_child_min;
+            if (minOrMax)
+                return nan.age_child_min / 6;
+            return nan.age_child_max / 6;
+
         }
         /// <summary>
         /// All nannies have an elevator in the building

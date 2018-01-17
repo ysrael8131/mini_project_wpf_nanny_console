@@ -44,6 +44,7 @@ namespace PLWPF
         {
             bl = BL.FactoryBl.getBl();
             InitializeComponent();
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             timeStart_n = new List<TimePicker> { start1_n, startMondayTime_n, startTuesdayTime_n, startWednesdayTime_n, startThursdayTime_n, startFridayTime_n };
             timeEnd_n = new List<TimePicker> { end1_n, endMondayTime_n, endTuesdayTime_n, endWednesdayTime_n, endThursdayTime_n, endFridayTime_n };
             check_n = new List<CheckBox> { sundayCheckBox_n, mondayCheckBox_n, tuesdayCheckBox_n, wednesdayCheckBox_n, thursdayCheckBox_n, fridayCheckBox_n };
@@ -286,8 +287,19 @@ namespace PLWPF
         }
         private void update_mother_button_Click(object sender, RoutedEventArgs e)
         {
+
             for (int i = 0; i < 6; i++)
             {
+                //if (check[i].IsChecked == true && (timeStart[i].Value == null || timeEnd[i].Value == null))
+                //{
+                //errorMessegHours.Visibility = Visibility.Visible;
+                //return;
+                //}
+                //if (check[i].IsChecked == true && timeStart[i].Value.Value.TimeOfDay > timeEnd[i].Value.Value.TimeOfDay)
+                //{
+                //errorMessegTime.Visibility = Visibility.Visible;
+                //return;
+                //}
                 if (check[i].IsChecked == true)
                 {
                     mother.arr[i].start = timeStart[i].Value.Value.TimeOfDay;
@@ -306,7 +318,7 @@ namespace PLWPF
                 check[j].GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
             }
             bl.updateMother(mother);
-            System.Windows.MessageBox.Show(mother.id.ToString(), "This mother has been updated");
+            System.Windows.MessageBox.Show("ID: "+mother.id.ToString(), "This mother has been updated",MessageBoxButton.OK,MessageBoxImage.Information);
             this.Close();
         }
 
@@ -325,7 +337,7 @@ namespace PLWPF
             specialNeedsCheckBox.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
             detailsSpecialNeedsTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             bl.updateChild(child);
-            System.Windows.MessageBox.Show(child.id.ToString(), "This child has been updated");
+            System.Windows.MessageBox.Show("ID: "+ child.id.ToString(), "This child has been updated", MessageBoxButton.OK, MessageBoxImage.Information);
             this.Close();
         }
 

@@ -28,7 +28,11 @@ namespace PLWPF
 
             InitializeComponent();
             bl = BL.FactoryBl.getBl();
-
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+           // ResizeMode = ResizeMode.CanMinimize;
+            
+           
+            
             child = new Child();
             if (a != null)
             {
@@ -95,6 +99,7 @@ namespace PLWPF
             {
                 bl.addChild(child);
                 this.Close();
+                
                 
             }
             catch (Exception ex)

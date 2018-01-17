@@ -31,8 +31,10 @@ namespace PLWPF
 
             InitializeComponent();
             bl = FactoryBl.getBl();
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             mother = new Mother();
             DataContext = mother;
+            
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -120,12 +122,13 @@ namespace PLWPF
                 //Thread.Sleep(3000);
                 // this.Close();
                 new add_child(mother).Show();
+                
 
             }
             catch (Exception a)
             {
 
-                System.Windows.MessageBox.Show(a.Message);
+                System.Windows.MessageBox.Show(a.Message,"",MessageBoxButton.OK,MessageBoxImage.Information);
             }
 
         }

@@ -28,11 +28,13 @@ namespace PLWPF
             //string[] a = new string[] { "Add child", "Remove mother", "Update mother" };
             //list_box_mother.ItemsSource = a;
             bl = BL.FactoryBl.getBl();
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             Mother a1 = new Mother();
             a1.id = 123456789;
             a1.FirstName = "sara";
             a1.LastName = "cohen";
             a1.PhoneNumber = "0504145678";
+            a1.Addres = "q";
             a1.arr[1].day_work = true;
             a1.arr[1].start = TimeSpan.Parse("8:30");
             a1.arr[1].end = TimeSpan.Parse("10:30");
@@ -42,6 +44,7 @@ namespace PLWPF
             a2.id = 111111111;
             a2.FirstName = "efrat";
             a2.LastName = "amzaleg";
+            a2.Addres = "q";
             a2.PhoneNumber = "0506134678";
             a2.arr[2].day_work = true;
             a2.arr[2].start = TimeSpan.Parse("6:30");
@@ -97,6 +100,7 @@ namespace PLWPF
             a7.addres = "קוממיות 10 קריית גת";
             a7.age_child_min = 10;
             a7.age_child_max = 15;
+            a7.addres = "a";
             a7.birthDay = DateTime.Parse("15.03.1999");
 
             Nanny a8 = new Nanny();
@@ -116,6 +120,7 @@ namespace PLWPF
 
             a8.addres = "אוהב ישראל 3 ביתר עילית";
             a8.age_child_min = 12;
+            a8.addres = "s";
             a8.age_child_max = 15;
             a8.birthDay = DateTime.Parse("15.03.1999");
 
