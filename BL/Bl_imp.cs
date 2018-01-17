@@ -314,14 +314,14 @@ namespace BL
             if (temp.SearchAddres != null)
             {
                 var distance1 = from item in nanny
-                                let distanceNanny = (CalculateDistance(item.addres, temp.SearchAddres)) / 1000
+                                let distanceNanny = helpfuncrange(item.addres, temp.Addres,item) / 1000
                                 orderby distanceNanny
                                 where distanceNanny <= temp.RangeOfKm
                                 select item;
                 return distance1;
             }
             var distance2 = from item in nanny
-                            let distanceNanny = (CalculateDistance(item.addres, temp.Addres)) / 1000
+                            let distanceNanny = helpfuncrange(item.addres,temp.Addres,item)
                             orderby distanceNanny
                             where distanceNanny <= temp.RangeOfKm
                             select item;
@@ -329,6 +329,11 @@ namespace BL
             return distance2;
 
 
+        }
+        public int helpfuncrange(string sur,string dst,Nanny nanny)
+        {
+           
+          return  (CalculateDistance(sur, dst)) / 1000;
         }
 
 

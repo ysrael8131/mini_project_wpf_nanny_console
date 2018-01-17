@@ -113,9 +113,9 @@ namespace PLWPF
             a8.work[2].day_work = true;
             a8.work[2].start = TimeSpan.Parse("6:30");
             a8.work[2].end = TimeSpan.Parse("8:30");
-            a8.addres = "ooopp";
+            a8.addres = "אוהב";
             a8.age_child_min = 12;
-            a8.addres = "s";
+            
             a8.age_child_max = 15;
             a8.birthDay = DateTime.Parse("15.03.1999");
 
