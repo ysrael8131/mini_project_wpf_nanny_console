@@ -1,0 +1,104 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.search_nanny"
+        mc:Ignorable="d"
+        Title="search_nanny" Height="300" Width="1000" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="nannyViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Nanny}, CreateList=True}"/>
+    </Window.Resources>
+
+    <Grid DataContext="{StaticResource nannyViewSource}" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="126*"/>
+            <ColumnDefinition Width="121*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="search a nanny for a child" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Grid.ColumnSpan="2" Margin="134,0,133.6,52.2" Grid.RowSpan="2" />
+        <StackPanel x:Name="mother_stackpanel" Visibility="Visible" Orientation="Horizontal" Grid.ColumnSpan="2" Margin="0,26,-0.4,0.2" Grid.RowSpan="2">
+            <TextBlock x:Name="select_mother" Text="select_mother" Margin="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <ComboBox x:Name="select_mother_combobox" Width="90" Margin="15" DisplayMemberPath="id" VerticalAlignment="Center" SelectionChanged="select_mother_combobox_SelectionChanged"/>
+
+            <TextBlock x:Name="select_child" Text="select_child" VerticalAlignment="Center" Margin="70,1,1,1" />
+            <ComboBox IsEnabled="{Binding SelectedItem, ElementName=select_mother_conbobox}"
+                  x:Name="select_child_combobox" DisplayMemberPath="id" VerticalAlignment="Center" Width="90" Margin="15"
+                  SelectionChanged="select_child_combobox_SelectionChanged" />
+
+        </StackPanel>
+
+        <Grid x:Name="Constraints" Grid.Row="2" Grid.Column="0" d:DataContext="{d:DesignInstance BE:Mother}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="44*"/>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="48*"/>
+                <RowDefinition Height="33*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="enter your data search" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="194,0,194.2,0" />
+            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                <DockPanel>
+                    <Label  VerticalAlignment="Center"  Content="distance"/>
+                    <TextBox  x:Name="distance_textbox" Margin="15" Width="50" Text="{Binding RangeOfKm, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
+
+                </DockPanel>
+
+            </StackPanel>
+            <Button Content="Button" HorizontalAlignment="Left" Margin="204,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+
+        </Grid>
+        <DataGrid x:Name="nannyDataGrid" AutoGenerateColumns="False" Grid.Column="1" EnableRowVirtualization="True" ItemsSource="{Binding}"  RowDetailsVisibilityMode="VisibleWhenSelected" Grid.Row="2">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn x:Name="addresColumn" Header="addres" Width="SizeToHeader">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding addres}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn x:Name="distanceColumn" Header="distance" Width="SizeToHeader">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding distance}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn x:Name="firstNameColumn" Header="First Name" Width="SizeToHeader">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding FirstName}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn x:Name="floorColumn" Header="floor" Width="SizeToHeader">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding floor}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn x:Name="lastNameColumn" Header="Last Name" Width="SizeToHeader">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding LastName}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn x:Name="years_of_experienceColumn" Header="years of experience" Width="SizeToHeader">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding years_of_experience}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>

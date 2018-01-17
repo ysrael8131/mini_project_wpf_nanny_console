@@ -9,7 +9,7 @@ namespace BL
     public interface IBL
     {
         void addNanny(Nanny a);
-        void deleteNanny(int id);
+        void deleteNanny(int? id);
         void updateNanny(Nanny a);
 
         void addMother(Mother a);

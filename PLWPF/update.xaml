@@ -30,9 +30,10 @@
             </StackPanel>
 
             <StackPanel  x:Name="child_stackpanel" Visibility="Collapsed" Orientation="Horizontal">
-                <TextBlock x:Name="select_child" Text="select_child" Margin="15"/>
-                <ComboBox IsEnabled="{Binding ElementName=select_mother_conbobox, Path=SelectedItem}" 
-                          x:Name="select_child_conbobox" Width="90" Margin="15" SelectionChanged="select_child_conbobox_SelectionChanged"/>
+                <TextBlock x:Name="select_child" Text="select_child" Margin="15" />
+                <ComboBox IsEnabled="{Binding ElementName=select_mother_conbobox, Path=SelectedItem}"
+                        x:Name="select_child_conbobox" Width="90" Margin="15"
+                        SelectionChanged="select_child_conbobox_SelectionChanged" />
             </StackPanel>
             <StackPanel x:Name="options_buttons" Orientation="Horizontal" Visibility="Collapsed">
                 <Button x:Name="press_to_update" Content="update" Margin="15" Click="press_to_update_Click"/>
@@ -238,7 +239,7 @@
 
             </Grid>
         </Grid>
-        
+
         <Grid x:Name="child_grid" Background="{StaticResource BackgroundGrid}"
               Margin="15" Grid.Row="1" Grid.ColumnSpan="2" Visibility="Collapsed">
             <Grid.RowDefinitions>
@@ -254,7 +255,7 @@
             <TextBlock Margin="10,10,9,9.2"  Text="update child" TextAlignment="Center" FontSize="20" />
 
             <TextBlock    Text=" ID" Grid.Row="1" Style="{StaticResource textblock_style}"
-         Visibility="{Binding ElementName=idTextBox,Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+         Visibility="{Binding ElementName=idTextBox_c,Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
             <TextBox x:Name="idTextBox_c" IsEnabled="False" Grid.Row="1" Margin="10" Style="{StaticResource textbox_style}" 
          Text="{Binding id, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=Explicit}"  />
             <TextBlock x:Name="errorMesseg1" Text=" This field is for numbers only" Grid.Row="1" Style="{StaticResource textblock_style_error}" />
@@ -272,7 +273,7 @@
             <TextBlock x:Name="errorMesseg6" Text="Number ID can not be negative" Grid.Row="2" Style="{StaticResource textblock_style_error}"/>
 
             <TextBlock    Text="First Name" Grid.Row="4" Style="{StaticResource textblock_style}"
-                     Visibility="{Binding ElementName=firstNameTextBox,Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                     Visibility="{Binding ElementName=firstNameTextBox_c,Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
             <TextBox x:Name="firstNameTextBox_c" Grid.Row="4" Style="{StaticResource textbox_style}" 
                  Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=Explicit}" Margin="10" TextChanged="textChnge2" />
 
@@ -317,66 +318,22 @@
 
             </Button>
 
-            <!--<Grid.RowDefinitions>
-            <RowDefinition Height="6*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <Button Content="ADD CHILD" Grid.Row="1"  HorizontalContentAlignment="Center"
-          IsEnabled="{Binding ElementName=idTextBox, Path=Text}" Click="Button_Click"
-               >
-
-        </Button>
-        <Grid x:Name="grid1" DataContext="{StaticResource childViewSource}" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Label Content="birth Day:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
-            <DatePicker x:Name="birthDayDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="3"
-                        SelectedDate="{Binding birthDay, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
-                        VerticalAlignment="Center" DisplayDateStart="01.01.2012" />
-
-
-            <Label Content="details Special Needs:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
-            <TextBox x:Name="detailsSpecialNeedsTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" Text="{Binding detailsSpecialNeeds, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-
-
-            <Label Content="First Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
-            <TextBox x:Name="firstNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-
-
-
-            <Label Content="id:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-            <TextBox x:Name="idTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" VerticalAlignment="Center" Width="120"/>
-
-
-
-            <Label Content="Mother ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
-            <TextBox x:Name="motherIDTextBox" Grid.Column="1" Height="24" Margin="3.333,4,2.667,4" Grid.Row="1" Text="{Binding MotherID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
-
-
-
-            <Label Content="special Needs:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
-            <CheckBox x:Name="specialNeedsCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding specialNeeds, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
-        </Grid>-->
         </Grid>
 
 
         <Grid x:Name="nanny_grid" Background="{StaticResource BackgroundGrid}"
               Margin="15" Grid.Row="1" Grid.ColumnSpan="2" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <TextBlock  Margin="10,10,9,9.2" Grid.Row="0" VerticalAlignment="Center" Text="update nanny" TextAlignment="Center" FontSize="20" />
 
-            <Grid Visibility="Visible"  x:Name="first_grid_nanny" Background="{StaticResource BackgroundGrid}">
+
+            <Grid Visibility="Visible" x:Name="first_grid_nanny" Background="{StaticResource BackgroundGrid}"
+                  Margin="0,0,-0.4,0.8" Grid.Row="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="0.0000001*"/>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
@@ -388,11 +345,10 @@
 
                 </Grid.RowDefinitions>
 
-                <TextBlock  Margin="10,10,9,9.2" VerticalAlignment="Center" Text="Personal Information" TextAlignment="Center" FontSize="20" />
                 <TextBlock Style="{StaticResource textblock_style}" Grid.Row="1"  Text=" ID"
-                        Visibility="{Binding ElementName=idTextBox,
+                        Visibility="{Binding ElementName=idTextBox_n,
                 Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                <TextBox x:Name="idTextBox_n" Text="{Binding id, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1"
+                <TextBox x:Name="idTextBox_n" Text="{Binding id, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=Explicit}" Grid.Row="1"
                      Style="{StaticResource textbox_style}" TextChanged="textChanged"/>
 
                 <!--<TextBlock x:Name="errorMesseg1" Text=" This field is for numbers only" Grid.Row="1" Style="{StaticResource textblock_style_error}" />
@@ -400,31 +356,31 @@
                 <TextBlock x:Name="errorMesseg3" Text="Number ID can not be negative" Grid.Row="1" Style="{StaticResource textblock_style_error}"/>-->
 
                 <TextBlock Style="{StaticResource textblock_style}" Grid.Row="2"  Text=" First name"
-                        Visibility="{Binding ElementName=firstNameTextBox,
+                        Visibility="{Binding ElementName=firstNameTextBox_n,
                 Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                <TextBox x:Name="firstNameTextBox_n" Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2"
+                <TextBox x:Name="firstNameTextBox_n" Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=Explicit}" Grid.Row="2"
                      Style="{StaticResource textbox_style}"/>
 
                 <TextBlock  Style="{StaticResource textblock_style}" Text=" Last name" Grid.Row="3"
-                       Visibility="{Binding ElementName=lastNameTextBox,  
+                       Visibility="{Binding ElementName=lastNameTextBox_n,  
                 Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
                 <TextBox Style="{StaticResource textbox_style}"  x:Name="lastNameTextBox_n" Grid.Row="3" 
                      Text="{Binding LastName, Mode=TwoWay, NotifyOnValidationError=true, 
-                ValidatesOnExceptions=true}" />
+                ValidatesOnExceptions=true, UpdateSourceTrigger=Explicit}" />
 
                 <TextBlock  Style="{StaticResource textblock_style}" Text=" Addres" Grid.Row="4" 
-                       Visibility="{Binding ElementName=addresTextBox,  
+                       Visibility="{Binding ElementName=addresTextBox_n,  
                 Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
                 <TextBox Style="{StaticResource textbox_style}" x:Name="addresTextBox_n" Grid.Row="4" 
                     Text="{Binding Addres, Mode=TwoWay, NotifyOnValidationError=true, 
-                ValidatesOnExceptions=true}" Height="25" />
+                ValidatesOnExceptions=true, UpdateSourceTrigger=Explicit}" Height="25" />
 
 
                 <TextBlock  Style="{StaticResource textblock_style}" Text=" Phone number" Grid.Row="5"
-           Visibility="{Binding ElementName=phoneNumberTextBox,  
+           Visibility="{Binding ElementName=phoneNumberTextBox_n,  
                 Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
                 <TextBox Style="{StaticResource textbox_style}" x:Name="phoneNumberTextBox_n" Grid.Row="5"  
-                    Text="{Binding PhoneNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                    Text="{Binding PhoneNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=Explicit}" />
 
                 <Grid Grid.Row="6">
                     <Grid.ColumnDefinitions>
@@ -437,17 +393,17 @@
                         HorizontalAlignment="Left" Width="50" />
                     <TextBox x:Name="floorTextBox" Width="50"  VerticalAlignment="Center"  Style="{StaticResource textbox_style}"
                      Text="{Binding floor, Mode=TwoWay, NotifyOnValidationError=true, 
-                ValidatesOnExceptions=true}" Grid.Column="0" Margin="10" HorizontalAlignment="Left"  />
+                ValidatesOnExceptions=true ,UpdateSourceTrigger=Explicit}" Grid.Column="0" Margin="10" HorizontalAlignment="Left"  />
 
                     <Label Content="Elevators:"   HorizontalAlignment="Left" Margin="10" Grid.Column="1" 
                        VerticalAlignment="Center"/>
                     <CheckBox x:Name="elevatorsCheckBox_n"   HorizontalAlignment="Center" 
-                          IsChecked="{Binding elevators, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                          IsChecked="{Binding elevators, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=Explicit}"
                           Margin="3" Grid.Column="1" VerticalAlignment="Center"/>
                 </Grid>
                 <Label Content="Birth day:"   HorizontalAlignment="Left" Margin="10" Grid.Row="7" 
                        VerticalAlignment="Center"/>
-                <DatePicker x:Name="birthDayDatePicker_n" VerticalAlignment="Center" SelectedDate="{Binding birthDay, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="7" Margin="15" HorizontalAlignment="Center" DisplayDateStart="01.01.1958"/>
+                <DatePicker x:Name="birthDayDatePicker_n" VerticalAlignment="Center" SelectedDate="{Binding birthDay, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=Explicit}" Grid.Row="7" Margin="15" HorizontalAlignment="Center" DisplayDateStart="01.01.1958"/>
 
                 <Button x:Name="next_nanny" Content="Next" Grid.Row="8" Margin="20"   BorderBrush="{StaticResource brushWatermarkBorder}" Click="next_nanny_Click" >
                     <Button.Style >
@@ -482,28 +438,27 @@
 
 
 
-            <Grid x:Name="second_grid_nanny"  Margin="15" Grid.Column="0" Visibility="Collapsed" Background="{StaticResource BackgroundGrid}">
+            <Grid x:Name="second_grid_nanny"  Margin="10" Grid.Column="0" Visibility="Collapsed" Background="{StaticResource BackgroundGrid}" Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="0.9*"/>
+                    <RowDefinition Height="0.0000001*"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="1*"/>
+                    <RowDefinition Height="0.9*"/>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="0.6*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-                <TextBlock Margin="134,18,134,17.4" Text="more details" Grid.ColumnSpan="2" TextAlignment="Center" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
                 <Grid x:Name="hours_grid" Visibility="Visible"  Grid.Row="1" 
               Margin="15,14.6,15,15.4" Background="{StaticResource BackgroundGrid}" Grid.ColumnSpan="2"  >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="0.000001*"/>
-                        <RowDefinition Height="0.7*"/>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
@@ -524,47 +479,47 @@
                     <Label VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="6" Margin="59,4,59,3.333" HorizontalAlignment="Center" Content="Choose the days and the hours you need a nanny:" />
 
                     <Label VerticalAlignment="Center" Grid.Row="2"  HorizontalAlignment="Left" Content="Sunday:"/>
-                    <CheckBox x:Name="sundayCheckBox_n" VerticalAlignment="Center" Grid.Row="2"  IsChecked="{Binding work[0].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Grid.Column="1" />
+                    <CheckBox x:Name="sundayCheckBox_n" VerticalAlignment="Center" Grid.Row="2"  IsChecked="{Binding work[0].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=Explicit}" HorizontalAlignment="Center" Grid.Column="1" />
                     <Label VerticalAlignment="Center" Grid.Row="2" Grid.Column="2"  HorizontalAlignment="Right" Content="Start:"/>
-                    <dg:TimePicker x:Name="start1_n" VerticalAlignment="Center" Grid.Row="2" HorizontalAlignment="Center" Grid.Column="3" IsEnabled="{Binding ElementName=sundayCheckBox, Path=IsChecked}" />
+                    <dg:TimePicker x:Name="start1_n" VerticalAlignment="Center" Grid.Row="2" HorizontalAlignment="Center" Grid.Column="3" IsEnabled="{Binding ElementName=sundayCheckBox_n, Path=IsChecked}" />
                     <Label VerticalAlignment="Center" Grid.Row="2" Grid.Column="4" HorizontalAlignment="Right" Content="End:"/>
-                    <dg:TimePicker x:Name="end1_n" VerticalAlignment="Center" Grid.Row="2" HorizontalAlignment="Center" Grid.Column="5" IsEnabled="{Binding ElementName=sundayCheckBox, Path=IsChecked}"/>
+                    <dg:TimePicker x:Name="end1_n" VerticalAlignment="Center" Grid.Row="2" HorizontalAlignment="Center" Grid.Column="5" IsEnabled="{Binding ElementName=sundayCheckBox_n, Path=IsChecked}"/>
 
                     <Label VerticalAlignment="Center" Grid.Row="3" HorizontalAlignment="Left" Content="Monday:"/>
                     <Label VerticalAlignment="Center" Grid.Row="3" Grid.Column="2"  HorizontalAlignment="Right" Content="Start:"/>
                     <Label VerticalAlignment="Center" Grid.Row="3" Grid.Column="4" HorizontalAlignment="Right" Content="End:"/>
-                    <CheckBox x:Name="mondayCheckBox_n" VerticalAlignment="Center" Grid.Row="3" IsChecked="{Binding work[1].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Grid.Column="1" />
-                    <dg:TimePicker x:Name="startMondayTime_n" VerticalAlignment="Center" Grid.Row="3"  HorizontalAlignment="Center" Grid.Column="3" IsEnabled="{Binding ElementName=mondayCheckBox, Path=IsChecked}" />
-                    <dg:TimePicker x:Name="endMondayTime_n" VerticalAlignment="Center" Grid.Row="3" HorizontalAlignment="Center" Grid.Column="5" IsEnabled="{Binding ElementName=mondayCheckBox, Path=IsChecked}"/>
+                    <CheckBox x:Name="mondayCheckBox_n" VerticalAlignment="Center" Grid.Row="3" IsChecked="{Binding work[1].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=Explicit}" HorizontalAlignment="Center" Grid.Column="1" />
+                    <dg:TimePicker x:Name="startMondayTime_n" VerticalAlignment="Center" Grid.Row="3"  HorizontalAlignment="Center" Grid.Column="3" IsEnabled="{Binding ElementName=mondayCheckBox_n, Path=IsChecked}" />
+                    <dg:TimePicker x:Name="endMondayTime_n" VerticalAlignment="Center" Grid.Row="3" HorizontalAlignment="Center" Grid.Column="5" IsEnabled="{Binding ElementName=mondayCheckBox_n, Path=IsChecked}"/>
 
 
                     <Label VerticalAlignment="Center" Grid.Row="4" HorizontalAlignment="Left" Content="Tuesday:"/>
                     <Label VerticalAlignment="Center" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Right" Content="Start:"/>
                     <Label VerticalAlignment="Center" Grid.Row="4" Grid.Column="4" HorizontalAlignment="Right" Content="End:"/>
-                    <CheckBox x:Name="tuesdayCheckBox_n" VerticalAlignment="Center" Grid.Row="4" IsChecked="{Binding work[2].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Grid.Column="1"/>
-                    <dg:TimePicker x:Name="startTuesdayTime_n" VerticalAlignment="Center" Grid.Row="4" HorizontalAlignment="Center" Grid.Column="3" IsEnabled="{Binding ElementName=tuesdayCheckBox, Path=IsChecked}"/>
-                    <dg:TimePicker x:Name="endTuesdayTime_n" VerticalAlignment="Center" Grid.Row="4" HorizontalAlignment="Center" Grid.Column="5" IsEnabled="{Binding ElementName=tuesdayCheckBox, Path=IsChecked}"/>
+                    <CheckBox x:Name="tuesdayCheckBox_n" VerticalAlignment="Center" Grid.Row="4" IsChecked="{Binding work[2].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=Explicit}" HorizontalAlignment="Center" Grid.Column="1"/>
+                    <dg:TimePicker x:Name="startTuesdayTime_n" VerticalAlignment="Center" Grid.Row="4" HorizontalAlignment="Center" Grid.Column="3" IsEnabled="{Binding ElementName=tuesdayCheckBox_n, Path=IsChecked}"/>
+                    <dg:TimePicker x:Name="endTuesdayTime_n" VerticalAlignment="Center" Grid.Row="4" HorizontalAlignment="Center" Grid.Column="5" IsEnabled="{Binding ElementName=tuesdayCheckBox_n, Path=IsChecked}"/>
 
                     <Label VerticalAlignment="Center" Grid.Row="5" HorizontalAlignment="Left" Content="Wednesday:"/>
                     <Label VerticalAlignment="Center" Grid.Row="5" Grid.Column="2" HorizontalAlignment="Right" Content="Start:"/>
                     <Label VerticalAlignment="Center" Grid.Row="5" Grid.Column="4" HorizontalAlignment="Right" Content="End:"/>
-                    <CheckBox x:Name="wednesdayCheckBox_n" VerticalAlignment="Center" Grid.Row="5" IsChecked="{Binding work[3].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Grid.Column="1" />
-                    <dg:TimePicker x:Name="startWednesdayTime_n" VerticalAlignment="Center" Grid.Row="5" HorizontalAlignment="Center" Grid.Column="3" IsEnabled="{Binding ElementName=wednesdayCheckBox, Path=IsChecked}" />
-                    <dg:TimePicker x:Name="endWednesdayTime_n" VerticalAlignment="Center" Grid.Row="5"  HorizontalAlignment="Center" Grid.Column="5" IsEnabled="{Binding ElementName=wednesdayCheckBox, Path=IsChecked}"/>
+                    <CheckBox x:Name="wednesdayCheckBox_n" VerticalAlignment="Center" Grid.Row="5" IsChecked="{Binding work[3].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=Explicit}" HorizontalAlignment="Center" Grid.Column="1" />
+                    <dg:TimePicker x:Name="startWednesdayTime_n" VerticalAlignment="Center" Grid.Row="5" HorizontalAlignment="Center" Grid.Column="3" IsEnabled="{Binding ElementName=wednesdayCheckBox_n, Path=IsChecked}" />
+                    <dg:TimePicker x:Name="endWednesdayTime_n" VerticalAlignment="Center" Grid.Row="5"  HorizontalAlignment="Center" Grid.Column="5" IsEnabled="{Binding ElementName=wednesdayCheckBox_n, Path=IsChecked}"/>
 
                     <Label VerticalAlignment="Center" Grid.Row="6" HorizontalAlignment="Left" Content="Thursday:"/>
                     <Label VerticalAlignment="Center" Grid.Row="6" Grid.Column="2" HorizontalAlignment="Right" Content="Start:"/>
                     <Label VerticalAlignment="Center" Grid.Row="6" Grid.Column="4" HorizontalAlignment="Right" Content="End:"/>
-                    <CheckBox x:Name="thursdayCheckBox_n" VerticalAlignment="Center" Grid.Row="6" IsChecked="{Binding work[4].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Grid.Column="1" />
-                    <dg:TimePicker x:Name="startThursdayTime_n" VerticalAlignment="Center" Grid.Row="6" HorizontalAlignment="Center" Grid.Column="3" IsEnabled="{Binding ElementName=thursdayCheckBox, Path=IsChecked}" />
-                    <dg:TimePicker x:Name="endThursdayTime_n" VerticalAlignment="Center" Grid.Row="6" HorizontalAlignment="Center" Grid.Column="5" IsEnabled="{Binding ElementName=thursdayCheckBox, Path=IsChecked}"/>
+                    <CheckBox x:Name="thursdayCheckBox_n" VerticalAlignment="Center" Grid.Row="6" IsChecked="{Binding work[4].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=Explicit}" HorizontalAlignment="Center" Grid.Column="1" />
+                    <dg:TimePicker x:Name="startThursdayTime_n" VerticalAlignment="Center" Grid.Row="6" HorizontalAlignment="Center" Grid.Column="3" IsEnabled="{Binding ElementName=thursdayCheckBox_n, Path=IsChecked}" />
+                    <dg:TimePicker x:Name="endThursdayTime_n" VerticalAlignment="Center" Grid.Row="6" HorizontalAlignment="Center" Grid.Column="5" IsEnabled="{Binding ElementName=thursdayCheckBox_n, Path=IsChecked}"/>
 
                     <Label VerticalAlignment="Center" Grid.Row="7" HorizontalAlignment="Left" Content="Friday:"/>
                     <Label VerticalAlignment="Center" Grid.Row="7" Grid.Column="2" HorizontalAlignment="Right" Content="Start:"/>
                     <Label VerticalAlignment="Center" Grid.Row="7" Grid.Column="4" HorizontalAlignment="Right" Content="End:"/>
-                    <CheckBox x:Name="fridayCheckBox_n" VerticalAlignment="Center" Grid.Row="7" IsChecked="{Binding work[5].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Grid.Column="1" />
-                    <dg:TimePicker x:Name="startFridayTime_n" VerticalAlignment="Center" Grid.Row="7" HorizontalAlignment="Center" Grid.Column="3" IsEnabled="{Binding ElementName=fridayCheckBox, Path=IsChecked}" />
-                    <dg:TimePicker x:Name="endFridayTime_n" VerticalAlignment="Center" Grid.Row="7"  HorizontalAlignment="Center" Grid.Column="5" IsEnabled="{Binding ElementName=fridayCheckBox, Path=IsChecked}"/>
+                    <CheckBox x:Name="fridayCheckBox_n" VerticalAlignment="Center" Grid.Row="7" IsChecked="{Binding work[5].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=Explicit}" HorizontalAlignment="Center" Grid.Column="1" />
+                    <dg:TimePicker x:Name="startFridayTime_n" VerticalAlignment="Center" Grid.Row="7" HorizontalAlignment="Center" Grid.Column="3" IsEnabled="{Binding ElementName=fridayCheckBox_n, Path=IsChecked}" />
+                    <dg:TimePicker x:Name="endFridayTime_n" VerticalAlignment="Center" Grid.Row="7"  HorizontalAlignment="Center" Grid.Column="5" IsEnabled="{Binding ElementName=fridayCheckBox_n, Path=IsChecked}"/>
 
 
                 </Grid>
@@ -573,29 +528,15 @@
                     <Label Content="from" HorizontalAlignment="Center" Grid.Column="0" Margin="10,10,1,1" Grid.Row="2"  VerticalAlignment="Center" />
                     <ComboBox x:Name="from_years" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Margin="10,10,2,2" Foreground="Blue" FontFamily="Cooper Black" MouseEnter="Years_MouseEnter"  />
                     <ComboBox x:Name="from_month" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Margin="10,10,2,2" Foreground="Blue" FontFamily="Cooper Black" MouseEnter="month_MouseEnter" />
-                    <ComboBox x:Name="age_child_minComboBox" Visibility="Collapsed" HorizontalAlignment="Right" Height="Auto" ItemsSource="{Binding}" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Width="50" Margin="20" Foreground="Blue" FontFamily="Cooper Black" >
-                        <ComboBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <VirtualizingStackPanel/>
-                            </ItemsPanelTemplate>
-                        </ComboBox.ItemsPanel>
-                    </ComboBox>
                     <Label Content="to" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2"  VerticalAlignment="Center" Margin="70,10,2,2"/>
                     <ComboBox x:Name="to_years" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Margin="10,10,2,2" Foreground="Blue" FontFamily="Cooper Black" MouseEnter="Years_MouseEnter"  />
                     <ComboBox x:Name="to_month" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Margin="10,10,2,2" Foreground="Blue" FontFamily="Cooper Black" MouseEnter="month_MouseEnter" />
 
-                    <ComboBox x:Name="age_child_maxComboBox" Visibility="Collapsed"  HorizontalAlignment="Center" Height="Auto" ItemsSource="{Binding}" Grid.Row="2" VerticalAlignment="Center" Width="50" Grid.Column="1">
-                        <ComboBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <VirtualizingStackPanel/>
-                            </ItemsPanelTemplate>
-                        </ComboBox.ItemsPanel>
-                    </ComboBox>
                 </StackPanel>
 
                 <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal">
                     <Label Content="max Childs:" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="3" Margin="10" VerticalAlignment="Center"/>
-                    <ComboBox x:Name="maxChildsComboBox" DisplayMemberPath="maxChilds" Grid.Column="0" HorizontalAlignment="Right" Height="Auto" ItemsSource="{Binding}" Grid.Row="3" VerticalAlignment="Center" Width="50" >
+                    <ComboBox x:Name="maxChildsComboBox" DisplayMemberPath="maxChilds" Grid.Column="0" HorizontalAlignment="Right" Height="Auto" ItemsSource="{Binding , UpdateSourceTrigger=Explicit}" Grid.Row="3" VerticalAlignment="Center" Width="50" >
                         <ComboBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <VirtualizingStackPanel/>
@@ -604,7 +545,7 @@
                     </ComboBox>
 
                     <Label Content="years of experience:" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="3" Margin="30,0,0,0" VerticalAlignment="Center"/>
-                    <ComboBox x:Name="years_of_experienceComboBox" Grid.Column="1" Margin="10" DisplayMemberPath="years_of_experience" HorizontalAlignment="Right" Height="Auto" ItemsSource="{Binding}"  Grid.Row="3" VerticalAlignment="Center" Width="50">
+                    <ComboBox x:Name="years_of_experienceComboBox" Grid.Column="1" Margin="10" DisplayMemberPath="years_of_experience" HorizontalAlignment="Right" Height="Auto" ItemsSource="{Binding , UpdateSourceTrigger=Explicit}"  Grid.Row="3" VerticalAlignment="Center" Width="50">
                         <ComboBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <VirtualizingStackPanel/>
@@ -613,28 +554,23 @@
                     </ComboBox>
                 </StackPanel>
 
-                <Label Content="salary per hour?" Grid.Row="4"/>
+                <Label Content="salary per hour?" Grid.Row="4" Background="Transparent"/>
                 <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal">
-                    <CheckBox x:Name="per_hour_ableCheckBox1" Content="" HorizontalAlignment="Left" IsChecked="{Binding per_hour_able, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,10,2,2" Grid.Row="4" VerticalAlignment="Center"/>
-
-
-
-
-
+                    <CheckBox x:Name="per_hour_ableCheckBox1" Content="" HorizontalAlignment="Left" IsChecked="{Binding per_hour_able, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=Explicit}" Margin="10,15,2,2" Grid.Row="4" VerticalAlignment="Center"/>
 
                     <Grid>
 
-                        <TextBlock  Style="{StaticResource textblock_style}" Margin="10,10,2,2"  Text=" salary per hour" 
+                        <TextBlock  Style="{StaticResource textblock_style}" Margin="10,15,2,2"  Text=" salary per hour" 
                        Visibility="{Binding ElementName=salaryPerHourTextBox1,  
                 Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
-                        <TextBox Style="{StaticResource textbox_style}" x:Name="salaryPerHourTextBox1" Margin="10,10,2,2" Width="120" Text="{Binding salaryPerHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"  
+                        <TextBox Style="{StaticResource textbox_style}" x:Name="salaryPerHourTextBox1" Margin="10,15,2,2" Width="120" Text="{Binding salaryPerHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=Explicit}" VerticalAlignment="Center"  
                   IsEnabled="{Binding ElementName=per_hour_ableCheckBox1,Path=IsChecked}" />
                     </Grid>
                     <Grid>
-                        <TextBlock  Style="{StaticResource textblock_style}" Margin="70,10,2,2"  Text=" salary per month" 
+                        <TextBlock  Style="{StaticResource textblock_style}" Margin="70,15,2,2"  Text=" salary per month" 
                        Visibility="{Binding ElementName=salaryPerMonthTextBox1,  
                 Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
-                        <TextBox x:Name="salaryPerMonthTextBox1"  HorizontalAlignment="Right" Margin="70,10,2,2" Grid.Row="4" Text="{Binding salaryPerMonth, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" FontSize="15" Foreground="{StaticResource brushWatermarkForeground}" Background="Transparent" Height="25" VerticalAlignment="Center" Width="120" >
+                        <TextBox x:Name="salaryPerMonthTextBox1"  HorizontalAlignment="Right" Margin="70,15,2,2" Grid.Row="4" Text="{Binding salaryPerMonth, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=Explicit}" FontSize="15" Foreground="{StaticResource brushWatermarkForeground}" Background="Transparent" Height="25" VerticalAlignment="Center" Width="120" >
                             <TextBox.Style>
                                 <Style>
                                     <Style.Triggers>
@@ -661,18 +597,17 @@
                 <StackPanel Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal">
 
                     <Label Content="recommendation:"  HorizontalAlignment="Left"  Grid.Row="5" VerticalAlignment="Center"/>
-                    <TextBox x:Name="recommendationTextBox1" HorizontalAlignment="Center" TextWrapping="Wrap" Height="45" Grid.Row="5" Text="{Binding recommendation, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="230" />
+                    <TextBox x:Name="recommendationTextBox1" HorizontalAlignment="Center" TextWrapping="Wrap" Height="45" Grid.Row="5" Text="{Binding recommendation, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=Explicit}" VerticalAlignment="Center" Width="230" />
 
                 </StackPanel>
                 <StackPanel Grid.Row="6" Grid.ColumnSpan="2" Orientation="Horizontal">
-                    <Label Content="vacation acording tamat:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,21.4,0,21.4" Grid.Row="6" VerticalAlignment="Center"/>
-                    <CheckBox x:Name="vacation_kindCheckBox1" Content="" HorizontalAlignment="Center" IsChecked="{Binding vacation_kind, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="20" Grid.Row="6" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+                    <Label Content="vacation acording tamat:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
+                    <CheckBox x:Name="vacation_kindCheckBox1" Content="" IsChecked="{Binding vacation_kind, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=Explicit}" Margin="5" Grid.Row="6" VerticalAlignment="Center"/>
 
                 </StackPanel>
 
 
-                <Button  x:Name="add_nanny_button" Visibility="Visible"  Content="add nanny" HorizontalAlignment="Left"   Grid.Row="7" Margin="5,4.6,0,5.2" Width="150" Click="add_nanny_button_Click" >
-
+                <Button  x:Name="update_nanny_button" Visibility="Visible"  Content="update" HorizontalAlignment="Left"   Grid.Row="7" Margin="5,4.6,0,5.2" Width="150" Click="update_nanny_button_Click" >
                     <Button.Style >
                         <Style>
                             <Style.Triggers>
@@ -682,12 +617,6 @@
                                 <DataTrigger Binding="{Binding ElementName=age_child_maxComboBox, Path=Text  }" Value="">
                                     <Setter Property="Button.IsEnabled" Value="False"/>
                                 </DataTrigger>
-                                <!--<DataTrigger Binding="{Binding ElementName=maxChildsComboBox, Path=Text  }" Value="">
-                                <Setter Property="Button.IsEnabled" Value="False"/>
-                            </DataTrigger>-->
-
-
-
                                 <MultiDataTrigger>
                                     <MultiDataTrigger.Conditions>
                                         <Condition Binding="{Binding ElementName=per_hour_ableCheckBox1, Path=IsChecked}" Value="True" />
@@ -702,74 +631,17 @@
                                     </MultiDataTrigger.Conditions>
                                     <Setter Property="Button.IsEnabled" Value="False" />
                                 </MultiDataTrigger>
-
-
                             </Style.Triggers>
-
-
-
                         </Style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     </Button.Style>
-
-
-
                 </Button>
-
-
-
-
-                <!--<Style TargetType="Button" >
-            <Style.Triggers>
-                <MultiTrigger>
-                    <MultiTrigger.Conditions>
-                        <Condition Property="IsKeyboardFocused" Value="True" />
-                        <Condition Property="IsMouseOver" Value="True" />
-                    </MultiTrigger.Conditions>
-                    <MultiTrigger.Setters>
-                        <Setter Property="Background" Value="LightGreen" />
-                    </MultiTrigger.Setters>
-                </MultiTrigger>
-            </Style.Triggers
-                </Style>-->
-
-
-
-
-
-
-
-
-
-
-                <Button  x:Name="back_button" Visibility="Visible"  Content="back"  HorizontalAlignment="Right"  Grid.Row="7" Margin="0,4.6,5,5.2" Grid.Column="1" Width="150" Click="back_button_Click"/>
+                <Button  x:Name="back_button_nanny" Visibility="Visible"  Content="back"  HorizontalAlignment="Right"  Grid.Row="7" Margin="0,4.6,5,5.2" Grid.Column="1" Width="150" Click="back_button_nanny_Click"/>
 
             </Grid>
 
         </Grid>
 
-          
+
 
         <!--</StackPanel>-->
     </Grid>
