@@ -15,28 +15,28 @@
         <WrapPanel TextElement.FontSize="16"  >
 
             <DockPanel Grid.Row="0" >
-                <Label Content="select item" DockPanel.Dock="Left" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" />
-                <ComboBox x:Name="select_item_combobox" Margin="15" Width="150" SelectionChanged="select_item_combobox_SelectionChanged"/>
+                <Label Content="Select item" DockPanel.Dock="Left" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" FontFamily="Impact" Foreground="Brown" />
+                <ComboBox x:Name="select_item_combobox" Margin="15" Width="150" SelectionChanged="select_item_combobox_SelectionChanged" BorderBrush="Blue" BorderThickness="3" FontFamily="Impact"/>
             </DockPanel>
 
             <StackPanel x:Name="nanny_stackpanel" Visibility="Collapsed" Orientation="Horizontal">
-                <TextBlock x:Name="select_nannys" Text="select_nanny" Margin="15"/>
-                <ComboBox x:Name="select_nanny_conbobox" DisplayMemberPath="id" Width="90" Margin="15" SelectionChanged="select_nanny_conbobox_SelectionChanged"/>
+                <TextBlock x:Name="select_nannys" Text="Select nanny" Margin="15" FontFamily="Impact" Foreground="Brown"/>
+                <ComboBox x:Name="select_nanny_conbobox" DisplayMemberPath="id" Width="90" Margin="15" SelectionChanged="select_nanny_conbobox_SelectionChanged" BorderBrush="Blue" BorderThickness="3" FontFamily="Impact"/>
             </StackPanel>
 
             <StackPanel  x:Name="mother_stackpanel" Visibility="Collapsed" Orientation="Horizontal">
-                <TextBlock x:Name="select_mother" Text="select_mother" Margin="15"/>
-                <ComboBox x:Name="select_mother_conbobox" Width="90" Margin="15" SelectionChanged="select_mother_conbobox_SelectionChanged"/>
+                <TextBlock x:Name="select_mother" Text="Select mother" Margin="15" FontFamily="Impact" Foreground="Brown"/>
+                <ComboBox x:Name="select_mother_conbobox" Width="90" Margin="15" SelectionChanged="select_mother_conbobox_SelectionChanged" BorderThickness="3" FontFamily="Impact"/>
             </StackPanel>
 
             <StackPanel  x:Name="child_stackpanel" Visibility="Collapsed" Orientation="Horizontal">
-                <TextBlock x:Name="select_child" Text="select_child" Margin="15"/>
+                <TextBlock x:Name="select_child" Text="Select child" Margin="15" FontFamily="Impact" Foreground="Brown"/>
                 <ComboBox IsEnabled="{Binding ElementName=select_mother_conbobox, Path=SelectedItem}" 
-                          x:Name="select_child_conbobox" Width="90" Margin="15" SelectionChanged="select_child_conbobox_SelectionChanged"/>
+                          x:Name="select_child_conbobox" Width="90" Margin="15" SelectionChanged="select_child_conbobox_SelectionChanged" BorderThickness="3" FontFamily="Impact"/>
             </StackPanel>
             <StackPanel x:Name="options_buttons" Orientation="Horizontal" Visibility="Collapsed">
-                <Button x:Name="press_to_update" Content="update" Margin="15" Click="press_to_update_Click"/>
-                <Button x:Name="press_to_delete" Content="delete" Margin="15" Click="press_to_delete_Click"/>
+                <Button x:Name="press_to_update" Content="Update" Margin="15" Click="press_to_update_Click" FontFamily="Impact" Width="70" BorderThickness="3" Foreground="Brown"/>
+                <Button x:Name="press_to_delete" Content="Delete" Margin="15" Click="press_to_delete_Click" FontFamily="Impact" Width="70" BorderThickness="3" Foreground="Brown"/>
             </StackPanel>
             <!--IsEnabled="{Binding ElementName=select_mother_conbobox, Path=IsInitialized}"-->
         </WrapPanel>
@@ -292,7 +292,7 @@
             <TextBox x:Name="detailsSpecialNeedsTextBox" Grid.Row="6" Style="{StaticResource textbox_style}" 
          Text="{Binding detailsSpecialNeeds, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, UpdateSourceTrigger=Explicit}"
                  IsEnabled="{Binding ElementName=specialNeedsCheckBox,Path=IsChecked}" Margin="10" />
-            <Button x:Name="update_child_button" Content="update"  Grid.Row="7" Margin="20"   BorderBrush="{StaticResource brushWatermarkBorder}" Click="update_child_button_Click" >
+            <Button x:Name="update_child_button" Content="Update"  Grid.Row="7" Margin="20"   BorderBrush="{StaticResource brushWatermarkBorder}" Click="update_child_button_Click" >
                 <Button.Style>
                     <Style>
                         <Style.Triggers>

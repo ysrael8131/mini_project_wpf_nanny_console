@@ -26,6 +26,7 @@ namespace PLWPF
         public AddNanny()
         {
             InitializeComponent();
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             bl = BL.FactoryBl.getBl();
             nanny = new Nanny();
             str= new  string[] { "1", "2", "3", "4", "5+ " };

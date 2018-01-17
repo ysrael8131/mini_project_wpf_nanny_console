@@ -15,17 +15,18 @@ namespace PL
         {
 
             BL.IBL bl = BL.FactoryBl.getBl();
-
+            
             Bl_imp aaa = new BL.Bl_imp();
-         //   Console.WriteLine(bl.CalculateDistance("אוהב ישראל 3,ביתר עילית,ישראל", "קדושת לוי 115,ביתר עילית,ישראל"));
+            Console.WriteLine(aaa.CalculateDistance(" קדיש לוז 10 ירושלים", "קוממיות 10 קרית גת"));
             Console.WriteLine();
             try
             {
-
+                
+                
                 Mother mom1 = new Mother(1234, "dora1", "coen", "", "אוהב ישראל 3,ביתר עילית,ישראל", null, false);
                 Mother mom2 = new Mother(1235, "dora2", "coen", "", "אוהב ישראל 3,ביתר עילית,ישראל", "קדושת לוי 115,ביתר עילית,ישראל", true);
                 Mother mom3 = new Mother(1236, "dora3", "coen", "", "אוהב ישראל 3,ביתר עילית,ישראל", null, false);
-
+                
                 for (int i = 0; i < 6; i++)
                 {
                     Work_information temp = new Work_information();

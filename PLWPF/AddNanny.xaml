@@ -47,7 +47,7 @@
         </Grid.ColumnDefinitions>
 
 
-        <Grid Visibility="Collapsed"  x:Name="first_grid_nanny" Margin="15" Background="{StaticResource BackgroundGrid}">
+        <Grid Visibility="Visible"  x:Name="first_grid_nanny" Margin="15" Background="{StaticResource BackgroundGrid}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
