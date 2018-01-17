@@ -122,6 +122,7 @@ namespace PLWPF
 
             bl.addNanny(a7);
             bl.addNanny(a8);
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
