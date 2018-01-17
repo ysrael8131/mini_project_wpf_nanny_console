@@ -319,6 +319,7 @@
 
         </Grid>
 
+        <ScrollViewer x:Name="nanny_scroll" Grid.Row="1" Visibility="Collapsed">
 
         <Grid x:Name="nanny_grid" Background="{StaticResource BackgroundGrid}"
               Margin="15" Grid.Row="1" Grid.ColumnSpan="2" Visibility="Collapsed">
@@ -535,7 +536,7 @@
 
                 <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal">
                     <Label Content="max Childs:" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="3" Margin="10" VerticalAlignment="Center"/>
-                    <ComboBox x:Name="maxChildsComboBox" DisplayMemberPath="maxChilds" Grid.Column="0" HorizontalAlignment="Right" Height="Auto" ItemsSource="{Binding , UpdateSourceTrigger=Explicit}" Grid.Row="3" VerticalAlignment="Center" Width="50" >
+                    <ComboBox x:Name="maxChildsComboBox" DisplayMemberPath="maxChilds" Grid.Column="0" HorizontalAlignment="Right" Height="Auto" ItemsSource="{Binding}" Grid.Row="3" VerticalAlignment="Center" Width="50" >
                         <ComboBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <VirtualizingStackPanel/>
@@ -544,7 +545,7 @@
                     </ComboBox>
 
                     <Label Content="years of experience:" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="3" Margin="30,0,0,0" VerticalAlignment="Center"/>
-                    <ComboBox x:Name="years_of_experienceComboBox" Grid.Column="1" Margin="10" DisplayMemberPath="years_of_experience" HorizontalAlignment="Right" Height="Auto" ItemsSource="{Binding , UpdateSourceTrigger=Explicit}"  Grid.Row="3" VerticalAlignment="Center" Width="50">
+                    <ComboBox x:Name="years_of_experienceComboBox" Grid.Column="1" Margin="10" DisplayMemberPath="years_of_experience" HorizontalAlignment="Right" Height="Auto" ItemsSource="{Binding}"  Grid.Row="3" VerticalAlignment="Center" Width="50">
                         <ComboBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <VirtualizingStackPanel/>
@@ -640,6 +641,7 @@
 
         </Grid>
 
+        </ScrollViewer>
 
 
         <!--</StackPanel>-->
