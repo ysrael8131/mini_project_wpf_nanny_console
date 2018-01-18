@@ -101,7 +101,7 @@ namespace DAL
         /// func to remove nannys from in list
         /// </summary>
         /// <param name="id"></param>
-        public void deleteNanny(int id)
+        public void deleteNanny(int? id)
         {
             Nanny temp = getNanny(id);
             if (temp == null)

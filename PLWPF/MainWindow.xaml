@@ -76,6 +76,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
 
         </Grid.RowDefinitions>
         <Button Content="addmother" Click="Button_Click" Grid.Row="0" />
@@ -83,6 +84,7 @@
         <Button Content="Remove"  Grid.Row="2" Click="Button_Click_remove" />
         <Button Content="add nanny"   Grid.Row="3" Click="Button_Click_2"/>
         <Button Content="search and update"   Grid.Row="4" Click="Button_Click_3"/>
+      <Button Content="search a nanny"   Grid.Row="5" Click="Button_Click_4" />
 
     </Grid>
 

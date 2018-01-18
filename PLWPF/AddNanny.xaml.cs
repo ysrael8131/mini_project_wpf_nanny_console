@@ -30,6 +30,7 @@ namespace PLWPF
             bl = BL.FactoryBl.getBl();
             nanny = new Nanny();
             str= new  string[] { "1", "2", "3", "4", "5+ " };
+            years_of_experienceComboBox.ItemsSource = str;
 
             for (int i = 0; i < 12; i++)
             {
@@ -38,27 +39,15 @@ namespace PLWPF
                     from_years.Items.Add(i);
                     to_years.Items.Add(i);
                 }
-                if (i < 11 && i > 0)
+                if (i < 11 && i > 4)
                     maxChildsComboBox.Items.Add(i);
 
                 from_month.Items.Add(i);
                 to_month.Items.Add(i);
             }
-            years_of_experienceComboBox.ItemsSource = str;
-            
-            
-             
-
+    
             this.DataContext = nanny;
 
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-            //System.Windows.Data.CollectionViewSource nannyViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("nannyViewSource")));
-            //// Load data by setting the CollectionViewSource.Source property:
-            //// nannyViewSource.Source = [generic data source]
         }
 
         private void Button_Click_Next(object sender, RoutedEventArgs e)
@@ -83,26 +72,12 @@ namespace PLWPF
         {
             try
             {
-                
-                
-
-                
-
                 List<TimePicker> timeStart = new List<TimePicker>() { start1, startMondayTime, startTuesdayTime, startWednesdayTime, startThursdayTime, startFridayTime };
                 List<TimePicker> timeEnd = new List<TimePicker>() { end1, endMondayTime, endTuesdayTime, endWednesdayTime, endThursdayTime, endFridayTime };
                 List<CheckBox> check = new List<CheckBox>() { sundayCheckBox, mondayCheckBox, tuesdayCheckBox, wednesdayCheckBox, thursdayCheckBox, fridayCheckBox };
                 for (int i = 0; i < 6; i++)
                 {
-                    //if (check[i].IsChecked == true && (timeStart[i].Value == null || timeEnd[i].Value == null))
-                    //{
-                        //errorMessegHours.Visibility = Visibility.Visible;
-                        //return;
-                    //}
-                    //if (check[i].IsChecked == true && timeStart[i].Value.Value.TimeOfDay > timeEnd[i].Value.Value.TimeOfDay)
-                    //{
-                        //errorMessegTime.Visibility = Visibility.Visible;
-                        //return;
-                    //}
+                   
                     if (check[i].IsChecked == true)
                     {
                         nanny.work[i].start = timeStart[i].Value.Value.TimeOfDay;
