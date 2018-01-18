@@ -11,38 +11,38 @@ namespace BE
         public DayOfWeek[] cc = new DayOfWeek[6];
 
         public Nanny(int i = 0, string first = "", string last = "", string birth = "1/1/2010",
-          int phone = 0, string add = "", bool elev = false,
+          string phone = " ", string add = "", bool elev = false,
           int flo = 0, int exp = 0, int max = 0, int agemin = 0,
           int agemax = 0, bool per = false, double salhour = 0,
           double samonth = 0, bool vaca = false, string rec = null)
         {
-            //FirstName = first;
-            //LastName = last;
-            //birthDay = DateTime.Parse(birth);
-            //PhoneNumber = phone;
-            //addres = add;
-            //elevators = elev;
-            //floor = flo;
-            //years_of_experience = exp;
-            //maxChilds = max;
-            //age_child_min = agemin;
-            //age_child_max = agemax;
-            //per_hour_able = per;
-            //salaryPerHour = salhour;
-            //salaryPerMonth = samonth;
-            //vacation_kind = vaca;
-            //recommendation = rec;
-            cc[0] = DayOfWeek.Sunday;
-            cc[1] = DayOfWeek.Monday;
-            cc[2] = DayOfWeek.Thursday;
-            cc[3] = DayOfWeek.Wednesday;
-            cc[4] = DayOfWeek.Tuesday;
-            cc[5] = DayOfWeek.Friday;
+            FirstName = first;
+            LastName = last;
+            birthDay = DateTime.Parse(birth);
+            PhoneNumber = phone;
+            addres = add;
+            elevators = elev;
+            floor = flo;
+            years_of_experience = exp;
+            maxChilds = max;
+            age_child_min = agemin;
+            age_child_max = agemax;
+            per_hour_able = per;
+            salaryPerHour = salhour;
+            salaryPerMonth = samonth;
+            vacation_kind = vaca;
+            recommendation = rec;
+            //cc[0] = DayOfWeek.Sunday;
+            //cc[1] = DayOfWeek.Monday;
+            //cc[2] = DayOfWeek.Thursday;
+            //cc[3] = DayOfWeek.Wednesday;
+            //cc[4] = DayOfWeek.Tuesday;
+            //cc[5] = DayOfWeek.Friday;
 
             for (int j = 0; j < 6; j++)
             {
                 work[j] = new Work_information();
-                work[j].day = cc[j];
+                
 
             }
         }

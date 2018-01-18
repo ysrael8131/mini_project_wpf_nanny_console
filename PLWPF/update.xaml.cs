@@ -155,7 +155,10 @@ namespace PLWPF
             {
                 nanny = select_nanny_conbobox.SelectedItem as BE.Nanny;
                 nanny_grid.DataContext = nanny;
-
+                to_years.SelectedItem = nanny.age_child_max / 12;
+                to_month.SelectedItem = nanny.age_child_max % 12;
+                from_years.SelectedItem = nanny.age_child_min / 12;
+                from_month.SelectedItem = nanny.age_child_min % 12;
                 for (int i = 0; i < 6; i++)
                 {
 

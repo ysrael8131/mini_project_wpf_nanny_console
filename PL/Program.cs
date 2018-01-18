@@ -111,24 +111,24 @@ namespace PL
                 bl.deleteMother(1235);
 
 
-                Nanny nan1 = new Nanny(123, "sara1", "levi", "1/1/1993", 123456, "קדושת לוי 115,ביתר עילית,ישראל", true, 2, 2, 5, 3, 12, false, 25, 4000, true, null);
-                for (int j = 0; j < 6; j++)
-                {
-                    Work_information temp = new Work_information();
-                    temp.day_work = true;
-                    temp.start = TimeSpan.Parse("8:30");
-                    temp.end = TimeSpan.Parse("16:00");
-                    nan1.work[j] = temp;
-                }
-                Nanny nan2 = new Nanny(124, "sara2", "levi", "1/1/1993", 123456, "דרכי איש 10,ביתר עילית,ישראל", false, 2, 2, 3, 3, 12, false, 25, 4000, true, null);
-                Nanny nan3 = new Nanny(125, "sara3", "levi", "1/1/1993", 123456, "קדושת לוי 10,ביתר עילית,ישראל", false, 3, 2, 10, 5, 10, false, 25, 4000, true, null);
-                Nanny nan4 = new Nanny(126, "sara4", "levi", "1/1/1993", 123456, "באבא סאלי 10,ביתר עילית,ישראל", false, 4, 2, 2, 6, 9, false, 25, 4000, true, null);
-                Nanny nan5 = new Nanny(127, "sara5", "levi", "1/1/1993", 123456, "רבי עקיבא 11,ביתר עילית,ישראל", true, 5, 2, 6, 5, 8, false, 25, 4000, true, null);
-                bl.addNanny(nan1);
-                bl.addNanny(nan2);
-                bl.addNanny(nan3);
-                bl.addNanny(nan4);
-                bl.addNanny(nan5);
+                //Nanny nan1 = new Nanny(123, "sara1", "levi", "1/1/1993", 123456, "קדושת לוי 115,ביתר עילית,ישראל", true, 2, 2, 5, 3, 12, false, 25, 4000, true, null);
+                //for (int j = 0; j < 6; j++)
+                //{
+                //    Work_information temp = new Work_information();
+                //    temp.day_work = true;
+                //    temp.start = TimeSpan.Parse("8:30");
+                //    temp.end = TimeSpan.Parse("16:00");
+                //    nan1.work[j] = temp;
+                //}
+                //Nanny nan2 = new Nanny(124, "sara2", "levi", "1/1/1993", 123456, "דרכי איש 10,ביתר עילית,ישראל", false, 2, 2, 3, 3, 12, false, 25, 4000, true, null);
+                //Nanny nan3 = new Nanny(125, "sara3", "levi", "1/1/1993", 123456, "קדושת לוי 10,ביתר עילית,ישראל", false, 3, 2, 10, 5, 10, false, 25, 4000, true, null);
+                //Nanny nan4 = new Nanny(126, "sara4", "levi", "1/1/1993", 123456, "באבא סאלי 10,ביתר עילית,ישראל", false, 4, 2, 2, 6, 9, false, 25, 4000, true, null);
+                //Nanny nan5 = new Nanny(127, "sara5", "levi", "1/1/1993", 123456, "רבי עקיבא 11,ביתר עילית,ישראל", true, 5, 2, 6, 5, 8, false, 25, 4000, true, null);
+                //bl.addNanny(nan1);
+                //bl.addNanny(nan2);
+                //bl.addNanny(nan3);
+                //bl.addNanny(nan4);
+                //bl.addNanny(nan5);
 
                 Contract con1 = new Contract(123, 12347, false, false, contracPer.perHour);
                 Contract con2 = new Contract(124, 123410, false, false, 0);

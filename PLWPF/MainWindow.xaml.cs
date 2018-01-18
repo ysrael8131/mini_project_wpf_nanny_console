@@ -34,7 +34,7 @@ namespace PLWPF
             a1.FirstName = "sara";
             a1.LastName = "cohen";
             a1.PhoneNumber = "0504145678";
-            a1.Addres = "q";
+            a1.Addres = "קאסוטו 24 ירושלים ישראל";
             a1.arr[1].day_work = true;
             a1.arr[1].start = TimeSpan.Parse("8:30");
             a1.arr[1].end = TimeSpan.Parse("10:30");
@@ -44,7 +44,7 @@ namespace PLWPF
             a2.id = 111111111;
             a2.FirstName = "efrat";
             a2.LastName = "amzaleg";
-            a2.Addres = "q";
+            
             a2.PhoneNumber = "0506134678";
             a2.arr[2].day_work = true;
             a2.arr[2].start = TimeSpan.Parse("6:30");
@@ -100,6 +100,7 @@ namespace PLWPF
             a7.addres = "קוממיות 10 קריית גת ישראל";
             a7.age_child_min = 10;
             a7.age_child_max = 15;
+            a7.floor = 9;
             a7.birthDay = DateTime.Parse("15.03.1999");
 
             Nanny a8 = new Nanny();
@@ -121,7 +122,7 @@ namespace PLWPF
             a8.age_child_min = 12;
             a8.age_child_max = 15;
             a8.birthDay = DateTime.Parse("15.03.1999");
-
+            a8.floor = 7;
             Nanny a9 = new Nanny();
             a9.FirstName = "chya";
             a9.LastName = "cakz";
@@ -133,7 +134,7 @@ namespace PLWPF
             {
 
                 a9.work[i].day_work = true;
-                a9.work[i].start = TimeSpan.Parse("6:30");
+                a9.work[i].start = TimeSpan.Parse("4:30");
                 a9.work[i].end = TimeSpan.Parse("8:30");
             }
 
@@ -141,9 +142,52 @@ namespace PLWPF
             a9.age_child_min = 12;
             a9.age_child_max = 15;
             a9.birthDay = DateTime.Parse("15.03.1999");
+            a9.floor = 8;
+            Nanny a10 = new Nanny();
+            a10.FirstName = "chya";
+            a10.LastName = "cakz";
+            a10.id = 125837411;
+            a10.maxChilds = 7;
+            a10.per_hour_able = false;
+            a10.salaryPerMonth = 4000;
+            for (int i = 0; i < 6; i++)
+            {
+
+                a10.work[i].day_work = true;
+                a10.work[i].start = TimeSpan.Parse("4:30");
+                a10.work[i].end = TimeSpan.Parse("9:30");
+            }
+            a10.addres = "אילת ישראל";
+            a10.age_child_min = 12;
+            a10.age_child_max = 15;
+            a10.birthDay = DateTime.Parse("15.03.1999");
+            a10.floor = 9;
+
+            Nanny a11 = new Nanny();
+            a11.FirstName = "chya";
+            a11.LastName = "cakz";
+            a11.id = 125837415;
+            a11.maxChilds = 5;
+            a11.per_hour_able = false;
+            a11.salaryPerMonth = 4000;
+            a11.floor = 8;
+            for (int i = 0; i < 6; i++)
+            {
+
+                a11.work[i].day_work = true;
+                a11.work[i].start = TimeSpan.Parse("4:30");
+                a11.work[i].end = TimeSpan.Parse("10:30");
+            }
+            a11.addres = "אילת ישראל";
+            a11.age_child_min = 12;
+            a11.age_child_max = 15;
+            a11.birthDay = DateTime.Parse("15.03.1999");
+            
             bl.addNanny(a7);
             bl.addNanny(a8);
             bl.addNanny(a9);
+            bl.addNanny(a10);
+            bl.addNanny(a11);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -175,9 +219,11 @@ namespace PLWPF
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            Window w = new ser();
+            Window w = new search_nanny();
             w.Show();
         }
+
+
 
 
 

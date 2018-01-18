@@ -334,7 +334,7 @@ namespace BL
             if (temp.SearchAddres != null)
             {
                 var distance1 = from item in nanny
-                    let distanceNanny = (CalculateDistance(item.addres, temp.SearchAddres)) / 1000
+                    let distanceNanny = helpfuncrange(item.addres, temp.SearchAddres,item)
                     orderby distanceNanny
                     where distanceNanny <= temp.RangeOfKm
                     select item;

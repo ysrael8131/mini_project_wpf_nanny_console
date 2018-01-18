@@ -39,7 +39,7 @@ namespace PLWPF
                     from_years.Items.Add(i);
                     to_years.Items.Add(i);
                 }
-                if (i < 11 && i > 0)
+                if (i < 11 && i > 4)
                     maxChildsComboBox.Items.Add(i);
 
                 from_month.Items.Add(i);
