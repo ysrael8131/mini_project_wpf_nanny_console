@@ -47,12 +47,18 @@ namespace PLWPF
             
             a2.PhoneNumber = "0506134678";
             a2.arr[2].day_work = true;
-            a2.arr[2].start = TimeSpan.Parse("6:30");
+            a2.arr[2].start = TimeSpan.Parse("06:30");
             a2.arr[2].end = TimeSpan.Parse("11:30");
             a2.Addres = "יחזקאל 28 ירושלים ישראל";
             a2.arr[3].day_work = true;
-            a2.arr[3].start = TimeSpan.Parse("3:30");
+            a2.arr[3].start = TimeSpan.Parse("03:30");
             a2.arr[3].end = TimeSpan.Parse("12:30");
+            for (int i = 0; i < 6; i++)
+            {
+                a2.arr[i].day_work = true;
+                a2.arr[i].start = TimeSpan.Parse("07:30");
+                a2.arr[i].end = TimeSpan.Parse("08:30");
+            }
 
             bl.addMother(a1);
             bl.addMother(a2);
@@ -88,15 +94,15 @@ namespace PLWPF
             bl.addChild(a6);
 
             Nanny a7 = new Nanny();
-            a7.FirstName = "chya";
+            a7.FirstName = "orit";
             a7.LastName = "cakz";
             a7.id = 123123123;
             a7.maxChilds = 3;
             a7.per_hour_able = true;
             a7.salaryPerHour = 34;
             a7.work[3].day_work = true;
-            a7.work[3].start = TimeSpan.Parse("6:30");
-            a7.work[3].end = TimeSpan.Parse("8:30");
+            a7.work[3].start = TimeSpan.Parse("06:30");
+            a7.work[3].end = TimeSpan.Parse("08:30");
             a7.addres = "קוממיות 10 קריית גת ישראל";
             a7.age_child_min = 10;
             a7.age_child_max = 15;
@@ -104,7 +110,7 @@ namespace PLWPF
             a7.birthDay = DateTime.Parse("15.03.1999");
 
             Nanny a8 = new Nanny();
-            a8.FirstName = "chya";
+            a8.FirstName = "almog";
             a8.LastName = "cakz";
             a8.id = 151515151;
             a8.maxChilds = 5;
@@ -114,9 +120,10 @@ namespace PLWPF
             {
 
                 a8.work[i].day_work = true;
-                a8.work[i].start = TimeSpan.Parse("6:30");
-                a8.work[i].end = TimeSpan.Parse("8:30");
+                a8.work[i].start = TimeSpan.Parse("06:30");
+                a8.work[i].end = TimeSpan.Parse("12:30");
             }
+            
 
             a8.addres = "אוהב ישראל 3 ביתר עילית ישראל";
             a8.age_child_min = 12;
@@ -124,7 +131,7 @@ namespace PLWPF
             a8.birthDay = DateTime.Parse("15.03.1999");
             a8.floor = 7;
             Nanny a9 = new Nanny();
-            a9.FirstName = "chya";
+            a9.FirstName = "leah";
             a9.LastName = "cakz";
             a9.id = 125837412;
             a9.maxChilds = 5;
@@ -135,7 +142,7 @@ namespace PLWPF
 
                 a9.work[i].day_work = true;
                 a9.work[i].start = TimeSpan.Parse("4:30");
-                a9.work[i].end = TimeSpan.Parse("8:30");
+                a9.work[i].end = TimeSpan.Parse("12:30");
             }
 
             a9.addres = "אילת ישראל";
@@ -143,8 +150,11 @@ namespace PLWPF
             a9.age_child_max = 15;
             a9.birthDay = DateTime.Parse("15.03.1999");
             a9.floor = 8;
+
+
+
             Nanny a10 = new Nanny();
-            a10.FirstName = "chya";
+            a10.FirstName = "rivka";
             a10.LastName = "cakz";
             a10.id = 125837411;
             a10.maxChilds = 7;
@@ -155,16 +165,16 @@ namespace PLWPF
 
                 a10.work[i].day_work = true;
                 a10.work[i].start = TimeSpan.Parse("4:30");
-                a10.work[i].end = TimeSpan.Parse("9:30");
+                a10.work[i].end = TimeSpan.Parse("12:30");
             }
             a10.addres = "אילת ישראל";
-            a10.age_child_min = 12;
-            a10.age_child_max = 15;
+            a10.age_child_min = 1;
+            a10.age_child_max = 10;
             a10.birthDay = DateTime.Parse("15.03.1999");
-            a10.floor = 9;
+            a10.floor = 7;
 
             Nanny a11 = new Nanny();
-            a11.FirstName = "chya";
+            a11.FirstName = "ester";
             a11.LastName = "cakz";
             a11.id = 125837415;
             a11.maxChilds = 5;
@@ -176,8 +186,9 @@ namespace PLWPF
 
                 a11.work[i].day_work = true;
                 a11.work[i].start = TimeSpan.Parse("4:30");
-                a11.work[i].end = TimeSpan.Parse("10:30");
+                a11.work[i].end = TimeSpan.Parse("9:30");
             }
+            
             a11.addres = "אילת ישראל";
             a11.age_child_min = 12;
             a11.age_child_max = 15;

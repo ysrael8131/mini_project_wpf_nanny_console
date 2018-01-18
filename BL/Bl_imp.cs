@@ -219,8 +219,8 @@ namespace BL
             //IEnumerable<Child> child = dal.getListChilds(a);
             IEnumerable<Nanny> nannys = dal.getListNannys();
             List<Nanny> temp1 = new List<Nanny>();
-            //Func<Nanny, Mother, bool> func1 = myFunc1;
-            //Func<Nanny, Mother, bool> func2 = myFunc2;
+            Func<Nanny, Mother, bool> func1 = myFunc1;
+            Func<Nanny, Mother, bool> func2 = myFunc2;
             var nan = from i in nannys
                       where myFunc1(i, a)
                       select i;
@@ -387,8 +387,8 @@ namespace BL
         {
             for (int i = 0; i < nan.work.Length; i++)
             {
-                if (nan.work[i].day_work != mom.arr[i].day_work && nan.work[i].start.Minutes - mom.arr[i].start.Minutes > 15 &&
-                    mom.arr[i].end.Minutes - nan.work[i].end.Minutes > 15)
+                if (nan.work[i].day_work != mom.arr[i].day_work || nan.work[i].start.Minutes - mom.arr[i].start.Minutes > 30 ||
+                    mom.arr[i].end.Minutes - nan.work[i].end.Minutes > 30)
                     return false;
             }
             return true;
@@ -397,8 +397,8 @@ namespace BL
         {
             for (int i = 0; i < nan.work.Length; i++)
             {
-                if (nan.work[i].day_work != mom.arr[i].day_work &&
-                    mom.arr[i].start < nan.work[i].start &&
+                if (nan.work[i].day_work != mom.arr[i].day_work ||
+                    mom.arr[i].start < nan.work[i].start ||
                     nan.work[i].end < mom.arr[i].end)
                     return false;
             }

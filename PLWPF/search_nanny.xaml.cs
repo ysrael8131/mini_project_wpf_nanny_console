@@ -70,26 +70,26 @@ namespace PLWPF
             List<Nanny> findNannies = new List<Nanny>();
             Mother mother = select_mother_combobox.SelectedItem as Mother;
             Child child = select_child_combobox.SelectedItem as Child;
-           
+
             new Thread(() =>
             {
-                    // findNannies = bll.rangeNanny(mother.id).ToList();
-                    findNannies = allReq(mother, floor, max,child);
+                // findNannies = bll.rangeNanny(mother.id).ToList();
+                findNannies = allReq(mother, floor, max, child);
 
-                    //if (findNannies == null)
-                    //    throw new Exception("ma nishma");
-                    Dispatcher.Invoke(new Action(() => { nannyDataGrid.ItemsSource = findNannies; }));
+                //if (findNannies == null)
+                //    throw new Exception("ma nishma");
+                Dispatcher.Invoke(new Action(() => { nannyDataGrid.ItemsSource = findNannies; }));
             }).Start();
             //}
             //catch (Exception exception)
             //{
             //    System.Windows.MessageBox.Show(exception.Message);
             //}
-
+            MessageBox.Show("vmkjv");
 
         }
 
-        List<Nanny> allReq(Mother mother, int floor, int max,Child child)
+        List<Nanny> allReq(Mother mother, int floor, int max, Child child)
         {
 
             List<Nanny> nanny2 = new List<Nanny>();
@@ -112,15 +112,15 @@ namespace PLWPF
                 }
                 if (nanny2.Count != 0)
                 {
-                    nanny2 = nanny2.FindAll(item => (item.floor <= floor)
-                      && item.maxChilds <= max && ((child.birthDay<DateTime.Now.AddMonths(item.age_child_min)&& child.birthDay > DateTime.Now.AddMonths(item.age_child_max)))
+                      nanny2 = nanny2.FindAll(item => (item.floor <= floor)
+                      && item.maxChilds <= max 
 
                       );
                 }
             }
-            return nanny;
+            return nanny2;
 
-
+            //&& ((child.birthDay < DateTime.Now.AddMonths(-item.age_child_min) && child.birthDay > DateTime.Now.AddMonths(-item.age_child_max)))
 
         }
     }
