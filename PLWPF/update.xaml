@@ -319,7 +319,6 @@
 
         </Grid>
 
-        <ScrollViewer x:Name="nanny_scroll" Grid.Row="1" Visibility="Collapsed">
 
         <Grid x:Name="nanny_grid" Background="{StaticResource BackgroundGrid}"
               Margin="15" Grid.Row="1" Grid.ColumnSpan="2" Visibility="Collapsed">
@@ -372,7 +371,7 @@
                        Visibility="{Binding ElementName=addresTextBox_n,  
                 Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
                 <TextBox Style="{StaticResource textbox_style}" x:Name="addresTextBox_n" Grid.Row="4" 
-                    Text="{Binding Addres, Mode=TwoWay, NotifyOnValidationError=true, 
+                    Text="{Binding addres, Mode=TwoWay, NotifyOnValidationError=true, 
                 ValidatesOnExceptions=true, UpdateSourceTrigger=Explicit}" Height="25" />
 
 
@@ -437,8 +436,9 @@
 
 
 
+          <ScrollViewer x:Name="nanny_scroll" Visibility="Collapsed" >
 
-            <Grid x:Name="second_grid_nanny"  Margin="10" Grid.Column="0" Visibility="Collapsed" Background="{StaticResource BackgroundGrid}" Grid.Row="1">
+                <Grid x:Name="second_grid_nanny"  Margin="10" Grid.Column="0" Visibility="Collapsed" Background="{StaticResource BackgroundGrid}" Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
@@ -638,10 +638,10 @@
                 <Button  x:Name="back_button_nanny" Visibility="Visible"  Content="back"  HorizontalAlignment="Right"  Grid.Row="7" Margin="0,4.6,5,5.2" Grid.Column="1" Width="150" Click="back_button_nanny_Click"/>
 
             </Grid>
+          </ScrollViewer>
 
         </Grid>
 
-        </ScrollViewer>
 
 
         <!--</StackPanel>-->

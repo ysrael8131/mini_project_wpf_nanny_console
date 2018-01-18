@@ -285,6 +285,7 @@ namespace PLWPF
             second_grid_mother.Visibility = Visibility.Collapsed;
             child_grid.Visibility = Visibility.Collapsed;
             first_grid_nanny.Visibility = Visibility.Collapsed;
+            second_grid_nanny.Visibility = Visibility.Collapsed;
         }
         private void update_mother_button_Click(object sender, RoutedEventArgs e)
         {

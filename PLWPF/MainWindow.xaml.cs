@@ -102,13 +102,26 @@ namespace PLWPF
             a7.age_child_max = 15;
             a7.birthDay = DateTime.Parse("15.03.1999");
 
-            Nanny a8 = new Nanny();
-            a8.FirstName = "chya";
-            a8.LastName = "cakz";
-            a8.id = 151515151;
-            a8.maxChilds = 5;
-            a8.per_hour_able = false;
-            a8.salaryPerMonth = 4000;
+            Nanny a8 = new Nanny
+            {
+                FirstName = "chya",
+                LastName = "cakz",
+                id = 151515151,
+                maxChilds = 5,
+                per_hour_able = false,
+                salaryPerMonth = 4000,
+                PhoneNumber = "527129013",
+                floor = 10,
+                addres = "אוהב ישראל 3 ביתר עילית ישראל",
+                age_child_min = 12,
+                age_child_max = 15,
+                birthDay = DateTime.Parse("15.03.1999"),
+                elevators = true,
+                recommendation = "very nice nanny",
+                vacation_kind = true,
+                years_of_experience = 10,
+                
+        };
             for (int i = 0; i < 6; i++)
             {
 
@@ -117,11 +130,7 @@ namespace PLWPF
                 a8.work[i].end = TimeSpan.Parse("8:30");
             }
 
-            a8.addres = "אוהב ישראל 3 ביתר עילית ישראל";
-            a8.age_child_min = 12;
-            a8.age_child_max = 15;
-            a8.birthDay = DateTime.Parse("15.03.1999");
-
+           
             Nanny a9 = new Nanny();
             a9.FirstName = "chya";
             a9.LastName = "cakz";

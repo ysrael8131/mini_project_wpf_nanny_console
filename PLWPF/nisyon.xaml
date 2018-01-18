@@ -12,20 +12,12 @@
         mc:Ignorable="d"
        
         Title="nisyon" Height="300" Width="300" Loaded="Window_Loaded">
-    <Grid Margin="0,0,-126.667,-0.333" >
-       
+    <Grid  >
 
 
 
 
-
-        <DataGrid Margin="0,1,0,0" />
-
-
-
-
-
-
+  
 
 
     </Grid>
