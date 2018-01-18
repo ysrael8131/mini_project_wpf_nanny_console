@@ -334,17 +334,17 @@ namespace BL
             if (temp.SearchAddres != null)
             {
                 var distance1 = from item in nanny
-                    let distanceNanny = helpfuncrange(item.addres, temp.SearchAddres,item)
-                    orderby distanceNanny
-                    where distanceNanny <= temp.RangeOfKm
-                    select item;
+                                let distanceNanny = helpfuncrange(item.addres, temp.SearchAddres, item)
+                                orderby distanceNanny
+                                where distanceNanny <= temp.RangeOfKm
+                                select item;
                 return distance1;
             }
             var distance2 = from item in nanny
-                let distanceNanny = helpfuncrange(item.addres, temp.Addres, item)
-                orderby distanceNanny
-                where distanceNanny <= temp.RangeOfKm
-                select item;
+                            let distanceNanny = helpfuncrange(item.addres, temp.Addres, item)
+                            orderby distanceNanny
+                            where distanceNanny <= temp.RangeOfKm
+                            select item;
 
             return distance2;
 
@@ -352,7 +352,7 @@ namespace BL
         }
         public int helpfuncrange(string sur, string dst, Nanny nanny)
         {
-            nanny.distance= (CalculateDistance(sur, dst)) / 1000;
+            nanny.distance = (CalculateDistance(sur, dst)) / 1000;
             return (int)nanny.distance;
         }
 
@@ -387,7 +387,7 @@ namespace BL
         {
             for (int i = 0; i < nan.work.Length; i++)
             {
-                if (nan.work[i].day_work != mom.arr[i].day_work || nan.work[i].start.Minutes - mom.arr[i].start.Minutes > 30 ||
+                if ((!nan.work[i].day_work && mom.arr[i].day_work ) || nan.work[i].start.Minutes - mom.arr[i].start.Minutes > 30 ||
                     mom.arr[i].end.Minutes - nan.work[i].end.Minutes > 30)
                     return false;
             }
@@ -397,7 +397,7 @@ namespace BL
         {
             for (int i = 0; i < nan.work.Length; i++)
             {
-                if (nan.work[i].day_work != mom.arr[i].day_work ||
+                if ((!nan.work[i].day_work&& mom.arr[i].day_work ) ||
                     mom.arr[i].start < nan.work[i].start ||
                     nan.work[i].end < mom.arr[i].end)
                     return false;

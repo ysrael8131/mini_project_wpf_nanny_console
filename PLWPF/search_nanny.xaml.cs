@@ -79,13 +79,17 @@ namespace PLWPF
                 //if (findNannies == null)
                 //    throw new Exception("ma nishma");
                 Dispatcher.Invoke(new Action(() => { nannyDataGrid.ItemsSource = findNannies; }));
+                if (findNannies.Count == 0)
+                    MessageBox.Show("No nannys was found by the data", "", MessageBoxButton.OK, MessageBoxImage.Information);
             }).Start();
             //}
             //catch (Exception exception)
             //{
             //    System.Windows.MessageBox.Show(exception.Message);
             //}
-            MessageBox.Show("vmkjv");
+
+
+           
 
         }
 
@@ -112,10 +116,10 @@ namespace PLWPF
                 }
                 if (nanny2.Count != 0)
                 {
-                      nanny2 = nanny2.FindAll(item => (item.floor <= floor)
-                      && item.maxChilds <= max 
+                    nanny2 = nanny2.FindAll(item => (item.floor <= floor)
+                    && item.maxChilds <= max 
 
-                      );
+                    );
                 }
             }
             return nanny2;
