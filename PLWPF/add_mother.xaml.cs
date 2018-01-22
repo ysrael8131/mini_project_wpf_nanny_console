@@ -143,6 +143,7 @@ namespace PLWPF
             errorMesseg1.Visibility = Visibility.Collapsed;
             errorMesseg2.Visibility = Visibility.Collapsed;
             errorMesseg3.Visibility = Visibility.Collapsed;
+            nextButton.IsEnabled = true;
 
 
             long x;
@@ -150,6 +151,7 @@ namespace PLWPF
             {
 
                 errorMesseg1.Visibility = Visibility.Visible;
+                nextButton.IsEnabled = false;
 
                 return;
             }

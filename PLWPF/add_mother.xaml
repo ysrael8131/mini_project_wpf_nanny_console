@@ -99,7 +99,7 @@
 
             <Label Content="Elevators:"   HorizontalAlignment="Left" Margin="10" Grid.Row="6" VerticalAlignment="Center"/>
             <CheckBox x:Name="elevatorsCheckBox"   HorizontalAlignment="Center" IsChecked="{Binding elevators, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
-            <Button Content="Next" Grid.Row="7" Margin="20"   BorderBrush="{StaticResource brushWatermarkBorder}" Click="Button_Click_Next" >
+            <Button x:Name="nextButton" Content="Next" Grid.Row="7" Margin="20"   BorderBrush="{StaticResource brushWatermarkBorder}" Click="Button_Click_Next" >
                 <Button.Style >
                     <Style>
                         <Style.Triggers>

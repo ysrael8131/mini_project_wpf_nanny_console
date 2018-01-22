@@ -155,7 +155,7 @@
 
        
 
-        <Grid x:Name="second_grid_nanny"  Margin="15" Grid.Column="0" Visibility="Collapsed" Background="{StaticResource BackgroundGrid}">
+        <Grid x:Name="second_grid_nanny"  Margin="15" Grid.Column="0" Visibility="Visible" Background="{StaticResource BackgroundGrid}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
@@ -290,13 +290,15 @@
                        Visibility="{Binding ElementName=salaryPerHourTextBox1,  
                 Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
                     <TextBox Style="{StaticResource textbox_style}" x:Name="salaryPerHourTextBox1" Margin="10,10,2,2" Width="120" Text="{Binding salaryPerHour, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"  
-                  IsEnabled="{Binding ElementName=per_hour_ableCheckBox1,Path=IsChecked}" />
+                  IsEnabled="{Binding ElementName=per_hour_ableCheckBox1,Path=IsChecked}" TextChanged="salaryPerHourTextBox1_TextChanged" />
+                    <TextBlock x:Name="errorMesseg8" Text=" This field is for numbers only" Grid.Row="1" Style="{StaticResource textblock_style_error}" Margin="-25,52,0,0" FontSize="10" />
+                    <TextBlock x:Name="errorMesseg10" Text="Number ID can not be negative" Grid.Row="1" Style="{StaticResource textblock_style_error}" Margin="-25,52,0,0" FontSize="10"/>
                 </Grid>
                 <Grid>
                     <TextBlock  Style="{StaticResource textblock_style}" Margin="70,10,2,2"  Text=" salary per month" 
                        Visibility="{Binding ElementName=salaryPerMonthTextBox1,  
                 Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
-                    <TextBox x:Name="salaryPerMonthTextBox1"  HorizontalAlignment="Right" Margin="70,10,2,2" Grid.Row="4" Text="{Binding salaryPerMonth, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" FontSize="15" Foreground="{StaticResource brushWatermarkForeground}" Background="Transparent" Height="25" VerticalAlignment="Center" Width="120" >
+                    <TextBox x:Name="salaryPerMonthTextBox1"  HorizontalAlignment="Right" Margin="70,10,2,2" Grid.Row="4" Text="{Binding salaryPerMonth, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" FontSize="15" Foreground="{StaticResource brushWatermarkForeground}" Background="Transparent" Height="25" VerticalAlignment="Center" Width="120" TextChanged="salaryPerHourTextBox1_TextChanged" >
                         <TextBox.Style>
                             <Style>
                                 <Style.Triggers>

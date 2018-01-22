@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:gif="http://wpfanimatedgif.codeplex.com"   
         xmlns:local="clr-namespace:PLWPF"
-        
-  xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.search_nanny"
+ 
+        xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.search_nanny"
         mc:Ignorable="d"
         Title="search_nanny" Height="700" Width="750" Background="LightGray" FontSize="16" FontFamily="Berlin Sans FB Demi" >
     <Window.Resources>
@@ -87,6 +87,13 @@
                                 <Setter Property="Button.IsEnabled" Value="False"/>
                             </DataTrigger>
 
+                            <DataTrigger Binding="{Binding ElementName=select_mother_combobox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="False"/>
+                            </DataTrigger>
+
+                            <DataTrigger Binding="{Binding ElementName=select_child_combobox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="False"/>
+                            </DataTrigger>
                         </Style.Triggers>
 
 

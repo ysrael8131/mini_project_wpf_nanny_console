@@ -540,13 +540,13 @@
 
                 <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal">
                     <Label Content="max Childs:" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="3" Margin="10" VerticalAlignment="Center"/>
-                    <ComboBox x:Name="maxChildsComboBox" DisplayMemberPath="maxChilds" Grid.Column="0" HorizontalAlignment="Right" Height="Auto" ItemsSource="{Binding}" Grid.Row="3" VerticalAlignment="Center" Width="50" >
+                        <ComboBox x:Name="maxChildsComboBox"  Grid.Column="0" HorizontalAlignment="Center" Height="Auto" SelectedItem="{Binding maxChilds}" Grid.Row="3" VerticalAlignment="Center" Width="50" Foreground="Blue" FontFamily="Cooper Black" />
 
-                    </ComboBox>
 
-                    <Label Content="years of experience:" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="3" Margin="30,0,0,0" VerticalAlignment="Center"/>
-                    <ComboBox x:Name="years_of_experienceComboBox" Grid.Column="1" Margin="10" DisplayMemberPath="years_of_experience" HorizontalAlignment="Right" Height="Auto" ItemsSource="{Binding}"  Grid.Row="3" VerticalAlignment="Center" Width="50">
-                        <!--<ComboBoxItem Content="1"/>-->
+
+                        <Label Content="years of experience:" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="3" Margin="30,0,0,0" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="years_of_experienceComboBox" Grid.Column="1" Margin="10" SelectedItem="{Binding years_of_experience}" HorizontalAlignment="Right" Height="Auto"   Grid.Row="3" VerticalAlignment="Center" Width="50" FontFamily="Cooper Black">
+                        
                     </ComboBox>
                 </StackPanel>
 

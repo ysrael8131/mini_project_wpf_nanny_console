@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,6 +16,7 @@ using System.Windows.Shapes;
 using BE;
 using BL;
 using System.Threading;
+
 namespace PLWPF
 {
     /// <summary>
@@ -132,8 +134,9 @@ namespace PLWPF
             List<Nanny> nanny2 = new List<Nanny>();
             List<Nanny> nanny = new List<Nanny>();
             List<Nanny> nanny1 = new List<Nanny>();
-            nanny = bll.rangeNanny(mother.id).ToList();
-            nanny1 = bll.requiredMother(mother).ToList();
+            
+            nanny = bl.rangeNanny(mother.id).ToList();
+            nanny1 = bl.requiredMother(mother).ToList();
             if (nanny.Count != 0 && nanny1.Count != 0)
             {
                 foreach (var item1 in nanny)

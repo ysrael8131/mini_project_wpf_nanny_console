@@ -25,8 +25,7 @@ namespace PLWPF
         public MainWindow()
         {
             InitializeComponent();
-            //string[] a = new string[] { "Add child", "Remove mother", "Update mother" };
-            //list_box_mother.ItemsSource = a;
+            
             bl = BL.FactoryBl.getBl();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             Mother a1 = new Mother();
@@ -36,7 +35,7 @@ namespace PLWPF
             a1.PhoneNumber = "0504145678";
             a1.Addres = "קאסוטו 24 ירושלים ישראל";
             a1.arr[1].day_work = true;
-            a1.arr[1].start = TimeSpan.Parse("8:30");
+            a1.arr[1].start = TimeSpan.Parse("09:30");
             a1.arr[1].end = TimeSpan.Parse("10:30");
 
             Mother a2 = new Mother();
@@ -44,20 +43,20 @@ namespace PLWPF
             a2.id = 111111111;
             a2.FirstName = "efrat";
             a2.LastName = "amzaleg";
-            
+
             a2.PhoneNumber = "0506134678";
             a2.arr[2].day_work = true;
-            a2.arr[2].start = TimeSpan.Parse("06:30");
-            a2.arr[2].end = TimeSpan.Parse("11:30");
+            
+                       
             a2.Addres = "יחזקאל 28 ירושלים ישראל";
             a2.arr[3].day_work = true;
-            a2.arr[3].start = TimeSpan.Parse("03:30");
-            a2.arr[3].end = TimeSpan.Parse("12:30");
+            
+                  
             for (int i = 0; i < 6; i++)
             {
                 a2.arr[i].day_work = true;
-                a2.arr[i].start = TimeSpan.Parse("07:30");
-                a2.arr[i].end = TimeSpan.Parse("08:30");
+                a2.arr[i].start = TimeSpan.Parse("15:30");
+                a2.arr[i].end = TimeSpan.Parse("19:30");
             }
 
             bl.addMother(a1);
@@ -200,12 +199,12 @@ namespace PLWPF
                 a11.work[i].start = TimeSpan.Parse("4:30");
                 a11.work[i].end = TimeSpan.Parse("9:30");
             }
-            
+
             a11.addres = "אילת ישראל";
             a11.age_child_min = 12;
             a11.age_child_max = 15;
             a11.birthDay = DateTime.Parse("15.03.1999");
-            
+
             bl.addNanny(a7);
             bl.addNanny(a8);
             bl.addNanny(a9);
