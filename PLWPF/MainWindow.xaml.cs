@@ -223,10 +223,6 @@ namespace PLWPF
             new add_child().Show();
         }
 
-        private void Button_Click_remove(object sender, RoutedEventArgs e)
-        {
-            new Remove(1).Show();
-        }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
@@ -243,6 +239,12 @@ namespace PLWPF
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
             Window w = new search_nanny();
+            w.Show();
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            Window w =new GroopingWindow();
             w.Show();
         }
 

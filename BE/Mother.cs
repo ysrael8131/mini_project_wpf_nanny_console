@@ -18,7 +18,7 @@ namespace BE
             //Addres = add;
             //SearchAddres = seaadd;
             //elevators = elev;
-           
+
             for (int j = 0; j < 6; j++)
             {
                 arr[j] = new Work_information();  

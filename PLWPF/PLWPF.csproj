@@ -49,6 +49,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAnimatedGif, Version=1.4.15.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfAnimatedGif.1.4.15\lib\net\WpfAnimatedGif.dll</HintPath>
+    </Reference>
     <Reference Include="Xceed.Wpf.AvalonDock, Version=3.2.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
       <HintPath>..\packages\Extended.Wpf.Toolkit.3.2.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
     </Reference>
@@ -79,11 +82,23 @@
     <Compile Include="add_contruct.xaml.cs">
       <DependentUpon>add_contruct.xaml</DependentUpon>
     </Compile>
+    <Compile Include="allChildrens.xaml.cs">
+      <DependentUpon>allChildrens.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GroopingWindow.xaml.cs">
+      <DependentUpon>GroopingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="groupByDistance.xaml.cs">
+      <DependentUpon>groupByDistance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="groupByMaxAge.xaml.cs">
+      <DependentUpon>groupByMaxAge.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="groupByMinAge.xaml.cs">
+      <DependentUpon>groupByMinAge.xaml</DependentUpon>
+    </Compile>
     <Compile Include="nisyon.xaml.cs">
       <DependentUpon>nisyon.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Remove.xaml.cs">
-      <DependentUpon>Remove.xaml</DependentUpon>
     </Compile>
     <Compile Include="search_nanny.xaml.cs">
       <DependentUpon>search_nanny.xaml</DependentUpon>
@@ -110,6 +125,26 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="allChildrens.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GroopingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="groupByDistance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="groupByMaxAge.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="groupByMinAge.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -129,10 +164,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="nisyon.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Remove.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -194,6 +225,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="v.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="loading.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

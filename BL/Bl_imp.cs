@@ -50,13 +50,16 @@ namespace BL
             {
                 throw new Exception("the nanny has the max of contracts");
             }
+
+            a.salaryPerHour = temp2.salaryPerHour;
+            a.salaryPerMonth = temp2.salaryPerMonth;
             //Calculation of salary
             switch (a.ContracPer)
             {
-                case contracPer.perMonth:
-                    a.salaryPerMonth = (1 - (sumChildsPerMother * 0.02)) * temp2.salaryPerMonth;
+                case true:
+                    a.totalSalary = (1 - (sumChildsPerMother * 0.02)) * temp2.salaryPerMonth;
                     break;
-                case contracPer.perHour:
+                case false:
                     TimeSpan time = new TimeSpan();
                     foreach (var item in temp2.work)
                     {
@@ -66,7 +69,7 @@ namespace BL
                         }
                     }
 
-                    a.salaryPerMonth = (temp2.salaryPerHour * (time.Hours + (time.Minutes / 60)) * 4) * ((1 - sumChildsPerMother) * 0.02);
+                    a.totalSalary = (temp2.salaryPerHour * (time.Hours + (time.Minutes / 60)) * 4) * ((1 - sumChildsPerMother) * 0.02);
                     break;
             }
             a.MotherID = temp1.MotherID;

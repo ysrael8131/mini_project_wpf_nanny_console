@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BE;
 
 namespace PLWPF
 {
@@ -19,7 +20,7 @@ namespace PLWPF
     /// </summary>
     public partial class add_contruct : Window
     {
-        public add_contruct()
+        public add_contruct(Nanny nanny,Child child)
         {
             InitializeComponent();
         }
