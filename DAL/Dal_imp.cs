@@ -143,12 +143,7 @@ namespace DAL
         /// <returns></returns>
         public IEnumerable<Contract> getListContracts()
         {
-            //if (!DataSource.contracts.Any())
-            //    throw new Exception("No contracts exist");
-
-
-            //if (DataSource.contracts.Count == 0)
-            //    return null;
+           
 
 
             return DataSource.contracts;

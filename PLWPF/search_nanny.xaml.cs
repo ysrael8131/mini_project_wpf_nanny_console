@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,6 +16,7 @@ using System.Windows.Shapes;
 using BE;
 using BL;
 using System.Threading;
+
 namespace PLWPF
 {
     /// <summary>
@@ -23,12 +25,11 @@ namespace PLWPF
     public partial class search_nanny : Window
     {
         BL.IBL bl;
-        private BL.Bl_imp bll;
-
+        
         public search_nanny()
         {
             bl = BL.FactoryBl.getBl();
-            bll = new Bl_imp();
+            
             InitializeComponent();
             select_mother_combobox.ItemsSource = bl.getListMothers();
             //  nannyDataGrid.ItemsSource = bl.getListNannys();
@@ -63,6 +64,7 @@ namespace PLWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            Serach_Button.IsEnabled = false;
             //try
             //{
             int floor = int.Parse(floor_textbox.Text);
@@ -88,7 +90,7 @@ namespace PLWPF
             //    System.Windows.MessageBox.Show(exception.Message);
             //}
 
-
+            Serach_Button.IsEnabled = true;
            
 
         }
@@ -99,8 +101,9 @@ namespace PLWPF
             List<Nanny> nanny2 = new List<Nanny>();
             List<Nanny> nanny = new List<Nanny>();
             List<Nanny> nanny1 = new List<Nanny>();
-            nanny = bll.rangeNanny(mother.id).ToList();
-            nanny1 = bll.requiredMother(mother).ToList();
+            
+            nanny = bl.rangeNanny(mother.id).ToList();
+            nanny1 = bl.requiredMother(mother).ToList();
             if (nanny.Count != 0 && nanny1.Count != 0)
             {
                 foreach (var item1 in nanny)
@@ -120,7 +123,9 @@ namespace PLWPF
                     && item.maxChilds <= max 
 
                     );
+                    
                 }
+               
             }
             return nanny2;
 

@@ -226,7 +226,7 @@ namespace PLWPF
                             from_years.Items.Add(i);
                             to_years.Items.Add(i);
                         }
-                        if (i < 11 && i > 0)
+                        if (i < 11 && i > 5)
                             maxChildsComboBox.Items.Add(i);
 
                         from_month.Items.Add(i);
@@ -361,6 +361,48 @@ namespace PLWPF
 
         private void update_nanny_button_Click(object sender, RoutedEventArgs e)
         {
+
+            for (int i = 0; i < 6; i++)
+            {
+                //if (check[i].IsChecked == true && (timeStart[i].Value == null || timeEnd[i].Value == null))
+                //{
+                //errorMessegHours.Visibility = Visibility.Visible;
+                //return;
+                //}
+                //if (check[i].IsChecked == true && timeStart[i].Value.Value.TimeOfDay > timeEnd[i].Value.Value.TimeOfDay)
+                //{
+                //errorMessegTime.Visibility = Visibility.Visible;
+                //return;
+                //}
+                if (check[i].IsChecked == true)
+                {
+                    nanny.work[i].start = timeStart[i].Value.Value.TimeOfDay;
+                    nanny.work[i].end = timeEnd[i].Value.Value.TimeOfDay;
+                }
+            }
+
+
+
+            idTextBox_n.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            firstNameTextBox_n.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            lastNameTextBox_n.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            addresTextBox_n.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            phoneNumberTextBox_n.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            maxChildsComboBox.GetBindingExpression(ComboBox.TextProperty).UpdateSource();
+            years_of_experienceComboBox.GetBindingExpression(ComboBox.TextProperty).UpdateSource();
+            recommendationTextBox1.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            for (int j = 0; j < 6; j++)
+            {
+                check_n[j].GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+            }
+
+            nanny.age_child_min = int.Parse(from_years.SelectedItem.ToString()) * 12 + int.Parse(from_month.SelectedItem.ToString());
+            nanny.age_child_max = int.Parse(to_years.SelectedItem.ToString()) * 12 + int.Parse(to_month.SelectedItem.ToString());
+
+
+            bl.updateNanny(nanny);
+            System.Windows.MessageBox.Show("ID: " + nanny.id.ToString(), "This nanny has been updated", MessageBoxButton.OK, MessageBoxImage.Information);
+            this.Close();
 
         }
 

@@ -12,14 +12,10 @@ namespace BE
 
     public class Contract
     {
-        public Contract(int nanid = 0, int chid = 0, bool meet = false,
-            bool signe = false, contracPer con = 0)
+        public Contract()
+           
         {
-            NannyID = nanid;
-            childID = chid;
-            knowlageMeet = meet;
-            contractSigne = signe;
-            ContracPer = con;
+            
         }
         public int num_contract { set; get; }
         public int NannyID { set; get; }

@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bl_imp.cs" />
+    <Compile Include="ExtentionBl.cs" />
     <Compile Include="FactoryBl.cs" />
     <Compile Include="IBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

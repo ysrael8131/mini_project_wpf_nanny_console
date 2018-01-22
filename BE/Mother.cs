@@ -9,7 +9,7 @@ namespace BE
     public class Mother
     {
         
-        public Mother(int i = 0, string first = "", string last = "", string phone = "", string add = "", string seaadd = "", bool elev = false)
+        public Mother()
         {
             //id = i;
             //FirstName = first;

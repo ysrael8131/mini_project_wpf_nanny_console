@@ -28,6 +28,7 @@ namespace PLWPF
             InitializeComponent();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             bl = BL.FactoryBl.getBl();
+            
             nanny = new Nanny();
             str= new  string[] { "1", "2", "3", "4", "5+ " };
             years_of_experienceComboBox.ItemsSource = str;
@@ -150,6 +151,27 @@ namespace PLWPF
 
            
                     
+        }
+
+        private void salaryPerHourTextBox1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox text1 = sender as TextBox;
+            errorMesseg8.Visibility = Visibility.Collapsed;
+            errorMesseg10.Visibility = Visibility.Collapsed;
+
+
+            long x;
+            if (!long.TryParse(text1.Text, out x) && text1.Text != "")
+            {
+
+                errorMesseg8.Visibility = Visibility.Visible;
+
+                return;
+            }
+            if (text1.Text != "" && long.Parse(text1.Text) < 0)
+            {
+                errorMesseg10.Visibility = Visibility.Visible;
+            }
         }
     }
 }
