@@ -42,7 +42,7 @@
         </WrapPanel>
         <!--<StackPanel Grid.Row="1" Grid.ColumnSpan="2">-->
 
-        <StackPanel x:Name="details_mother_stackpanel" Grid.Row="1">
+        <StackPanel x:Name="details_mother_stackpanel" Grid.Row="1" >
             <TextBlock Margin="10" VerticalAlignment="Center" Text="Update mother" TextAlignment="Center" FontSize="20" />
 
             <Grid x:Name="mother_grid" Grid.Row="1" Margin="15,15,14.6,15" Visibility="Visible" Background="{StaticResource BackgroundGrid}" Height="550" >
@@ -96,7 +96,7 @@
                        Visibility="{Binding ElementName=addresTextBox,  
                 Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
                     <TextBox Style="{StaticResource textbox_style}" x:Name="addresTextBox" Grid.Row="4" 
-                    Text="{Binding Addres, Mode=TwoWay, NotifyOnValidationError=true, 
+                    Text="{Binding addres, Mode=TwoWay, NotifyOnValidationError=true, 
                 ValidatesOnExceptions=true, UpdateSourceTrigger=Explicit}" Height="25" />
 
 

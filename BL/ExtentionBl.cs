@@ -53,7 +53,7 @@ namespace BL
 
 
 
-        public static IEnumerable<Nanny> rangeNanny(this IBL bl, int? id)
+        public static IEnumerable<Nanny> RangeNanny(this IBL bl, int? id)
         {
             Mother temp = dal.getMother(id);
             IEnumerable<Nanny> nanny = dal.getListNannys();
@@ -148,7 +148,7 @@ namespace BL
         /// </summary>
         /// <param name="a"></param>
         /// <returns></returns>
-        public static IEnumerable<Nanny> requiredMother(this IBL bl, Mother a)
+        public static IEnumerable<Nanny> RequiredMother(this IBL bl, Mother a)
         {
             //IEnumerable<Child> child = dal.getListChilds(a);
             IEnumerable<Nanny> nannys = dal.getListNannys();
@@ -270,8 +270,6 @@ namespace BL
 
         }
 
-      
-        
 
     }
 }

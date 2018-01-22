@@ -89,7 +89,7 @@
                        Visibility="{Binding ElementName=addresTextBox,  
                 Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
             <TextBox Style="{StaticResource textbox_style}" x:Name="addresTextBox" Grid.Row="4" 
-                    Text="{Binding Addres, Mode=TwoWay, NotifyOnValidationError=true, 
+                    Text="{Binding addres, Mode=TwoWay, NotifyOnValidationError=true, 
                 ValidatesOnExceptions=true}" Height="25" />
 
 
@@ -155,7 +155,7 @@
 
        
 
-        <Grid x:Name="second_grid_nanny"  Margin="15" Grid.Column="0" Visibility="Visible" Background="{StaticResource BackgroundGrid}">
+        <Grid x:Name="second_grid_nanny"  Margin="15" Grid.Column="0" Visibility="Collapsed" Background="{StaticResource BackgroundGrid}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>

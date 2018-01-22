@@ -26,59 +26,54 @@ namespace PLWPF
     {
         BL.IBL bl;
         private BL.Bl_imp bll;
-        private Mother selectedMother;
-        private Child selectedChild;
-        private Nanny selectedNanny;
-        private Contract selectedContract;
+        private Mother _selectedMother;
+        private Child _selectedChild;
+        private Nanny _selectedNanny;
+        private Contract _selectedContract;
         public search_nanny()
         {
-            bl = BL.FactoryBl.getBl();
+            bl = FactoryBl.getBl();
             bll = new Bl_imp();
-            selectedMother = new Mother();
-            selectedChild = new Child();
-            selectedNanny = new Nanny();
-            selectedContract = new Contract();
+            _selectedMother = new Mother();
+            _selectedChild = new Child();
+            _selectedNanny = new Nanny();
+            _selectedContract = new Contract();
             InitializeComponent();
             select_mother_combobox.ItemsSource = bl.getListMothers();
             //  nannyDataGrid.ItemsSource = bl.getListNannys();
-
         }
 
         private void select_mother_combobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            selectedMother = select_mother_combobox.SelectedItem as Mother;
+            Vizibilityes();
+            mother_child_stackpanel.Visibility = Visibility.Visible;
+            _selectedMother = select_mother_combobox.SelectedItem as Mother;
             select_child_combobox.ItemsSource = bl.getListChilds(select_mother_combobox.SelectedItem as Mother);
             Constraints_grid.DataContext = select_mother_combobox.SelectedItem as Mother;
         }
 
         private void select_child_combobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            selectedChild = select_child_combobox.SelectedItem as Child;
+            Vizibilityes();
+            mother_child_stackpanel.Visibility = Visibility.Visible;
+            _selectedChild = select_child_combobox.SelectedItem as Child;
         }
 
 
 
         private void nannyDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            selectedNanny = nannyDataGrid.SelectedItem as Nanny;
+            _selectedNanny = nannyDataGrid.SelectedItem as Nanny;
         }
         private void select_nanny_button_Click(object sender, RoutedEventArgs e)
         {
-            selectedContract.MotherID = selectedMother.id;
-            selectedContract.childID = selectedChild.id;
-            selectedContract.NannyID = selectedNanny.id;
-            selectedContract.ContracPer = selectedNanny.per_hour_able;
-            selectedContract.salaryPerHour = selectedNanny.salaryPerHour;
-            selectedContract.salaryPerMonth = selectedNanny.salaryPerMonth;
-            add_contruct_grid.DataContext = selectedContract;
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-            System.Windows.Data.CollectionViewSource nannyViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("nannyViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // nannyViewSource.Source = [generic data source]
+            _selectedContract.MotherID = _selectedMother.id;
+            _selectedContract.childID = _selectedChild.id;
+            _selectedContract.NannyID = _selectedNanny.id;
+            _selectedContract.ContracPer = _selectedNanny.per_hour_able;
+            _selectedContract.salaryPerHour = _selectedNanny.salaryPerHour;
+            _selectedContract.salaryPerMonth = _selectedNanny.salaryPerMonth;
+            add_contruct_grid.DataContext = _selectedContract;
         }
 
         private void search_nannys_button_Click(object sender, RoutedEventArgs e)
@@ -89,7 +84,7 @@ namespace PLWPF
                 int max = int.Parse(coomoBoxMaxChild.SelectedIndex.ToString());
                 List<Nanny> findNannies = new List<Nanny>();
                 search_nannys_button.IsEnabled = false;
-                vizibilityes();
+                Vizibilityes();
                 loading.Visibility = Visibility.Visible;
                 new Thread(() =>
                 {
@@ -97,12 +92,12 @@ namespace PLWPF
                 // findNannies = bll.rangeNanny(mother.id).ToList();
                 try
                     {
-                        findNannies = allReq(selectedMother, floor, max, selectedChild);
+                        findNannies = AllReq(_selectedMother, floor, max, _selectedChild);
 
                     }
                     catch (Exception exception)
                     {
-                        System.Windows.MessageBox.Show(exception.Message);
+                        MessageBox.Show(exception.Message);
                     }
                 //if (findNannies == null)
                 //    throw new Exception("ma nishma");
@@ -120,7 +115,7 @@ namespace PLWPF
             }
             catch (Exception exception)
             {
-                System.Windows.MessageBox.Show(exception.Message);
+                MessageBox.Show(exception.Message);
             }
 
 
@@ -128,15 +123,15 @@ namespace PLWPF
 
         }
 
-        List<Nanny> allReq(Mother mother, int floor, int max, Child child)
+        List<Nanny> AllReq(Mother mother, int floor, int max, Child child)
         {
 
             List<Nanny> nanny2 = new List<Nanny>();
             List<Nanny> nanny = new List<Nanny>();
             List<Nanny> nanny1 = new List<Nanny>();
             
-            nanny = bl.rangeNanny(mother.id).ToList();
-            nanny1 = bl.requiredMother(mother).ToList();
+            nanny = bl.RangeNanny(mother.id).ToList();
+            nanny1 = bl.RequiredMother(mother).ToList();
             if (nanny.Count != 0 && nanny1.Count != 0)
             {
                 foreach (var item1 in nanny)
@@ -181,7 +176,7 @@ namespace PLWPF
 
         }
 
-        private void vizibilityes()
+        private void Vizibilityes()
         {
             mother_child_stackpanel.Visibility = Visibility.Collapsed;
             Constraints_grid.Visibility = Visibility.Collapsed;
