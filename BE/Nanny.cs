@@ -13,19 +13,13 @@ namespace BE
         public Nanny()
           
         {
+            birthDay = DateTime.Now.AddYears(-60);
             
-            //cc[0] = DayOfWeek.Sunday;
-            //cc[1] = DayOfWeek.Monday;
-            //cc[2] = DayOfWeek.Thursday;
-            //cc[3] = DayOfWeek.Wednesday;
-            //cc[4] = DayOfWeek.Tuesday;
-            //cc[5] = DayOfWeek.Friday;
 
             for (int j = 0; j < 6; j++)
             {
                 work[j] = new Work_information();
-                
-
+           
             }
         }
         public int? id { set; get; }

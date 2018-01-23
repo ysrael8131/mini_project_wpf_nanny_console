@@ -108,9 +108,9 @@
         
         <TextBlock    Text="Birth day" Grid.Row="3" Style="{StaticResource textblock_style}"
  Visibility="{Binding ElementName=birthDayDatePicker,Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-            <DatePicker x:Name="birthDayDatePicker"  Grid.Row="3" Background="Transparent"
+            <DatePicker x:Name="birthDayDatePicker"  Grid.Row="3" 
                     SelectedDate="{Binding birthDay, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
-                    VerticalAlignment="Center" DisplayDateStart="01.01.2012" BorderBrush="{StaticResource brushWatermarkBorder}" Margin="15"   />
+                    VerticalAlignment="Center"  BorderBrush="{StaticResource brushWatermarkBorder}" Margin="15"   />
 
             <Label Content="Special Needs:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
             <CheckBox x:Name="specialNeedsCheckBox" Content="" Grid.Column="0" IsChecked="{Binding specialNeeds, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 

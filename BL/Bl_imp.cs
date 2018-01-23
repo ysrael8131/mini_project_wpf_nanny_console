@@ -25,6 +25,7 @@ namespace BL
         {
             Child temp1 = dal.getChild(a.childID);
             Nanny temp2 = dal.getNanny(a.NannyID);
+            Mother temp3 = dal.getMother(temp1.MotherID); 
             if (getListContracts().ToList().Find(item => item.childID == a.childID) != null)
                 throw new Exception("Contract with this child already");
             //check the age child that more 3 months 
@@ -57,20 +58,22 @@ namespace BL
             switch (a.ContracPer)
             {
                 case contracPer.perMonth:
-                    a.salaryPerMonth = (1 - (sumChildsPerMother * 0.02)) * temp2.salaryPerMonth;
-                    break;
-                case contracPer.perHour:
-                    TimeSpan time = new TimeSpan();
-                    foreach (var item in temp2.work)
+                   // TimeSpan time = new TimeSpan();
+                    double time = 0;
+                    foreach (var item in temp3.arr)
                     {
                         if (item.day_work)
                         {
-                            time += (item.end - item.start);
+                            time += (item.end - item.start).Hours+ (item.end - item.start).Minutes/60;
                         }
                     }
 
-                    a.salaryPerMonth = (temp2.salaryPerHour * (time.Hours + (time.Minutes / 60)) * 4) * ((1 - sumChildsPerMother) * 0.02);
+                    a.salaryPerMonth = (temp2.salaryPerHour * (time * 4) * ((1 - sumChildsPerMother) * 0.02));
                     break;
+                case contracPer.perHour:
+                    a.salaryPerMonth = (1 - (sumChildsPerMother * 0.02)) * temp2.salaryPerMonth;
+                    break;
+                    
             }
             a.MotherID = temp1.MotherID;
             dal.addContract(a);
