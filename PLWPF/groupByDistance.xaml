@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PLWPF"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="200" d:DesignWidth="500" Background="LightPink" FontSize="14" FontFamily="Berlin Sans FB Demi" >
   <UserControl.Resources>
         <local:groupByDistance 
       x:Key="Convert" />

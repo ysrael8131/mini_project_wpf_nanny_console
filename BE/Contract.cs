@@ -37,7 +37,7 @@ namespace BE
                 "nanny id: " + NannyID + '\n' +
                 "mother id: " + MotherID + '\n' +
                 "Child id: " + childID + '\n' +
-                 "salary: " + salaryPerMonth;
+                 "salary: " + totalSalary;
         }
     }
 }

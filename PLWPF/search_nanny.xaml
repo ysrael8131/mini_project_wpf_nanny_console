@@ -104,7 +104,7 @@
                 </Button.Style>
             </Button>
         </Grid>
-        <StackPanel Grid.Row="2" Grid.Column="1" Visibility="Hidden">
+        <StackPanel x:Name="nannys_StackPanel" Grid.Row="2" Grid.Column="1" Visibility="Hidden">
 
 
             <DataGrid x:Name="nannyDataGrid" Margin="20" EnableRowVirtualization="True" ItemsSource="{Binding}" d:DataContext="{d:DesignData BE:Nanny}" AutoGenerateColumns="False" IsReadOnly="True" Grid.Column="1" Background="LightPink" HorizontalAlignment="center" Grid.Row="2" VerticalAlignment="top" Height="150" Width="450" SelectionChanged="nannyDataGrid_SelectionChanged" >

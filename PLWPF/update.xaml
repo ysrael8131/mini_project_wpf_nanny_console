@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PLWPF"
               xmlns:dg="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="update" Height="700" Width="700" WindowState="Maximized">
+        Title="update" Height="700" Width="700" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>

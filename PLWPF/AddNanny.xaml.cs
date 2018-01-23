@@ -47,7 +47,7 @@ namespace PLWPF
                 to_month.Items.Add(i);
             }
     
-            this.DataContext = nanny;
+            DataContext = nanny;
 
         }
 

@@ -173,7 +173,7 @@
             <TextBlock Margin="134,18,134,17.4" Text="more details" Grid.ColumnSpan="2" TextAlignment="Center" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Impact" Foreground="SaddleBrown"/>
 
             <Grid x:Name="hours_grid" Visibility="Visible"  Grid.Row="1" 
-              Margin="15,14.6,15,15.4" Background="{StaticResource BackgroundGrid}" DataContext="{StaticResource nannyViewSource}" Grid.ColumnSpan="2"  >
+              Margin="15,14.6,15,15.4" Background="{StaticResource BackgroundGrid}"  Grid.ColumnSpan="2"  >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.000001*"/>
                     <RowDefinition Height="0.7*"/>

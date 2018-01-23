@@ -57,9 +57,6 @@ namespace BL
             switch (a.ContracPer)
             {
                 case true:
-                    a.totalSalary = (1 - (sumChildsPerMother * 0.02)) * temp2.salaryPerMonth;
-                    break;
-                case false:
                     TimeSpan time = new TimeSpan();
                     foreach (var item in temp2.work)
                     {
@@ -70,6 +67,11 @@ namespace BL
                     }
 
                     a.totalSalary = (temp2.salaryPerHour * (time.Hours + (time.Minutes / 60)) * 4) * ((1 - sumChildsPerMother) * 0.02);
+
+                    break;
+                case false:
+                    a.totalSalary = (1 - (sumChildsPerMother * 0.02)) * temp2.salaryPerMonth;
+
                     break;
             }
             a.MotherID = temp1.MotherID;
@@ -82,6 +84,8 @@ namespace BL
         /// <param name="a"></param>
         public void addMother(Mother a)
         {
+            if (a.SearchAddres == null)
+                a.SearchAddres = a.Addres;
             dal.addMother(a);
         }
         /// <summary>

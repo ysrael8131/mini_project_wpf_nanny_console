@@ -11,14 +11,7 @@ namespace BE
         
         public Mother()
         {
-            //id = i;
-            //FirstName = first;
-            //LastName = last;
-            //PhoneNumber = phone;
-            //Addres = add;
-            //SearchAddres = seaadd;
-            //elevators = elev;
-
+            
             for (int j = 0; j < 6; j++)
             {
                 arr[j] = new Work_information();  
