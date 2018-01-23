@@ -28,6 +28,8 @@ namespace PLWPF
 
             InitializeComponent();
             bl = BL.FactoryBl.getBl();
+            birthDayDatePicker.DisplayDateStart = DateTime.Now.AddYears(-6);
+
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
            // ResizeMode = ResizeMode.CanMinimize;
             

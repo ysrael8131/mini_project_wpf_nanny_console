@@ -9,8 +9,9 @@ namespace BE
 {
     public class Child
     {
-        public Child(int i = 0, int momI = 0, string first = "", string date = "1/1/2017", bool special = false)
+        public Child()
         {
+            birthDay = DateTime.Now.AddYears(-6);
             //id = i;
             //MotherID = momI;
             //FirstName = first;
