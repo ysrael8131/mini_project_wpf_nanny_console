@@ -12,6 +12,7 @@ namespace BL
     public class Bl_imp : IBL
     {
         DAL.IDAL dal = DAL.FactoryDal.getDal();
+
         public void addChild(Child a)
         {
             dal.addChild(a);
@@ -24,6 +25,8 @@ namespace BL
         {
             Child temp1 = dal.getChild(a.childID);
             Nanny temp2 = dal.getNanny(a.NannyID);
+            if (getListContracts().ToList().Find(item => item.childID == a.childID) != null)
+                throw new Exception("Contract with this child already");
             //check the age child that more 3 months 
             if (DateTime.Compare(DateTime.Now.AddMonths(-3), temp1.birthDay) == -1)
             {
@@ -208,9 +211,9 @@ namespace BL
         {
             dal.updateNanny(a);
         }
-        
-     
-        
+
+
+
 
     }
 }

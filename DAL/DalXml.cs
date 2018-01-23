@@ -17,7 +17,7 @@ namespace DAL
     {
 
         DataSource ds = new DataSource();
-       
+
         //protected static DalXml dal;
         //public static DalXml Dal
         //{
@@ -61,6 +61,7 @@ namespace DAL
 
         private void CreateFiles()
         {
+            
             MotherRoot = new XElement("Mothers");
             MotherRoot.Save(motherPath);
 
@@ -78,18 +79,17 @@ namespace DAL
 
         private void LoadData()
         {
-            //try
-            //{
+            try
+            {
                 ChildRoot = XElement.Load(childPath);
                 DS.DataSource.mothers = LoadListFromXML<List<Mother>>(motherPath);
                 DS.DataSource.nannys = LoadListFromXML<List<Nanny>>(nannyPath);
                 DS.DataSource.contracts = LoadListFromXML<List<Contract>>(contractPath);
-
-            //}
-            //catch
-            //{
-            //    throw new Exception("File upload problem");
-            //}
+            }
+            catch
+            {
+                throw new Exception("File upload problem");
+            }
         }
 
         public static void SaveToXML<T>(T source, string path)
