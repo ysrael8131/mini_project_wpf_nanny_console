@@ -112,6 +112,9 @@
     <Compile Include="update.xaml.cs">
       <DependentUpon>update.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UpDownControl.xaml.cs">
+      <DependentUpon>UpDownControl.xaml</DependentUpon>
+    </Compile>
     <Page Include="AddNanny.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -183,6 +186,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="update.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpDownControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
