@@ -166,6 +166,7 @@ namespace PLWPF
         {
             _selectedNanny = nannyDataGrid.SelectedItem as Nanny;
         }
+
         private void select_nanny_button_Click(object sender, RoutedEventArgs e)
         {
             _selectedContract.MotherID = _selectedMother.id;

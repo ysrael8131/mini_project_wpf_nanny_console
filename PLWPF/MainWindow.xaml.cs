@@ -241,6 +241,28 @@ namespace PLWPF
             w.Show();
         }
 
+        private void add_button_Click(object sender, RoutedEventArgs e)
+        {
+            buttons_to_add.Visibility = Visibility.Visible;
+        }
+
+        private void update_button_Click(object sender, RoutedEventArgs e)
+        {
+            Window w = new update();
+            w.Show();
+        }
+
+        private void grooping_button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void find_nanny_button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
 
 
 

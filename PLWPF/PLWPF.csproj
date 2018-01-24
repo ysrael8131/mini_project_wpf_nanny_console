@@ -85,6 +85,9 @@
     <Compile Include="allChildrens.xaml.cs">
       <DependentUpon>allChildrens.xaml</DependentUpon>
     </Compile>
+    <Compile Include="buttons_to_add.xaml.cs">
+      <DependentUpon>buttons_to_add.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GroopingWindow.xaml.cs">
       <DependentUpon>GroopingWindow.xaml</DependentUpon>
     </Compile>
@@ -126,6 +129,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="allChildrens.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="buttons_to_add.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

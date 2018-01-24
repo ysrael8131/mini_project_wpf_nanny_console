@@ -93,16 +93,19 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.25*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="add_button" Content="press to add a new item"/>
-        <Button x:Name="update_button" Content="press to uptate an item"/>
-        <Button x:Name="grooping_button" Content="grooping"/>
-        <Button x:Name="find_nanny_button" Content="find nanny"/>
-        <Label Content="press the folowing you want to add"/>
+        <Button x:Name="add_button" Grid.Column="0" Content="press to add a new item" Margin="15" Click="add_button_Click" />
+        <Button x:Name="update_button"  Grid.Column="1" Content="press to uptate an item" Margin="15" Click="update_button_Click"/>
+        <Button x:Name="grooping_button" Grid.Column="2" Content="grooping" Margin="15" Click="grooping_button_Click"/>
+        <Button x:Name="find_nanny_button"  Grid.Column="3" Content="find nanny" Margin="15" Click="find_nanny_button_Click"/>
+        <local:buttons_to_add x:Name="buttons_to_add" Grid.Row="1" Visibility="Hidden" />
+
     </Grid>
 
 </Window>
