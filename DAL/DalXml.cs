@@ -179,13 +179,26 @@ namespace DAL
         /// <param name="id"></param>
         public void deleteChild(int? id)
         {
-            Child temp = getChild(id);
-            if (temp == null)
-                throw new Exception("Child not found");
+            //Child temp = getChild(id);
+            //if (temp == null)
+            //    throw new Exception("Child not found");
 
-            ConvertChild(temp).Remove();
+            //ConvertChild(temp).Remove();
+            //ChildRoot.Save(childPath);
+
+
+
+            XElement toRemove = (from item in ChildRoot.Elements()
+                where int.Parse(item.Element("id").Value) == id
+                select item).FirstOrDefault();
+
+            if (toRemove == null)
+                throw new Exception("Student with the same id not found...");
+
+            toRemove.Remove();
+
             ChildRoot.Save(childPath);
-
+            //return true;v
         }
         public void updateChild(Child a)
         {
@@ -245,7 +258,7 @@ namespace DAL
             SaveToXML<List<Mother>>(DS.DataSource.mothers, motherPath);
         }
 
-        public void deleteMother(int id)
+        public void deleteMother(int? id)
         {
             Mother temp = getMother(id);
             if (temp == null)
@@ -389,7 +402,7 @@ namespace DAL
         public IEnumerable<Contract> getListContracts()
         {
 
-            return DataSource.contracts;
+            return LoadListFromXML < List < Contract>>(contractPath);
 
         }
 

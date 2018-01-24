@@ -14,7 +14,7 @@ namespace DAL
         void updateNanny(Nanny a);
 
         void addMother(Mother a);
-        void deleteMother(int id);
+        void deleteMother(int? id);
         void updateMother(Mother a);
 
         void addChild(Child a);

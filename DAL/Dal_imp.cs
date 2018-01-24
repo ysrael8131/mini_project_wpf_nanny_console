@@ -89,7 +89,7 @@ namespace DAL
         /// func to remove mothers from in list
         /// </summary>
         /// <param name="id"></param>
-        public void deleteMother(int id)
+        public void deleteMother(int? id)
         {
             Mother temp = getMother(id);
             if (temp == null)

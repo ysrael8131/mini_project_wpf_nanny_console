@@ -37,7 +37,7 @@ namespace BE
         public string addres { set; get; }
         public bool elevators { set; get; }
         public int? floor { set; get; }
-        public int years_of_experience { set; get; }
+        public string years_of_experience { set; get; }
         public int maxChilds { set; get; }
         public int age_child_min { set; get; }
         public int age_child_max { set; get; }

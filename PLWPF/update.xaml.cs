@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BE;
 using Xceed.Wpf.Toolkit;
 namespace PLWPF
 {
@@ -72,25 +73,34 @@ namespace PLWPF
             select_mother_conbobox.ItemsSource = null;
             select_child_conbobox.ItemsSource = null;
             select_nanny_conbobox.ItemsSource = null;
+            if (select_item_combobox.SelectedItem==null)
+            {
+                Vizibilityes();
+                all_stackpanels.Visibility = Visibility.Visible;
+                return;
+            }
             switch (select_item_combobox.SelectedItem.ToString())
             {
                 case "Mother":
                     Vizibilityes();
+                    all_stackpanels.Visibility = Visibility.Visible;
                     mother_stackpanel.Visibility = Visibility.Visible;
-                    var mothers = from item in bl.getListMothers()
-                                  select item.id;
-                    select_mother_conbobox.ItemsSource = mothers;
+                    //var mothers = from item in bl.getListMothers()
+                    //              select item.id;
+                    select_mother_conbobox.ItemsSource = bl.getListMothers();
                     break;
                 case "Child":
                     Vizibilityes();
+                    all_stackpanels.Visibility = Visibility.Visible;
                     mother_stackpanel.Visibility = Visibility.Visible;
                     child_stackpanel.Visibility = Visibility.Visible;
-                    mothers = from item in bl.getListMothers()
-                              select item.id;
-                    select_mother_conbobox.ItemsSource = mothers;
+                    //mothers = from item in bl.getListMothers()
+                    //          select item.id;
+                    select_mother_conbobox.ItemsSource = bl.getListMothers();
                     break;
                 case "Nanny":
                     Vizibilityes();
+                    all_stackpanels.Visibility = Visibility.Visible;
                     nanny_stackpanel.Visibility = Visibility.Visible;
                     select_nanny_conbobox.ItemsSource = bl.getListNannys();
                     break;
@@ -113,7 +123,8 @@ namespace PLWPF
                     case "Mother":
                         if (select_mother_conbobox.SelectedItem != null)
                         {
-                            mother = bl.getMother(int.Parse(select_mother_conbobox.SelectedItem.ToString()));
+                            //mother = bl.getMother(int.Parse(select_mother_conbobox.SelectedItem.ToString()));
+                            mother= select_mother_conbobox.SelectedItem as Mother;
                             mother_grid.DataContext = mother;
 
 
@@ -129,16 +140,18 @@ namespace PLWPF
                             }
 
                             Vizibilityes();
+                            all_stackpanels.Visibility = Visibility.Visible;
                             mother_stackpanel.Visibility = Visibility.Visible;
                             options_buttons.Visibility = Visibility.Visible;
                         }
 
                         break;
                     case "Child":
-                        var childs = from item in bl.getListChilds(bl.getMother(int.Parse(select_mother_conbobox.SelectedItem.ToString())))
-                                     select item.id;
+                        //var childs = from item in bl.getListChilds(bl.getMother(int.Parse(select_mother_conbobox.SelectedItem.ToString())))
+                        //             select item.id;
+                        
                         select_child_conbobox.ItemsSource = null;
-                        select_child_conbobox.ItemsSource = childs;
+                        select_child_conbobox.ItemsSource = bl.getListChilds(select_mother_conbobox.SelectedItem as Mother);
                         break;
                     default:
                         break;
@@ -169,6 +182,7 @@ namespace PLWPF
                     }
                 }
                 Vizibilityes();
+                all_stackpanels.Visibility = Visibility.Visible;
                 nanny_stackpanel.Visibility = Visibility.Visible;
                 options_buttons.Visibility = Visibility.Visible;
             }
@@ -184,11 +198,12 @@ namespace PLWPF
         {
             child = null;
             Vizibilityes();
+            all_stackpanels.Visibility = Visibility.Visible;
             mother_stackpanel.Visibility = Visibility.Visible;
             child_stackpanel.Visibility = Visibility.Visible;
             if (select_child_conbobox.ItemsSource != null)
             {
-                child = bl.getChild(int.Parse(select_child_conbobox.SelectedItem.ToString()));
+                child = select_child_conbobox.SelectedItem as Child;
                 child_grid.DataContext = child;
 
                 options_buttons.Visibility = Visibility.Visible;
@@ -203,16 +218,16 @@ namespace PLWPF
             switch (select_item_combobox.SelectedItem.ToString())
             {
                 case "Mother":
-
-                    mother_grid.Visibility = Visibility.Visible;
+                    all_stackpanels.Visibility = Visibility.Collapsed;
+                    details_mother_stackpanel.Visibility = Visibility.Visible;
                     first_grid_mother.Visibility = Visibility.Visible;
                     break;
                 case "Child":
-                    child_grid.Visibility = Visibility.Visible;
+                    details_child_stackpanel.Visibility = Visibility.Visible;
                     mother_grid.Visibility = Visibility.Collapsed;
                     break;
                 case "Nanny":
-                    nanny_grid.Visibility = Visibility.Visible;
+                    details_nanny_stackpanel.Visibility = Visibility.Visible;
                     //nanny_scroll.Visibility = Visibility.Visible;
                     first_grid_nanny.Visibility = Visibility.Visible;
 
@@ -248,12 +263,29 @@ namespace PLWPF
                 switch (select_item_combobox.SelectedItem.ToString())
                 {
                     case "Mother":
-                        bl.deleteMother(int.Parse(select_mother_conbobox.SelectedItem.ToString()));
+                        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        //string a;
+                        //foreach (var VARIABLE in bl.getListChilds(select_mother_conbobox.SelectedItem as Mother))
+                        //{
+                        //    a += "id: " + VARIABLE.id + '\n';
+                        //}
+
+
+                        ////System.Windows.MessageBox message=new MessageBox();
+                        //System.Windows.MessageBox.Show("אתה עלול למחוק גם את הילדים האלה"+'\n'+a,"זהירות על מחיקת ילדים",MessageBoxButton.OK,  MessageBoxImage.Warning,MessageBoxResult.Cancel);
+
+
+
+
+
+
+
+                        bl.deleteMother((select_mother_conbobox.SelectedItem as Mother).id);
                         System.Windows.MessageBox.Show(mother.id.ToString(), "This mother has been deleted");
                         this.Close();
                         break;
                     case "Child":
-                        bl.deleteChild(int.Parse(select_child_conbobox.SelectedItem.ToString()));
+                        bl.deleteChild((select_child_conbobox.SelectedItem as Child).id);
                         System.Windows.MessageBox.Show(child.id.ToString(), "This child has been deleted");
                         this.Close();
                         break;
@@ -279,22 +311,26 @@ namespace PLWPF
        
         private void Vizibilityes()
         {
+            all_stackpanels.Visibility = Visibility.Collapsed;
             mother_stackpanel.Visibility = Visibility.Collapsed;
             child_stackpanel.Visibility = Visibility.Collapsed;
             nanny_stackpanel.Visibility = Visibility.Collapsed;
             options_buttons.Visibility = Visibility.Collapsed;
-            //nanny_scroll.Visibility = Visibility.Collapsed;
 
-            mother_grid.Visibility = Visibility.Collapsed;
+            details_mother_stackpanel.Visibility = Visibility.Collapsed;
+            details_nanny_stackpanel.Visibility = Visibility.Collapsed;
+            details_child_stackpanel.Visibility = Visibility.Collapsed;
             first_grid_mother.Visibility = Visibility.Collapsed;
             second_grid_mother.Visibility = Visibility.Collapsed;
-            child_grid.Visibility = Visibility.Collapsed;
             first_grid_nanny.Visibility = Visibility.Collapsed;
             second_grid_nanny.Visibility = Visibility.Collapsed;
         }
         private void update_mother_button_Click(object sender, RoutedEventArgs e)
         {
-
+            if (mother.Addres==mother.SearchAddres&&mother.SearchAddres!=searchAddresTextBox.Text.ToString())
+            {
+                searchAddresTextBox.Text = addresTextBox.Text;
+            }
             for (int i = 0; i < 6; i++)
             {
                 //if (check[i].IsChecked == true && (timeStart[i].Value == null || timeEnd[i].Value == null))
@@ -326,7 +362,8 @@ namespace PLWPF
             }
             bl.updateMother(mother);
             System.Windows.MessageBox.Show("ID: "+mother.id.ToString(), "This mother has been updated",MessageBoxButton.OK,MessageBoxImage.Information);
-            this.Close();
+            select_item_combobox.SelectedItem = null;
+            //this.Close();
         }
 
         private void next_mother_Click(object sender, RoutedEventArgs e)
@@ -345,7 +382,8 @@ namespace PLWPF
             detailsSpecialNeedsTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             bl.updateChild(child);
             System.Windows.MessageBox.Show("ID: "+ child.id.ToString(), "This child has been updated", MessageBoxButton.OK, MessageBoxImage.Information);
-            this.Close();
+            select_item_combobox.SelectedItem = null;
+            //this.Close();
         }
 
 
@@ -391,9 +429,17 @@ namespace PLWPF
             lastNameTextBox_n.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             addresTextBox_n.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             phoneNumberTextBox_n.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-            maxChildsComboBox.GetBindingExpression(ComboBox.TextProperty).UpdateSource();
-            years_of_experienceComboBox.GetBindingExpression(ComboBox.TextProperty).UpdateSource();
-            recommendationTextBox1.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            floorTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            birthDayDatePicker_n.GetBindingExpression(DatePicker.SelectedDateProperty).UpdateSource();
+
+            elevatorsCheckBox_n.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+            //maxChildsComboBox.GetBindingExpression(ComboBox.TextProperty).UpdateSource();
+            // years_of_experienceComboBox.GetBindingExpression(ComboBox.TextProperty).UpdateSource();
+           // recommendationTextBox1.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            per_hour_ableCheckBox1.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
+            salaryPerHourTextBox1.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            salaryPerMonthTextBox1.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            vacation_kindCheckBox1.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
             for (int j = 0; j < 6; j++)
             {
                 check_n[j].GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
@@ -405,7 +451,8 @@ namespace PLWPF
 
             bl.updateNanny(nanny);
             System.Windows.MessageBox.Show("ID: " + nanny.id.ToString(), "This nanny has been updated", MessageBoxButton.OK, MessageBoxImage.Information);
-            this.Close();
+            select_item_combobox.SelectedItem = null;
+            //this.Close();
 
         }
 

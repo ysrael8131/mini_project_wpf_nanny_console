@@ -59,7 +59,7 @@ namespace BL
             //Calculation of salary
             switch (a.ContracPer)
             {
-                case contracPer.perMonth:
+                case true:
                    // TimeSpan time = new TimeSpan();
                     double time = 0;
                     foreach (var item in temp3.arr)
@@ -70,10 +70,10 @@ namespace BL
                         }
                     }
 
-                    a.salaryPerMonth = (temp2.salaryPerHour * (time * 4) * ((1 - sumChildsPerMother) * 0.02));
+                    a.totalSalary = (temp2.salaryPerHour * (time * 4) * ((1 - sumChildsPerMother) * 0.02));
                     break;
-                case contracPer.perHour:
-                    a.salaryPerMonth = (1 - (sumChildsPerMother * 0.02)) * temp2.salaryPerMonth;
+                case false:
+                    a.totalSalary = (1 - (sumChildsPerMother * 0.02)) * temp2.salaryPerMonth;
                     break;
                     
             }
@@ -127,12 +127,11 @@ namespace BL
         /// remove mother by id of mother
         /// </summary>
         /// <param name="id"></param>
-        public void deleteMother(int id)
+        public void deleteMother(int? id)
         {
             Mother temp = dal.getMother(id);
             dal.deleteMother(id);
             var childsPerMother = dal.getListChilds(temp);
-
             foreach (var item in childsPerMother)
             {
                 deleteChild(item.id);
@@ -211,6 +210,11 @@ namespace BL
 
         public void updateMother(Mother a)
         {
+            Mother temp = dal.getMother(a.id);
+            if (temp.Addres==a.SearchAddres)
+            {
+                a.SearchAddres = a.Addres;
+            }
             dal.updateMother(a);
         }
 
