@@ -93,7 +93,7 @@
            Visibility="{Binding ElementName=phoneNumberTextBox,  
                 Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
             <TextBox Style="{StaticResource textbox_style}" x:Name="phoneNumberTextBox" Grid.Row="5"  
-                    Text="{Binding PhoneNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                    Text="{Binding PhoneNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  />
 
 
 

@@ -63,9 +63,14 @@ namespace PLWPF
 
 
 
-
+        /// <summary>
+        /// The event of the button Next
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click_Next(object sender, RoutedEventArgs e)
         {
+            //If there are no 9 digits
             if (idTextBox.Text.Count() != 9)
             {
                 errorMesseg2.Visibility = Visibility.Visible;
@@ -75,13 +80,21 @@ namespace PLWPF
             second_grid_mother.Visibility = Visibility.Visible;
         }
 
-
+        /// <summary>
+        /// The event of the button Back
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_back_Click(object sender, RoutedEventArgs e)
         {
             first_grid_mother.Visibility = Visibility.Visible;
             second_grid_mother.Visibility = Visibility.Collapsed;
         }
-
+        /// <summary>
+        /// The event of the button Create
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_create_Click(object sender, RoutedEventArgs e)
         {
 
@@ -93,17 +106,19 @@ namespace PLWPF
 
 
 
-
+                //Manually assigning the time data
                 List<TimePicker> timeStart = new List<TimePicker>() { start1, startMondayTime, startTuesdayTime, startWednesdayTime, startThursdayTime, startFridayTime };
                 List<TimePicker> timeEnd = new List<TimePicker>() { end1, endMondayTime, endTuesdayTime, endWednesdayTime, endThursdayTime, endFridayTime };
                 List<CheckBox> check = new List<CheckBox>() { sundayCheckBox, mondayCheckBox, tuesdayCheckBox, wednesdayCheckBox, thursdayCheckBox, fridayCheckBox };
                 for (int i = 0; i < 6; i++)
                 {
+                    //If no hourly data were entered
                     if (check[i].IsChecked == true && (timeStart[i].Value == null || timeEnd[i].Value == null))
                     {
                         errorMessegHours.Visibility = Visibility.Visible;
                         return;
                     }
+                    //If a start time is late than the end time
                     if (check[i].IsChecked == true && timeStart[i].Value.Value.TimeOfDay > timeEnd[i].Value.Value.TimeOfDay)
                     {
                         errorMessegTime.Visibility = Visibility.Visible;
@@ -136,10 +151,13 @@ namespace PLWPF
         private void SizeStart1(object sender, SizeChangedEventArgs e)
         {
             TimePicker time = sender as TimePicker;
-            if (time.Value != null)
-                errorMessegHours.Visibility = Visibility.Collapsed;
+            errorMessegHours.Visibility = Visibility.Collapsed;
         }
-
+        /// <summary>
+        /// Handling exceptions
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void textChanged1(object sender, TextChangedEventArgs e)
         {
             errorMesseg1.Visibility = Visibility.Collapsed;
@@ -147,7 +165,7 @@ namespace PLWPF
             errorMesseg3.Visibility = Visibility.Collapsed;
             nextButton.IsEnabled = true;
 
-
+            //Check if digits are entered
             long x;
             if (!long.TryParse(idTextBox.Text, out x) && idTextBox.Text != "")
             {
@@ -157,6 +175,7 @@ namespace PLWPF
 
                 return;
             }
+            //Check if the number is negative
             if (idTextBox.Text != "" && long.Parse(idTextBox.Text) < 0)
             {
                 errorMesseg3.Visibility = Visibility.Visible;
@@ -164,6 +183,8 @@ namespace PLWPF
 
 
         }
+
+
     }
 
 
