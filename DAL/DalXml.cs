@@ -85,7 +85,7 @@ namespace DAL
                 ChildRoot = XElement.Load(childPath);
                 DS.DataSource.mothers = LoadListFromXML<List<Mother>>(motherPath);
                 DS.DataSource.nannys = LoadListFromXML<List<Nanny>>(nannyPath);
-                DS.DataSource.contracts = LoadListFromXML<List<Contract>>(contractPath).ToList();
+                DS.DataSource.contracts = LoadListFromXML<List<Contract>>(contractPath);
                 num = DS.DataSource.contracts.LastOrDefault().num_contract + 1;
             }
             catch
