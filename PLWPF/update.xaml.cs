@@ -159,6 +159,8 @@ namespace PLWPF
                 to_month.SelectedItem = nanny.age_child_max % 12;
                 from_years.SelectedItem = nanny.age_child_min / 12;
                 from_month.SelectedItem = nanny.age_child_min % 12;
+                maxChildsComboBox.SelectedItem = nanny.maxChilds;
+                years_of_experienceComboBox.SelectedItem = nanny.years_of_experience;
                 for (int i = 0; i < 6; i++)
                 {
 
@@ -388,8 +390,8 @@ namespace PLWPF
             lastNameTextBox_n.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             addresTextBox_n.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             phoneNumberTextBox_n.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-            maxChildsComboBox.GetBindingExpression(ComboBox.TextProperty).UpdateSource();
-            years_of_experienceComboBox.GetBindingExpression(ComboBox.TextProperty).UpdateSource();
+            //maxChildsComboBox.GetBindingExpression(ComboBox.TextProperty).UpdateSource(); SelectedItem="{Binding maxChilds}"
+            //years_of_experienceComboBox.GetBindingExpression(ComboBox.TextProperty).UpdateSource();SelectedItem="{Binding years_of_experience}"
             recommendationTextBox1.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             for (int j = 0; j < 6; j++)
             {
@@ -398,7 +400,8 @@ namespace PLWPF
 
             nanny.age_child_min = int.Parse(from_years.SelectedItem.ToString()) * 12 + int.Parse(from_month.SelectedItem.ToString());
             nanny.age_child_max = int.Parse(to_years.SelectedItem.ToString()) * 12 + int.Parse(to_month.SelectedItem.ToString());
-
+            nanny.years_of_experience = int.Parse(years_of_experienceComboBox.SelectedItem.ToString());
+            nanny.maxChilds = int.Parse(maxChildsComboBox.SelectedItem.ToString());
 
             bl.updateNanny(nanny);
             System.Windows.MessageBox.Show("ID: " + nanny.id.ToString(), "This nanny has been updated", MessageBoxButton.OK, MessageBoxImage.Information);

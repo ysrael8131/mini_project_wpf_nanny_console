@@ -15,7 +15,8 @@ namespace BE
         public Contract()
            
         {
-            
+            start = DateTime.Now;
+            end = DateTime.Now;
         }
         public int num_contract { set; get; }
         public int NannyID { set; get; }

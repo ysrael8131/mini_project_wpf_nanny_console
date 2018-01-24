@@ -78,7 +78,17 @@ namespace PLWPF
                 List<CheckBox> check = new List<CheckBox>() { sundayCheckBox, mondayCheckBox, tuesdayCheckBox, wednesdayCheckBox, thursdayCheckBox, fridayCheckBox };
                 for (int i = 0; i < 6; i++)
                 {
-                   
+                    if (check[i].IsChecked == true && (timeStart[i].Value == null || timeEnd[i].Value == null))
+                    {
+                        errorMessegHours.Visibility = Visibility.Visible;
+                        return;
+                    }
+                    if (check[i].IsChecked == true && timeStart[i].Value.Value.TimeOfDay > timeEnd[i].Value.Value.TimeOfDay)
+                    {
+                        errorMessegTime.Visibility = Visibility.Visible;
+                        return;
+                    }
+
                     if (check[i].IsChecked == true)
                     {
                         nanny.work[i].start = timeStart[i].Value.Value.TimeOfDay;
@@ -151,6 +161,11 @@ namespace PLWPF
 
            
                     
+        }
+
+        private void SizeStart1(object sender, SizeChangedEventArgs e)
+        {
+            errorMessegHours.Visibility = Visibility.Collapsed;
         }
 
         private void salaryPerHourTextBox1_TextChanged(object sender, TextChangedEventArgs e)
