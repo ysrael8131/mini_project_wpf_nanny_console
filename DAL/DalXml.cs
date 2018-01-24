@@ -404,11 +404,7 @@ namespace DAL
         public IEnumerable<Contract> getListContracts()
         {
 
-<<<<<<< HEAD
-            return LoadListFromXML < List < Contract>>(contractPath);
-=======
             return LoadListFromXML<List<Contract>>(contractPath);
->>>>>>> raz
 
         }
 

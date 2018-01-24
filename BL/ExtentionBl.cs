@@ -18,6 +18,7 @@ namespace BL
 
         public static IEnumerable<IGrouping<int, Contract>> groupingContract(this IBL bl, bool b = false)
         {
+            
             IEnumerable<Contract> con = dal.getListContracts();
             var contract = from item in con
                            let distance = bl.CalculateDistance(dal.getNanny(item.NannyID).addres,

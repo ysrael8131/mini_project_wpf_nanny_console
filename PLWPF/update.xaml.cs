@@ -431,7 +431,6 @@ namespace PLWPF
             lastNameTextBox_n.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             addresTextBox_n.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             phoneNumberTextBox_n.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-<<<<<<< HEAD
             floorTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             birthDayDatePicker_n.GetBindingExpression(DatePicker.SelectedDateProperty).UpdateSource();
 
@@ -443,11 +442,11 @@ namespace PLWPF
             salaryPerHourTextBox1.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             salaryPerMonthTextBox1.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             vacation_kindCheckBox1.GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
-=======
+
             //maxChildsComboBox.GetBindingExpression(ComboBox.TextProperty).UpdateSource(); SelectedItem="{Binding maxChilds}"
             //years_of_experienceComboBox.GetBindingExpression(ComboBox.TextProperty).UpdateSource();SelectedItem="{Binding years_of_experience}"
             recommendationTextBox1.GetBindingExpression(TextBox.TextProperty).UpdateSource();
->>>>>>> raz
+
             for (int j = 0; j < 6; j++)
             {
                 check_n[j].GetBindingExpression(CheckBox.IsCheckedProperty).UpdateSource();
