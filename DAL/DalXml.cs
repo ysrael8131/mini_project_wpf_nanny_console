@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.Contracts;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -84,7 +85,8 @@ namespace DAL
                 ChildRoot = XElement.Load(childPath);
                 DS.DataSource.mothers = LoadListFromXML<List<Mother>>(motherPath);
                 DS.DataSource.nannys = LoadListFromXML<List<Nanny>>(nannyPath);
-                DS.DataSource.contracts = LoadListFromXML<List<Contract>>(contractPath);
+                DS.DataSource.contracts = LoadListFromXML<List<Contract>>(contractPath).ToList();
+                num = DS.DataSource.contracts.LastOrDefault().num_contract + 1;
             }
             catch
             {
@@ -280,12 +282,12 @@ namespace DAL
         public IEnumerable<Mother> getListMothers()
         {
             
-            return DataSource.mothers;
+            return LoadListFromXML<List<Mother>>(motherPath);
         }
 
         public Mother getMother(int? id)
         {
-            return DS.DataSource.mothers.Find(item => item.id == id);
+            return LoadListFromXML<List<Mother>>(motherPath).Find(item => item.id == id);
         }
 
 
@@ -343,7 +345,7 @@ namespace DAL
         public IEnumerable<Nanny> getListNannys()
         {
             
-            return DataSource.nannys;
+            return LoadListFromXML<List<Nanny>>(nannyPath);
 
         }
 
@@ -354,7 +356,7 @@ namespace DAL
         /// <returns></returns>
         public Nanny getNanny(int? id)
         {
-            return DataSource.nannys.Find(item => item.id == id);
+            return LoadListFromXML<List<Nanny>>(nannyPath).Find(item => item.id == id);
         }
 
 
@@ -402,14 +404,18 @@ namespace DAL
         public IEnumerable<Contract> getListContracts()
         {
 
+<<<<<<< HEAD
             return LoadListFromXML < List < Contract>>(contractPath);
+=======
+            return LoadListFromXML<List<Contract>>(contractPath);
+>>>>>>> raz
 
         }
 
        
         public Contract getContract(int num_contract)
         {
-            return DataSource.contracts.Find(item => item.num_contract == num_contract);
+            return LoadListFromXML<List<Contract>>(contractPath).Find(item => item.num_contract == num_contract);
         }
 
         #endregion

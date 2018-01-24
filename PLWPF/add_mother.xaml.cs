@@ -34,7 +34,7 @@ namespace PLWPF
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             mother = new Mother();
             DataContext = mother;
-            
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -90,10 +90,10 @@ namespace PLWPF
             {
 
 
-                
-                
-                
-                
+
+
+
+
                 List<TimePicker> timeStart = new List<TimePicker>() { start1, startMondayTime, startTuesdayTime, startWednesdayTime, startThursdayTime, startFridayTime };
                 List<TimePicker> timeEnd = new List<TimePicker>() { end1, endMondayTime, endTuesdayTime, endWednesdayTime, endThursdayTime, endFridayTime };
                 List<CheckBox> check = new List<CheckBox>() { sundayCheckBox, mondayCheckBox, tuesdayCheckBox, wednesdayCheckBox, thursdayCheckBox, fridayCheckBox };
@@ -104,7 +104,7 @@ namespace PLWPF
                         errorMessegHours.Visibility = Visibility.Visible;
                         return;
                     }
-                    if(check[i].IsChecked == true && timeStart[i].Value.Value.TimeOfDay> timeEnd[i].Value.Value.TimeOfDay)
+                    if (check[i].IsChecked == true && timeStart[i].Value.Value.TimeOfDay > timeEnd[i].Value.Value.TimeOfDay)
                     {
                         errorMessegTime.Visibility = Visibility.Visible;
                         return;
@@ -122,20 +122,22 @@ namespace PLWPF
                 //Thread.Sleep(3000);
                 // this.Close();
                 new add_child(mother).Show();
-                
+
 
             }
             catch (Exception a)
             {
 
-                System.Windows.MessageBox.Show(a.Message,"",MessageBoxButton.OK,MessageBoxImage.Information);
+                System.Windows.MessageBox.Show(a.Message, "", MessageBoxButton.OK, MessageBoxImage.Information);
             }
 
         }
 
         private void SizeStart1(object sender, SizeChangedEventArgs e)
         {
-            errorMessegHours.Visibility = Visibility.Collapsed;
+            TimePicker time = sender as TimePicker;
+            if (time.Value != null)
+                errorMessegHours.Visibility = Visibility.Collapsed;
         }
 
         private void textChanged1(object sender, TextChangedEventArgs e)
@@ -162,7 +164,7 @@ namespace PLWPF
 
 
         }
-    }   
+    }
 
 
 }

@@ -155,7 +155,7 @@
 
        
 
-        <Grid x:Name="second_grid_nanny"  Margin="15" Grid.Column="0" Visibility="Collapsed" Background="{StaticResource BackgroundGrid}">
+        <Grid x:Name="second_grid_nanny"  Margin="15" Grid.Column="0" Visibility="Visible" Background="{StaticResource BackgroundGrid}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
@@ -415,7 +415,7 @@
                         <Condition Property="IsMouseOver" Value="True" />
                     </MultiTrigger.Conditions>
                     <MultiTrigger.Setters>
-                        <Setter Property="Background" Value="LightGreen" />
+                        <Setter Property="Background" Value="LightGreen" /> 
                     </MultiTrigger.Setters>
                 </MultiTrigger>
             </Style.Triggers
@@ -431,6 +431,8 @@
 
 
                 <Button  x:Name="back_button" Visibility="Visible"  Content="back"  HorizontalAlignment="Right"  Grid.Row="7" Margin="0,4.6,5,5.2" Grid.Column="1" Width="150" Click="back_button_Click" FontFamily="Impact" Foreground="SaddleBrown"/>
+            <TextBlock x:Name="errorMessegHours" HorizontalAlignment="Left" Margin="5,200.667,0,0" Grid.Row="1" Grid.RowSpan="2" TextWrapping="Wrap" Text="No start/end time has been set" VerticalAlignment="Top" Foreground="Red" Visibility="Collapsed" Grid.ColumnSpan="8"/>
+            <TextBlock x:Name="errorMessegTime"  HorizontalAlignment="Left" Margin="5,200.667,0,0" Grid.Row="1" TextWrapping="Wrap"  Text="End time can not be earlier than start time" VerticalAlignment="Top" Foreground="Red" Visibility="Collapsed" Grid.ColumnSpan="8" Grid.RowSpan="2"/>
 
         </Grid>
 
