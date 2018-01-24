@@ -445,7 +445,7 @@ namespace PLWPF
 
             //maxChildsComboBox.GetBindingExpression(ComboBox.TextProperty).UpdateSource(); SelectedItem="{Binding maxChilds}"
             //years_of_experienceComboBox.GetBindingExpression(ComboBox.TextProperty).UpdateSource();SelectedItem="{Binding years_of_experience}"
-            recommendationTextBox1.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+           // recommendationTextBox1.GetBindingExpression(TextBox.TextProperty).UpdateSource();
 
             for (int j = 0; j < 6; j++)
             {
@@ -454,7 +454,7 @@ namespace PLWPF
 
             nanny.age_child_min = int.Parse(from_years.SelectedItem.ToString()) * 12 + int.Parse(from_month.SelectedItem.ToString());
             nanny.age_child_max = int.Parse(to_years.SelectedItem.ToString()) * 12 + int.Parse(to_month.SelectedItem.ToString());
-            nanny.years_of_experience = int.Parse(years_of_experienceComboBox.SelectedItem.ToString());
+            nanny.years_of_experience = years_of_experienceComboBox.SelectedItem.ToString();
             nanny.maxChilds = int.Parse(maxChildsComboBox.SelectedItem.ToString());
 
             bl.updateNanny(nanny);

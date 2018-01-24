@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 namespace BE
 {
 
-    public enum contracPer { perMonth, perHour }
 
 
     public class Contract
@@ -19,14 +18,15 @@ namespace BE
             end = DateTime.Now;
         }
         public int num_contract { set; get; }
-        public int NannyID { set; get; }
+        public int? NannyID { set; get; }
         public int? MotherID { set; get; }
-        public int childID { set; get; }
+        public int? childID { set; get; }
         public bool knowlageMeet { set; get; }
         public bool contractSigne { set; get; }
-       // public double salaryPerHour { set; get; }
+        public double? salaryPerHour { set; get; }
         public double? salaryPerMonth { set; get; }
-        public contracPer ContracPer { set; get; }
+        public double? totalSalary { set; get; }
+        public bool ContracPer { set; get; }
         public DateTime start { set; get; }
         public DateTime end { set; get; }
 
@@ -37,7 +37,7 @@ namespace BE
                 "nanny id: " + NannyID + '\n' +
                 "mother id: " + MotherID + '\n' +
                 "Child id: " + childID + '\n' +
-                 "salary: " + salaryPerMonth;
+                 "salary: " + totalSalary;
         }
     }
 }
