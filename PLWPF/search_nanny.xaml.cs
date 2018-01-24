@@ -68,161 +68,165 @@ namespace PLWPF
 
         private void search_nannys_button_Click(object sender, RoutedEventArgs e)
         {
-            try
+            //try
+            //{
+            int floor = int.Parse(floor_textbox.Text);
+            int max = int.Parse(coomoBoxMaxChild.SelectedIndex.ToString());
+            List<Nanny> findNannies = new List<Nanny>();
+            search_nannys_button.IsEnabled = false;
+            Vizibilityes();
+            loading.Visibility = Visibility.Visible;
+            new Thread(() =>
             {
-                int floor = int.Parse(floor_textbox.Text);
-                int max = int.Parse(coomoBoxMaxChild.SelectedIndex.ToString());
-                List<Nanny> findNannies = new List<Nanny>();
-                search_nannys_button.IsEnabled = false;
-                Vizibilityes();
-                loading.Visibility = Visibility.Visible;
-                new Thread(() =>
+
+                // findNannies = bll.rangeNanny(mother.id).ToList();
+                try
                 {
+                    findNannies = AllReq(_selectedMother, floor, max, _selectedChild);
+                }
 
-                    // findNannies = bll.rangeNanny(mother.id).ToList();
-                    try
-                    {
-                        findNannies = AllReq(_selectedMother, floor, max, _selectedChild);
 
-                    }
-                    catch (Exception exception)
+
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.Message);
+                }
+
+                Dispatcher.Invoke(new Action(() =>
+                {
+                    if (findNannies.Count == 0)
                     {
-                        MessageBox.Show(exception.Message);
-                    }
-                    
-                    Dispatcher.Invoke(new Action(() =>
-                    {
-                        if (findNannies.Count == 0)
-                        {
-                            MessageBox.Show("No nannys was found by the data", "", MessageBoxButton.OK, MessageBoxImage.Information);
-                            Vizibilityes();
-                            mother_child_stackpanel.Visibility = Visibility.Visible;
-                            search_nannys_button.IsEnabled = true;
-                            return;
-                        }
-                        nannyDataGrid.ItemsSource = findNannies;
-                        search_nannys_button.IsEnabled = true;
+                        MessageBox.Show("No nannys was found by the data", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                        Vizibilityes();
                         mother_child_stackpanel.Visibility = Visibility.Visible;
-                        Constraints_grid.Visibility = Visibility.Visible;
-                        nannys_StackPanel.Visibility = Visibility.Visible;
-                        select_nanny_button.Visibility = Visibility.Visible;
-                        loading.Visibility = Visibility.Collapsed;
-                       
-                    }));
-                }).Start();
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message);
-            }
+                        search_nannys_button.IsEnabled = true;
+                        return;
+                    }
+                    nannyDataGrid.ItemsSource = findNannies;
+                    search_nannys_button.IsEnabled = true;
+                    mother_child_stackpanel.Visibility = Visibility.Visible;
+                    Constraints_grid.Visibility = Visibility.Visible;
+                    nannys_StackPanel.Visibility = Visibility.Visible;
+                    select_nanny_button.Visibility = Visibility.Visible;
+                    loading.Visibility = Visibility.Collapsed;
+                
+
+
+                }));
+        }).Start();
+        //}
+        //catch (Exception exception)
+        //{
+        //    MessageBox.Show(exception.Message);
+        //}
 
 
 
 
-        }
+    }
 
-        List<Nanny> AllReq(Mother mother, int floor, int max, Child child)
+    List<Nanny> AllReq(Mother mother, int floor, int max, Child child)
+    {
+
+        List<Nanny> nanny2 = new List<Nanny>();
+        List<Nanny> nanny = new List<Nanny>();
+        List<Nanny> nanny1 = new List<Nanny>();
+
+        nanny = bl.RangeNanny(mother.id).ToList();
+        nanny1 = bl.RequiredMother(mother).ToList();
+        if (nanny.Count != 0 && nanny1.Count != 0)
         {
-
-            List<Nanny> nanny2 = new List<Nanny>();
-            List<Nanny> nanny = new List<Nanny>();
-            List<Nanny> nanny1 = new List<Nanny>();
-
-            nanny = bl.RangeNanny(mother.id).ToList();
-            nanny1 = bl.RequiredMother(mother).ToList();
-            if (nanny.Count != 0 && nanny1.Count != 0)
+            foreach (var item1 in nanny)
             {
-                foreach (var item1 in nanny)
+                foreach (var item2 in nanny1)
                 {
-                    foreach (var item2 in nanny1)
+                    if (item1.id == item2.id)
                     {
-                        if (item1.id == item2.id)
-                        {
-                            nanny2.Add(item1);
-                            //break;
-                        }
+                        nanny2.Add(item1);
+                        //break;
                     }
                 }
-                if (nanny2.Count != 0)
-                {
-                    nanny2 = nanny2.FindAll(item => (item.floor <= floor)
-                    && item.maxChilds <= max
-
-                    );
-                }
             }
-            return nanny2;
-
-            //&& ((child.birthDay < DateTime.Now.AddMonths(-item.age_child_min) && child.birthDay > DateTime.Now.AddMonths(-item.age_child_max)))
-
-        }
-
-
-
-
-
-
-        private void nannyDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            _selectedNanny = nannyDataGrid.SelectedItem as Nanny;
-        }
-        private void select_nanny_button_Click(object sender, RoutedEventArgs e)
-        {
-            _selectedContract.MotherID = _selectedMother.id;
-            _selectedContract.childID = _selectedChild.id;
-            _selectedContract.NannyID = _selectedNanny.id;
-            _selectedContract.ContracPer = _selectedNanny.per_hour_able;
-            _selectedContract.salaryPerHour = _selectedNanny.salaryPerHour;
-            _selectedContract.salaryPerMonth = _selectedNanny.salaryPerMonth;
-            add_contruct_grid.DataContext = _selectedContract;
-            add_contruct_grid.Visibility = Visibility.Visible;
-        }
-        private void add_contract_button_Click(object sender, RoutedEventArgs e)
-        {
-            try
+            if (nanny2.Count != 0)
             {
-                DateTime d1 = DateTime.Parse(startDateDatePicker.Text.ToString());
-                DateTime d2 = DateTime.Parse(endDateDatePicker.Text.ToString());
-                if (d2.Subtract(d1).TotalDays < 30)
-                    throw new Exception("The contract must be at least for a month");
-                bl.addContract(_selectedContract);
-                MessageBox.Show(bl.getListContracts().LastOrDefault().ToString(), "This contract has been added:");
-                this.Close();
-            }
-            catch (Exception x)
-            {
+                nanny2 = nanny2.FindAll(item => (item.floor <= floor)
+                && item.maxChilds <= max
 
-                MessageBox.Show(x.Message);
+                );
             }
         }
+        return nanny2;
 
-        private void payment_Click(object sender, RoutedEventArgs e)
+        //&& ((child.birthDay < DateTime.Now.AddMonths(-item.age_child_min) && child.birthDay > DateTime.Now.AddMonths(-item.age_child_max)))
+
+    }
+
+
+
+
+
+
+    private void nannyDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        _selectedNanny = nannyDataGrid.SelectedItem as Nanny;
+    }
+    private void select_nanny_button_Click(object sender, RoutedEventArgs e)
+    {
+        _selectedContract.MotherID = _selectedMother.id;
+        _selectedContract.childID = _selectedChild.id;
+        _selectedContract.NannyID = _selectedNanny.id;
+        _selectedContract.ContracPer = _selectedNanny.per_hour_able;
+        _selectedContract.salaryPerHour = _selectedNanny.salaryPerHour;
+        _selectedContract.salaryPerMonth = _selectedNanny.salaryPerMonth;
+        add_contruct_grid.DataContext = _selectedContract;
+        add_contruct_grid.Visibility = Visibility.Visible;
+    }
+    private void add_contract_button_Click(object sender, RoutedEventArgs e)
+    {
+        try
         {
-            try
-            {
-
-                bl.addContract(_selectedContract);
-                MessageBox.Show(bl.getListContracts().LastOrDefault().totalSalary.ToString(), "סך הכל עלות:");
-                bl.deleteContract(bl.getListContracts().LastOrDefault().num_contract);
-            }
-            catch (Exception x)
-            {
-
-                MessageBox.Show(x.Message);
-            }
-
+            DateTime d1 = DateTime.Parse(startDateDatePicker.Text.ToString());
+            DateTime d2 = DateTime.Parse(endDateDatePicker.Text.ToString());
+            if (d2.Subtract(d1).TotalDays < 30)
+                throw new Exception("The contract must be at least for a month");
+            bl.addContract(_selectedContract);
+            MessageBox.Show(bl.getListContracts().LastOrDefault().ToString(), "This contract has been added:");
+            this.Close();
         }
-
-
-
-        private void Vizibilityes()
+        catch (Exception x)
         {
-            mother_child_stackpanel.Visibility = Visibility.Collapsed;
-            Constraints_grid.Visibility = Visibility.Collapsed;
-            nannys_StackPanel.Visibility = Visibility.Collapsed;
-            add_contruct_grid.Visibility = Visibility.Collapsed;
-            select_nanny_button.Visibility = Visibility.Collapsed;
-            loading.Visibility = Visibility.Collapsed;
+
+            MessageBox.Show(x.Message);
         }
     }
+
+    private void payment_Click(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+
+            bl.addContract(_selectedContract);
+            MessageBox.Show(bl.getListContracts().LastOrDefault().totalSalary.ToString(), "סך הכל עלות:");
+            bl.deleteContract(bl.getListContracts().LastOrDefault().num_contract);
+        }
+        catch (Exception x)
+        {
+
+            MessageBox.Show(x.Message);
+        }
+
+    }
+
+
+
+    private void Vizibilityes()
+    {
+        mother_child_stackpanel.Visibility = Visibility.Collapsed;
+        Constraints_grid.Visibility = Visibility.Collapsed;
+        nannys_StackPanel.Visibility = Visibility.Collapsed;
+        add_contruct_grid.Visibility = Visibility.Collapsed;
+        select_nanny_button.Visibility = Visibility.Collapsed;
+        loading.Visibility = Visibility.Collapsed;
+    }
+}
 }

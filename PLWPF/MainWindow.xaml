@@ -69,14 +69,14 @@
         <Image x:Name="image_mom"  Stretch="Uniform"
             Margin="0.4,90,-0.4,0.4" Grid.RowSpan="3" Grid.Column="1"   />
     </Grid>-->
-    <!--<Grid>
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
-          <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
 
 
         </Grid.RowDefinitions>
@@ -84,12 +84,12 @@
         <Button Content="addchild"  Grid.Row="1" Click="Button_Click_1"/>
         <Button Content="add nanny"   Grid.Row="2" Click="Button_Click_2"/>
         <Button Content="search and update"   Grid.Row="3" Click="Button_Click_3"/>
-      <Button Content="search a nanny"   Grid.Row="4" Click="Button_Click_4" />
-      <Button Content="grooping"   Grid.Row="5" Click="Button_Click_5" />
+        <Button Content="search a nanny"   Grid.Row="4" Click="Button_Click_4" />
+        <Button Content="grooping"   Grid.Row="5" Click="Button_Click_5" />
 
-    </Grid>-->
+    </Grid>
 
-    <Grid>
+    <!--<Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
@@ -103,6 +103,6 @@
         <Button x:Name="grooping_button" Content="grooping"/>
         <Button x:Name="find_nanny_button" Content="find nanny"/>
         <Label Content="press the folowing you want to add"/>
-    </Grid>
+    </Grid>-->
 
 </Window>

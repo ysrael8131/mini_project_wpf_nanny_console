@@ -243,7 +243,7 @@ namespace PLWPF
                             from_years.Items.Add(i);
                             to_years.Items.Add(i);
                         }
-                        if (i < 11 && i > 5)
+                        if (i < 11 && i > 4)
                             maxChildsComboBox.Items.Add(i);
 
                         from_month.Items.Add(i);
@@ -265,17 +265,19 @@ namespace PLWPF
                 switch (select_item_combobox.SelectedItem.ToString())
                 {
                     case "Mother":
-                        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        //string a;
-                        //foreach (var VARIABLE in bl.getListChilds(select_mother_conbobox.SelectedItem as Mother))
-                        //{
-                        //    a += "id: " + VARIABLE.id + '\n';
-                        //}
+                         
+                        string a="";
+                        foreach (var VARIABLE in bl.getListChilds(select_mother_conbobox.SelectedItem as Mother))
+                        {
+                            a += "id: " + VARIABLE.id + '\n';
+                        }
 
-
+                        
                         ////System.Windows.MessageBox message=new MessageBox();
-                        //System.Windows.MessageBox.Show("אתה עלול למחוק גם את הילדים האלה"+'\n'+a,"זהירות על מחיקת ילדים",MessageBoxButton.OK,  MessageBoxImage.Warning,MessageBoxResult.Cancel);
+                          System.Windows.MessageBox.Show("אתה עלול למחוק גם את הילדים האלה"+'\n'+a,"זהירות על מחיקת ילדים",MessageBoxButton.OKCancel,  MessageBoxImage.Warning);
+                        
 
+                        
 
 
 
@@ -329,27 +331,28 @@ namespace PLWPF
         }
         private void update_mother_button_Click(object sender, RoutedEventArgs e)
         {
-            if (mother.Addres==mother.SearchAddres&&mother.SearchAddres!=searchAddresTextBox.Text.ToString())
-            {
-                searchAddresTextBox.Text = addresTextBox.Text;
-            }
+            
             for (int i = 0; i < 6; i++)
             {
-                //if (check[i].IsChecked == true && (timeStart[i].Value == null || timeEnd[i].Value == null))
-                //{
-                //errorMessegHours.Visibility = Visibility.Visible;
-                //return;
-                //}
-                //if (check[i].IsChecked == true && timeStart[i].Value.Value.TimeOfDay > timeEnd[i].Value.Value.TimeOfDay)
-                //{
-                //errorMessegTime.Visibility = Visibility.Visible;
-                //return;
-                //}
+                if (check[i].IsChecked == true && (timeStart[i].Value == null || timeEnd[i].Value == null))
+                {
+                    errorMessegHours.Visibility = Visibility.Visible;
+                    return;
+                }
+                if (check[i].IsChecked == true && timeStart[i].Value.Value.TimeOfDay > timeEnd[i].Value.Value.TimeOfDay)
+                {
+                    errorMessegTime.Visibility = Visibility.Visible;
+                    return;
+                }
                 if (check[i].IsChecked == true)
                 {
                     mother.arr[i].start = timeStart[i].Value.Value.TimeOfDay;
                     mother.arr[i].end = timeEnd[i].Value.Value.TimeOfDay;
                 }
+            }
+            if (mother.Addres == mother.SearchAddres && mother.SearchAddres != searchAddresTextBox.Text.ToString())
+            {
+                searchAddresTextBox.Text = addresTextBox.Text;
             }
             idTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
             firstNameTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
@@ -407,20 +410,20 @@ namespace PLWPF
 
             for (int i = 0; i < 6; i++)
             {
-                //if (check[i].IsChecked == true && (timeStart[i].Value == null || timeEnd[i].Value == null))
-                //{
-                //errorMessegHours.Visibility = Visibility.Visible;
-                //return;
-                //}
-                //if (check[i].IsChecked == true && timeStart[i].Value.Value.TimeOfDay > timeEnd[i].Value.Value.TimeOfDay)
-                //{
-                //errorMessegTime.Visibility = Visibility.Visible;
-                //return;
-                //}
-                if (check[i].IsChecked == true)
+                if (check_n[i].IsChecked == true && (timeStart_n[i].Value == null || timeEnd_n[i].Value == null))
                 {
-                    nanny.work[i].start = timeStart[i].Value.Value.TimeOfDay;
-                    nanny.work[i].end = timeEnd[i].Value.Value.TimeOfDay;
+                    errorMessegHours1.Visibility = Visibility.Visible;
+                    return;
+                }
+                if (check_n[i].IsChecked == true && timeStart_n[i].Value.Value.TimeOfDay > timeEnd_n[i].Value.Value.TimeOfDay)
+                {
+                    errorMessegTime2.Visibility = Visibility.Visible;
+                    return;
+                }
+                if (check_n[i].IsChecked == true)
+                {
+                    nanny.work[i].start = timeStart_n[i].Value.Value.TimeOfDay;
+                    nanny.work[i].end = timeEnd_n[i].Value.Value.TimeOfDay;
                 }
             }
 
@@ -501,10 +504,10 @@ namespace PLWPF
 
 
 
-        private void SizeStart1(object sender, SizeChangedEventArgs e)
-        {
-            errorMessegHours.Visibility = Visibility.Collapsed;
-        }
+        //private void SizeStart1(object sender, SizeChangedEventArgs e)
+        //{
+        //    errorMessegHours.Visibility = Visibility.Collapsed;
+        //}
 
 
 
@@ -575,52 +578,52 @@ namespace PLWPF
 
 
 
-        private void add_nanny_button_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
+        //private void add_nanny_button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
 
 
 
 
 
-                List<TimePicker> timeStart = new List<TimePicker>() { start1, startMondayTime, startTuesdayTime, startWednesdayTime, startThursdayTime, startFridayTime };
-                List<TimePicker> timeEnd = new List<TimePicker>() { end1, endMondayTime, endTuesdayTime, endWednesdayTime, endThursdayTime, endFridayTime };
-                List<CheckBox> check = new List<CheckBox>() { sundayCheckBox, mondayCheckBox, tuesdayCheckBox, wednesdayCheckBox, thursdayCheckBox, fridayCheckBox };
-                for (int i = 0; i < 6; i++)
-                {
-                    //if (check[i].IsChecked == true && (timeStart[i].Value == null || timeEnd[i].Value == null))
-                    //{
-                    //errorMessegHours.Visibility = Visibility.Visible;
-                    //return;
-                    //}
-                    //if (check[i].IsChecked == true && timeStart[i].Value.Value.TimeOfDay > timeEnd[i].Value.Value.TimeOfDay)
-                    //{
-                    //errorMessegTime.Visibility = Visibility.Visible;
-                    //return;
-                    //}
-                    if (check[i].IsChecked == true)
-                    {
-                        nanny.work[i].start = timeStart[i].Value.Value.TimeOfDay;
-                        nanny.work[i].end = timeStart[i].Value.Value.TimeOfDay;
-                    }
-                }
+        //        List<TimePicker> timeStart = new List<TimePicker>() { start1, startMondayTime, startTuesdayTime, startWednesdayTime, startThursdayTime, startFridayTime };
+        //        List<TimePicker> timeEnd = new List<TimePicker>() { end1, endMondayTime, endTuesdayTime, endWednesdayTime, endThursdayTime, endFridayTime };
+        //        List<CheckBox> check = new List<CheckBox>() { sundayCheckBox, mondayCheckBox, tuesdayCheckBox, wednesdayCheckBox, thursdayCheckBox, fridayCheckBox };
+        //        for (int i = 0; i < 6; i++)
+        //        {
+        //            //if (check[i].IsChecked == true && (timeStart[i].Value == null || timeEnd[i].Value == null))
+        //            //{
+        //            //errorMessegHours.Visibility = Visibility.Visible;
+        //            //return;
+        //            //}
+        //            //if (check[i].IsChecked == true && timeStart[i].Value.Value.TimeOfDay > timeEnd[i].Value.Value.TimeOfDay)
+        //            //{
+        //            //errorMessegTime.Visibility = Visibility.Visible;
+        //            //return;
+        //            //}
+        //            if (check[i].IsChecked == true)
+        //            {
+        //                nanny.work[i].start = timeStart[i].Value.Value.TimeOfDay;
+        //                nanny.work[i].end = timeStart[i].Value.Value.TimeOfDay;
+        //            }
+        //        }
 
-                bl.addNanny(nanny);
-                second_grid_nanny.Visibility = Visibility.Collapsed;
-
-
-                // this.Close();
+        //        bl.addNanny(nanny);
+        //        second_grid_nanny.Visibility = Visibility.Collapsed;
 
 
-            }
-            catch (Exception a)
-            {
+        //        // this.Close();
 
-                System.Windows.MessageBox.Show(a.Message);
-            }
 
-        }
+        //    }
+        //    catch (Exception a)
+        //    {
+
+        //        System.Windows.MessageBox.Show(a.Message);
+        //    }
+
+        //}
 
         private void textChanged(object sender, TextChangedEventArgs e)
         {
@@ -644,7 +647,12 @@ namespace PLWPF
 
         }
 
-
+        private void sizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            TimePicker time = sender as TimePicker;
+            errorMessegHours.Visibility = Visibility.Collapsed;
+            errorMessegHours1.Visibility = Visibility.Collapsed;
+        }
     }
 }
 

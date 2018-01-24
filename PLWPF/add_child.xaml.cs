@@ -34,7 +34,7 @@ namespace PLWPF
            // ResizeMode = ResizeMode.CanMinimize;
             
            
-            
+            //
             child = new Child();
             if (a != null)
             {
@@ -53,8 +53,12 @@ namespace PLWPF
 
         }
 
-        
-        
+
+        /// <summary>
+        /// Handling exceptions
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void textChange(object sender, TextChangedEventArgs e)
         {
@@ -63,8 +67,8 @@ namespace PLWPF
             errorMesseg1.Visibility = Visibility.Collapsed;
             errorMesseg2.Visibility = Visibility.Collapsed;
             errorMesseg3.Visibility = Visibility.Collapsed;
-            
 
+            //Check if digits are entered
             long x;
             if (!long.TryParse(idTextBox.Text, out x) && idTextBox.Text != "")
             {
@@ -73,6 +77,7 @@ namespace PLWPF
                    
                 return;
             }
+            //Check if the number is negative
             if (idTextBox.Text != "" && long.Parse(idTextBox.Text) < 0 )
             {
                 errorMesseg3.Visibility = Visibility.Visible; 
@@ -81,7 +86,11 @@ namespace PLWPF
 
 
         }
-
+        /// <summary>
+        /// The event of the button Create
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click_Add_Child(object sender, RoutedEventArgs e)
         {
             if (idTextBox.Text.Count() != 9)
@@ -112,14 +121,18 @@ namespace PLWPF
 
 
         }
-
+        /// <summary>
+        /// Handling exceptions
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void textChange1(object sender, TextChangedEventArgs e)
         {
             errorMesseg4.Visibility = Visibility.Collapsed;
             errorMesseg5.Visibility = Visibility.Collapsed;
             errorMesseg6.Visibility = Visibility.Collapsed;
 
-
+            //Check if digits are entered
             long x;
             if (!long.TryParse(idTextBoxMother.Text, out x) && idTextBoxMother.Text != "")
             {
@@ -128,6 +141,7 @@ namespace PLWPF
 
                 return;
             }
+            //Check if the number is negative
             if (idTextBoxMother.Text != "" && long.Parse(idTextBoxMother.Text) < 0)
             {
                 errorMesseg6.Visibility = Visibility.Visible;

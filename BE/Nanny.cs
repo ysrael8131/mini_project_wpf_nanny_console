@@ -54,16 +54,17 @@ namespace BE
         public override string ToString()
         {
 
-            return "ID: " + id.ToString() + "\n" +
-                   "Name: " + FirstName + " " + LastName + "\n" +
-                   "Date of Birth: " + birthDay.ToShortDateString() + "\n" +
-                   "Phone number: " + PhoneNumber + "\n" +
-                   "Address: " + addres + "\n" + elevators + "\n" +
-                   "Floor: " + floor.ToString() + "\n" +
-                   "Experience: " + years_of_experience.ToString() + " years" + "\n" +
-                   "Maximun children allowed: " + maxChilds.ToString() + "\n" +
-                   "Minimum age allowed: " + age_child_min.ToString() + " months" + "\n" +
-                   "Maximum age allowed: " + age_child_min.ToString() + " months" + "\n";
+            return "";
+            //return "ID: " + id.ToString() + "\n" +
+            //       "Name: " + FirstName + " " + LastName + "\n" +
+            //       "Date of Birth: " + birthDay.ToShortDateString() + "\n" +
+            //       "Phone number: " + PhoneNumber + "\n" +
+            //       "Address: " + addres + "\n" + elevators + "\n" +
+            //       "Floor: " + floor.ToString() + "\n" +
+            //       "Experience: " + years_of_experience.ToString() + " years" + "\n" +
+            //       "Maximun children allowed: " + maxChilds.ToString() + "\n" +
+            //       "Minimum age allowed: " + age_child_min.ToString() + " months" + "\n" +
+            //       "Maximum age allowed: " + age_child_min.ToString() + " months" + "\n";
                    /*salary + "\n" + work + tamat + "\n" + recommendation + "\n"*/;
         }
 

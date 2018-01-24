@@ -32,7 +32,7 @@ namespace PLWPF
             nanny = new Nanny();
             str= new  string[] { "1", "2", "3", "4", "5+ " };
             years_of_experienceComboBox.ItemsSource = str;
-
+            //initialization CoomoBox
             for (int i = 0; i < 12; i++)
             {
                 if(i<4)
@@ -46,13 +46,19 @@ namespace PLWPF
                 from_month.Items.Add(i);
                 to_month.Items.Add(i);
             }
-    
+
+            //Bidinig
             DataContext = nanny;
 
         }
-
+        /// <summary>
+        /// The event of the button Next
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click_Next(object sender, RoutedEventArgs e)
         {
+            //If there are no 9 digits
             if (idTextBox.Text.Count() != 9)
             {
 
@@ -62,27 +68,38 @@ namespace PLWPF
             first_grid_nanny.Visibility = Visibility.Collapsed;
             second_grid_nanny.Visibility = Visibility.Visible;
         }
-
+        /// <summary>
+        /// The event of the button Back
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void back_button_Click(object sender, RoutedEventArgs e)
         {
             first_grid_nanny.Visibility = Visibility.Visible;
             second_grid_nanny.Visibility = Visibility.Collapsed;
         }
-
+        /// <summary>
+        /// The event of the button Create
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void add_nanny_button_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                //Manually assigning the time data
                 List<TimePicker> timeStart = new List<TimePicker>() { start1, startMondayTime, startTuesdayTime, startWednesdayTime, startThursdayTime, startFridayTime };
                 List<TimePicker> timeEnd = new List<TimePicker>() { end1, endMondayTime, endTuesdayTime, endWednesdayTime, endThursdayTime, endFridayTime };
                 List<CheckBox> check = new List<CheckBox>() { sundayCheckBox, mondayCheckBox, tuesdayCheckBox, wednesdayCheckBox, thursdayCheckBox, fridayCheckBox };
                 for (int i = 0; i < 6; i++)
                 {
+                    //If no hourly data were entered
                     if (check[i].IsChecked == true && (timeStart[i].Value == null || timeEnd[i].Value == null))
                     {
                         errorMessegHours.Visibility = Visibility.Visible;
                         return;
                     }
+                    //If a start time is late than the end time
                     if (check[i].IsChecked == true && timeStart[i].Value.Value.TimeOfDay > timeEnd[i].Value.Value.TimeOfDay)
                     {
                         errorMessegTime.Visibility = Visibility.Visible;
@@ -187,6 +204,11 @@ namespace PLWPF
             {
                 errorMesseg10.Visibility = Visibility.Visible;
             }
+        }
+
+        private void sizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            errorMessegHours.Visibility = Visibility.Collapsed;
         }
     }
 }
