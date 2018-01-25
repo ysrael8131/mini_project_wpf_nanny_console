@@ -40,7 +40,7 @@ namespace PLWPF
         List<TimePicker> timeStart_n;
         List<TimePicker> timeEnd_n;
         List<CheckBox> check_n;
-
+       
         public update()
         {
             bl = BL.FactoryBl.getBl();
@@ -49,7 +49,7 @@ namespace PLWPF
             timeStart_n = new List<TimePicker> { start1_n, startMondayTime_n, startTuesdayTime_n, startWednesdayTime_n, startThursdayTime_n, startFridayTime_n };
             timeEnd_n = new List<TimePicker> { end1_n, endMondayTime_n, endTuesdayTime_n, endWednesdayTime_n, endThursdayTime_n, endFridayTime_n };
             check_n = new List<CheckBox> { sundayCheckBox_n, mondayCheckBox_n, tuesdayCheckBox_n, wednesdayCheckBox_n, thursdayCheckBox_n, fridayCheckBox_n };
-
+            
             timeStart = new List<TimePicker> { start1, startMondayTime, startTuesdayTime, startWednesdayTime, startThursdayTime, startFridayTime };
             timeEnd = new List<TimePicker> { end1, endMondayTime, endTuesdayTime, endWednesdayTime, endThursdayTime, endFridayTime };
             check = new List<CheckBox> { sundayCheckBox, mondayCheckBox, tuesdayCheckBox, wednesdayCheckBox, thursdayCheckBox, fridayCheckBox };
@@ -70,6 +70,7 @@ namespace PLWPF
 
         private void select_item_combobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            
             select_mother_conbobox.ItemsSource = null;
             select_child_conbobox.ItemsSource = null;
             select_nanny_conbobox.ItemsSource = null;
