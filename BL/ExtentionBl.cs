@@ -15,7 +15,12 @@ namespace BL
     {
         static DAL.IDAL dal = DAL.FactoryDal.getDal();
 
-
+        /// <summary>
+        /// Group all contracts by distance
+        /// </summary>
+        /// <param name="bl"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static IEnumerable<IGrouping<int, Contract>> groupingContract(this IBL bl, bool b = false)
         {
             
@@ -24,6 +29,7 @@ namespace BL
                            let distance = bl.CalculateDistance(dal.getNanny(item.NannyID).addres,
                            dal.getMother(item.MotherID).SearchAddres)
                            group item by ((distance / 1000) / 2) * 2;
+            //Sorted by distance
             if (b == true)
             {
                 var sortGroup = from item in contract
@@ -35,8 +41,14 @@ namespace BL
         }
 
 
-        
 
+        /// <summary>
+        /// A function that returns a distance between 2 targets
+        /// </summary>
+        /// <param name="bl"></param>
+        /// <param name="source"></param>
+        /// <param name="dest"></param>
+        /// <returns></returns>
         public static int CalculateDistance(this IBL bl, string source, string dest)
         {
             var drivingDirectionRequest = new DirectionsRequest
@@ -53,7 +65,12 @@ namespace BL
 
 
 
-
+        /// <summary>
+        /// Returns all caregivers according to requirements
+        /// </summary>
+        /// <param name="bl"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static IEnumerable<Nanny> RangeNanny(this IBL bl, int? id)
         {
             Mother temp = dal.getMother(id);
@@ -84,7 +101,12 @@ namespace BL
         }
 
 
-
+        /// <summary>
+        /// Returns the total wage paid by the mother
+        /// </summary>
+        /// <param name="bl"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static double? totalPay(this IBL bl, int motherID)
         {
             double? temp = 0;

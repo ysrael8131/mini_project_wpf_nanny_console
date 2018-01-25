@@ -28,16 +28,17 @@ namespace PLWPF
             
             bl = BL.FactoryBl.getBl();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-            //Mother a1 = new Mother();
-            //a1.id = 123456789;
-            //a1.FirstName = "sara";
-            //a1.LastName = "cohen";
-            //a1.PhoneNumber = "0504145678";
-            //a1.Addres = "קאסוטו 24 ירושלים ישראל";
-            //a1.arr[1].day_work = true;
-            //a1.arr[1].start = TimeSpan.Parse("09:30");
-            //a1.arr[1].end = TimeSpan.Parse("10:30");
-            //Mother a2 = new Mother
+            Mother a1 = new Mother();
+            a1.id = 123456789;
+            a1.FirstName = "sara";
+            a1.LastName = "cohen";
+            a1.PhoneNumber = "0504145678";
+            a1.Addres = "קאסוטו 24 ירושלים ישראל";
+            a1.arr[1].day_work = true;
+            a1.arr[1].start = TimeSpan.Parse("09:30");
+            a1.arr[1].end = TimeSpan.Parse("10:30");
+            bl.addMother(a1);
+           // Mother a2 = new Mother
             //{
             //    id = 111111111,
             //    FirstName = "efrat",
@@ -205,41 +206,7 @@ namespace PLWPF
             //bl.addNanny(a10);
             //bl.addNanny(a11);
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            new add_mother().Show();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            new add_child().Show();
-        }
-
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            Window w = new AddNanny();
-                w.Show();
-        }
-
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-            Window w = new update();
-            w.Show();
-        }
-
-        private void Button_Click_4(object sender, RoutedEventArgs e)
-        {
-            Window w = new search_nanny();
-            w.Show();
-        }
-
-        private void Button_Click_5(object sender, RoutedEventArgs e)
-        {
-            Window w = new GroopingWindow();
-            w.Show();
-        }
+       
 
         /// <summary>
         /// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -250,7 +217,11 @@ namespace PLWPF
         {
             buttons_to_add.Visibility = Visibility.Visible;
         }
-
+        /// <summary>
+        /// An event for update all items
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void update_button_Click(object sender, RoutedEventArgs e)
         {
             buttons_to_add.Visibility = Visibility.Hidden;
@@ -258,13 +229,22 @@ namespace PLWPF
             Window w = new update();
             w.Show();
         }
-
+        /// <summary>
+        /// An event for grouping
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void grooping_button_Click(object sender, RoutedEventArgs e)
         {
             buttons_to_add.Visibility = Visibility.Hidden;
             Window w = new GroopingWindow();
             w.Show();
         }
+        /// <summary>
+        /// An event for find nanny
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void find_nanny_button_Click(object sender, RoutedEventArgs e)
         {
@@ -285,77 +265,6 @@ namespace PLWPF
 
 
 
-
-
-        //    private void mother_log_in_MouseEnter(object sender, MouseEventArgs e)
-        //    {
-        //        new_mother_button.Visibility = Visibility.Visible;
-        //        update_mother_button.Visibility = Visibility.Visible;
-        //    }
-
-        //    private void mother_log_in_MouseLeave(object sender, MouseEventArgs e)
-        //    {
-        //        new_mother_button.Visibility = Visibility.Collapsed;
-        //        update_mother_button.Visibility = Visibility.Collapsed;
-        //    }
-
-        //    private void nanny_log_in_MouseEnter(object sender, MouseEventArgs e)
-        //    {
-        //        // nanny_log_in.Visibility = Visibility.Hidden;
-        //        new_nanny_button.Visibility = Visibility.Visible;
-        //        update_nanny_button.Visibility = Visibility.Visible;
-        //    }
-
-        //    private void nanny_log_in_MouseLeave(object sender, MouseEventArgs e)
-        //    {
-        //        //  nanny_log_in.Visibility = Visibility.Visible;
-        //        new_nanny_button.Visibility = Visibility.Collapsed;
-        //        update_nanny_button.Visibility = Visibility.Collapsed;
-        //    }
-
-        //    private void new_mother_button_Click(object sender, RoutedEventArgs e)
-        //    {
-        //        Window add_mother = new add_mother();
-        //        add_mother.Show();
-        //    }
-
-        //    private void update_mother_button_Click(object sender, RoutedEventArgs e)
-        //    {
-        //        list_box_mother.Visibility = Visibility.Visible;
-        //    }
-
-        //    private void mother_exist_MouseLeave(object sender, MouseEventArgs e)
-        //    {
-        //        list_box_mother.Visibility = Visibility.Collapsed;
-        //    }
-
-
-        //    private void list_box_mother_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        //    {
-
-        //        switch (list_box_mother.SelectedItem.ToString())
-        //        {
-        //            case "Add child":
-        //                new add_child().Show();
-        //                break;
-        //            case "Remove mother":
-        //                break;
-
-
-        //            case "Update mother":
-        //                break;
-
-
-        //            default:
-        //                break;
-        //        }
-
-        //    }
-
-        //    private void newNany(object sender, RoutedEventArgs e)
-        //    {
-        //        new AddNanny().Show();
-        //    }
-        //}
+        
     }
 }

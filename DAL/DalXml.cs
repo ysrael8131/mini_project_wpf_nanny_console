@@ -50,7 +50,13 @@ namespace DAL
         {
 
             if (!File.Exists(motherPath))
-                CreateFiles();
+                DS.DataSource.mothers = LoadListFromXML<List<Mother>>(motherPath);
+            if (!File.Exists(childPath))
+                ChildRoot = XElement.Load(childPath);
+            if (!File.Exists(contractPath))
+                DS.DataSource.contracts = LoadListFromXML<List<Contract>>(contractPath);
+            if (!File.Exists(nannyPath))
+                DS.DataSource.nannys = LoadListFromXML<List<Nanny>>(nannyPath);
             else
                 LoadData();
         }
@@ -81,11 +87,11 @@ namespace DAL
         {
             try
             {
-                ChildRoot = XElement.Load(childPath);
-                DS.DataSource.mothers = LoadListFromXML<List<Mother>>(motherPath);
-                DS.DataSource.nannys = LoadListFromXML<List<Nanny>>(nannyPath);
-                DS.DataSource.contracts = LoadListFromXML<List<Contract>>(contractPath);
-                num = DS.DataSource.contracts.LastOrDefault().num_contract + 1;
+                
+                
+               
+                
+               
             }
             catch
             {
@@ -281,12 +287,12 @@ namespace DAL
         public IEnumerable<Mother> getListMothers()
         {
             
-            return LoadListFromXML<List<Mother>>(motherPath);
+            return DS.DataSource.mothers;
         }
 
         public Mother getMother(int? id)
         {
-            return LoadListFromXML<List<Mother>>(motherPath).Find(item => item.id == id);
+            return DS.DataSource.mothers.Find(item => item.id == id);
         }
 
 
@@ -344,7 +350,7 @@ namespace DAL
         public IEnumerable<Nanny> getListNannys()
         {
             
-            return LoadListFromXML<List<Nanny>>(nannyPath);
+            return DS.DataSource.nannys;
 
         }
 
@@ -355,7 +361,7 @@ namespace DAL
         /// <returns></returns>
         public Nanny getNanny(int? id)
         {
-            return LoadListFromXML<List<Nanny>>(nannyPath).Find(item => item.id == id);
+            return DS.DataSource.nannys.Find(item => item.id == id);
         }
 
 
@@ -403,14 +409,14 @@ namespace DAL
         public IEnumerable<Contract> getListContracts()
         {
 
-            return LoadListFromXML<List<Contract>>(contractPath);
+            return DS.DataSource.contracts;
 
         }
 
        
         public Contract getContract(int num_contract)
         {
-            return LoadListFromXML<List<Contract>>(contractPath).Find(item => item.num_contract == num_contract);
+            return DS.DataSource.contracts.Find(item => item.num_contract == num_contract);
         }
 
         #endregion

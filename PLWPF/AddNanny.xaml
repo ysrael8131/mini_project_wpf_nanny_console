@@ -102,7 +102,7 @@
                     <ColumnDefinition Width="1.5*"/>
                 </Grid.ColumnDefinitions>
 
-                <local:UpDownControl  x:Name="FloorUpDown" HorizontalAlignment="Right" MyText="{Binding floor}"  VerticalAlignment="Center" Width="100"/>
+                <local:UpDownControl  x:Name="FloorUpDown" HorizontalAlignment="Right" MyText="{Binding floor, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  VerticalAlignment="Center" Width="100"/>
 
                <TextBlock  Margin="10" Text=" Floor" Grid.Column="0" VerticalAlignment="Center"     HorizontalAlignment="Left" Width="50" />
               <!--<TextBox x:Name="floorTextBox" Width="50"  VerticalAlignment="Center"  Style="{StaticResource textbox_style}"
