@@ -33,10 +33,10 @@ namespace PLWPF
             object parameter,
             CultureInfo culture)
         {
-            int value1 = (int)value * 100;
-            int value2 = (int)value * 100 + 100;
+            int value1 = (int)value;
+            int value2 = (int)value +2;
 
-            return "between " + value1.ToString() + " meters and " + value2.ToString() + " meters";
+            return "between " + value1 + " km and " + value2.ToString() + " km";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

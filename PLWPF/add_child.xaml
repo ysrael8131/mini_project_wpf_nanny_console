@@ -16,7 +16,7 @@
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
 
 
-      
+
 
 
 
@@ -65,8 +65,8 @@
 
     <Grid Background="AliceBlue"  >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="391*"/>
-            <ColumnDefinition Width="202*"/>
+            <ColumnDefinition Width="2.6*"/>
+            <ColumnDefinition Width="1.5*"/>
         </Grid.ColumnDefinitions>
         <Grid x:Name="child_grid" Background="{StaticResource BackgroundGrid}" Margin="15">
             <Grid.RowDefinitions>
@@ -101,12 +101,12 @@
 
             <TextBlock    Text="First Name" Grid.Row="4" Style="{StaticResource textblock_style}"
  Visibility="{Binding ElementName=firstNameTextBox,Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-        <TextBox x:Name="firstNameTextBox" Grid.Row="4" Style="{StaticResource textbox_style}" 
+            <TextBox x:Name="firstNameTextBox" Grid.Row="4" Style="{StaticResource textbox_style}" 
  Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10"  />
 
-        
-        
-        <TextBlock    Text="Birth day" Grid.Row="3" Style="{StaticResource textblock_style}"
+
+
+            <TextBlock    Text="Birth day" Grid.Row="3" Style="{StaticResource textblock_style}"
  Visibility="{Binding ElementName=birthDayDatePicker,Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
             <DatePicker x:Name="birthDayDatePicker"  Grid.Row="3" 
                     SelectedDate="{Binding birthDay, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
@@ -147,61 +147,13 @@
 
             </Button>
 
-            <!--<Grid.RowDefinitions>
-            <RowDefinition Height="6*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
 
-        <Button Content="ADD CHILD" Grid.Row="1"  HorizontalContentAlignment="Center"
-          IsEnabled="{Binding ElementName=idTextBox, Path=Text}" Click="Button_Click"
-               >
-
-        </Button>
-        <Grid x:Name="grid1" DataContext="{StaticResource childViewSource}" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Label Content="birth Day:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
-            <DatePicker x:Name="birthDayDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="3"
-                        SelectedDate="{Binding birthDay, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
-                        VerticalAlignment="Center" DisplayDateStart="01.01.2012" />
-
-
-            <Label Content="details Special Needs:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
-            <TextBox x:Name="detailsSpecialNeedsTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" Text="{Binding detailsSpecialNeeds, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-
-
-            <Label Content="First Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
-            <TextBox x:Name="firstNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-
-
-
-            <Label Content="id:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-            <TextBox x:Name="idTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" VerticalAlignment="Center" Width="120"/>
-
-
-
-            <Label Content="Mother ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
-            <TextBox x:Name="motherIDTextBox" Grid.Column="1" Height="24" Margin="3.333,4,2.667,4" Grid.Row="1" Text="{Binding MotherID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
-
-
-
-            <Label Content="special Needs:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
-            <CheckBox x:Name="specialNeedsCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding specialNeeds, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
-        </Grid>-->
         </Grid>
-        
-        
-       
+
+
+        <TextBlock Grid.Column="1" HorizontalAlignment="Center"  Margin="10" TextWrapping="Wrap" Text="create a new child"  FontSize="72" VerticalAlignment="Top" FontFamily="Tango BT" FontWeight="Bold"  TextAlignment="Center" Visibility="Visible"/>
+        <Image Margin="0.2,246,-0.4,-0.2" Source="123321.png" Stretch="Fill" Grid.Column="1"/>
+
 
 
     </Grid>

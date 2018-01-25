@@ -29,7 +29,7 @@
         <DataTemplate>
           <Border BorderThickness="2" BorderBrush="LightSkyBlue" Margin="5">
             <StackPanel VerticalAlignment="Top">
-              <!--<TextBlock x:Name="TextBlock1" Text="{Binding Path=Key,Converter={StaticResource Convert}}" FontSize="16" Foreground="Red" TextAlignment="Center" />-->
+              <TextBlock x:Name="TextBlock1" Text="{Binding Path=Key,Converter={StaticResource Convert}}" FontSize="16" Foreground="Red" TextAlignment="Center" />
               <ListView ItemsSource="{Binding}">
               </ListView>
             </StackPanel>

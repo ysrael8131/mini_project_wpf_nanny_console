@@ -64,14 +64,33 @@
             </Setter>
         </Style>
 
+      <Style x:Key="FocusVisual" >
+        <Setter Property="Control.Template">
+          <Setter.Value>
+            <ControlTemplate>
+              <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+      </Style>
+      <SolidColorBrush x:Key="Button.Static.Background" Color="LightCoral"/>
+      <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+      <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+      <SolidColorBrush x:Key="Button.MouseOver.Border" Color="black"/>
+      <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+      <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+      <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+      <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+      <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
 
         <Style x:Key="ButtonStyle1"  TargetType="{x:Type Button}">
-            <Setter Property="FontStyle" Value="Oblique"/>
-            <Setter Property="FontSize" Value="40"/>
+          <Setter Property="FontFamily" Value="Impact"/> 
+          <!--<Setter Property="FontStyle" Value="Oblique"/>-->
+            <Setter Property="FontSize" Value="20"/>
             <!--<setter property="focusvisualstyle" value="{staticresource focusvisual}"/>-->
             <Setter Property="Background" Value="{DynamicResource Button.Static.Background}"/>
             <Setter Property="BorderBrush" Value="LightGray"/>
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="Foreground" Value="Black"/>
             <Setter Property="BorderThickness" Value="3"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -79,8 +98,18 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Margin="28" CornerRadius="10" x:Name="border"  BorderBrush="Black" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True" Background="LightPink">
-                            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        <Border Margin="5" CornerRadius="10" x:Name="border" BorderBrush="Black"
+                                BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True"
+                                Background="Beige">
+                            <ContentPresenter x:Name="contentPresenter"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              Content="{TemplateBinding Content}"
+                                              ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                              Focusable="False"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              Margin="{TemplateBinding Padding}" RecognizesAccessKey="True"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsDefaulted" Value="true">

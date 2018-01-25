@@ -5,90 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-         Title="Window1" Height="700" Width="700">
-    <!--<Grid>
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="White" Offset="1"/>
-                <GradientStop Color="#FFF7CA99" Offset="0.976"/>
-            </LinearGradientBrush>
-        </Grid.Background>
-
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="2*"/>
-        </Grid.RowDefinitions>
-        <Grid   Grid.Row="1" Grid.RowSpan="2"  >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-            </Grid.RowDefinitions>
-
-            <Label x:Name="mother_log_in" Content="mother log in" Grid.RowSpan="2" Margin="10" 
-                   FontSize="20" VerticalContentAlignment="Center"   MouseEnter="mother_log_in_MouseEnter" FontFamily="Snap ITC"   >
-                <Label.Foreground>
-                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                        <GradientStop Color="#FFF664AB"/>
-                        <GradientStop Color="#FF512F2F" Offset="1"/>
-                    </LinearGradientBrush>
-                </Label.Foreground>
-            </Label>
-            <Button x:Name="new_mother_button" Content="new mother" Grid.Row="0"  FontFamily="Snap ITC"
-                    Visibility="Collapsed" MouseEnter="mother_log_in_MouseEnter" MouseLeave="mother_log_in_MouseLeave"
-                    Click="new_mother_button_Click"  />
-            <Button x:Name="update_mother_button" Content="Mother exists" Grid.Row="1"  FontFamily="Snap ITC" Click="update_mother_button_Click"
-                    Visibility="Collapsed" MouseEnter="mother_log_in_MouseEnter"
-                    MouseLeave="mother_log_in_MouseLeave" />
-
-            <Label x:Name="nanny_log_in" Grid.Row="2" Content="nanny log in"  FontSize="20"  VerticalContentAlignment="Center" 
-                   MouseEnter="nanny_log_in_MouseEnter" Margin="10" Grid.RowSpan="2"  FontFamily="Snap ITC"   >
-                <Label.Foreground>
-                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                        <GradientStop Color="#FFF664AB"/>
-                        <GradientStop Color="#FF512F2F" Offset="1"/>
-                    </LinearGradientBrush>
-                </Label.Foreground>
-            </Label>
-            <ListBox x:Name="list_box_mother" Grid.Row="2"  Visibility="Collapsed" MouseLeave="mother_exist_MouseLeave" MouseDoubleClick="list_box_mother_MouseDoubleClick"
-                      Grid.RowSpan="2" Width="120" HorizontalAlignment="Left">
-
-            </ListBox>
-
-            <Button x:Name="new_nanny_button" Content="new nanny" Grid.Row="2"  FontFamily="Snap ITC"
-                      Visibility="Collapsed" MouseEnter="nanny_log_in_MouseEnter" MouseLeave="nanny_log_in_MouseLeave" Click="newNany" />
-            <Button x:Name="update_nanny_button" Content="Nanny exists" Grid.Row="3"  FontFamily="Snap ITC"
-                    Visibility="Collapsed" MouseEnter="nanny_log_in_MouseEnter" MouseLeave="nanny_log_in_MouseLeave" />
-        </Grid>
-
-        <Image x:Name="image_mom"  Stretch="Uniform"
-            Margin="0.4,90,-0.4,0.4" Grid.RowSpan="3" Grid.Column="1"   />
-    </Grid>-->
-    <!--<Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-          <RowDefinition Height="1*"/>
-
-
-        </Grid.RowDefinitions>
-        <Button Content="addmother" Click="Button_Click" Grid.Row="0" />
-        <Button Content="addchild"  Grid.Row="1" Click="Button_Click_1"/>
-        <Button Content="add nanny"   Grid.Row="2" Click="Button_Click_2"/>
-        <Button Content="search and update"   Grid.Row="3" Click="Button_Click_3"/>
-      <Button Content="search a nanny"   Grid.Row="4" Click="Button_Click_4" />
-      <Button Content="grooping"   Grid.Row="5" Click="Button_Click_5" />
-
-    </Grid>-->
-
+         Title="Window1" Height="700" Width="700" Background="AliceBlue">
+ 
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -100,11 +18,12 @@
             <RowDefinition Height="0.25*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="add_button" Grid.Column="0" Content="press to add a new item" Margin="15" Click="add_button_Click" />
-        <Button x:Name="update_button"  Grid.Column="1" Content="press to uptate an item" Margin="15" Click="update_button_Click"/>
-        <Button x:Name="grooping_button" Grid.Column="2" Content="grooping" Margin="15" Click="grooping_button_Click"/>
-        <Button x:Name="find_nanny_button"  Grid.Column="3" Content="find nanny" Margin="15" Click="find_nanny_button_Click"/>
+        <Button x:Name="add_button" Grid.Column="0" Content="press to add &#xD;&#xA;a new item" Margin="15" Click="add_button_Click" Style="{StaticResource ButtonStyle1}" />
+        <Button x:Name="update_button"  Grid.Column="1" Content="press to uptate &#xD;&#xA;an item" Margin="15" Click="update_button_Click" Style="{StaticResource ButtonStyle1}" MouseEnter="MouseEnter"/>
+        <Button x:Name="grooping_button" Grid.Column="2" Content="grooping" Margin="15" Click="grooping_button_Click" Style="{StaticResource ButtonStyle1}" MouseEnter="MouseEnter"/>
+        <Button x:Name="find_nanny_button"  Grid.Column="3" Content="find nanny" Margin="15" Click="find_nanny_button_Click" Style="{StaticResource ButtonStyle1}" MouseEnter="MouseEnter" />
         <local:buttons_to_add x:Name="buttons_to_add" Grid.Row="1" Visibility="Hidden" />
+        <Image Grid.ColumnSpan="3" Grid.Column="1"  Grid.Row="1" Source="gg.png" Stretch="Fill"  MouseEnter="MouseEnter" />
 
     </Grid>
 

@@ -45,11 +45,24 @@ namespace PLWPF
 
         private void select_mother_combobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Vizibilityes();
-            mother_child_stackpanel.Visibility = Visibility.Visible;
-            _selectedMother = select_mother_combobox.SelectedItem as Mother;
-            select_child_combobox.ItemsSource = bl.getListChilds(select_mother_combobox.SelectedItem as Mother);
-            Constraints_grid.DataContext = select_mother_combobox.SelectedItem as Mother;
+            if (select_mother_combobox.SelectedItem == null)
+            {
+               return; 
+            }
+            try
+            {
+                Vizibilityes();
+                mother_child_stackpanel.Visibility = Visibility.Visible;
+                _selectedMother = select_mother_combobox.SelectedItem as Mother;
+                select_child_combobox.ItemsSource = bl.getListChilds(select_mother_combobox.SelectedItem as Mother);
+                Constraints_grid.DataContext = select_mother_combobox.SelectedItem as Mother;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+                select_mother_combobox.SelectedItem = null;
+
+            }
         }
 
         private void select_child_combobox_SelectionChanged(object sender, SelectionChangedEventArgs e)

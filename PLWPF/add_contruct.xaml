@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PLWPF"
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.add_contruct"
         mc:Ignorable="d"
-        Title="add_contruct" Height="564.6" Width="398.6" Loaded="Window_Loaded">
+        Title="add_contruct" Height="480" Width="398.6" Loaded="Window_Loaded">
     <Window.Resources>
         <CollectionViewSource x:Key="contractViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Contract}, CreateList=True}"/>
     </Window.Resources>
@@ -18,7 +18,7 @@
 
         <Grid Background="{StaticResource BackgroundGrid}" Margin="15">
 
-            <StackPanel x:Name="mom_child_nan_stackpanel" Visibility="Collapsed">
+            <StackPanel x:Name="mom_child_nan_stackpanel" Visibility="Visible">
 
 
                 <StackPanel  x:Name="mother_stackpanel" Visibility="Visible" Orientation="Horizontal">
@@ -38,10 +38,10 @@
                 <Button x:Name="select_button" HorizontalAlignment="Center" Content="build your contract" Height="25" Visibility="Visible" Click="select_button_Click" />
 
             </StackPanel>
-            <Grid x:Name="contract_grid" Visibility="Visible" Margin="0" DataContext="{StaticResource contractViewSource}">
+            <Grid x:Name="contract_grid" Visibility="Collapsed" Margin="0" >
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
@@ -52,10 +52,10 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.ColumnSpan="2"  Text="your contract" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Margin="66,3,-16,28.4" Grid.RowSpan="2"/>
+                <TextBlock Grid.ColumnSpan="2"  Text="your contract" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" />
                 <Label Content="Nanny ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
                 <TextBlock x:Name="nannyIDTextBlock" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="1"  Text="{Binding NannyID}" VerticalAlignment="Center"/>
                 <Label Content="Mother ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
@@ -71,9 +71,9 @@
                 <Label Content="salary Per Hour:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
                 <TextBlock x:Name="salaryPerHourTextBlock" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="5" Text="{Binding salaryPerHour}" VerticalAlignment="Center"/>
                 <Label Content="salary Per Month:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
-                <TextBlock x:Name="salaryPerMonthTextBlock" HorizontalAlignment="Left" Margin="3,4,0,8.6" Text="{Binding salaryPerMonth}" VerticalAlignment="Center" Grid.RowSpan="3" Grid.Row="1"/>
+                <TextBlock x:Name="salaryPerMonthTextBlock" HorizontalAlignment="Left" Text="{Binding salaryPerMonth}" VerticalAlignment="Center" Grid.Row="6" Grid.Column="1"/>
 
-                <Grid Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Center" Background="AntiqueWhite" Margin="16,15.6,-64.6,15" Grid.ColumnSpan="2" Width="215">
+                <Grid Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Center" Background="AntiqueWhite"  Grid.ColumnSpan="2" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
@@ -110,6 +110,10 @@
                               VerticalAlignment="Center" Grid.Row="4" Grid.Column="1" />
                                        
                 </Grid>
+                <Button x:Name="add_contract_button" Grid.Row="8"  Background="LightSkyBlue" Content="Add Contract" Height="50" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center"  Click="add_contract_button_Click" />
+
+                <Button x:Name="payment" Grid.Row="8" Grid.Column="1"  Background="LightSkyBlue" Content="Calculate Payment" Height="50" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" Click="payment_Click" />
+
             </Grid>
 
         </Grid>

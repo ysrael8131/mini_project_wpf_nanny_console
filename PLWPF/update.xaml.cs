@@ -111,51 +111,61 @@ namespace PLWPF
 
         private void select_mother_conbobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            mother = null;
-            cleartimepicker(timeStart);
-            cleartimepicker(timeEnd);
-
-
-            if (select_mother_conbobox.ItemsSource != null)
+            if (select_mother_conbobox.SelectedItem==null)
             {
-                switch (select_item_combobox.SelectedItem.ToString())
+                return;
+            }
+            try
+            {
+                mother = null;
+                cleartimepicker(timeStart);
+                cleartimepicker(timeEnd);
+
+
+                if (select_mother_conbobox.ItemsSource != null)
                 {
-                    case "Mother":
-                        if (select_mother_conbobox.SelectedItem != null)
-                        {
-                            //mother = bl.getMother(int.Parse(select_mother_conbobox.SelectedItem.ToString()));
-                            mother= select_mother_conbobox.SelectedItem as Mother;
-                            mother_grid.DataContext = mother;
-
-
-                            for (int i = 0; i < 6; i++)
+                    switch (select_item_combobox.SelectedItem.ToString())
+                    {
+                        case "Mother":
+                            if (select_mother_conbobox.SelectedItem != null)
                             {
+                                //mother = bl.getMother(int.Parse(select_mother_conbobox.SelectedItem.ToString()));
+                                mother= select_mother_conbobox.SelectedItem as Mother;
+                                mother_grid.DataContext = mother;
 
-                                if (check[i].IsChecked == true)
+
+                                for (int i = 0; i < 6; i++)
                                 {
-                                    timeStart[i].Value = DateTime.Parse(mother.arr[i].start.ToString());
-                                    timeEnd[i].Value = DateTime.Parse(mother.arr[i].end.ToString());
+
+                                    if (check[i].IsChecked == true)
+                                    {
+                                        timeStart[i].Value = DateTime.Parse(mother.arr[i].start.ToString());
+                                        timeEnd[i].Value = DateTime.Parse(mother.arr[i].end.ToString());
+                                    }
+
                                 }
 
+                                Vizibilityes();
+                                all_stackpanels.Visibility = Visibility.Visible;
+                                mother_stackpanel.Visibility = Visibility.Visible;
+                                options_buttons.Visibility = Visibility.Visible;
                             }
 
-                            Vizibilityes();
-                            all_stackpanels.Visibility = Visibility.Visible;
-                            mother_stackpanel.Visibility = Visibility.Visible;
-                            options_buttons.Visibility = Visibility.Visible;
-                        }
-
-                        break;
-                    case "Child":
-                        //var childs = from item in bl.getListChilds(bl.getMother(int.Parse(select_mother_conbobox.SelectedItem.ToString())))
-                        //             select item.id;
-                        
-                        select_child_conbobox.ItemsSource = null;
-                        select_child_conbobox.ItemsSource = bl.getListChilds(select_mother_conbobox.SelectedItem as Mother);
-                        break;
-                    default:
-                        break;
+                            break;
+                        case "Child":
+                     
+                            select_child_conbobox.ItemsSource = null;
+                            select_child_conbobox.ItemsSource = bl.getListChilds(select_mother_conbobox.SelectedItem as Mother);
+                            break;
+                        default:
+                            break;
+                    }
                 }
+            }
+            catch (Exception exception)
+            {
+                System.Windows.MessageBox.Show(exception.Message);
+                select_mother_conbobox.SelectedItem = null;
             }
         }
 

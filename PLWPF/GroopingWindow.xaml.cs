@@ -37,23 +37,37 @@ namespace PLWPF
             groupByDistance uc = new groupByDistance();
 
             //  image.Visibility = Visibility.Visible;
-            new Thread(() =>
+            try
             {
-                var source = nn.groupingContract(true).ToList();
-                Dispatcher.Invoke(new Action(() =>
+                groopByDistanceButton.IsEnabled = false;
+                groopByMaxAgeButton.IsEnabled = false;
+                groopByMinAgeButton.IsEnabled = false;
+                new Thread(() =>
                 {
-                    try
+                    
+                    var source = nn.groupingContract(true).ToList();
+                    Dispatcher.Invoke(new Action(() =>
                     {
-                        uc.listView.ItemsSource = source;
-                        this.page.Content = uc;
-                        //             image.Visibility = Visibility.Collapsed;
-                    }
-                    catch (Exception n)
-                    {
-                        MessageBox.Show(n.Message);
-                    }
-                }));
-            }).Start();
+                        try
+                        {
+                            groopByDistanceButton.IsEnabled = true;
+                            groopByMaxAgeButton.IsEnabled = true;
+                            groopByMinAgeButton.IsEnabled = true;
+                            uc.listView.ItemsSource = source;
+                            this.page.Content = uc;
+                            //             image.Visibility = Visibility.Collapsed;
+                        }
+                        catch (Exception n)
+                        {
+                            MessageBox.Show(n.Message);
+                        }
+                    }));
+                }).Start();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
 
         }
 

@@ -12,7 +12,7 @@ namespace DAL
         public static IDAL getDal()
         {
             if (dl == null)
-                dl = new Dal_imp();
+                dl = new DalXml();
             return dl;
 
 

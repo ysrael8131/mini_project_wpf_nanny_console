@@ -20,7 +20,7 @@ namespace PLWPF
     /// </summary>
     public partial class UpDownControl : UserControl
     {
-        private int num;
+        private int num=5;
         public int Value
         {
             get { return num; }
@@ -35,6 +35,8 @@ namespace PLWPF
                 textNumber.Text = num.ToString();
             }
         }
+
+        
 
         public string MyText
         {
@@ -92,11 +94,13 @@ namespace PLWPF
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+   
+
         private void cmdDown_Click(object sender, RoutedEventArgs e)
         {
             Value--;
-        }
 
+        }
     }
 
 }

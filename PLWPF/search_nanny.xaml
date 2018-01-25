@@ -14,7 +14,7 @@
     </Window.Resources>
 
     <Grid DataContext="{StaticResource nannyViewSource}" >
-        
+
         <Grid.ColumnDefinitions>
 
             <ColumnDefinition Width="auto"/>
@@ -22,8 +22,8 @@
 
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="105*"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="127*"/>
         </Grid.RowDefinitions>
@@ -159,6 +159,7 @@
             <Button x:Name="payment" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Background="LightSkyBlue" Content="Calculate Payment"  HorizontalAlignment="Left" VerticalAlignment="Center" Width="130" Height="40" Click="payment_Click" />
         </Grid>
         <Image gif:ImageBehavior.AnimatedSource="loading.gif" x:Name="loading" Grid.RowSpan="4" Grid.ColumnSpan="2" Source="loading.gif" Margin="200" Stretch="Fill" Visibility="Collapsed"/>
+        <!--<Image Grid.Row="3" Source="32132132.png" Stretch="Fill" Grid.Column="1"/>-->
 
     </Grid>
 </Window>

@@ -79,5 +79,41 @@ namespace PLWPF
             contract_grid.Visibility = Visibility.Visible;
             mom_child_nan_stackpanel.Visibility = Visibility.Hidden;
         }
+
+        private void add_contract_button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DateTime d1 = DateTime.Parse(startDatePicker.Text.ToString());
+                DateTime d2 = DateTime.Parse(endDatePicker.Text.ToString());
+                if (d2.Subtract(d1).TotalDays < 30)
+                    throw new Exception("The contract must be at least for a month");
+                bl.addContract(contract);
+                MessageBox.Show(bl.getListContracts().LastOrDefault().ToString(), "This contract has been added:");
+                this.Close();
+            }
+            catch (Exception x)
+            {
+
+                MessageBox.Show(x.Message);
+            }
+        }
+
+        private void payment_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                bl.addContract(contract);
+                MessageBox.Show(bl.getListContracts().LastOrDefault().totalSalary.ToString(), "סך הכל עלות:");
+                bl.deleteContract(bl.getListContracts().LastOrDefault().num_contract);
+            }
+            catch (Exception x)
+            {
+
+                MessageBox.Show(x.Message);
+            }
+
+        }
     }
 }
