@@ -28,14 +28,35 @@
 
                 <StackPanel  x:Name="child_stackpanel" Visibility="Visible" Orientation="Horizontal">
                     <TextBlock x:Name="select_child" Text="Select child" Margin="15" FontFamily="Impact" Foreground="Brown"/>
-                    <ComboBox DisplayMemberPath="id" IsEnabled="{Binding ElementName=select_mother_conbobox, Path=SelectedItem}" 
+                    <ComboBox  DisplayMemberPath="id" IsEnabled="{Binding ElementName=select_mother_conbobox, Path=SelectedItem}" 
                       x:Name="select_child_conbobox" Width="90" Margin="15" SelectionChanged="select_child_conbobox_SelectionChanged" BorderThickness="3" FontFamily="Impact"/>
                 </StackPanel>
                 <StackPanel x:Name="nanny_stackpanel" Visibility="Visible" Orientation="Horizontal">
                     <TextBlock x:Name="select_nannys" Text="Select nanny" Margin="15" FontFamily="Impact" Foreground="Brown"/>
                     <ComboBox x:Name="select_nanny_conbobox" DisplayMemberPath="id" Width="90" Margin="15" SelectionChanged="select_nanny_conbobox_SelectionChanged" BorderBrush="Blue" BorderThickness="3" FontFamily="Impact"/>
                 </StackPanel>
-                <Button x:Name="select_button" HorizontalAlignment="Center" Content="build your contract" Height="25" Visibility="Visible" Click="select_button_Click" />
+                <Button x:Name="select_button" HorizontalAlignment="Center" Content="build your contract" Height="25" Visibility="Visible" Click="select_button_Click">
+
+                <Button.Style >
+                    <Style>
+                        <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=select_mother_conbobox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="False"/>
+                            </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=select_child_conbobox, Path=Text  }" Value="">
+                                <Setter Property="Button.IsEnabled" Value="False"/>
+                            </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=select_nanny_conbobox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="False"/>
+                            </DataTrigger>
+
+                            
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+
 
             </StackPanel>
             <Grid x:Name="contract_grid" Visibility="Collapsed" Margin="0" >

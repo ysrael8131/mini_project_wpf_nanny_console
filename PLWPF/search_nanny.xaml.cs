@@ -25,7 +25,7 @@ namespace PLWPF
     public partial class search_nanny : Window
     {
         BL.IBL bl;
-        private BL.Bl_imp bll;
+       // private BL.Bl_imp bll;
         private Mother _selectedMother;
         private Child _selectedChild;
         private Nanny _selectedNanny;
@@ -33,7 +33,8 @@ namespace PLWPF
         public search_nanny()
         {
             bl = FactoryBl.getBl();
-            bll = new Bl_imp();
+            //bll = new Bl_imp();
+            
             _selectedMother = new Mother();
             _selectedChild = new Child();
             _selectedNanny = new Nanny();

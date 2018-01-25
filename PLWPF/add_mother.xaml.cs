@@ -133,11 +133,10 @@ namespace PLWPF
 
                 bl.addMother(mother);
                 second_grid_mother.Visibility = Visibility.Collapsed;
-                third_grid_mother.Visibility = Visibility.Visible;
-                //Thread.Sleep(3000);
-                // this.Close();
+                
+                System.Windows.MessageBox.Show("You are assigned to add a child", "The mother was added successfully ", MessageBoxButton.OK,MessageBoxImage.Information);
                 new add_child(mother).Show();
-
+                
 
             }
             catch (Exception a)
