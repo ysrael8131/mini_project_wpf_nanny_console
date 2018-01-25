@@ -116,10 +116,11 @@ namespace PLWPF
                 nanny.age_child_max= int.Parse(to_years.SelectedItem.ToString()) * 12 + int.Parse(to_month.SelectedItem.ToString());
                 bl.addNanny(nanny);
                 second_grid_nanny.Visibility = Visibility.Collapsed;
-                
-                 
-                // this.Close();
-               
+                System.Windows.MessageBox.Show("", "The nanny was added successfully ", MessageBoxButton.OK, MessageBoxImage.Information);
+
+
+                 this.Close();
+
 
             }
             catch (Exception a)
