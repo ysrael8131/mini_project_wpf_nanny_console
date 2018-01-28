@@ -301,10 +301,7 @@ namespace DAL
 
         public Mother getMother(int? id)
         {
-            return (from mother1 in DS.DataSource.mothers
-                where mother1.id == id
-                select mother1).FirstOrDefault();
-          
+            return DS.DataSource.mothers.Find(item => item.id == id);
         }
 
         #endregion
@@ -372,15 +369,7 @@ namespace DAL
         /// <returns></returns>
         public Nanny getNanny(int? id)
         {
-            try
-            {
-                return LoadListFromXML<List<Nanny>>(nannyPath).Find(item => item.id == id);
-
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
+            return DS.DataSource.nannys.Find(item => item.id == id);
         }
 
 
@@ -443,24 +432,14 @@ namespace DAL
         public IEnumerable<Contract> getListContracts()
         {
 
-            try
-            {
-              //  return LoadListFromXML<List<Contract>>(contractPath);
-                return DS.DataSource.contracts;
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
+            return DS.DataSource.contracts;
+
         }
 
        
         public Contract getContract(int num_contract)
         {
-            return (from item in DS.DataSource.contracts
-                where item.num_contract == num_contract
-                select item).FirstOrDefault();
-           
+            return DS.DataSource.contracts.Find(item => item.num_contract == num_contract);
         }
 
         #endregion

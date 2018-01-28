@@ -288,7 +288,11 @@ namespace PLWPF
         {
             buttons_to_add.Visibility = Visibility.Visible;
         }
-
+        /// <summary>
+        /// An event for update all items
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void update_button_Click(object sender, RoutedEventArgs e)
         {
             buttons_to_add.Visibility = Visibility.Hidden;
@@ -296,13 +300,22 @@ namespace PLWPF
             Window w = new update();
             w.Show();
         }
-
+        /// <summary>
+        /// An event for grouping
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void grooping_button_Click(object sender, RoutedEventArgs e)
         {
             buttons_to_add.Visibility = Visibility.Hidden;
             Window w = new GroopingWindow();
             w.Show();
         }
+        /// <summary>
+        /// An event for find nanny
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void find_nanny_button_Click(object sender, RoutedEventArgs e)
         {
