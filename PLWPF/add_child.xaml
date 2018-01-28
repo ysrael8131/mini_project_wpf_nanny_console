@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PLWPF"
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.add_child"
         mc:Ignorable="d"
-        Title="add_child" Height="606" Width="600" Loaded="Window_Loaded">
+        Title="add_child" Height="606" Width="600" Loaded="Window_Loaded"  FontFamily="Segoe UI Semibold">
     <Window.Resources>
         <CollectionViewSource x:Key="childViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Child}, CreateList=True}"/>
         <SolidColorBrush x:Key="brushWatermarkBackground" Color="White" />
@@ -122,7 +122,7 @@
             <TextBox x:Name="detailsSpecialNeedsTextBox" Grid.Row="6" Style="{StaticResource textbox_style}" 
          Text="{Binding detailsSpecialNeeds, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
                  IsEnabled="{Binding ElementName=specialNeedsCheckBox,Path=IsChecked}" Margin="10" />
-            <Button Content="Creat"  Grid.Row="7" Margin="20"   BorderBrush="{StaticResource brushWatermarkBorder}" Click="Button_Click_Add_Child">
+            <Button  Content="Creat"  Grid.Row="7" Margin="20"   BorderBrush="{StaticResource brushWatermarkBorder}" Click="Button_Click_Add_Child">
                 <Button.Style>
                     <Style>
                         <Style.Triggers>

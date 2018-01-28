@@ -159,7 +159,7 @@ namespace BL
             var nan = from i in nannys
                       where myFunc1(i, a)
                       select i;
-            if (nan != null)
+            if (nan.Count() != 0)
             {
                 return nan;
             }
@@ -191,8 +191,8 @@ namespace BL
             for (int i = 0; i < nan.work.Length; i++)
             {
                 if ((!nan.work[i].day_work && mom.arr[i].day_work) ||
-                    mom.arr[i].start < nan.work[i].start ||
-                    nan.work[i].end < mom.arr[i].end)
+                    (int)mom.arr[i].start.TotalMinutes < (int)nan.work[i].start.TotalMinutes ||
+                    (int)nan.work[i].end.TotalMinutes < (int)mom.arr[i].end.TotalMinutes)
                     return false;
             }
             return true;

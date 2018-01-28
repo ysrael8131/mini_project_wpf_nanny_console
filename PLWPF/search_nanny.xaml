@@ -8,27 +8,27 @@
  
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.search_nanny"
         mc:Ignorable="d"
-        Title="search_nanny" Height="700" Width="750" Background="LightGray" FontSize="16" FontFamily="Berlin Sans FB Demi" >
-    <Window.Resources>
+        Title="search_nanny" Height="700" Width="750"  FontFamily="Segoe UI Semibold" Background="AliceBlue" FontSize="16" >
+    <!--<Window.Resources>
         <CollectionViewSource x:Key="nannyViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Nanny}, CreateList=True}"/>
-    </Window.Resources>
+    </Window.Resources>-->
 
-    <Grid DataContext="{StaticResource nannyViewSource}" >
+    <Grid >
 
         <Grid.ColumnDefinitions>
 
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="239*"/>
+            <ColumnDefinition Width="505*"/>
 
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="15*"/>
             <RowDefinition Height="105*"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="130*"/>
             <RowDefinition Height="127*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="search a nanny for a child" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Grid.ColumnSpan="2"   />
-        <StackPanel x:Name="mother_child_stackpanel" Margin="15" Visibility="Visible" Grid.Row="1">
+        <TextBlock Text="search a nanny for a child" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Grid.Column="1" Height="26" Margin="49.8,0,223,0.4" Width="232"   />
+        <StackPanel x:Name="mother_child_stackpanel" Margin="15,14.6,13.2,14.6" Visibility="Visible" Grid.Row="1">
             <TextBlock x:Name="select_mother" Text="select mother" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <ComboBox x:Name="select_mother_combobox" Width="90" DisplayMemberPath="id" VerticalAlignment="Center" HorizontalAlignment="Center" SelectionChanged="select_mother_combobox_SelectionChanged"/>
 
@@ -36,10 +36,23 @@
             <ComboBox IsEnabled="{Binding SelectedItem, ElementName=select_mother_conbobox}" HorizontalAlignment="Center" 
                   x:Name="select_child_combobox" DisplayMemberPath="id" VerticalAlignment="Center" Width="90"
                   SelectionChanged="select_child_combobox_SelectionChanged" />
-            <Button x:Name="select_mothr_and_child_button" Content="select" Width="90" HorizontalAlignment="Center" Margin="0,15" Click="select_mothr_and_child_button_Click"/>
+            <Button x:Name="select_mothr_and_child_button" Content="Select"  Width="100" HorizontalAlignment="Center" Margin="15" Click="select_mothr_and_child_button_Click">
+                <Button.Style>
+                    <Style>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=select_mother_combobox, Path=Text}" Value="">
+                          <Setter Property="Button.IsEnabled" Value="False"/>
+                        </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=select_child_combobox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="False"/>
+                            </DataTrigger>
+                    </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
         </StackPanel>
 
-        <Grid x:Name="Constraints_grid" Grid.Row="2" d:DataContext="{d:DesignInstance BE:Mother}" Visibility="Hidden">
+        <Grid x:Name="Constraints_grid" Grid.Row="2" Visibility="Hidden" Margin="0,0.4,0.2,225.4" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="1*"/>
@@ -104,10 +117,10 @@
                 </Button.Style>
             </Button>
         </Grid>
-        <StackPanel x:Name="nannys_StackPanel" Grid.Row="2" Grid.Column="1" Visibility="Hidden">
+        <StackPanel x:Name="nannys_StackPanel" Grid.Row="2" Visibility="Collapsed" Grid.ColumnSpan="2" Margin="166,0.4,0,225.4" Grid.RowSpan="2"    >
 
 
-            <DataGrid x:Name="nannyDataGrid" Margin="20" EnableRowVirtualization="True" ItemsSource="{Binding}" d:DataContext="{d:DesignData BE:Nanny}" AutoGenerateColumns="False" IsReadOnly="True" Grid.Column="1" Background="LightPink" HorizontalAlignment="center" Grid.Row="2" VerticalAlignment="top" Height="150" Width="450" SelectionChanged="nannyDataGrid_SelectionChanged" >
+            <DataGrid x:Name="nannyDataGrid" Margin="20" EnableRowVirtualization="True" ItemsSource="{Binding}" d:DataContext="{d:DesignData BE:Nanny}" AutoGenerateColumns="False" IsReadOnly="True" Grid.Column="1" Background="AliceBlue" HorizontalAlignment="center" Grid.Row="2" VerticalAlignment="top" Height="150" Width="450" SelectionChanged="nannyDataGrid_SelectionChanged" >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding id}"/>
                     <DataGridTextColumn Header="Family Name" Binding="{Binding LastName}"/>
@@ -117,9 +130,11 @@
                 </DataGrid.Columns>
             </DataGrid>
 
-            <Button x:Name="select_nanny_button" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Content="select nanny" Height="25" Visibility="Visible" Click="select_nanny_button_Click" />
+            <Button x:Name="select_nanny_button" IsEnabled="False" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Content="select nanny" Height="25" Visibility="Visible" Click="select_nanny_button_Click" >
+          
+            </Button>
         </StackPanel>
-        <Grid Grid.Row="3" Grid.Column="1" x:Name="add_contruct_grid" d:DataContext="{d:DesignData BE:Contract}" HorizontalAlignment="Center" Height="240"  VerticalAlignment="Top" Width="480" Visibility="Hidden">
+        <Grid Grid.Row="3" Grid.Column="1" x:Name="add_contruct_grid" d:DataContext="{d:DesignData BE:Contract}" HorizontalAlignment="Center" Height="240"  VerticalAlignment="Top" Width="480" Visibility="Hidden" Margin="8.8,0.2,16,-14.6">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
@@ -158,7 +173,7 @@
 
             <Button x:Name="payment" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Background="LightSkyBlue" Content="Calculate Payment"  HorizontalAlignment="Left" VerticalAlignment="Center" Width="130" Height="40" Click="payment_Click" />
         </Grid>
-        <Image gif:ImageBehavior.AnimatedSource="loading.gif" x:Name="loading" Grid.RowSpan="4" Grid.ColumnSpan="2" Source="loading.gif" Margin="200" Stretch="Fill" Visibility="Collapsed"/>
+        <Image gif:ImageBehavior.AnimatedSource="loading.gif" x:Name="loading" Grid.RowSpan="3" Source="loading.gif" Margin="35.8,173.6,200,200.4" Stretch="Fill" Visibility="Collapsed" Grid.Column="1" Grid.Row="1"/>
         <!--<Image Grid.Row="3" Source="32132132.png" Stretch="Fill" Grid.Column="1"/>-->
 
     </Grid>

@@ -1,4 +1,4 @@
-﻿<Window      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -8,12 +8,12 @@
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.add_mother"
    
         
-    d:DataContext="{d:DesignInstance BE:Mother}"
+     d:DataContext="{d:DesignInstance BE:Mother}"
    
-        Title="add_mother" Height="606.16" Width="600" Loaded="Window_Loaded" >
+        Title="add_mother" Height="606.16" Width="600"  FontFamily="Segoe UI Semibold" >
     <Window.Resources>
         <CollectionViewSource x:Key="motherViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Mother}, CreateList=True}"/>
-        <CollectionViewSource x:Key="motherarrViewSource" Source="{Binding arr, Source={StaticResource motherViewSource}}"/>
+        <!--<CollectionViewSource x:Key="motherarrViewSource" Source="{Binding arr, Source={StaticResource motherViewSource}}"/>-->
 
         <Style x:Key="textblock_style_error" TargetType="TextBlock">
             <Setter Property="Margin" Value="10,53,0,18"/>
@@ -75,11 +75,6 @@
                      Text="{Binding LastName, Mode=TwoWay, NotifyOnValidationError=true, 
                 ValidatesOnExceptions=true}" />
 
-
-
-
-
-
             <TextBlock  Style="{StaticResource textblock_style}" Text=" Addres" Grid.Row="4" 
                        Visibility="{Binding ElementName=addresTextBox,  
                 Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
@@ -87,43 +82,38 @@
                     Text="{Binding Addres, Mode=TwoWay, NotifyOnValidationError=true, 
                 ValidatesOnExceptions=true}" Height="25" />
 
-
-
             <TextBlock  Style="{StaticResource textblock_style}" Text=" Phone number" Grid.Row="5"
            Visibility="{Binding ElementName=phoneNumberTextBox,  
                 Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
             <TextBox Style="{StaticResource textbox_style}" x:Name="phoneNumberTextBox" Grid.Row="5"  
                     Text="{Binding PhoneNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  />
 
-
-
             <Label Content="Elevators:"   HorizontalAlignment="Left" Margin="10" Grid.Row="6" VerticalAlignment="Center"/>
             <CheckBox x:Name="elevatorsCheckBox"   HorizontalAlignment="Center" IsChecked="{Binding elevators, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
-            <Button x:Name="nextButton" Content="Next" Grid.Row="7" Margin="20"   BorderBrush="{StaticResource brushWatermarkBorder}" Click="Button_Click_Next" >
-                <Button.Style >
-                    <Style>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding ElementName=idTextBox, Path=Text}" Value="">
-                                <Setter Property="Button.IsEnabled" Value="False"/>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding ElementName=lastNameTextBox, Path=Text  }" Value="">
-                                <Setter Property="Button.IsEnabled" Value="False"/>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding ElementName=firstNameTextBox, Path=Text  }" Value="">
-                                <Setter Property="Button.IsEnabled" Value="False"/>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding ElementName=addresTextBox, Path=Text  }" Value="">
-                                <Setter Property="Button.IsEnabled" Value="False"/>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding ElementName=phoneNumberTextBox, Path=Text  }" Value="">
-                                <Setter Property="Button.IsEnabled" Value="False"/>
-                            </DataTrigger>
-
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
+            <Button x:Name="nextButton" Content="Next" Grid.Row="7" BorderBrush="{StaticResource brushWatermarkBorder}" Margin="20" Click="Button_Click_Next">
+              <Button.Style>
+                <Style>
+                  <Style.Triggers>
+                    <DataTrigger Binding="{Binding ElementName=idTextBox, Path=Text}" Value="">
+                      <Setter Property="Button.IsEnabled" Value="False"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding ElementName=lastNameTextBox, Path=Text  }" Value="">
+                      <Setter Property="Button.IsEnabled" Value="False"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding ElementName=firstNameTextBox, Path=Text  }" Value="">
+                      <Setter Property="Button.IsEnabled" Value="False"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding ElementName=addresTextBox, Path=Text  }" Value="">
+                      <Setter Property="Button.IsEnabled" Value="False"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding ElementName=phoneNumberTextBox, Path=Text  }" Value="">
+                      <Setter Property="Button.IsEnabled" Value="False"/>
+                    </DataTrigger>
+                  </Style.Triggers>
+                </Style>
+              </Button.Style>
             </Button>
-
+           
 
         </Grid>
 
@@ -160,9 +150,9 @@
             <CheckBox x:Name="sundayCheckBox" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2" IsChecked="{Binding arr[0].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Column="1" />
             <Label VerticalAlignment="Center" Grid.Row="2" Grid.Column="2" Margin="3" HorizontalAlignment="Right" Content="Start:"/>
             <dg:TimePicker x:Name="start1" VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Center" Grid.Column="3" IsEnabled="{Binding ElementName=sundayCheckBox, Path=IsChecked}" SizeChanged="SizeStart1" />
-                           
-                           
-                           
+
+
+
             <Label VerticalAlignment="Center" Grid.Row="2" Grid.Column="4" Margin="3" HorizontalAlignment="Right" Content="End:"/>
             <dg:TimePicker x:Name="end1" VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Center" Grid.Column="5" IsEnabled="{Binding ElementName=sundayCheckBox, Path=IsChecked}" SizeChanged="SizeStart1"/>
 
@@ -219,15 +209,7 @@
         <TextBlock Grid.Column="1" HorizontalAlignment="Center"  Margin="10" TextWrapping="Wrap" Text="create a new mother"  FontSize="72" VerticalAlignment="Top" FontFamily="Tango BT" FontWeight="Bold"  TextAlignment="Center" Visibility="Visible"/>
 
 
-        <Grid x:Name="third_grid_mother" Grid.Column="0"  Visibility="Collapsed"  Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="100" Background="{StaticResource BackgroundGrid}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" TextWrapping="Wrap" FontSize="25" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Height="100" ><Run Text="the mother wad added"/><LineBreak/><Run Text=" to the program successfully"/><LineBreak/><Run Text="You are taken to the Add Child window"/></TextBlock>
-            <Image Source="v.png" Grid.Column="1"/>
 
-        </Grid>
         <Image Grid.Column="1" Margin="0.2,266,-0.4,-0.2" Source="mom.png" Stretch="Fill"/>
     </Grid>
 

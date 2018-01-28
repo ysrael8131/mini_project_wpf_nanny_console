@@ -36,33 +36,7 @@ namespace PLWPF
             DataContext = mother;
 
         }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-            //System.Windows.Data.CollectionViewSource motherViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("motherViewSource")));
-            //Load data by setting the CollectionViewSource.Source property:
-            // motherViewSource.Source = [generic data source]
-            //System.Windows.Data.CollectionViewSource motherViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("motherViewSource")));
-            //Load data by setting the CollectionViewSource.Source property:
-            // motherViewSource.Source = [generic data source]
-        }
-
-        //private void textChange(object sender, TextChangedEventArgs e)
-        //{
-        //    if (phoneNumberTextBox.ToString() != "")
-        //   //     mother.PhoneNumber = comboBoxPhone.SelectedItem.ToString() + phoneNumberTextBox.ToString();
-        //}
-
-
-
-
-
-
-
-
-
-
+        
         /// <summary>
         /// The event of the button Next
         /// </summary>
@@ -70,14 +44,18 @@ namespace PLWPF
         /// <param name="e"></param>
         private void Button_Click_Next(object sender, RoutedEventArgs e)
         {
-            //If there are no 9 digits
-            if (idTextBox.Text.Count() != 9)
+        //    //If there are no 9 digits
+        //    if (idTextBox.Text.Count() != 9)
+        //    {
+        //        errorMesseg2.Visibility = Visibility.Visible;
+        //        return;
+        //    }
+            if (checkID())
             {
-                errorMesseg2.Visibility = Visibility.Visible;
-                return;
+                first_grid_mother.Visibility = Visibility.Collapsed;
+                second_grid_mother.Visibility = Visibility.Visible;
             }
-            first_grid_mother.Visibility = Visibility.Collapsed;
-            second_grid_mother.Visibility = Visibility.Visible;
+           
         }
 
         /// <summary>
@@ -97,15 +75,8 @@ namespace PLWPF
         /// <param name="e"></param>
         private void Button_create_Click(object sender, RoutedEventArgs e)
         {
-
-
             try
             {
-
-
-
-
-
                 //Manually assigning the time data
                 List<TimePicker> timeStart = new List<TimePicker>() { start1, startMondayTime, startTuesdayTime, startWednesdayTime, startThursdayTime, startFridayTime };
                 List<TimePicker> timeEnd = new List<TimePicker>() { end1, endMondayTime, endTuesdayTime, endWednesdayTime, endThursdayTime, endFridayTime };
@@ -135,6 +106,7 @@ namespace PLWPF
                 second_grid_mother.Visibility = Visibility.Collapsed;
                 
                 System.Windows.MessageBox.Show("You are assigned to add a child", "The mother was added successfully ", MessageBoxButton.OK,MessageBoxImage.Information);
+                this.Close();
                 new add_child(mother).Show();
                 
 
@@ -162,27 +134,54 @@ namespace PLWPF
             errorMesseg1.Visibility = Visibility.Collapsed;
             errorMesseg2.Visibility = Visibility.Collapsed;
             errorMesseg3.Visibility = Visibility.Collapsed;
-            nextButton.IsEnabled = true;
+     
+           // nextButton.IsEnabled = true;
 
             //Check if digits are entered
+            //long x;
+            //if (!long.TryParse(idTextBox.Text, out x) && idTextBox.Text != "")
+            //{
+
+            //    errorMesseg1.Visibility = Visibility.Visible;
+            //    nextButton.IsEnabled = false;
+
+            //    return;
+            //}
+            ////Check if the number is negative
+            //if (idTextBox.Text != "" && long.Parse(idTextBox.Text) < 0)
+            //{
+            //    errorMesseg3.Visibility = Visibility.Visible;
+            //}
+            
+
+        }
+
+        private bool checkID()
+        {
             long x;
             if (!long.TryParse(idTextBox.Text, out x) && idTextBox.Text != "")
             {
 
                 errorMesseg1.Visibility = Visibility.Visible;
-                nextButton.IsEnabled = false;
+               // nextButton.IsEnabled = false;
 
-                return;
+                return false;
             }
+
             //Check if the number is negative
             if (idTextBox.Text != "" && long.Parse(idTextBox.Text) < 0)
             {
                 errorMesseg3.Visibility = Visibility.Visible;
+                return false;
             }
 
-
+            if (idTextBox.Text.Count() != 9)
+            {
+                errorMesseg2.Visibility = Visibility.Visible;
+                return false;
+            }
+            return true;
         }
-
 
     }
 

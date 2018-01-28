@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="GroopingWindow" Height="500" Width="900" FontSize="14" FontFamily="Berlin Sans FB Demi" Background="AliceBlue" Focusable="False">
+        Title="GroopingWindow" Height="500" Width="900" FontSize="14" FontFamily="Segoe UI Semibold" Background="AliceBlue" Focusable="False">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>

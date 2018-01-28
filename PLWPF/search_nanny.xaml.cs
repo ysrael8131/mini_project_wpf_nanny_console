@@ -82,10 +82,11 @@ namespace PLWPF
 
         private void search_nannys_button_Click(object sender, RoutedEventArgs e)
         {
+            
             try
             {
                 int floor = int.Parse(floor_textbox.Text);
-                int max = int.Parse(coomoBoxMaxChild.SelectedIndex.ToString());
+                int max = (int)coomoBoxMaxChild.SelectedIndex+5;
                 List<Nanny> findNannies = new List<Nanny>();
                 search_nannys_button.IsEnabled = false;
                 Vizibilityes();
@@ -178,6 +179,7 @@ namespace PLWPF
 
         private void nannyDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            select_nanny_button.IsEnabled = true;
             _selectedNanny = nannyDataGrid.SelectedItem as Nanny;
         }
 

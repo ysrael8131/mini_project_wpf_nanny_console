@@ -25,8 +25,7 @@ namespace BL
             Child temp1 = dal.getChild(a.childID);
             Nanny temp2 = dal.getNanny(a.NannyID);
             Mother temp3 = dal.getMother(temp1.MotherID); 
-            if (getListContracts().ToList().Find(item => item.childID == a.childID) != null)
-                throw new Exception("Contract with this child already");
+            
             //check the age child that more 3 months 
             if (DateTime.Compare(DateTime.Now.AddMonths(-3), temp1.birthDay) == -1)
             {
@@ -37,6 +36,7 @@ namespace BL
                 && DateTime.Now.AddMonths(-temp2.age_child_min) < temp1.birthDay)
                 throw new Exception("The child is not within the age range of the nanny");
             IEnumerable<Contract> con = dal.getListContracts();
+
             var contract = from item in con
                            where item.NannyID == a.NannyID
                            select item;
@@ -70,7 +70,7 @@ namespace BL
                         }
                     }
 
-                    a.totalSalary = (temp2.salaryPerHour * (time * 4) * ((1 - sumChildsPerMother) * 0.02));
+                    a.totalSalary = (temp2.salaryPerHour * (time * 4) * (1 - (sumChildsPerMother * 0.02)));
                     break;
                 case false:
                     a.totalSalary = (1 - (sumChildsPerMother * 0.02)) * temp2.salaryPerMonth;

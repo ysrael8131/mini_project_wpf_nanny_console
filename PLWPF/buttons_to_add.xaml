@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PLWPF"
              mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="150">
+             d:DesignHeight="500" d:DesignWidth="150"  FontFamily="Segoe UI Semibold">
     <StackPanel>
         <TextBlock TextWrapping="Wrap" TextAlignment="Center"><Run Text="press the following "/><LineBreak/><Run Text="you want to add"/></TextBlock>
 

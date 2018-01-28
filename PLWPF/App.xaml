@@ -10,7 +10,7 @@
         <SolidColorBrush x:Key="BackgroundGrid" Color="Beige"/>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
 
-
+      
         <Style x:Key="textblock_style" TargetType="TextBlock">
             <Setter Property="Margin" Value="10"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -52,17 +52,21 @@
 
         </Style>
 
-        <Style x:Key="round_button" TargetType="Button">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="400,400,400,400" BorderBrush="Black" Background="White" BorderThickness="3">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
+      <Style  TargetType="Label">
+        <Setter Property="Foreground" Value="#FF31850B"/>
+      </Style>
+        <Style TargetType="TextBlock">
+<Setter Property="Foreground" Value="Brown"/>
         </Style>
+      <Style x:Key="commoBoxStyle" TargetType="ComboBox">
+        <Setter Property="Foreground"  Value="Black"/>
+        <Setter Property="FontFamily"  Value="Cooper Black"/>
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="BorderThickness" Value="0.1"/>
+        <Setter Property="BorderBrush" Value="Indigo"/>
+
+      </Style>
+      
 
       <Style x:Key="FocusVisual" >
         <Setter Property="Control.Template">

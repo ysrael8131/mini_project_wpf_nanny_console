@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PLWPF"
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.add_contruct"
         mc:Ignorable="d"
-        Title="add_contruct" Height="480" Width="398.6" Loaded="Window_Loaded">
+        Title="add_contruct" Height="480" Width="398.6" Loaded="Window_Loaded" FontFamily="Segoe UI Semibold">
     <Window.Resources>
         <CollectionViewSource x:Key="contractViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Contract}, CreateList=True}"/>
     </Window.Resources>

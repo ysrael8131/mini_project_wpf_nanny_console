@@ -7,35 +7,12 @@
      xmlns:dg="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.AddNanny"
         mc:Ignorable="d"
-        Title="AddNanny" Height="750" Width="650">
+        Title="AddNanny" Height="750" Width="650" FontFamily="Segoe UI Semibold">
     <Window.Resources>
         <CollectionViewSource x:Key="nannyViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Nanny}, CreateList=True}"/>
 
-        <Style x:Key="textblock_style_error" TargetType="TextBlock">
-            <Setter Property="Margin" Value="10,53,0,18"/>
-            <Setter Property="Foreground" Value="Red"/>
-            <Setter Property="Visibility" Value="Collapsed"/>
-            <Setter Property="Grid.RowSpan" Value="2"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
+        
 
-        </Style>
-        <Style x:Key="commoBoxStyle" TargetType="ComboBox">
-            <Setter Property="Foreground"  Value="Indigo"/>
-            <Setter Property="FontFamily"  Value="Cooper Black"/>
-            <Setter Property="FontSize" Value="10"/>
-            <Setter Property="BorderThickness" Value="0.1"/>
-            <Setter Property="BorderBrush" Value="Indigo"/>
-
-        </Style>
-        <Style x:Key="labelStyle" TargetType="Label">
-            <Setter Property="FontFamily" Value="Impact"/>
-            <Setter Property="Foreground" Value="Olive"/>
-        </Style>
-        <Style x:Key="checkBoxStyle" TargetType="CheckBox">
-
-            <Setter Property="BorderBrush" Value="Indigo"/>
-
-        </Style>
     </Window.Resources>
     <Grid Background="AliceBlue">
         <Grid.ColumnDefinitions>
@@ -58,7 +35,7 @@
 
             </Grid.RowDefinitions>
 
-            <TextBlock  Margin="10,10,9,9.2" VerticalAlignment="Center" Text="Personal Information" TextAlignment="Center" FontSize="20" />
+            <TextBlock FontFamily="Impact" Foreground="Brown" Margin="10,10,9,9.2" VerticalAlignment="Center" Text="Personal Information" TextAlignment="Center" FontSize="20" />
             <TextBlock Style="{StaticResource textblock_style}" Grid.Row="1"  Text=" ID"
                         Visibility="{Binding ElementName=idTextBox,
                 Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
@@ -102,10 +79,10 @@
                     <ColumnDefinition Width="1.5*"/>
                 </Grid.ColumnDefinitions>
 
-                <local:UpDownControl  x:Name="FloorUpDown" HorizontalAlignment="Right" MyText="{Binding floor}"  VerticalAlignment="Center" Width="100"/>
+                <local:UpDownControl  x:Name="FloorUpDown" HorizontalAlignment="Right" MyText="{Binding floor, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnExceptions=True}"  VerticalAlignment="Center" Width="100"/>
 
-               <TextBlock  Margin="10" Text=" Floor" Grid.Column="0" VerticalAlignment="Center"     HorizontalAlignment="Left" Width="50" />
-              <!--<TextBox x:Name="floorTextBox" Width="50"  VerticalAlignment="Center"  Style="{StaticResource textbox_style}"
+                <TextBlock  Margin="10" Text=" Floor" Grid.Column="0" VerticalAlignment="Center"     HorizontalAlignment="Left" Width="50" />
+                <!--<TextBox x:Name="floorTextBox" Width="50"  VerticalAlignment="Center"  Style="{StaticResource textbox_style}"
                      Text="{Binding floor, Mode=TwoWay, NotifyOnValidationError=true, 
                 ValidatesOnExceptions=true}" Grid.Column="0" Margin="10" HorizontalAlignment="Left"  />-->
 
@@ -191,10 +168,10 @@
                     <ColumnDefinition Width="1.2*"/>
                 </Grid.ColumnDefinitions>
 
-                <Label VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="6" Margin="59,4,59,3.333" HorizontalAlignment="Center" Content="Choose the days and the hours you need a nanny:" Style="{StaticResource labelStyle}" FontSize="14" />
+                <Label VerticalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="6" Margin="59,4,59,3.333" HorizontalAlignment="Center" Content="Choose the days and the hours you need a nanny:"  FontSize="14" />
 
                 <Label VerticalAlignment="Center" Grid.Row="2"  HorizontalAlignment="Left" Content="Sunday:" />
-                <CheckBox x:Name="sundayCheckBox" VerticalAlignment="Center" Grid.Row="2"  IsChecked="{Binding work[0].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Grid.Column="1" Style="{StaticResource checkBoxStyle}" />
+                <CheckBox x:Name="sundayCheckBox" VerticalAlignment="Bottom" Grid.Row="2"  IsChecked="{Binding work[0].day_work, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Grid.Column="1"  Margin="2.8,0,2.8,5.6" />
                 <Label VerticalAlignment="Center" Grid.Row="2" Grid.Column="2"  HorizontalAlignment="Right" Content="Start:"/>
                 <dg:TimePicker x:Name="start1" VerticalAlignment="Center" Grid.Row="2" HorizontalAlignment="Center" Grid.Column="3" IsEnabled="{Binding ElementName=sundayCheckBox, Path=IsChecked}" FontFamily="Cooper Black" Foreground="Indigo"  BorderBrush="Indigo" SizeChanged="sizeChanged"/>
                 <Label VerticalAlignment="Center" Grid.Row="2" Grid.Column="4" HorizontalAlignment="Right" Content="End:"/>
@@ -238,13 +215,13 @@
 
 
             </Grid>
-            <Label Content="Age of the childs" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="2"  VerticalAlignment="Top"  Style="{StaticResource labelStyle}" FontSize="14"/>
+            <Label Content="Age of the childs" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="2"  VerticalAlignment="Top"   FontSize="14"/>
             <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" >
-                <Label Content="from" HorizontalAlignment="Center" Grid.Column="0" Margin="10,10,1,1" Grid.Row="2"  VerticalAlignment="Center" Style="{StaticResource labelStyle}" />
+                <Label Content="from" HorizontalAlignment="Center" Grid.Column="0" Margin="10,10,1,1" Grid.Row="2"  VerticalAlignment="Center"  />
                 <ComboBox x:Name="from_years" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Margin="10,10,2,2" Style="{StaticResource commoBoxStyle }" MouseEnter="Years_MouseEnter"  />
                 <ComboBox x:Name="from_month" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Margin="10,10,2,2" Style="{StaticResource commoBoxStyle}" MouseEnter="month_MouseEnter" />
 
-                <Label Content="to" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2"  VerticalAlignment="Center" Margin="70,10,2,2" Style="{StaticResource labelStyle}"/>
+                <Label Content="to" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2"  VerticalAlignment="Center" Margin="70,10,2,2" />
                 <ComboBox x:Name="to_years" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Margin="10,10,2,2"  MouseEnter="Years_MouseEnter"  Style="{StaticResource commoBoxStyle}" />
                 <ComboBox x:Name="to_month" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Margin="10,10,2,2" Foreground="Indigo" FontFamily="Cooper Black" MouseEnter="month_MouseEnter" Style="{StaticResource commoBoxStyle}" SelectionChanged="selectError"/>
 
@@ -253,15 +230,15 @@
             <TextBlock x:Name="errorMesseg4" Grid.Row="2" Text="Max smaller than min" VerticalAlignment="Bottom"  Foreground="Red" Visibility="Collapsed"/>
 
             <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal">
-                <Label Content="max Childs:" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="3" Margin="10" VerticalAlignment="Center" Style="{StaticResource labelStyle}" />
+                <Label Content="max Childs:" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="3" Margin="10" VerticalAlignment="Center"  />
                 <ComboBox x:Name="maxChildsComboBox"  Grid.Column="0" HorizontalAlignment="Right" Height="Auto" Text="{Binding maxChilds, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" VerticalAlignment="Center" Width="50" Style="{StaticResource commoBoxStyle}" />
-           
-                <Label Content="years of experience:" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="3" Margin="30,0,0,0" VerticalAlignment="Center" Style="{StaticResource labelStyle}"/>
+
+                <Label Content="years of experience:" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="3" Margin="30,0,0,0" VerticalAlignment="Center" />
                 <ComboBox x:Name="years_of_experienceComboBox" Grid.Column="1" Margin="10"  HorizontalAlignment="Right" Height="Auto" Text="{Binding years_of_experience, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  Grid.Row="3" VerticalAlignment="Center" Width="50" Style="{StaticResource commoBoxStyle}"/>
-              
+
             </StackPanel>
 
-            <Label Content="salary per hour?" Grid.Row="4"/>
+            <Label Content="salary per hour?"  Grid.Row="4"/>
             <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal">
                 <CheckBox x:Name="per_hour_ableCheckBox1" Content="" HorizontalAlignment="Left" IsChecked="{Binding per_hour_able, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="10,10,2,2" Grid.Row="4" VerticalAlignment="Center" Foreground="Indigo" />
 
@@ -315,7 +292,7 @@
 
             </StackPanel>
             <StackPanel Grid.Row="6" Grid.ColumnSpan="2" Orientation="Horizontal">
-                <Label Content="vacation acording tamat:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,21.4,0,21.4" Grid.Row="6" VerticalAlignment="Center"/>
+                <Label Content="vacation acording tamat:"  Grid.Column="0" HorizontalAlignment="Left" Margin="3,21.4,0,21.4" Grid.Row="6" VerticalAlignment="Center"/>
                 <CheckBox x:Name="vacation_kindCheckBox1" Content="" HorizontalAlignment="Center" IsChecked="{Binding vacation_kind, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="20" Grid.Row="6" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
 
             </StackPanel>
@@ -364,57 +341,11 @@
                     </Style>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 </Button.Style>
 
 
 
             </Button>
-
-
-
-
-            <!--<Style TargetType="Button" >
-            <Style.Triggers>
-                <MultiTrigger>
-                    <MultiTrigger.Conditions>
-                        <Condition Property="IsKeyboardFocused" Value="True" />
-                        <Condition Property="IsMouseOver" Value="True" />
-                    </MultiTrigger.Conditions>
-                    <MultiTrigger.Setters>
-                        <Setter Property="Background" Value="LightGreen" /> 
-                    </MultiTrigger.Setters>
-                </MultiTrigger>
-            </Style.Triggers
-                </Style>-->
-
-
-
-
-
-
-
-
-
 
             <Button  x:Name="back_button" Visibility="Visible"  Content="back"  HorizontalAlignment="Right"  Grid.Row="7" Margin="0,4.6,5,5.2" Grid.Column="1" Width="150" Click="back_button_Click" FontFamily="Impact" Foreground="SaddleBrown"/>
             <TextBlock x:Name="errorMessegHours" HorizontalAlignment="Left" Margin="5,200.667,0,0" Grid.Row="1" Grid.RowSpan="2" TextWrapping="Wrap" Text="No start/end time has been set" VerticalAlignment="Top" Foreground="Red" Visibility="Collapsed" Grid.ColumnSpan="8"/>

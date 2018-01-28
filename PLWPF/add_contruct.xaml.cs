@@ -49,9 +49,22 @@ namespace PLWPF
 
         private void select_mother_conbobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            select_child_conbobox.ItemsSource = null;
-            select_child_conbobox.ItemsSource = bl.getListChilds(select_mother_conbobox.SelectedItem as Mother);
-            mother = select_mother_conbobox.SelectedItem as Mother;
+            if (select_mother_conbobox.SelectedItem == null)
+            {
+                return;
+            }
+            try
+            {
+                select_child_conbobox.ItemsSource = null;
+                select_child_conbobox.ItemsSource = bl.getListChilds(select_mother_conbobox.SelectedItem as Mother);
+                mother = select_mother_conbobox.SelectedItem as Mother;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+                select_mother_conbobox.SelectedItem = null;
+            }
+
         }
 
         private void select_nanny_conbobox_SelectionChanged(object sender, SelectionChangedEventArgs e)

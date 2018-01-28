@@ -30,7 +30,7 @@ namespace DAL
         //}
 
 
-        static int num = 00000000;
+        static int num = 10000000;
         XElement MotherRoot;
         string motherPath = @"motherXml.xml";
 
@@ -79,18 +79,21 @@ namespace DAL
 
         private void LoadData()
         {
+
             try
             {
                 ChildRoot = XElement.Load(childPath);
-                DS.DataSource.mothers = LoadListFromXML<List<Mother>>(motherPath);
-                DS.DataSource.nannys = LoadListFromXML<List<Nanny>>(nannyPath);
-                DS.DataSource.contracts = LoadListFromXML<List<Contract>>(contractPath);
-                num = DS.DataSource.contracts.LastOrDefault().num_contract + 1;
+                DataSource.mothers = LoadListFromXML<List<Mother>>(motherPath);
+                DataSource.nannys = LoadListFromXML<List<Nanny>>(nannyPath);
+                DataSource.contracts = LoadListFromXML<List<Contract>>(contractPath);
+                num = DataSource.contracts.LastOrDefault().num_contract + 1;
+
             }
-            catch
+            catch (Exception e)
             {
                 throw new Exception("File upload problem");
             }
+
         }
 
         public static void SaveToXML<T>(T source, string path)
@@ -100,13 +103,24 @@ namespace DAL
             xmlSerializer.Serialize(file, source); file.Close();
         }
 
-        public static T LoadListFromXML<T>(string path)
+        public  T LoadListFromXML<T>(string path)
         {
             FileStream file = new FileStream(path, FileMode.Open);
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
-            T data = (T)xmlSerializer.Deserialize(file);
-            file.Close();
-            return data;
+
+            try
+            {
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
+                T data = (T)xmlSerializer.Deserialize(file);
+                file.Close();
+                return data;
+            }
+            catch (Exception e)
+            {
+                file.Close();
+             throw new Exception("error in the file");
+            }
+           
+          
         }
 
 
@@ -252,6 +266,7 @@ namespace DAL
         /// <param name="a"></param>
         public void addMother(Mother a)
         {
+
             Mother temp = getMother(a.id);
             if (temp != null)
                 throw new Exception("Mother with the same id already exists");
@@ -280,15 +295,17 @@ namespace DAL
 
         public IEnumerable<Mother> getListMothers()
         {
-            
-            return LoadListFromXML<List<Mother>>(motherPath);
+
+            return DS.DataSource.mothers;
         }
 
         public Mother getMother(int? id)
         {
-            return LoadListFromXML<List<Mother>>(motherPath).Find(item => item.id == id);
+            return (from mother1 in DS.DataSource.mothers
+                where mother1.id == id
+                select mother1).FirstOrDefault();
+          
         }
-
 
         #endregion
 
@@ -344,7 +361,7 @@ namespace DAL
         public IEnumerable<Nanny> getListNannys()
         {
             
-            return LoadListFromXML<List<Nanny>>(nannyPath);
+            return DS.DataSource.nannys;
 
         }
 
@@ -355,7 +372,15 @@ namespace DAL
         /// <returns></returns>
         public Nanny getNanny(int? id)
         {
-            return LoadListFromXML<List<Nanny>>(nannyPath).Find(item => item.id == id);
+            try
+            {
+                return LoadListFromXML<List<Nanny>>(nannyPath).Find(item => item.id == id);
+
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
         }
 
 
@@ -366,14 +391,29 @@ namespace DAL
 
         public void addContract(Contract a)
         {
-            a.num_contract = ++num;
-            Child temp1 = getChild(a.childID);
-            Mother temp2 = getMother(temp1.MotherID);
-            Nanny temp3 = getNanny(a.NannyID);
-            if (temp2 != null && temp3 != null)
-                DataSource.contracts.Add(a);
-
-            SaveToXML<List<Contract>>(DataSource.contracts, contractPath);
+            try
+            {
+                var con = (from item in getListContracts()
+                    where item.childID == a.childID
+                    select item).FirstOrDefault();
+                if (con!=null)
+                {
+                    throw new Exception("Contract with this child already");
+                }
+                a.num_contract = ++num;
+                Child temp1 = getChild(a.childID);
+                Mother temp2 = getMother(temp1.MotherID);
+                Nanny temp3 = getNanny(a.NannyID);
+                if (temp2 != null && temp3 != null)
+                    DataSource.contracts.Add(a);
+                
+                SaveToXML<List<Contract>>(DataSource.contracts, contractPath);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
 
         }
 
@@ -403,14 +443,24 @@ namespace DAL
         public IEnumerable<Contract> getListContracts()
         {
 
-            return LoadListFromXML<List<Contract>>(contractPath);
-
+            try
+            {
+              //  return LoadListFromXML<List<Contract>>(contractPath);
+                return DS.DataSource.contracts;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
         }
 
        
         public Contract getContract(int num_contract)
         {
-            return LoadListFromXML<List<Contract>>(contractPath).Find(item => item.num_contract == num_contract);
+            return (from item in DS.DataSource.contracts
+                where item.num_contract == num_contract
+                select item).FirstOrDefault();
+           
         }
 
         #endregion
