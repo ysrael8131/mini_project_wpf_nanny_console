@@ -107,6 +107,7 @@ namespace PLWPF
 
 
                 //Manually assigning the time data
+                
                 List<TimePicker> timeStart = new List<TimePicker>() { start1, startMondayTime, startTuesdayTime, startWednesdayTime, startThursdayTime, startFridayTime };
                 List<TimePicker> timeEnd = new List<TimePicker>() { end1, endMondayTime, endTuesdayTime, endWednesdayTime, endThursdayTime, endFridayTime };
                 List<CheckBox> check = new List<CheckBox>() { sundayCheckBox, mondayCheckBox, tuesdayCheckBox, wednesdayCheckBox, thursdayCheckBox, fridayCheckBox };
@@ -159,10 +160,11 @@ namespace PLWPF
         /// <param name="e"></param>
         private void textChanged1(object sender, TextChangedEventArgs e)
         {
+            
             errorMesseg1.Visibility = Visibility.Collapsed;
             errorMesseg2.Visibility = Visibility.Collapsed;
             errorMesseg3.Visibility = Visibility.Collapsed;
-            nextButton.IsEnabled = true;
+           // nextButton.IsEnabled = false;
 
             //Check if digits are entered
             long x;

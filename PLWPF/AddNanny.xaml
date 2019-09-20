@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
-     xmlns:dg="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:dg="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.AddNanny"
         mc:Ignorable="d"
         Title="AddNanny" Height="750" Width="650">

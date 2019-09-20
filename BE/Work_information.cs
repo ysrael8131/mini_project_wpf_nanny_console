@@ -19,7 +19,7 @@ namespace BE
             end = new TimeSpan();
         }
 
-
+        
         [XmlIgnore]
         public TimeSpan Start
         {

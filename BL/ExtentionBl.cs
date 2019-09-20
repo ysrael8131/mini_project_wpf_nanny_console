@@ -35,12 +35,15 @@ namespace BL
                 var sortGroup = from item in contract
                                 orderby item.Key
                                 select item;
+                
                 return sortGroup;
             }
+            
             return contract;
+            
         }
 
-
+       
 
         /// <summary>
         /// A function that returns a distance between 2 targets
@@ -82,6 +85,7 @@ namespace BL
                                 orderby distanceNanny
                                 where distanceNanny <= temp.RangeOfKm
                                 select item;
+               
                 return distance1;
             }
             var distance2 = from item in nanny
